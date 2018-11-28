@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Create Group</h2>
+<mat-form-field>
+    <mat-placeholder>Group name</mat-placeholder>
+    <input matInput type="text" required [(ngModel)]='groupName'>
+</mat-form-field>
+
+<mat-dialog-actions>
+  <button mat-raised-button  [mat-dialog-close]="groupName">Create Group</button>
+</mat-dialog-actions>

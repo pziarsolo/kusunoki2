@@ -4,11 +4,26 @@
   <meta charset="utf-8">
   <title>Kusunoki2</title>
   <base href="/">
+  <script async defer src="https://www.gstatic.com/charts/loader.js"></script>
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlw76orChFiR4RnGbMoNHMuF7t3g8MUgU">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script>
+      WebFont.load({
+          google: {"families":["Roboto:300,400,500,600,700"]},
+          active: function() {
+              sessionStorage.fonts = true;
+          }
+      });
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <kusunoki2-root></kusunoki2-root>
 </body>
 </html>

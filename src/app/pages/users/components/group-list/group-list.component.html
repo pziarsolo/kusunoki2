@@ -1,0 +1,23 @@
+<mat-card *ngIf="groups|| edit_mode">
+    <mat-card-subtitle>Groups</mat-card-subtitle>
+
+    <mat-list>
+        <mat-list-item *ngFor="let group of groups">
+            <span>{{group.name}}</span>
+            <span fxFlex></span>
+            <button color='warn' mat-button *ngIf="edit_mode" matSuffix mat-icon-button aria-label="Clear"
+                   (click)='removeGroupfromList(group.name)' >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-list-item>
+        <mat-list-item ></mat-list-item>
+        <mat-list-item *ngIf='edit_mode'>
+            <mat-form-field>
+                <mat-select placeholder='Add group...' [(ngModel)]="selectedValue">
+                    <mat-option (click)='createGroup()'>Create new Group...</mat-option>
+                    <mat-option *ngFor='let group of allGroups|async' (click)="selectedValue  = null; addGroupToList(group.name)" value='group.name'>{{group.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-list-item>
+    </mat-list>
+</mat-card>

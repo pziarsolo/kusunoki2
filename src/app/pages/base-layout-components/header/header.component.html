@@ -1,0 +1,123 @@
+<mat-toolbar color="primary" role="header">
+    <button type="button" aria-label="Toggle sidenav"
+        mat-icon-button (click)="toggleSidenav()">
+        <mat-icon aria-label="Side nav toggle icon">{{menuIcon}}</mat-icon>
+    </button>
+
+    <a mat-button href='/'>
+        <mat-icon>home</mat-icon>
+        <span> Home</span>
+    </a>
+    <button fxShow fxHide.gt-sm mat-button [matMenuTriggerFor]="rootMenu">
+        <mat-icon>search</mat-icon>
+        <span>Menu</span>
+    </button>
+
+    <mat-menu #rootMenu="matMenu" fxLayout="row" yPosition="above">
+        <a mat-menu-item [matMenuTriggerFor]="searchmenu">
+            <mat-icon>search</mat-icon>
+            Search
+        </a>
+        <a mat-menu-item [matMenuTriggerFor]="statsmenu">
+            <mat-icon>show_chart</mat-icon>
+            Stats
+        </a>
+        <a *ngIf="(showAddMenu|async)" mat-menu-item [matMenuTriggerFor]="addmenu">
+            <mat-icon>show_chart</mat-icon>
+            Add
+        </a>
+        <a mat-menu-item [matMenuTriggerFor]="adminmenu">
+            <mat-icon>settings</mat-icon>
+            admin
+        </a>
+        <a mat-menu-item [matMenuTriggerFor]="apimenu">
+            <mat-icon>menu</mat-icon>
+            API
+        </a>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="searchmenu" fxHide fxShow.gt-sm mat-button>
+        <mat-icon>search</mat-icon>
+        Search
+    </button>
+    <button mat-button [matMenuTriggerFor]="statsmenu" fxHide fxShow.gt-sm mat-button>
+        <mat-icon>show_chart</mat-icon>
+        Stats
+    </button>
+    <button *ngIf="(showAddMenu|async)"
+            mat-button [matMenuTriggerFor]="addmenu" fxHide fxShow.gt-sm mat-button>
+        <mat-icon>add</mat-icon>
+        Add
+    </button>
+    <button
+            mat-button [matMenuTriggerFor]="adminmenu" fxHide fxShow.gt-sm mat-button>
+        <mat-icon>settings</mat-icon>
+        Admin
+    </button>
+    <button mat-button [matMenuTriggerFor]="apimenu" fxHide fxShow.gt-sm mat-button>
+        <mat-icon>menu</mat-icon>
+        API
+    </button>
+    <span style="flex: 1 1 auto;"></span>
+    <kusunoki2-user-menu></kusunoki2-user-menu>
+</mat-toolbar>
+
+<mat-menu #searchmenu="matMenu" yPosition="above">
+    <a [routerLink]="['/', appUrls.accessions]" mat-menu-item>
+        <!-- <mat-icon>chevron_right</mat-icon> -->
+        <span>Accession</span>
+    </a>
+    <a [routerLink]="['/', appUrls.accessionsets]" mat-menu-item>
+        <!-- <mat-icon>chevron_right</mat-icon> -->
+        <span>AccessionSet</span>
+    </a>
+</mat-menu>
+
+<mat-menu #statsmenu="matMenu" yPosition="above">
+    <a [routerLink]="['/', appUrls.institutes]" mat-menu-item>
+        <!-- <mat-icon>dialpad</mat-icon> -->
+        <span>Institute</span>
+    </a>
+    <a [routerLink]="['/', appUrls.data_sources]" mat-menu-item >
+        <!-- <mat-icon>dialpad</mat-icon> -->
+        <span>Data Source</span>
+    </a>
+    <a [routerLink]="['/', appUrls.countries]" mat-menu-item>
+        <!-- <mat-icon>dialpad</mat-icon> -->
+        <span>Countries</span>
+    </a>
+    <a [routerLink]="'/' + appUrls.taxonomy_stats" mat-menu-item>
+        <!-- <mat-icon>dialpad</mat-icon> -->
+        <span>Taxa</span>
+    </a>
+    <!-- <a href='' mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Availability</span>
+    </a> -->
+</mat-menu>
+<mat-menu #apimenu="matMenu" yPosition="above">
+    <a href='{{apiUrl}}' mat-menu-item>
+        <mat-icon>computer</mat-icon>
+        <span>Browse</span>
+    </a>
+    <a href='{{apiDocs}}' mat-menu-item>
+        <mat-icon>school</mat-icon>
+        <span>Docs</span>
+    </a>
+</mat-menu>
+<mat-menu #adminmenu="matMenu" >
+    <a mat-menu-item  [routerLink]="['/', appUrls.users]">Users</a>
+</mat-menu>
+
+<mat-menu #addmenu="matMenu" >
+    <a mat-menu-item  [routerLink]="['/', appUrls.passports, 'create']">Passport</a>
+    <a mat-menu-item [routerLink]="['/', appUrls.accessions, 'create']">Accession</a>
+    <button mat-menu-item [matMenuTriggerFor]="addbulkMenu">Bulk Uploads</button>
+</mat-menu>
+
+<mat-menu #addbulkMenu="matMenu">
+    <button mat-menu-item  [routerLink]="['/', appUrls.institutes, 'bulk_create']">Institutes</button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.passports, 'bulk_create']">Passport</button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.accessions, 'bulk_create']">Accessions</button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']">Accessionsets</button>
+</mat-menu>

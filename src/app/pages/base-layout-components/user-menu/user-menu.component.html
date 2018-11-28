@@ -1,0 +1,17 @@
+<div *ngIf="user | async as userToken">
+    <a *ngIf='!userToken?.isAuthenticated'
+        mat-raised-button
+        color='accent'
+        [routerLink]="['/', 'login']">
+        Login
+    </a>
+
+    <button *ngIf='userToken?.isAuthenticated' mat-mini-fab color='accent' [matMenuTriggerFor]="usermenu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <mat-menu #usermenu="matMenu" yPosition="above">
+        <button mat-menu-item [routerLink]="['/', appUrls.users, userToken.username]" >Hello, {{(user|async)?.username}} </button>
+        <button mat-menu-item (click)="logout()">Logout </button>
+    </mat-menu>
+</div>

@@ -1,0 +1,29 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+        #drawer
+        class="sidenav"
+        fixedInViewport="true"
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'">
+
+        <mat-toolbar color="primary">Menu</mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item href="#">Link 1</a>
+            <a mat-list-item href="#">Link 2</a>
+            <a mat-list-item href="#">Link 3</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div fxLayout="column" style="height:100vh;">
+            <kusunoki2-header (notifyMenuChange)=drawer.toggle()
+                             [sidenavOpened]="drawer.opened">
+            </kusunoki2-header>
+
+            <div fxFlex>
+                <router-outlet></router-outlet>
+            </div>
+            <kusunoki2-footer ></kusunoki2-footer>
+            <kusunoki2-status></kusunoki2-status>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

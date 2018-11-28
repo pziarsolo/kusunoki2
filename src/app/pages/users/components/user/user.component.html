@@ -1,0 +1,53 @@
+<mat-card *ngIf='input_form_data' >
+    <div fxLayout='row' fxLayoutGap='10px'>
+        <div fxFlex fxLayout='column' fxLayoutGap='10px' fxLayoutAlign='center' fxLayout.xs="column">
+            <kusunoki2-inline-edit fxFlex='grow' *ngFor="let component_name of children_config|keys"
+                                [edit_mode]="edit_mode"
+                                [config]="children_config[component_name]"
+                                [value]="input_form_data[component_name]"
+                                (validation_state_event)="check_form_valid($event)">
+                <span class='label'>{{component_name | titlecase| minus2space}}:</span>
+                <span *ngIf="component_name === 'username'" class='value'>
+                    <a [routerLink]="['/', appUrls.users, input_form_data[component_name]]">
+                        {{input_form_data[component_name]}}
+                    </a>
+                </span>
+                <span *ngIf="component_name === 'groups'" class='value'>
+                    <span *ngFor='let group of input_form_data[component_name]'> {{group.name}}</span>
+                </span>
+
+                <span *ngIf="component_name !== 'username' && component_name !== 'groups'" class='value'>
+                    {{input_form_data[component_name]}}
+                </span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-password-form *ngIf='create_mode'></kusunoki2-password-form>
+        </div>
+        <kusunoki2-group-list fxFlex="30%"
+            [groups]="input_form_data['groups']"
+            [edit_mode]="edit_mode">
+        </kusunoki2-group-list>
+
+    </div>
+    <mat-card-actions *ngIf='userCanEdit'>
+        <button mat-button *ngIf="!edit_mode && !create_mode" color='primary' (click)="turnToeditMode()">
+            <mat-icon>edit</mat-icon>Modify User
+        </button>
+        <button mat-button *ngIf="edit_mode" color='primary' (click)="formReset()" >
+            <mat-icon>restore</mat-icon>Cancel
+        </button>
+        <button mat-button [disabled]="!form_valid" *ngIf='edit_mode && !create_mode' color='accent' (click)="doUpdate(); groupsComponent.edit_mode=false">
+            <mat-icon>done</mat-icon>Update User
+        </button>
+        <button mat-button [disabled]="!form_valid || !passwordForm.form.valid" *ngIf='create_mode' color='accent' (click)="doCreate(); groupsComponent.edit_mode=false">
+            <mat-icon>done</mat-icon>Create Accession
+        </button>
+
+        <button mat-button color='warn' *ngIf="!create_mode" (click)=doChangePassword()>
+            <mat-icon>edit</mat-icon>Change Password
+        </button>
+        <div fxFlex></div>
+        <button mat-button color='warn' *ngIf="userCanRemove && (!create_mode && !edit_mode)" color='warn' (click)=doRemove()>
+            <mat-icon>delete</mat-icon>Remove User
+        </button>
+    </mat-card-actions>
+</mat-card>

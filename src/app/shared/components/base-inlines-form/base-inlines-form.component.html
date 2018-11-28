@@ -1,0 +1,9 @@
+
+<kusunoki2-inline-edit *ngFor="let component_name of children_config|keys"
+                    [edit_mode]="edit_mode"
+                    [config]="children_config[component_name]"
+                    [value]="input_form_data[component_name]"
+                    (validation_state_event)="check_form_valid($event)">
+    <span class='label'>{{component_name | titlecase| minus2space}}:</span>
+    <span class='value'>{{input_form_data[component_name]}}</span>
+</kusunoki2-inline-edit>
