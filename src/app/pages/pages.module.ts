@@ -7,6 +7,7 @@ import { LoginComponent } from './login/components/login/login.component';
 import { LoginModule } from './login/login.module';
 import { AppUrls } from './appUrls';
 import { NotFoundComponent } from '../shared/components/not-found-component';
+import { HomeComponent } from '../shared/components/home-component';
 
 const routes: Routes = [
     {
@@ -23,6 +24,10 @@ const routes: Routes = [
                 path: 'users',
                 loadChildren: './users/users.module#UserModule',
                 // canActivate: [IsAuthGuard]
+            },
+            {
+                path: '',
+                component: HomeComponent
             },
             {
                 path: '**',

@@ -12,6 +12,7 @@ import { PasswordFormComponent } from './components/password-form/password-form.
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home-component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         BaseInlinesFormComponent,
         InlineEditComponent,
         PasswordFormComponent,
-        DeleteDialogComponent
+        DeleteDialogComponent,
+        HomeComponent
     ],
     imports: [
         HttpClientModule,
@@ -44,7 +46,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         BaseInlinesFormComponent,
         InlineEditComponent,
         PasswordFormComponent,
-        DeleteDialogComponent
+        DeleteDialogComponent,
+        HomeComponent
     ]
 })
 export class SharedModule { }
