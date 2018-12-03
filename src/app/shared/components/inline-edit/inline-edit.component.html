@@ -2,45 +2,43 @@
     <div [ngSwitch]='config.widget.type'>
         <ng-container *ngSwitchCase="'text_input'">
             <mat-form-field style='width: 100%;'>
-                <mat-label>
-                    <ng-content select=".label"></ng-content>
-                </mat-label>
+                <mat-label>{{label}}</mat-label>
                 <input matInput [type]='config.text_input_type' [hidden]='hideInput()'
-                    formControlName="input_control" [required]='config.is_required && edit_mode'>
+                    formControlName="inputControl" [required]='config.is_required && editMode'>
                 <span [hidden]='!hideInput()'><ng-content select=".value"></ng-content></span>
-                <button mat-button *ngIf="config.is_editable && input_control.value && edit_mode" matSuffix mat-icon-button aria-label="Clear"
+                <button mat-button *ngIf="config.is_editable && inputControl.value && editMode" matSuffix mat-icon-button aria-label="Clear"
                     (click)="clearForm()">
                     <mat-icon>close</mat-icon>
                 </button>
-                <mat-error *ngIf="input_control.errors?.min">
-                    Minimum value allowed: {{input_control.errors.min.min}}
+                <mat-error *ngIf="inputControl.errors?.min">
+                    Minimum value allowed: {{inputControl.errors.min.min}}
                 </mat-error>
-                <mat-error *ngIf="input_control.errors?.max">
-                    Maximun value allowed: <strong>{{input_control.errors.max.max}}</strong>
+                <mat-error *ngIf="inputControl.errors?.max">
+                    Maximun value allowed: <strong>{{inputControl.errors.max.max}}</strong>
                 </mat-error>
-                <mat-error *ngIf="input_control.errors?.required">
+                <mat-error *ngIf="inputControl.errors?.required">
                     This value is required
                 </mat-error>
-                <mat-error *ngIf="input_control.errors?.is_not_number">
+                <mat-error *ngIf="inputControl.errors?.is_not_number">
                     Value must be a number
                 </mat-error>
             </mat-form-field>
         </ng-container>
         <ng-container *ngSwitchCase="'switch'">
-            <div [ngSwitch]='edit_mode'>
+            <div [ngSwitch]='editMode'>
                 <ng-container *ngSwitchCase="false">
-                    <span *ngIf='input_control.value'>{{config.widget.conf.true}}</span>
-                    <span *ngIf='!input_control.value'>{{config.widget.conf.false}}</span>
+                    <span *ngIf='inputControl.value'>{{config.widget.conf.true}}</span>
+                    <span *ngIf='!inputControl.value'>{{config.widget.conf.false}}</span>
                 </ng-container>
                 <ng-container *ngSwitchCase="true">
                     <mat-slide-toggle
-                        formControlName='input_control'
-                        [checked]="input_control"
+                        formControlName='inputControl'
+                        [checked]="inputControl"
                         color = 'accent'
                         id="config.name"
                         name="config.name">
-                        <span *ngIf='input_control.value'>{{config.widget.conf.true}}</span>
-                        <span *ngIf='!input_control.value'>{{config.widget.conf.false}}</span>
+                        <span *ngIf='inputControl.value'>{{config.widget.conf.true}}</span>
+                        <span *ngIf='!inputControl.value'>{{config.widget.conf.false}}</span>
                     </mat-slide-toggle>
                 </ng-container>
             </div>
@@ -49,37 +47,19 @@
             <mat-form-field style='width: 100%;'>
                 <input matInput type="text"
                        [hidden]='hideInput()'
-                       [placeholder]="config.name"
+                       [placeholder]="label"
                        [matDatepicker]="picker"
-                       [formControl]="input_control"
-                       [required]='config.is_required && edit_mode'>
+                       [formControl]="inputControl"
+                       [required]='config.is_required && editMode'>
                 <mat-datepicker-toggle [disabled]='hideInput()' matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <span [hidden]='!hideInput()'>{{input_control.value | date:'shortDate'}}</span>
-                <button mat-button *ngIf="config.is_editable && input_control.value && edit_mode" matSuffix mat-icon-button aria-label="Clear"
+                <span [hidden]='!hideInput()'>{{inputControl.value|date: 'shortDate'}}</span>
+                <button mat-button *ngIf="config.is_editable && inputControl.value && editMode" matSuffix mat-icon-button aria-label="Clear"
                     (click)="clearForm()">
                     <mat-icon>close</mat-icon>
                 </button>
 
             </mat-form-field>
         </ng-container>
-        <ng-container *ngSwitchCase="'select'">
-            <mat-form-field style='width: 100%;'>
-                <mat-label>
-                    {{config.name | titlecase| minus2space}}
-                </mat-label>
-                <mat-select [formControl]="input_control" name="config.name"
-                            [disabled]='!(edit_mode  || create_mode)'
-                            [compareWith]="isSameObjectByCode"
-                            [(ngModel)]="selected">
-                    <mat-option value='null'></mat-option>
-                    <mat-option *ngFor="let item of config.widget.conf.choices"
-                        [value]="item">
-                        ({{item.code}}) {{item.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </ng-container>
-
     </div>
 </form>

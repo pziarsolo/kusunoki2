@@ -3,6 +3,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { environment } from '../../../../environments/environment';
 import { Observable} from 'rxjs';
 import { AppUrls } from '../../appUrls';
+import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 
 
 @Component({
@@ -11,20 +12,22 @@ import { AppUrls } from '../../appUrls';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
-
     showAddMenu: Observable<Boolean>;
     apiUrl = environment.apiUrl;
     apiDocs = this.apiUrl + '/docs';
+
     appUrls = AppUrls;
+
     @Output() notifyMenuChange = new EventEmitter();
     @Input() sidenavOpened: Boolean;
     @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
     menuIcon: string;
 
+    userToken;
 
-    constructor() {}
+    constructor(private currentUserService: CurrentUserService) {}
     ngOnInit(): void {
-        // this.userToken = this.currentUserService.userToken;
+        this.userToken = this.currentUserService.userToken;
         // this.userSubscription = this.userToken
         //     .subscribe(user => {
         //         if ((this.appConfig.showAccessionHeader || this.appConfig.showAccessionSetHeader ||

@@ -22,11 +22,11 @@
             <mat-icon>show_chart</mat-icon>
             Stats
         </a>
-        <a *ngIf="(showAddMenu|async)" mat-menu-item [matMenuTriggerFor]="addmenu">
+        <a *ngIf="(userToken|async)?.isAuthenticated" mat-menu-item [matMenuTriggerFor]="addmenu">
             <mat-icon>show_chart</mat-icon>
             Add
         </a>
-        <a mat-menu-item [matMenuTriggerFor]="adminmenu">
+        <a *ngIf="(userToken|async)?.is_staff" mat-menu-item [matMenuTriggerFor]="adminmenu">
             <mat-icon>settings</mat-icon>
             admin
         </a>
@@ -44,12 +44,12 @@
         <mat-icon>show_chart</mat-icon>
         Stats
     </button>
-    <button *ngIf="(showAddMenu|async)"
+    <button *ngIf="(userToken|async)?.isAuthenticated"
             mat-button [matMenuTriggerFor]="addmenu" fxHide fxShow.gt-sm mat-button>
         <mat-icon>add</mat-icon>
         Add
     </button>
-    <button
+    <button *ngIf="(userToken|async)?.is_staff"
             mat-button [matMenuTriggerFor]="adminmenu" fxHide fxShow.gt-sm mat-button>
         <mat-icon>settings</mat-icon>
         Admin
@@ -110,14 +110,12 @@
 </mat-menu>
 
 <mat-menu #addmenu="matMenu" >
-    <a mat-menu-item  [routerLink]="['/', appUrls.passports, 'create']">Passport</a>
     <a mat-menu-item [routerLink]="['/', appUrls.accessions, 'create']">Accession</a>
     <button mat-menu-item [matMenuTriggerFor]="addbulkMenu">Bulk Uploads</button>
 </mat-menu>
 
 <mat-menu #addbulkMenu="matMenu">
-    <button mat-menu-item  [routerLink]="['/', appUrls.institutes, 'bulk_create']">Institutes</button>
-    <button mat-menu-item  [routerLink]="['/', appUrls.passports, 'bulk_create']">Passport</button>
+    <button *ngIf="(userToken|async)?.is_staff" mat-menu-item  [routerLink]="['/', appUrls.institutes, 'bulk_create']">Institutes</button>
     <button mat-menu-item  [routerLink]="['/', appUrls.accessions, 'bulk_create']">Accessions</button>
     <button mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']">Accessionsets</button>
 </mat-menu>

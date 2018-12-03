@@ -1,0 +1,80 @@
+<mat-card style='margin:8px;'>
+    <mat-card-title color='accent'>Accession Search </mat-card-title>
+    <mat-card-content>
+        <form #searchForm="ngForm" ngSubmit="doSumbit()">
+            <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
+                <mat-form-field fxFlex>
+                    <mat-label>Institute</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchParams.institute_code"
+                            (ngModelChange) = "suggestedInstitutes = filterInstitute(searchParams.institute_code)"
+                            [matAutocomplete]="instituteAuto"
+                            #countryAuto  name="institute">
+                    <mat-autocomplete #instituteAuto="matAutocomplete">
+                        <mat-option *ngFor="let institute of suggestedInstitutes|async " [value]="institute.instituteCode">
+                            {{ institute.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label>Number</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchParams.number_contains"
+                            (ngModelChange) = "suggestedAccessions = filterNumber(searchParams.number_contains)"
+                            [matAutocomplete]="number" name="number_contains">
+                    <mat-autocomplete #number="matAutocomplete" >
+                        <mat-option *ngFor="let accession of suggestedAccessions|async " [value]="accession.data.germplasmNumber">
+                            {{ accession.data.germplasmNumber }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+            </div>
+            <div fxLayout='row' fxLayoutGap='5px'>
+                <mat-form-field fxFlex>
+                    <mat-label>Country</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchParams.country"
+                            (ngModelChange) = "suggestedCountries = filterCountry(searchParams.country)"
+                            [matAutocomplete]="countryAuto"
+                            #countryAuto  name="country">
+                    <mat-autocomplete #countryAuto="matAutocomplete">
+                        <mat-option *ngFor="let country of suggestedCountries|async " [value]="country.code">
+                            {{ country.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label>Location</mat-label>
+                    <mat-hint>State, province, municiality, site...</mat-hint>
+                    <input type="text" matInput [(ngModel)]='searchParams.site' name='site'>
+                </mat-form-field>
+            </div>
+            <div fxLayout='row' fxLayoutGap='5px'>
+                <mat-form-field fxFlex >
+                    <mat-label>Taxon</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchParams.taxon_contains"
+                            (ngModelChange) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
+                            [matAutocomplete]="taxaAuto" name='taxon_contains' #taxaAuto>
+                    <mat-autocomplete #taxaAuto="matAutocomplete">
+                        <mat-option *ngFor="let taxon of suggestedTaxa |async " [value]="taxon.name">
+                            {{ taxon.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <mat-form-field fxFlex >
+                    <mat-label>Biological status</mat-label>
+                    <mat-select [(ngModel)]="searchParams.biological_status"
+                                name="biological_status">
+                        <mat-option value='null'></mat-option>
+                        <mat-option *ngFor="let bio_status of biologicalStatus"
+                            [value]="bio_status.code">
+                            ({{bio_status.code}}) {{bio_status.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" >Search</button>
+            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams = {}" >Clear</button>
+        </form>
+        <!-- <pre>{{searchParams | json}}</pre> -->
+    </mat-card-content>
+</mat-card>

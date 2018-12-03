@@ -1,0 +1,61 @@
+<mat-card style='margin:8px;'>
+    <mat-card-header><span style='margin-right: 5px'>Country</span>  <span class='key'> {{(country |async)?.code}}</span></mat-card-header>
+    <mat-card-content>
+        <div fxLayout='column' fxLayoutGap='20px'>
+            <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start'>
+                <div class='key' fxFlex='8em'>Code</div>
+                <div fXflex><a routerLink='/institutes/{{(country |async)?.code}}'>{{(country |async)?.code}}</a></div>
+            </div>
+            <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start'>
+                <div class='key' fxFlex='8em'>Name</div>
+                <div fXflex>{{(country |async)?.name}}</div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<!-- <mat-card>
+    <mat-expansion-panel expanded='false'>
+        <mat-expansion-panel-header>Stats by intitute</mat-expansion-panel-header>
+        <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column" >
+            <mat-card fxFlex='grow'>
+                <kusunoki-institute-table [columnsToDisplay]="['code', 'name', 'num_passports', 'num_accessions']"
+                                          [items]="institute_stats"
+                                          [initialQueryParams]="{country: (country|async)?.code}">
+                </kusunoki-institute-table>
+            </mat-card>
+            <mat-card fxFlex='grow'>
+                <mat-tab-group>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Passport Stats
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <kusunoki-google-treemap [statsType]="'passports'"
+                                                     [chartData]="institute_stats|async"
+                                                     [id]="'pass_id'">
+                            </kusunoki-google-treemap>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Accession Stats
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <kusunoki-google-treemap [statsType]="'accessions'"
+                                                     [chartData]="institute_stats|async"
+                                                     [id]="'acc_id'">
+                            </kusunoki-google-treemap>
+                        </ng-template>
+                    </mat-tab>
+
+                </mat-tab-group>
+            </mat-card>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel expanded='true'>
+        <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
+        <kusunoki-taxon-stats [stats]="taxon_stats|async"
+                              [initialQueryParams]="{country: (country|async)?.code}">
+        </kusunoki-taxon-stats>
+    </mat-expansion-panel>
+</mat-card> -->

@@ -13,6 +13,8 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home-component';
+import { TableListComponent } from './components/table-list/table-list.component';
+import { InlineEditSelectComponent } from './components/inline-edit-select/inline-edit-select.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +23,9 @@ import { HomeComponent } from './components/home-component';
         InlineEditComponent,
         PasswordFormComponent,
         DeleteDialogComponent,
-        HomeComponent
+        HomeComponent,
+        TableListComponent,
+        InlineEditSelectComponent,
     ],
     imports: [
         HttpClientModule,
@@ -40,6 +44,7 @@ import { HomeComponent } from './components/home-component';
         CommonModule,
         FlexLayoutModule,
         MaterialBaseModule,
+        ReactiveFormsModule,
         StatusModule,
         PipesModule,
         NotFoundComponent,
@@ -47,7 +52,9 @@ import { HomeComponent } from './components/home-component';
         InlineEditComponent,
         PasswordFormComponent,
         DeleteDialogComponent,
-        HomeComponent
+        HomeComponent,
+        TableListComponent,
+        InlineEditSelectComponent,
     ]
 })
 export class SharedModule { }

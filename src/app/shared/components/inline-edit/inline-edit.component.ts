@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { SubscriptionLike as ISubscription} from 'rxjs';
+import { SubscriptionLike as ISubscription } from 'rxjs';
 import { isNumberValidator } from '../../validators/isNumber.validator';
 
 
@@ -11,58 +11,68 @@ import { isNumberValidator } from '../../validators/isNumber.validator';
     styleUrls: ['./inline-edit.component.scss']
 })
 export class InlineEditComponent implements OnInit, OnDestroy {
-    @Input() edit_mode: boolean;
+    @Input() editMode: boolean;
+    @Input() label: string;
+    @Input() config: any;
+
+    // with  this set/get we convert value ina two way binding model like
     private _value;
     @Input()
     set value(value) {
         this._value = value;
         this.valueChange.emit(value);
     }
-    @Input() config: any;
-    @Input() selected: any;
     @Output() valueChange = new EventEmitter();
     get value() {
         return this._value;
     }
-    @Output() validation_state_event = new EventEmitter<any>();
-    initial_value: any;
-    form_changes: ISubscription;
-    form: FormGroup;
-    input_control: FormControl;
 
-    constructor() { }
+    @Output() validationStateEvent = new EventEmitter<any>();
+
+    initialValue: any;
+    inputChanges: ISubscription;
+
+    form: FormGroup;
+    inputControl: FormControl;
+
+    constructor() {}
 
     ngOnInit() {
-        this.set_config_default_values();
-        this.input_control = new FormControl(this.value,
+        this.initialValue = this.value;
+        this.setConfigDefaultValues();
+        this.inputControl = new FormControl(this.value,
                                              this.config.validators);
         this.form = new FormGroup({});
-        this.form.addControl('input_control', this.input_control);
+        this.form.addControl('inputControl', this.inputControl);
 
-        this.validation_state_event.emit({[this.config.name]: this.form.valid});
-        if (this.config.widget && this.config.widget.type === 'select' && this.value) {
-
-            this.selected = this.config.widget.conf.choices.filter(item => item.code === Number(this.value) || item.code === this.value)[0];
-        }
-        this.subscribeToFormChanges();
-        this.after_init();
-        this.initial_value = this.value;
+        this.validationStateEvent.emit({[this.config.name]: this.inputControl.valid});
+        this.subscribeToInputChanges();
+        this.afterOnInit();
     }
 
-    after_init() {}
+    subscribeToInputChanges() {
+        this.inputChanges = this.inputControl.valueChanges
+            .subscribe(val => {
+                const isValid = this.inputControl.valid;
+                this.validationStateEvent.emit({[this.config.name]: isValid});
+                this.value = val;
+            });
+    }
+    afterOnInit() {}
 
     ngOnDestroy() {
-        this.form_changes.unsubscribe();
+        this.inputChanges.unsubscribe();
         this.afterOnDestroy();
     }
     afterOnDestroy() {}
 
     clearForm() {
-        this.form.reset({'input_control': ''});
+        this.inputControl.patchValue('');
     }
 
     resetForm() {
-        this.input_control.patchValue(this.initial_value);
+        this.inputControl.patchValue(this.initialValue);
+        this.validationStateEvent.emit({[this.config.name]: this.inputControl.valid});
     }
 
     hideForm() {
@@ -72,23 +82,23 @@ export class InlineEditComponent implements OnInit, OnDestroy {
         } else {
             has_value = true;
         }
-        return (!has_value && !this.edit_mode);
+        return (!has_value && !this.editMode);
     }
     hideInput() {
         if (!this.config.is_editable) {
             return true;
         } else {
-            return !this.edit_mode;
+            return !this.editMode;
         }
     }
     isInputVisible() {
-        if (this.config.is_editable && this.edit_mode) {
+        if (this.config.is_editable && this.editMode) {
             return false;
         } else {
             return true;
         }
     }
-    set_config_default_values() {
+    setConfigDefaultValues() {
         if (this.config.is_editable === undefined) {
             this.config.is_editable = true;
         }
@@ -119,33 +129,16 @@ export class InlineEditComponent implements OnInit, OnDestroy {
         if (this.config.widget.type === 'datePicker') {
             this.config.type = Date;
         }
-        if (this.config.widget.type === 'select') {
-            this.config.type = Object;
-        }
-
     }
 
-    subscribeToFormChanges() {
-        this.form_changes = this.form.valueChanges.subscribe(changes => {
-            this.validation_state_event.emit({[this.config.name]: this.form.valid});
-            this.value = changes['input_control'];
-        });
-    }
-
-    getFormDataIfValid() {
+    getValueIfFormValid() {
         if (this.form.valid) {
-            if (this.input_control.value !== null &&
-                this.input_control.value !== undefined &&
-                this.input_control.value !== 'null') { // this last one is to reset select widtget value
-                return new this.config.type(this.input_control.value);
+            if (this.inputControl.value !== null &&
+                this.inputControl.value !== undefined &&
+                this.inputControl.value !== 'null') { // this last one is to reset select widtget value
+                return this.inputControl.value;
             }
         }
-    }
-    isSameObjectByCode(o1: any, o2: any): boolean {
-        if (o1 && o2) {
-            return o1.code === o2.code;
-        }
-        return false;
     }
 }
 

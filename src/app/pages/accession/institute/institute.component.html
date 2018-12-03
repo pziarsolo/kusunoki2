@@ -1,0 +1,12 @@
+<div fxLayout='column' fxLayoutGap='20px' *ngIf="institute" style='margin:5px'>
+    <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start'style='margin:5px'>
+        <div class='key' fxFlex='8em'>Code</div>
+        <div fXflex><a [routerLink]="['institutes', 'institute.instituteCode']">{{institute.instituteCode}}</a></div>
+    </div>
+    <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px'>
+        <div class='key' fxFlex='8em'>Name</div>
+        <div fXflex>{{institute.name}}</div>
+    </div>
+</div>
+
+

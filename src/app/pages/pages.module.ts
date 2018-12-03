@@ -21,6 +21,11 @@ const routes: Routes = [
                 // loadChildren: '../kusunoki/login/login.module#LoginModule'
             },
             {
+                path: '',
+                loadChildren: './accession/accession.module#AccessionModule',
+                // canActivate: [IsAuthGuard]
+            },
+            {
                 path: 'users',
                 loadChildren: './users/users.module#UserModule',
                 // canActivate: [IsAuthGuard]

@@ -1,0 +1,35 @@
+<form [formGroup]="form" [hidden]='hideForm()'>
+    <mat-form-field style='width: 100%;' >
+        <mat-placeholder> Institute </mat-placeholder>
+        <input matInput type="text" [hidden]="!config.is_editable ||(config.is_editable && !editMode)"
+            formControlName="inputControl"
+            #input_control [matAutocomplete]="autocomplete"
+            [required]='config.is_required && editMode'>
+
+        <div [hidden]='config.is_editable && editMode'>
+            <span *ngIf='initialValue'>
+                <!-- <a routerLink='/institutes/{{initial_value.code}}'>{{ initial_value.name}} ({{initial_value.code}})</a> -->
+                <a routerLink='/institutes/{{initialValue.code}}'
+                   [matTooltip]="initialValue.name">
+                    {{initialValue.instituteCode}}
+                </a>
+            </span>
+            <span *ngIf='!initialValue'>{{initialValue.instituteCode}}</span>
+
+        </div>
+        <button *ngIf="config.is_editable && inputControl.value && editMode"
+                matSuffix mat-icon-button aria-label="Clear"
+                (click)="clearForm()">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="inputControl.errors?.required">
+            This value is required
+        </mat-error>
+        <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]='display'>
+            <mat-option *ngFor="let institute of suggestions |async "
+                        [value]="institute">
+                {{ institute.name}} ({{institute.instituteCode}})
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

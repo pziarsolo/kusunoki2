@@ -3,7 +3,7 @@ import { AbstractControl } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { GroupService } from '../../coreapp/services/generic-services/group.service';
+import { GroupService } from '../services/group.service';
 
 @Injectable({ providedIn: 'root' })
 export class GroupExistValidator implements AsyncValidator {

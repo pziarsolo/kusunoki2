@@ -1,0 +1,11 @@
+.mat-select-disabled .mat-select-value {
+    color: rgba(black, 1);
+}
+.mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    background-image: linear-gradient(to right,
+                 rgba(0, 0, 0, 0.42) 100%,
+                  rgba(0, 0, 0, 0.42) 100%, transparent 0%);
+}
+.mat-form-field .mat-select.mat-select-disabled .mat-select-arrow {
+    color:rgba(0, 0, 0, 0);
+}

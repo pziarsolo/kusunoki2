@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import {
     MatIconModule,
     MatButtonModule,
-    MatCardModule,
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
@@ -17,8 +16,16 @@ import {
     MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    MatAutocompleteModule,
+    MatTooltipModule,
 } from '@angular/material';
 
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
     exports : [
         MatIconModule,
@@ -37,7 +44,12 @@ import {
         MatSelectModule,
         MatTableModule,
         MatPaginatorModule,
-
+        MatSortModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule,
+        MatAutocompleteModule,
+        MatTooltipModule,
+        MatMomentDateModule
     ]
 })
 export class MaterialBaseModule { }

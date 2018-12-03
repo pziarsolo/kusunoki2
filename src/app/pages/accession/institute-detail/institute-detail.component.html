@@ -1,0 +1,61 @@
+<mat-card style='margin:8px;'>
+    <mat-card-title>General Info</mat-card-title>
+        <mat-card-content>
+            <kusunoki2-institute [instituteCode]='instituteCode'></kusunoki2-institute>
+        </mat-card-content>
+</mat-card>
+
+    <!-- <mat-expansion-panel expanded='true'>
+        <mat-expansion-panel-header>Country Stats</mat-expansion-panel-header>
+        <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column">
+            <mat-card fxFlex>
+                <kusunoki-country-table [columnsToDisplay]="countryColumnsToDisplay"
+                                        [items]="country_stats"
+                                        [initialQueryParams]="{institute_code: code}">
+                </kusunoki-country-table>
+
+            </mat-card>
+            <mat-card fxFlex>
+                <mat-tab-group>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Passport Stats
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <kusunoki-google-mapchart [statsType]="'passports'"
+                                                    [chartData]="country_stats|async"
+                                                    [id]="'pass_id'">
+                            </kusunoki-google-mapchart>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Accession Stats
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <kusunoki-google-mapchart [statsType]="'accessions'"
+                                                    [chartData]="country_stats|async"
+                                                    [id]="'acc_id'">
+                            </kusunoki-google-mapchart>
+                        </ng-template>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+    <mat-expansion-panel-header>Pdci Distribution</mat-expansion-panel-header>
+        <mat-card fxFlex >
+            <kusunoki-google-barchart [div_id]="'pdci_div'"
+                                    [chartData]="(instituteStats|async)?.pdcis"
+                                    [config]="pdci_char_config">
+            </kusunoki-google-barchart>
+        </mat-card>
+    </mat-expansion-panel>
+    <mat-expansion-panel expanded='true'>
+        <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
+        <kusunoki-taxon-stats [stats]="taxon_stats|async"
+                              [initialQueryParams]="{institute_code: code}">
+        </kusunoki-taxon-stats>
+    </mat-expansion-panel>
+</mat-card> -->
