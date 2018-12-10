@@ -15,17 +15,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home-component';
 import { TableListComponent } from './components/table-list/table-list.component';
 import { InlineEditSelectComponent } from './components/inline-edit-select/inline-edit-select.component';
+import { BaseInlinesForm2Component } from './components/base-inlines2-form/base-inlines-form2.component';
+import { GoogleMapComponent } from './components/google-map/google-map.component';
 
 @NgModule({
     declarations: [
         NotFoundComponent,
         BaseInlinesFormComponent,
+        BaseInlinesForm2Component,
         InlineEditComponent,
         PasswordFormComponent,
         DeleteDialogComponent,
         HomeComponent,
         TableListComponent,
         InlineEditSelectComponent,
+        GoogleMapComponent
     ],
     imports: [
         HttpClientModule,
@@ -49,12 +53,14 @@ import { InlineEditSelectComponent } from './components/inline-edit-select/inlin
         PipesModule,
         NotFoundComponent,
         BaseInlinesFormComponent,
+        BaseInlinesForm2Component,
         InlineEditComponent,
         PasswordFormComponent,
         DeleteDialogComponent,
         HomeComponent,
         TableListComponent,
         InlineEditSelectComponent,
+        GoogleMapComponent
     ]
 })
 export class SharedModule { }

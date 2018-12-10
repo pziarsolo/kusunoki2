@@ -3,23 +3,22 @@ import { MatAutocompleteTrigger } from '@angular/material';
 
 import { Subscription , Observable, of} from 'rxjs';
 import { map, startWith, debounceTime, distinctUntilChanged, switchMap, filter } from 'rxjs/operators';
-import { InstituteService } from 'src/app/shared/services/institute.service';
-import { Institute } from 'src/app/shared/entities/institute.model';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
-
+import { Country } from 'src/app/shared/entities/country.model';
+import { CountryService } from 'src/app/shared/services/country.service';
 
 @Component({
-  selector: 'kusunoki2-inline-auto-institute',
-  templateUrl: './inline-auto-institute.component.html',
-  styleUrls: ['./inline-auto-institute.component.scss']
+  selector: 'kusunoki2-inline-auto-country',
+  templateUrl: './inline-auto-country.component.html',
+  styleUrls: ['./inline-auto-country.component.scss']
 })
-export class InlineAutoInstituteComponent extends InlineEditComponent implements OnChanges, AfterViewInit {
-    suggestions: Observable<Institute[]>;
+export class InlineAutoCountryComponent extends InlineEditComponent implements OnChanges, AfterViewInit {
+    suggestions: Observable<Country[]>;
     subscription: Subscription;
 
     @ViewChild(MatAutocompleteTrigger) trigger;
 
-    constructor(public service: InstituteService) {
+    constructor(public service: CountryService) {
         super();
     }
 
@@ -38,11 +37,10 @@ export class InlineAutoInstituteComponent extends InlineEditComponent implements
 
     ngOnChanges(changes: SimpleChanges): void {
         if (this.value === undefined || this.value === null) {
-            this.initialValue = {'instituteCode': null,
-                                  'name': null};
+            this.initialValue = {'code': null, 'name': null};
         } else if (typeof this.value === 'string') {
             this.subscription = this.service.retrieve(this.value,
-                                                      {'fields': 'instituteCode,name'})
+                                                      {'fields': 'code,name'})
                 .subscribe(
                     (response) => {
                         this.initialValue = response;
@@ -73,7 +71,7 @@ export class InlineAutoInstituteComponent extends InlineEditComponent implements
     filter(inputVal) {
         if (typeof(inputVal) === 'string') {
             return this.service.list({code_or_name: inputVal,
-                                    fields: 'instituteCode,name'})
+                                    fields: 'code,name'})
                 .pipe(map(response => response.body));
         }
         return of([]);
@@ -95,10 +93,10 @@ export class InlineAutoInstituteComponent extends InlineEditComponent implements
         if (entity === undefined || entity === null) {
             return '';
         }
-        if (entity.instituteCode === undefined) {
+        if (entity.code === undefined) {
             return entity;
         }
-        return `${entity.name} (${entity.instituteCode})`;
+        return `${entity.name} (${entity.code})`;
     }
 
     getValueIfFormValid() {
@@ -106,7 +104,7 @@ export class InlineAutoInstituteComponent extends InlineEditComponent implements
             if (this.inputControl.value !== null) {
                 const value = this.inputControl.value;
                 this.initialValue = value;
-                return value.instituteCode;
+                return value.code;
             }
         }
     }

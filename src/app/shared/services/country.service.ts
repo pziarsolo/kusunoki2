@@ -20,14 +20,16 @@ export class CountryService {
         return `${this.endPoint}${code}/`;
     }
 
-    retrieve(code: string): Observable<Country> {
+    retrieve(code: string, searchParams?): Observable<Country> {
+        const getParams = paramsToHttpParams(searchParams);
         const detailUrl = this.composeDetailUrl(code);
-        return this.http.get<Country>(detailUrl);
+        return this.http.get<Country>(detailUrl,
+            {params: getParams});
     }
 
     list(searchParams?): Observable<HttpResponse<Country[]>> {
-        const get_params = paramsToHttpParams(searchParams);
+        const getParams = paramsToHttpParams(searchParams);
         return this.http.get<Country[]>(this.endPoint,
-            {params: searchParams, observe: 'response'});
+            {params: getParams, observe: 'response'});
     }
 }

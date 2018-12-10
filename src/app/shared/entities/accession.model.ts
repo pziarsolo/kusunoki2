@@ -30,7 +30,6 @@ export class AccessionData {
     passports: Passport[];
 
     constructor(object?: AccessionData) {
-        console.log(object);
         if (object) {
             this.instituteCode = object.instituteCode;
             this.germplasmNumber = object.germplasmNumber;
@@ -46,7 +45,7 @@ export class AccessionData {
             this.conservation_status = undefined;
             this.countries = undefined;
             this.genera = undefined;
-            this.passports = [];
+            this.passports = [new Passport()];
         }
     }
     getApiDocument() {
@@ -266,33 +265,15 @@ export class Taxonomy {
 
     constructor(object?) {
         if (object) {
-            if (object.ncbi_taxon) {
-                this.ncbi_taxon = object.ncbi_taxon;
-            }
-            if (object.family) {
-                this.family = new Taxon(object.family);
-            }
-            if (object.genus) {
-                this.genus = new Taxon(object.genus);
-            }
-            if (object.species) {
-                this.species = new Taxon(object.species);
-            }
-            if (object.subspecies) {
-                this.subspecies = new Taxon(object.subspecies);
-            }
-            if (object.variety) {
-                this.variety = new Taxon(object.variety);
-            }
-            if (object.convarietas) {
-                this.convarietas = new Taxon(object.convarietas);
-            }
-            if (object.group) {
-                this.group = new Taxon(object.group);
-            }
-            if (object.forma) {
-                this.forma = new Taxon(object.forma);
-            }
+            this.ncbi_taxon = object.ncbi_taxon;
+            this.family = new Taxon(object.family);
+            this.genus = new Taxon(object.genus);
+            this.species = new Taxon(object.species);
+            this.subspecies = new Taxon(object.subspecies);
+            this.variety = new Taxon(object.variety);
+            this.convarietas = new Taxon(object.convarietas);
+            this.group = new Taxon(object.group);
+            this.forma = new Taxon(object.forma);
         } else {
             this.ncbi_taxon = undefined;
             this.family = new Taxon();
@@ -469,17 +450,17 @@ export class GeoLocation {
 export class DataSource {
     code: string;
     kind: string;
-    retrieval_date: Moment;
+    retrievalDate: Moment;
 
     constructor(object?) {
         if (object) {
             this.code = object.code;
             this.kind = object.kind;
-            this.retrieval_date = moment(object.retrieval_date, 'YYYY-MM-DD');
+            this.retrievalDate = moment(object.retrievalDate, 'YYYY-MM-DD');
         } else {
             this.code = undefined;
             this.kind = undefined;
-            this.retrieval_date = undefined;
+            this.retrievalDate = undefined;
         }
     }
     getApiDocument() {
@@ -490,8 +471,8 @@ export class DataSource {
         if (this.kind) {
             apiDoc['kind'] = this.kind;
         }
-        if (this.retrieval_date) {
-            apiDoc['retrieval_date'] = this.retrieval_date.format('YYYY-MM-DD');
+        if (this.retrievalDate) {
+            apiDoc['retrievalDate'] = this.retrievalDate.format('YYYY-MM-DD');
         }
         return apiDoc;
     }

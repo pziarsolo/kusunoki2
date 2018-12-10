@@ -15,6 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { AccessionDetailComponent } from './accession-detail/accession-detail.component';
 import { AccessionComponent } from './accession/accession.component';
 import { InlineAutoInstituteComponent } from './inline-auto-institute/inline-auto-institute.component';
+import { PassportComponent } from './passport/passport.component';
+import { InlineAutoCountryComponent } from './inline-auto-country/inline-auto-country.component';
+import { AccessionCreateComponent } from './accession-create/accession-create.component';
 
 const routes: Routes = [
     {
@@ -43,6 +46,10 @@ const routes: Routes = [
         component: AccessionListComponent
     },
     {
+        path: AppUrls.accessions + '/create',
+        component: AccessionCreateComponent
+    },
+    {
         path: AppUrls.accessions + '/:instituteCode/:germplasmNumber',
         component: AccessionDetailComponent
     },
@@ -57,10 +64,13 @@ const routes: Routes = [
         InlineAutoInstituteComponent,
         CountryListComponent,
         CountryDetailComponent,
+        InlineAutoCountryComponent,
         AccessionSearchFormComponent,
         AccessionListComponent,
         AccessionDetailComponent,
-        AccessionComponent
+        AccessionCreateComponent,
+        AccessionComponent,
+        PassportComponent
     ],
     imports: [
         SharedModule,

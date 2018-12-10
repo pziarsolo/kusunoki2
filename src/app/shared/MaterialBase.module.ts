@@ -21,6 +21,7 @@ import {
     MatProgressSpinnerModule,
     MatAutocompleteModule,
     MatTooltipModule,
+    MatGridListModule,
 } from '@angular/material';
 
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -49,7 +50,8 @@ import {MatCardModule} from '@angular/material/card';
         MatProgressSpinnerModule,
         MatAutocompleteModule,
         MatTooltipModule,
-        MatMomentDateModule
+        MatMomentDateModule,
+        MatGridListModule
     ]
 })
 export class MaterialBaseModule { }

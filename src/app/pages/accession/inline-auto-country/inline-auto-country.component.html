@@ -1,6 +1,6 @@
 <form [formGroup]="form" [hidden]='hideForm()'>
     <mat-form-field style='width: 100%;' >
-        <mat-placeholder> Institute </mat-placeholder>
+        <mat-placeholder> Country </mat-placeholder>
         <input matInput type="text" [hidden]="!config.is_editable ||(config.is_editable && !editMode)"
             formControlName="inputControl"
             #input_control [matAutocomplete]="autocomplete"
@@ -8,10 +8,10 @@
 
         <div [hidden]='config.is_editable && editMode'>
             <span *ngIf='initialValue'>
-                <a routerLink='/institutes/{{initialValue.instituteCode}}'
+                <a routerLink='/countries/{{initialValue.code}}'
                    [matTooltip]="initialValue.name"
                    matTooltipPosition='after'>
-                    {{initialValue.instituteCode}}
+                    {{initialValue.code}}: {{initialValue.name}}
                 </a>
             </span>
             <span *ngIf='!initialValue'>''</span>
@@ -26,9 +26,9 @@
             This value is required
         </mat-error>
         <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]='display'>
-            <mat-option *ngFor="let institute of suggestions |async "
-                        [value]="institute">
-                {{ institute.name}} ({{institute.instituteCode}})
+            <mat-option *ngFor="let country of suggestions |async "
+                        [value]="country">
+                {{ country.name}} ({{country.code}})
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>

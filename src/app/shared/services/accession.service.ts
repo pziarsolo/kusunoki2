@@ -33,4 +33,24 @@ export class AccessionService {
         return this.http.get<Accession[]>(this.endPoint,
             {params: get_params, observe: 'response'});
     }
+
+    update(instituteCode: string, germplasmNumber: string, accession): Observable<Accession> {
+        const detailUrl = this.composeDetailUrl(instituteCode, germplasmNumber);
+        return this.http.put<Accession>(detailUrl, accession)
+            .pipe(
+                map(item => new Accession(item))
+            );
+    }
+
+    delete(instituteCode: string, germplasmNumber: string) {
+        const detailUrl = this.composeDetailUrl(instituteCode, germplasmNumber);
+        return this.http.delete(detailUrl);
+    }
+
+    create(accession): Observable<Accession> {
+        return this.http.post<Accession>(this.endPoint, accession)
+            .pipe(
+                map(item => new Accession(item))
+            );
+    }
 }

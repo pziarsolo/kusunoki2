@@ -1,0 +1,204 @@
+<div>
+    <h2>Data</h2>
+    <div fxLayout='row' fxLayoutGap="20px">
+        <kusunoki2-inline-edit-select fxFlex='grow'
+            *ngIf="editMode || passport.biologicalStatus"
+            [editMode]="editMode"
+            [config]="childrenConfig['biologicalStatus']"
+            [choices]="biological_statuses"
+            [value]="passport.biologicalStatus"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='label'>Biological Status:</span>
+        </kusunoki2-inline-edit-select>
+        <kusunoki2-inline-edit-select fxFlex='grow'
+            *ngIf="editMode || passport.collectionSource"
+            [label]="'Collection source (Habitat):'"
+            [editMode]="editMode"
+            [choices]="collection_sources"
+            [config]="childrenConfig['collectionSource']"
+            [value]="passport.collectionSource"
+            (validationStateEvent)="checkFormValid($event)">
+        </kusunoki2-inline-edit-select>
+        <kusunoki2-inline-edit fxFlex='grow'
+            *ngIf="editMode || passport.acquisitionDate"
+            [label]="'Acquisition date'"
+            [editMode]="editMode"
+            [config]="childrenConfig['acquisition_date']"
+            [value]="passport.acquisitionDate"
+            (validationStateEvent)="checkFormValid($event)">
+            <!-- <span class='value'>{{input_form_data['acquisition_date']}}</span> -->
+        </kusunoki2-inline-edit>
+    </div>
+</div>
+
+<div *ngIf='editMode'>
+    <div fxLayoutAlign="start center">
+        <span fxFlex='60pt'class='key'>Passport Id</span>
+        <kusunoki2-inline-auto-institute fxFlex style="width:'100%"
+                    [label]="'Institute Code'"
+                    [value]="passport.germplasmNumber.instituteCode"
+                    [config]="childrenConfig.instituteCode"
+                    [editMode]="editMode"
+                    (validationStateEvent)="checkFormValid($event)">
+        </kusunoki2-inline-auto-institute>
+        <kusunoki2-inline-edit fxFlex
+                [label]="'Germplasm Number'"
+                [value]="passport.germplasmNumber.germplasmNumber"
+                [config]="childrenConfig.germplasmNumber"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{passport.germplasmNumber.germplasmNumber}}</span>
+            </kusunoki2-inline-edit>
+    </div>
+</div>
+<div fxLayout='column'>
+    <div fxLayout='row' fxLayout.xs='column' fxLayoutGap="20px">
+        <div fxFlex='50%' fxFlex.xs='grow'>
+            <h2>GeoLocation</h2>
+            <div fxLayout='column'>
+                <div fxLayout="row" fxLayoutAlign='start center' fxLayoutGap="10px"
+                        *ngIf="editMode || (passport.collectionSite.country)"
+                        >
+                    <span fxFlex='1 0 6em' class='key'>Country</span>
+                    <kusunoki2-inline-auto-country fxFlex='grow'
+                        [editMode]="editMode"
+                        [config]="childrenConfig['country']"
+                        [value]="passport.collectionSite.country"
+                        (validation_state_event)="checkFormValid($event)">
+                    </kusunoki2-inline-auto-country>
+                </div>
+                <div *ngFor="let component_name of passport.collectionSite|keys"
+                    style='width:100%;'>
+                    <div fxLayout="row" fxLayoutAlign='start center' fxLayoutGap="10px"
+                            style='width:100%;'
+                            *ngIf="component_name !== 'country' && (editMode || (passport.collectionSite[component_name]))" >
+                        <div fxFlex ='1 0 6em' ><span class='key'>{{component_name | titlecase| minus2space}}</span></div>
+                        <kusunoki2-inline-edit
+                            fxFlex='grow'
+                            [label]="component_name"
+                            [editMode]="editMode"
+                            [config]="childrenConfig[component_name]"
+                            [(value)]="passport.collectionSite[component_name]"
+                            (validation_state_event)="checkFormValid($event)">
+                            <span class='value'>{{passport.collectionSite[component_name]}}</span>
+                        </kusunoki2-inline-edit>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex='50%' fxFlex.xs='grow'>
+            <h2>Taxonomy</h2>
+            <div fxLayout='column'>
+                <div *ngFor="let rank of ranks">
+                    <div *ngIf="editMode || (passport.taxonomy[rank])?.name"
+                            fxLayout="row"
+                            fxLayoutAlign='start center'
+                            fxLayoutGap='10px'
+                            fxLayout.xs='column'
+                            fxLayoutGap.xs='0'
+                            fxLayoutAlign.xs='start start'
+                            fxFlex>
+                        <span fxFlex='1 1 6em' fxFlex.xs='1'
+                                class='key'>{{rank|titlecase }}</span>
+                        <kusunoki2-inline-edit fxFlex
+                            [label]="rank"
+                            [editMode]="editMode"
+                            [config]="childrenConfig[rank + '_name']"
+                            [value]="passport.taxonomy[rank]['name']"
+                            (validation_state_event)="checkFormValid($event)">
+                            <span class='value'>{{passport.taxonomy[rank]['name']}}</span>
+                        </kusunoki2-inline-edit>
+                        <kusunoki2-inline-edit fxFlex
+                            *ngIf="editMode||passport.taxonomy[rank].author"
+                            [editMode]="editMode"
+                            [config]="childrenConfig[rank +'_author']"
+                            [value]="passport.taxonomy[rank]['author']"
+                            (validation_state_event)="checkFormValid($event)">
+                            <span class='value'>{{passport.taxonomy[rank]['author']}}</span>
+                        </kusunoki2-inline-edit>
+                    </div>
+                </div>
+            </div>
+            <h2>Collecting Data</h2>
+            <div fxLayout='column'>
+                <div fxLayout='row' fxLayoutGap="10px">
+                    <kusunoki2-inline-auto-institute fxFlex
+                        [label]="'Collecting Institute'"
+                        [value]="passport.collectionNumber.instituteCode"
+                        [config]="childrenConfig['collectingInstitute']"
+                        [editMode]="editMode"
+                        (validationStateEvent)="checkFormValid($event)">
+                    </kusunoki2-inline-auto-institute>
+                    <kusunoki2-inline-edit
+                        [label]="'Collection Field Number'"
+                        [editMode]="editMode"
+                        [config]="childrenConfig['collectingFieldNumber']"
+                        [value]="passport.collectionNumber.fieldNumber"
+                        (validation_state_event)="checkFormValid($event)">
+                        <span class='value'>{{passport.collectionNumber.fieldNumber}}</span>
+                    </kusunoki2-inline-edit>
+                </div>
+                <kusunoki2-inline-edit
+                    [label]="'Collecting date'"
+                    [editMode]="editMode"
+                    [config]="childrenConfig['collection_date']"
+                    [value]="passport.collectionDate"
+                    (validation_state_event)="checkFormValid($event)">
+                    <span class='value'>{{passport.collectionDate|date: "shortDate"}}</span>
+                </kusunoki2-inline-edit>
+
+            </div>
+            <h2>Data Source</h2>
+            <div fxLayout='row'>
+                <kusunoki2-inline-edit
+                    [label]="'Data Source'"
+                    [editMode]="editMode"
+                    [config]="childrenConfig['dataSourceCode']"
+                    [value]="passport.dataSource.code"
+                    (validation_state_event)="checkFormValid($event)">
+                    <span class='value'>{{passport.dataSource.code}}</span>
+                </kusunoki2-inline-edit>
+                <kusunoki2-inline-edit
+                    [label]="'Data Source Kind'"
+                    [editMode]="editMode"
+                    [config]="childrenConfig['dataSourceKind']"
+                    [value]="passport.dataSource.kind"
+                    (validation_state_event)="checkFormValid($event)">
+                    <span class='value'>{{passport.dataSource.kind}}</span>
+                </kusunoki2-inline-edit>
+                <kusunoki2-inline-edit
+                    [label]="'Retrieval date'"
+                    [editMode]="editMode"
+                    [config]="childrenConfig['dataSourceRetriavelDate']"
+                    [value]="passport.dataSource.retrievalDate"
+                    (validation_state_event)="checkFormValid($event)">
+
+                    <span class='value'>{{passport.dataSource.retrievalDate|date: "shortDate"}}</span>
+                    <!-- <span *ngIf='!passport.dataSource.retrievalDate' class='value'>''</span> -->
+                </kusunoki2-inline-edit>
+            </div>
+        </div>
+    </div>
+    <div fxLayout='row'  fxLayout.xs='column' fxLayoutGap="20px">
+        <div fxFlex="50%" *ngIf="editMode || passport.donor.instituteCode || passport.donor.germplasmNumber">
+            <h2>Donor Data</h2>
+            <div fxLayout='row' fxLayoutGap="10px">
+                    <kusunoki2-inline-auto-institute fxFlex
+                        [label]="'Donor Institute'"
+                        [value]="passport.donor.instituteCode"
+                        [config]="childrenConfig['donorInstitute']"
+                        [editMode]="editMode"
+                        (validationStateEvent)="checkFormValid($event)">
+                    </kusunoki2-inline-auto-institute>
+                    <kusunoki2-inline-edit
+                        [label]="'Donor Number'"
+                        [editMode]="editMode"
+                        [config]="childrenConfig['donorNumber']"
+                        [value]="passport.donor.germplasmNumber"
+                        (validation_state_event)="checkFormValid($event)">
+                        <span class='value'>{{passport.donor.germplasmNumber}}</span>
+                    </kusunoki2-inline-edit>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,68 +1,77 @@
+<div style='margin-bottom:20px;' *ngIf="accession && accession.data.passports[0].collectionSite.latitude && accession.data.passports[0].collectionSite.longitude">
+        <kusunoki2-google-map
+            [latitude]="accession.data.passports[0].collectionSite.latitude"
+            [longitude]="accession.data.passports[0].collectionSite.longitude">
+        </kusunoki2-google-map>
+    </div>
 <mat-card *ngIf='accession'>
-    <mat-card-title>Accession <span class='code' fxflex> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span></mat-card-title>
+    <mat-card-title>Accession <span class='key' fxflex> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span></mat-card-title>
     <mat-card-content>
-        <kusunoki2-inline-edit
-            [label]="'Germplasm Number'"
-            [value]="accession.data.germplasmNumber"
-            [config]="{is_required: true,
-                       is_editable: true,
-                       name: 'germplasmNumber3'}"
-            [editMode]="editMode"
-            (validationStateEvent)="checkFormValid($event)">
-            <span class='value'>{{accession.data.germplasmNumber}}</span>
-        </kusunoki2-inline-edit>
+    <div fxLayout="column">
+        <div
+            fxLayout="row"
+            fxLayoutGap="2px"
+            fxLayoutAlign="start center"
+            style="width:100%;">
+            <kusunoki2-inline-auto-institute fxFlex
+                [label]="'Institute Code'"
+                [value]="accession.data.instituteCode"
+                [config]="{is_required: true,
+                        is_editable: true,
+                        name: 'instituteCode'}"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+            </kusunoki2-inline-auto-institute>
 
-        <kusunoki2-inline-auto-institute
-            [label]="'Institute Code'"
-            [value]="accession.data.instituteCode"
-            [config]="{is_required: true,
-                       is_editable: true,
-                       name: 'instituteCode'}"
-            [editMode]="editMode"
-            (validationStateEvent)="checkFormValid($event)">
-        </kusunoki2-inline-auto-institute>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Germplasm Number'"
+                [value]="accession.data.germplasmNumber"
+                [config]="{is_required: true,
+                        is_editable: true,
+                        name: 'germplasmNumber'}"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{accession.data.germplasmNumber}}</span>
+            </kusunoki2-inline-edit>
 
-        <kusunoki2-inline-edit
-            [label]="'Is Available'"
-            [value]="accession.data.is_available"
-            [editMode]="editMode"
-            [config]="{name: 'isAvailable',
-                       is_editable: true,
-                       widget: {type: 'switch',
-                                conf: {'true': 'Is available',
-                                       'false': 'Is Not Available'}}}"
-            (validationStateEvent)="checkFormValid($event)">
-        </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit-select fxFlex
+                [label]="'Conservation Status'"
+                [value]="accession.data.conservation_status"
+                [editMode]="editMode"
+                [choices]="conservation_statuses"
+                [config]="{name: 'conservationStatus',
+                        is_editable: true}"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{accession.data.conservation_status}}</span>
+            </kusunoki2-inline-edit-select>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Is Available'"
+                [value]="accession.data.is_available"
+                [editMode]="editMode"
+                [config]="{name: 'isAvailable',
+                        is_editable: true,
+                        widget: {type: 'switch',
+                                    conf: {'true': 'Is available',
+                                        'false': 'Is Not Available'}}}"
+                (validationStateEvent)="checkFormValid($event)">
+            </kusunoki2-inline-edit>
+        </div>
 
+    </div>
 
-        <kusunoki2-inline-edit-select
-            [label]="'Conservation Status'"
-            [value]="accession.data.conservation_status"
-            [editMode]="editMode"
-            [choices]="conservation_statuses"
-            [config]="{name: 'conservationStatus',
-                       is_editable: true}"
-            (validationStateEvent)="checkFormValid($event)">
-            <span class='value'>{{accession.data.conservation_status}}</span>
-        </kusunoki2-inline-edit-select>
-
-        <kusunoki2-inline-edit
-            [label]="'Collection Date'"
-            [value]="accession.data.passports[0].collectionDate"
-            [editMode]="editMode"
-            [config]="{name: 'collectionDate',
-                       is_editable: true,
-                       widget: {type: 'datePicker'}}"
-            (validationStateEvent)="checkFormValid($event)">
-        </kusunoki2-inline-edit>
-
-
-
-    <button *ngIf='!editMode' mat-raised-button color='accent' (click)="editMode=true">Edit</button>
-    <button *ngIf='editMode' mat-raised-button color='primary' (click)="resetForm()">Cancel</button>
-    <button *ngIf='editMode' [disabled]='!allInputAreValid' mat-raised-button color='primary' (click)="updateAccession()">Update</button>
+    <kusunoki2-passport
+        [passport]="accession.data.passports[0]"
+        [editMode]='editMode'
+        [componentId]="'passport'"
+        (validationStateEvent)=checkFormValid($event)>
+    </kusunoki2-passport>
     </mat-card-content>
+    <mat-card-actions>
+        <button *ngIf='!editMode' mat-raised-button color='accent' (click)="editMode=true">Edit</button>
+        <button mat-raised-button color='warning' (click)="deleteAccession()">Delete</button>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
+        <button *ngIf='editMode' [disabled]='!allInputAreValid' mat-raised-button color='primary' (click)="updateAccession()">Update</button>
+    </mat-card-actions>
 
 </mat-card>
 
-{{accession|json}}

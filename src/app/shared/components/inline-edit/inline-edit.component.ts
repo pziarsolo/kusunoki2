@@ -44,7 +44,6 @@ export class InlineEditComponent implements OnInit, OnDestroy {
                                              this.config.validators);
         this.form = new FormGroup({});
         this.form.addControl('inputControl', this.inputControl);
-
         this.validationStateEvent.emit({[this.config.name]: this.inputControl.valid});
         this.subscribeToInputChanges();
         this.afterOnInit();
@@ -54,6 +53,9 @@ export class InlineEditComponent implements OnInit, OnDestroy {
         this.inputChanges = this.inputControl.valueChanges
             .subscribe(val => {
                 const isValid = this.inputControl.valid;
+                // console.log({[this.config.name]: isValid}, this.form.valid);
+                // console.log(this.inputControl.errors);
+                // console.log(this.inputControl.value);
                 this.validationStateEvent.emit({[this.config.name]: isValid});
                 this.value = val;
             });
@@ -132,7 +134,7 @@ export class InlineEditComponent implements OnInit, OnDestroy {
     }
 
     getValueIfFormValid() {
-        if (this.form.valid) {
+        if (this.inputControl.valid) {
             if (this.inputControl.value !== null &&
                 this.inputControl.value !== undefined &&
                 this.inputControl.value !== 'null') { // this last one is to reset select widtget value

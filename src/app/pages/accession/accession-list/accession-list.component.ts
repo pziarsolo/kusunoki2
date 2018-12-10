@@ -23,7 +23,7 @@ class AccessionDataSource extends SearchDataSource<Accession> {
 export class AccessionListComponent extends TableListComponent {
     entityType = 'accession';
     columnsToDisplay = ['instituteCode', 'germplasmNumber', 'countries', 'genera'];
-    extraSearchParams = {'only_with_datastore': true};
+    extraSearchParams = {};
     constructor(router: Router,
                 route: ActivatedRoute,
                 currentUserService: CurrentUserService,
