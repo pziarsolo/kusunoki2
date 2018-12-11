@@ -18,6 +18,13 @@ import { InlineAutoInstituteComponent } from './inline-auto-institute/inline-aut
 import { PassportComponent } from './passport/passport.component';
 import { InlineAutoCountryComponent } from './inline-auto-country/inline-auto-country.component';
 import { AccessionCreateComponent } from './accession-create/accession-create.component';
+import { AccessionBulkCreateComponent } from './accession-bulk-create/accession-bulk-create.component';
+import { AccessionSetBulkCreateComponent } from './accessionset-bulk-create/accessionset-bulk-create.component';
+import { AccessionSetSearchFormComponent } from './accessionset-search-form/accessionset-search-form.component';
+import { AccessionSetListComponent } from './accessionset-list/accessionset-list.component';
+import { AccessionSetDetailComponent } from './accessionset-detail/accessionset-detail.component';
+import { AccessionSetComponent } from './accessionset/accessionset.component';
+import { AccessionSetAccessionTableComponent } from './accessoinset-accession-table/accessionset-accession-table.component';
 
 const routes: Routes = [
     {
@@ -50,8 +57,24 @@ const routes: Routes = [
         component: AccessionCreateComponent
     },
     {
+        path: AppUrls.accessions + '/bulk_create',
+        component: AccessionBulkCreateComponent
+    },
+    {
         path: AppUrls.accessions + '/:instituteCode/:germplasmNumber',
         component: AccessionDetailComponent
+    },
+    {
+        path: AppUrls.accessionsets,
+        component: AccessionSetListComponent
+    },
+    {
+        path: AppUrls.accessionsets + '/bulk_create',
+        component: AccessionSetBulkCreateComponent
+    },
+    {
+        path: AppUrls.accessionsets + '/:accessionsetNumber',
+        component: AccessionSetDetailComponent
     },
 ];
 
@@ -69,8 +92,15 @@ const routes: Routes = [
         AccessionListComponent,
         AccessionDetailComponent,
         AccessionCreateComponent,
+        AccessionBulkCreateComponent,
         AccessionComponent,
-        PassportComponent
+        PassportComponent,
+        AccessionSetBulkCreateComponent,
+        AccessionSetSearchFormComponent,
+        AccessionSetListComponent,
+        AccessionSetDetailComponent,
+        AccessionSetComponent,
+        AccessionSetAccessionTableComponent
     ],
     imports: [
         SharedModule,

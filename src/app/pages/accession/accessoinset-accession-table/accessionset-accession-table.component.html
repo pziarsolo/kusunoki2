@@ -1,0 +1,34 @@
+<table mat-table #table [dataSource]='accessions' class='datatable mat-elevation-z2'>
+    <ng-container matColumnDef="instituteCode">
+        <th mat-header-cell *matHeaderCellDef> Institute </th>
+        <td mat-cell *matCellDef="let accessions">
+            {{accessions.data.instituteCode}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="germplasmNumber">
+        <th mat-header-cell *matHeaderCellDef> Accession Number </th>
+        <td mat-cell *matCellDef="let accessions; let i = index">
+            <button mat-button color='primary'
+                    (click)="accessionSelected.emit(i)" >
+                    {{accessions.data.germplasmNumber}}
+            </button>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="conservationStatus">
+        <th mat-header-cell *matHeaderCellDef> Conservation Status </th>
+        <td mat-cell *matCellDef="let accessions">
+            {{accessions.data.conservation_status}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="is_available">
+        <th mat-header-cell *matHeaderCellDef> Is available </th>
+        <td mat-cell *matCellDef="let accessions">
+            <mat-icon color='primary' *ngIf=accessions.data.is_available>done</mat-icon>
+            <mat-icon *ngIf=!accessions.data.is_available>close</mat-icon>
+        </td>
+    </ng-container>
+    <tr mat-header-row  *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpRequest, HttpEvent } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
@@ -52,5 +52,31 @@ export class AccessionService {
             .pipe(
                 map(item => new Accession(item))
             );
+    }
+
+    bulkCreate(dataSource, file): Observable<HttpEvent<Accession[]>> {
+        const bulkUrl = this.endPoint + 'bulk/';
+
+        const formData: FormData = new FormData();
+        formData.append('csv', file, file.name);
+        formData.append('data_source_code', dataSource.code);
+        if (dataSource.kind) {
+            formData.append('data_source_kind', dataSource.kind);
+        }
+        const req = new HttpRequest('POST', bulkUrl, formData,
+                                    {reportProgress: true});
+
+        return this.http.request(req);
+    }
+
+    downloadCsv(searchParams?): Observable<Blob> {
+        if (!searchParams) {
+            searchParams = {};
+        }
+        searchParams['format'] = 'csv';
+        const getParams = paramsToHttpParams(searchParams);
+        return this.http.get(this.endPoint, {params: getParams,
+                                             responseType: 'blob' });
+
     }
 }

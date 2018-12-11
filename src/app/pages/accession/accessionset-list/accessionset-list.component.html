@@ -1,0 +1,67 @@
+<kusunoki2-accessionset-search-form  (searchSubmitted)="reciveParams($event)"
+                                 [hidden]="searchDone" >
+</kusunoki2-accessionset-search-form>
+<div [hidden]='!searchDone'>
+    <div [hidden]='dataSource.totalCount != 0'>
+        <mat-card>Accessionsets not found</mat-card>
+    </div>
+    <div [hidden]='dataSource.totalCount === 0'>
+        <mat-card style='margin:8px;' >
+            <mat-card-title>Accessionset Results
+                <div fxFlex></div>
+                <mat-spinner diameter='30' *ngIf='operationInProgress'></mat-spinner>
+                <button mat-icon-button [matMenuTriggerFor]="moreMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </mat-card-title>
+            <mat-card-subtitle>{{dataSource.totalCount}} AccessionSets found</mat-card-subtitle>
+
+            <mat-card-content>
+                <table mat-table #table [dataSource]='dataSource' style='width:100%;' class='datatable mat-elevation-z2'>
+                    <ng-container matColumnDef="accessionsetNumber">
+                        <th mat-header-cell *matHeaderCellDef> Accessionset Number </th>
+                        <td mat-cell *matCellDef="let accessionsets">
+                            <a mat-button color='primary' [routerLink]="['/', appUrls.accessionsets,
+                                                                        accessionsets.data.accessionsetNumber]">
+                                {{accessionsets.data.accessionsetNumber}}
+                            </a>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="countries">
+                        <th mat-header-cell *matHeaderCellDef> Country </th>
+                        <td mat-cell *matCellDef="let accessionsets">
+                            <a *ngFor="let country of accessionsets.data.countries" mat-button [routerLink]="['/', appUrls['countries'], country]">
+                                {{country}}</a>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="genera">
+                        <th mat-header-cell *matHeaderCellDef> Genus </th>
+                        <td mat-cell *matCellDef="let accessionsets">
+                            <span *ngFor="let genus of accessionsets.data.genera; let isLast=last">
+                                {{genus}}{{isLast ? '' : ' / '}}
+                            </span>
+
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+                </table>
+                <mat-paginator #paginator
+                            [length]="dataSource.totalCount"
+                            [pageIndex]="0"
+                            [pageSize]="paginatorPageSize"
+                            [pageSizeOptions]="[10, 25, 50, 100]">
+                </mat-paginator>
+
+            </mat-card-content>
+        </mat-card>
+
+        <!-- <kusunoki-google-map-multi-marker [markers]="coords">
+        </kusunoki-google-map-multi-marker> -->
+
+    </div>
+</div>
+<mat-menu #moreMenu="matMenu">
+    <!-- <button *ngIf="(userToken|async).is_staff" mat-menu-item (click)="makeItemsPublic()">Make All public</button> -->
+    <button mat-menu-item (click)="downloadCsv()">Download results in CSV </button>
+</mat-menu>

@@ -28,6 +28,7 @@ export class GoogleMapComponent implements OnChanges, AfterViewInit {
     map_id: string;
     constructor() {
         this.map_id = (Math.floor(Math.random() * 100) + 1).toString() ;
+        console.log(this.map_id);
     }
 
     ngOnChanges(changes: SimpleChanges) {

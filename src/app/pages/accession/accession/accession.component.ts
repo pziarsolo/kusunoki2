@@ -12,17 +12,19 @@ import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/d
 import { MatDialog } from '@angular/material';
 import { AppUrls } from '../../appUrls';
 import { Router } from '@angular/router';
+import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 
 @Component({
     selector: 'kusunoki2-accession',
     templateUrl: './accession.component.html',
     styleUrls: ['./accession.component.scss']
 })
-export class AccessionComponent {
+export class AccessionComponent  implements OnChanges {
     @Input() accession: Accession;
     @Input() editMode = false;
     @Input() createMode = false;
     @Input() onTop = true;
+    userCanEdit: boolean;
 
     conservation_statuses = conservation_statuses;
     allInputAreValid: boolean;
@@ -38,7 +40,29 @@ export class AccessionComponent {
         private readonly accessionService: AccessionService,
         private readonly statusService: StatusService,
         private readonly router: Router,
+        private readonly currentUserService: CurrentUserService,
         public dialog: MatDialog) { }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if ('accession' in changes && this.accession) {
+            this.evalUserPermissions();
+        }
+
+    }
+    evalUserPermissions() {
+        if (this.userCanEdit === undefined) {
+            const userToken = this.currentUserService.currentUserSubject.value;
+            const group = this.accession.metadata.group;
+            const is_public = this.accession.metadata.is_public;
+            if (userToken.is_staff) {
+                this.userCanEdit = true;
+            } else if (userToken.groups && group in userToken.groups &&  !is_public) {
+                this.userCanEdit = true;
+            } else {
+                this.userCanEdit = false;
+            }
+        }
+    }
 
     cancelChange() {
         if (this.createMode) {
@@ -142,6 +166,39 @@ export class AccessionComponent {
                     passport.dataSource.kind = value;
                 } else if (key === 'dataSourceRetriavelDate') {
                     passport.dataSource.retrievalDate = value;
+                } else if (key === 'family_name') {
+                    passport.taxonomy.family.name = value;
+                    passport.taxonomy.family.rank = 'family';
+                } else if (key === 'family_author') {
+                    passport.taxonomy.family.author = value;
+                } else if (key === 'genus_name') {
+                    passport.taxonomy.genus.name = value;
+                } else if (key === 'genus_author') {
+                    passport.taxonomy.genus.author = value;
+                }  else if (key === 'species_name') {
+                    passport.taxonomy.species.name = value;
+                } else if (key === 'species_author') {
+                    passport.taxonomy.species.author = value;
+                } else if (key === 'subspecies_name') {
+                    passport.taxonomy.subspecies.name = value;
+                } else if (key === 'subspecies_author') {
+                    passport.taxonomy.subspecies.author = value;
+                } else if (key === 'variety_name') {
+                    passport.taxonomy.variety.name = value;
+                } else if (key === 'variety_author') {
+                    passport.taxonomy.variety.author = value;
+                } else if (key === 'convarietas_name') {
+                    passport.taxonomy.convarietas.name = value;
+                } else if (key === 'convarietas_author') {
+                    passport.taxonomy.convarietas.author = value;
+                } else if (key === 'group_name') {
+                    passport.taxonomy.group.name = value;
+                } else if (key === 'group_author') {
+                    passport.taxonomy.group.author = value;
+                } else if (key === 'forma_name') {
+                    passport.taxonomy.forma.name = value;
+                } else if (key === 'forma_author') {
+                    passport.taxonomy.forma.author = value;
                 }
             }
             accession.data.passports.push(passport);
@@ -190,5 +247,24 @@ export class AccessionComponent {
                     );
             }
         });
+    }
+    createAccession() {
+        const accession = this.getModelFromFormValidData();
+        console.log(accession.getApiDocument());
+        if (accession) {
+            this.accessionService.create(accession.getApiDocument())
+                .subscribe(
+                    (createdAccession: Accession) => {
+                        this.router.navigate([AppUrls.accessions,
+                            createdAccession.data.instituteCode,
+                            createdAccession.data.germplasmNumber]);
+
+                        this.statusService.info('Accession sucessfully created');
+                    },
+                    (error) => console.log(error)
+                );
+        } else {
+            this.statusService.error('Accession data is not valid');
+        }
     }
 }

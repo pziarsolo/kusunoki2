@@ -5,7 +5,10 @@
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:8000/api/',
-    config: {}
+    config: {
+        defaultDataSource: {'code': 'CRF', kind: 'project'},
+        defaultAccessionSetInstitute: 'ESP004'
+    }
 };
 
 /*

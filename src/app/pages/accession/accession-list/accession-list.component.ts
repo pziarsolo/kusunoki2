@@ -10,8 +10,8 @@ import { StatusService } from 'src/app/shared/StatusModule/status.service';
 
 class AccessionDataSource extends SearchDataSource<Accession> {
     getItemUrl(accession) {
-        return ['/' + AppUrls.accessions, accession.instituteCode,
-                accession.germplasmNumber];
+        return ['/' + AppUrls.accessions, accession.data.instituteCode,
+                accession.data.germplasmNumber];
     }
 }
 

@@ -45,7 +45,7 @@ export class AccessionData {
             this.conservation_status = undefined;
             this.countries = undefined;
             this.genera = undefined;
-            this.passports = [new Passport()];
+            this.passports = [];
         }
     }
     getApiDocument() {
@@ -56,8 +56,8 @@ export class AccessionData {
         if (this.germplasmNumber) {
             apiDoc['germplasmNumber'] = this.germplasmNumber;
         }
-        if (this.is_available) {
-            apiDoc['instituteCode'] = this.instituteCode;
+        if (this.is_available !== undefined) {
+            apiDoc['is_available'] = this.is_available;
         }
         if (this.conservation_status) {
             apiDoc['conservation_status'] = this.conservation_status;
@@ -99,7 +99,9 @@ export class Passport {
             this.version = object.version;
             this.taxonomy = new Taxonomy(object.taxonomy);
             this.dataSource = new DataSource(object.dataSource);
-            this.otherNumbers = object.otherNumbers.map(item => new AccessionId(item));
+            if (object.otherNumbers) {
+                this.otherNumbers = object.otherNumbers.map(item => new AccessionId(item));
+            }
             this.germplasmName = object.germplasmName;
             this.collectionSite = new GeoLocation(object.collectionSite);
             this.commonCropName = object.commonCropName;
@@ -107,7 +109,7 @@ export class Passport {
             this.collectionNumber = new AccessionId(object.collectionNumber);
             this.donor = new AccessionId(object.donor);
             this.collectionSource = object.collectionSource;
-            this.biologicalStatus = object.biologicalStatusOfSample;
+            this.biologicalStatus = object.biologicalStatusOfAccessionCode;
             this.acquisitionDate = parseMCPDate(object.acquisitionDate);
             this.collectionDate = parseMCPDate(object.collectionDate);
             this.ancestry = object.ancestry;
@@ -151,7 +153,7 @@ export class Passport {
             apiData['otherNumbers'] = this.otherNumbers.map(item => item.getApiDocument());
         }
         if (this.dataSource) {
-                apiData['dataSource'] = this.dataSource.getApiDocument();
+            apiData['dataSource'] = this.dataSource.getApiDocument();
         }
         if (this.germplasmName) {
             apiData['germplasmName'] = this.germplasmName;
@@ -206,7 +208,7 @@ function parseMCPDate(strdate?: string): Moment {
     if (day === '--') {
         day = '01';
     }
-
+    const a = moment(year + month + day);
     return moment(year + month + day);
 }
 
@@ -233,19 +235,19 @@ export class Taxon {
     }
 
     get isEmpty() {
-        return name === undefined  ? false : true;
+        return name === undefined  ? true : false;
     }
 
     getApiDocument() {
-        const apiDoc = {};
+        let apiDoc = {};
         if (this.name) {
             apiDoc['name'] = this.name;
         }
-        if (this.rank) {
-            apiDoc['rank'] = this.rank;
-        }
         if (this.author) {
             apiDoc['author'] = this.author;
+        }
+        if (Object.keys(apiDoc).length === 0) {
+            apiDoc = undefined;
         }
         return apiDoc;
     }
@@ -286,8 +288,14 @@ export class Taxonomy {
             this.forma = new Taxon();
         }
     }
+    get hasData() {
+        if (Object.values(this).filter(item => item !== undefined).filter(item => item.isEmpty).length > 0) {
+            return true;
+        }
+        return false;
+    }
     getApiDocument() {
-        const apiDoc = {};
+        let apiDoc = {};
         if (this.family && !this.family.isEmpty) {
             apiDoc['family'] = this.family.getApiDocument();
         }
@@ -311,6 +319,9 @@ export class Taxonomy {
         }
         if (this.forma && !this.forma.isEmpty) {
             apiDoc['forma'] = this.forma.getApiDocument();
+        }
+        if (Object.keys(apiDoc).length === 0) {
+            apiDoc = undefined;
         }
         return apiDoc;
     }
@@ -338,8 +349,15 @@ export class AccessionId {
             this.pui = undefined;
         }
     }
+
+    get hasData() {
+        if (Object.values(this).filter(item => item !== undefined).length > 0) {
+            return true;
+        }
+        return false;
+    }
     getApiDocument() {
-        const apiDoc = {};
+        let apiDoc = {};
         if (this.germplasmNumber) {
             apiDoc['germplasmNumber'] = this.germplasmNumber;
         }
@@ -354,6 +372,10 @@ export class AccessionId {
         }
         if (this.pui) {
             apiDoc['germplasmPUI'] = this.pui;
+        }
+
+        if (Object.keys(apiDoc).length === 0) {
+            apiDoc = undefined;
         }
         return apiDoc;
     }
@@ -405,8 +427,15 @@ export class GeoLocation {
             this.coordenatesSpatialReference = undefined;
         }
     }
+    get hasData() {
+        if (Object.values(this).filter(item => item !== undefined).length > 0) {
+            return true;
+        }
+        return false;
+    }
+
     getApiDocument() {
-        const apiDoc = {};
+        let apiDoc = {};
         if (this.country) {
             apiDoc['countryOfOriginCode'] = this.country;
         }
@@ -443,6 +472,9 @@ export class GeoLocation {
         if (this.coordenatesSpatialReference) {
             apiDoc['coordenatesSpatialReference'] = this.coordenatesSpatialReference;
         }
+        if (Object.keys(apiDoc).length === 0) {
+            apiDoc = undefined;
+        }
         return apiDoc;
     }
 }
@@ -463,8 +495,15 @@ export class DataSource {
             this.retrievalDate = undefined;
         }
     }
+
+    get hasData() {
+        if (Object.values(this).filter(item => item !== undefined).length > 0) {
+            return true;
+        }
+        return false;
+    }
     getApiDocument() {
-        const apiDoc = {};
+        let apiDoc = {};
         if (this.code) {
             apiDoc['code'] = this.code;
         }
@@ -473,6 +512,9 @@ export class DataSource {
         }
         if (this.retrievalDate) {
             apiDoc['retrievalDate'] = this.retrievalDate.format('YYYY-MM-DD');
+        }
+        if (Object.keys(apiDoc).length === 0) {
+            apiDoc = undefined;
         }
         return apiDoc;
     }

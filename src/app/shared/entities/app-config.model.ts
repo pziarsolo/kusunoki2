@@ -8,6 +8,7 @@ export class AppConfig {
 
     public defaultDataSource; // : DataSource;
 
+    public defaultAccessionSetInstitute: string;
     public showAccessionHeader: boolean;
     public showAccessionSetHeader: boolean;
     public showDataSourceInHeader: boolean;
@@ -19,5 +20,6 @@ export class AppConfig {
         this.showAccessionHeader = config.showAccessionHeader;
         this.showAccessionSetHeader = config.showAccessionSetHeader;
         this.showDataSourceInHeader = config.showDataSourceInHeader;
+        this.defaultAccessionSetInstitute = config.defaultAccessionSetInstitute;
     }
 }

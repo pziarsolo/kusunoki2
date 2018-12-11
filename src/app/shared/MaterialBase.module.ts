@@ -22,6 +22,7 @@ import {
     MatAutocompleteModule,
     MatTooltipModule,
     MatGridListModule,
+    MatTabsModule,
 } from '@angular/material';
 
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -51,7 +52,8 @@ import {MatCardModule} from '@angular/material/card';
         MatAutocompleteModule,
         MatTooltipModule,
         MatMomentDateModule,
-        MatGridListModule
+        MatGridListModule,
+        MatTabsModule
     ]
 })
 export class MaterialBaseModule { }

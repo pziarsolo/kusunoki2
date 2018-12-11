@@ -16,6 +16,7 @@ import { StatusService } from '../../StatusModule/status.service';
 import { InstituteService } from '../../services/institute.service';
 import { CountryService } from '../../services/country.service';
 import { AccessionService } from '../../services/accession.service';
+import { AccessionSetService } from '../../services/accessionset.service';
 
 
 export abstract class SearchDataSource<T> implements DataSource<T> {
@@ -109,7 +110,7 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
         if (this.entityType === 'accession') {
             this.service = this.serviceLocator.injector.get(AccessionService);
         } else if (this.entityType === 'accessionset') {
-            // this.service = this.serviceLocator.injector.get(AccessionSetService);
+            this.service = this.serviceLocator.injector.get(AccessionSetService);
         } else if (this.entityType === 'institute') {
             this.service = this.serviceLocator.injector.get(InstituteService);
         } else if (this.entityType === 'country') {
@@ -187,8 +188,8 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     downloadCsv() {
         const params = Object.assign({}, this.params);
-        delete params['offset'];
-        delete params['limit'];
+        params['offset'] = 0;
+        params['limit'] = this.dataSource.totalCount;
         delete params['fields'];
         return this.service.downloadCsv(params)
             .subscribe(blob => {
