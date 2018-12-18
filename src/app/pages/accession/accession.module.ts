@@ -28,6 +28,7 @@ import { AccessionSetAccessionTableComponent } from './accessoinset-accession-ta
 import { CountryTableComponent } from './country-table/country-table.component';
 import { TaxonStatsComponent } from './taxon-stats/taxon-stats.component';
 import { InstituteTableComponent } from './institute-table/institute-table.component';
+import { TaxaStatsPageComponent } from './taxa-stats-page/taxa-stats-page.component';
 
 const routes: Routes = [
     {
@@ -79,6 +80,11 @@ const routes: Routes = [
         path: AppUrls.accessionsets + '/:accessionsetNumber',
         component: AccessionSetDetailComponent
     },
+    {
+        path: AppUrls.taxonomy_stats,
+        component: TaxaStatsPageComponent
+    },
+
 ];
 
 @NgModule({
@@ -106,7 +112,8 @@ const routes: Routes = [
         AccessionSetAccessionTableComponent,
         CountryTableComponent,
         InstituteTableComponent,
-        TaxonStatsComponent
+        TaxonStatsComponent,
+        TaxaStatsPageComponent
     ],
     imports: [
         SharedModule,

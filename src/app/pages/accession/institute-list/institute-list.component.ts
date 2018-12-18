@@ -24,7 +24,7 @@ export class InstituteListComponent extends TableListComponent {
     entityType = 'institute';
     columnsToDisplay = ['instituteCode', 'name', 'num_accessions', 'num_accessionsets'];
     hasSearchService = false;
-    extraSearchParams = {'only_with_passports': true};
+    extraSearchParams = {'only_with_accessions': true};
     constructor(router: Router,
                 route: ActivatedRoute,
                 currentUserService: CurrentUserService,
