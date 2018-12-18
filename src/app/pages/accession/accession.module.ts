@@ -25,6 +25,9 @@ import { AccessionSetListComponent } from './accessionset-list/accessionset-list
 import { AccessionSetDetailComponent } from './accessionset-detail/accessionset-detail.component';
 import { AccessionSetComponent } from './accessionset/accessionset.component';
 import { AccessionSetAccessionTableComponent } from './accessoinset-accession-table/accessionset-accession-table.component';
+import { CountryTableComponent } from './country-table/country-table.component';
+import { TaxonStatsComponent } from './taxon-stats/taxon-stats.component';
+import { InstituteTableComponent } from './institute-table/institute-table.component';
 
 const routes: Routes = [
     {
@@ -100,7 +103,10 @@ const routes: Routes = [
         AccessionSetListComponent,
         AccessionSetDetailComponent,
         AccessionSetComponent,
-        AccessionSetAccessionTableComponent
+        AccessionSetAccessionTableComponent,
+        CountryTableComponent,
+        InstituteTableComponent,
+        TaxonStatsComponent
     ],
     imports: [
         SharedModule,

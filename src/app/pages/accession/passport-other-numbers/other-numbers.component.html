@@ -1,0 +1,22 @@
+<!-- <h3  *ngIf='input_form_data.length > 0 || edit_mode' color="accent">Other Numbers</h3>
+<mat-list dense>
+    <mat-list-item style='margin:8px;'*ngFor="let other_number of input_form_data; let i=index">
+        <kusunoki-other-number
+                                [input_form_data]="other_number"
+                                [edit_mode]="edit_mode"
+                                [model_name]="i"
+                                (validation_state_event)="check_form_valid($event)">
+        </kusunoki-other-number>
+        <mat-icon  *ngIf="edit_mode" color='warn' (click)="removeInputWidget(i)">
+                delete
+            </mat-icon>
+        <button mat-button *ngIf="edit_mode" color='warn' (click)="removeInputWidget(i)">
+            <mat-icon>delete</mat-icon>Remove Other Number
+        </button>
+    </mat-list-item>
+
+</mat-list>
+<button mat-button *ngIf="edit_mode" color='accent' (click)="addInputWidget()">
+    <mat-icon >add</mat-icon> Add Other Number
+</button> -->
+

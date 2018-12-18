@@ -101,6 +101,8 @@ export class Passport {
             this.dataSource = new DataSource(object.dataSource);
             if (object.otherNumbers) {
                 this.otherNumbers = object.otherNumbers.map(item => new AccessionId(item));
+            } else {
+                this.otherNumbers = [];
             }
             this.germplasmName = object.germplasmName;
             this.collectionSite = new GeoLocation(object.collectionSite);

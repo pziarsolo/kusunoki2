@@ -17,6 +17,10 @@ import { TableListComponent } from './components/table-list/table-list.component
 import { InlineEditSelectComponent } from './components/inline-edit-select/inline-edit-select.component';
 import { BaseInlinesForm2Component } from './components/base-inlines2-form/base-inlines-form2.component';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
+import { GoogleMapchartComponent } from './components/google-mapchart/google-mapchart.component';
+import { ObservableTableComponent } from './components/observable-table/observable-table.component';
+import { GoogleBarchartComponent } from './components/google-barchart/google-barchart.component';
+import { GoogleTreemapComponent } from './components/google-treemap/google-treemap.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +33,12 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
         HomeComponent,
         TableListComponent,
         InlineEditSelectComponent,
-        GoogleMapComponent
+        GoogleMapComponent,
+        GoogleMapchartComponent,
+        GoogleBarchartComponent,
+        GoogleTreemapComponent,
+        ObservableTableComponent,
+
     ],
     imports: [
         HttpClientModule,
@@ -60,7 +69,11 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
         HomeComponent,
         TableListComponent,
         InlineEditSelectComponent,
-        GoogleMapComponent
+        GoogleMapComponent,
+        GoogleMapchartComponent,
+        GoogleBarchartComponent,
+        GoogleTreemapComponent,
+        ObservableTableComponent
     ]
 })
 export class SharedModule { }

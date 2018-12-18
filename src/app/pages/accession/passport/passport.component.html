@@ -206,5 +206,31 @@
                     </kusunoki2-inline-edit>
             </div>
         </div>
+        <!-- <div fxFlex="50%" *ngIf="editMode || passport.otherNumbers.length > 0">
+            <h2>Other Numbers</h2>
+            <div *ngFor='let otherNumber of passport.otherNumbers; i = index'>
+                {{otherNumber|json}}
+                <div fxLayout='row' fxLayoutGap="10px">
+                    <kusunoki2-inline-auto-institute fxFlex
+                        [label]="'Donor Institute'"
+                        [value]="passport.donor.instituteCode"
+                        [config]="childrenConfig['donorInstitute']"
+                        [editMode]="editMode"
+                        (validationStateEvent)="checkFormValid($event)">
+                    </kusunoki2-inline-auto-institute>
+                    <kusunoki2-inline-edit
+                        [label]="'Donor Number'"
+                        [editMode]="editMode"
+                        [config]="childrenConfig['donorNumber']"
+                        [value]="passport.donor.germplasmNumber"
+                        (validation_state_event)="checkFormValid($event)">
+                        <span class='value'>{{passport.donor.germplasmNumber}}</span>
+                    </kusunoki2-inline-edit>
+                    <button></button>
+                </div>
+            </div>
+        </div> -->
+
     </div>
+
 </div>

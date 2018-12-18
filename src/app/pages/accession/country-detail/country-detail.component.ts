@@ -16,8 +16,8 @@ export class CountryDetailComponent implements OnInit {
     private code: string;
 
     country: Observable<Country>;
-    institute_stats: Observable<Institute[]>;
-    taxon_stats: Observable<any>;
+    instituteStats: Observable<Institute[]>;
+    taxonStats: Observable<any>;
 
     constructor(private route: ActivatedRoute,
                 private countryService: CountryService) {
@@ -26,12 +26,18 @@ export class CountryDetailComponent implements OnInit {
         });
     }
     ngOnInit() {
-        this.country = this.countryService.retrieve(this.code);
-        this.country.subscribe(
-            (response: Country) => {
-                // kusunoki-institute-table only accepts observables as inputs
-                this.institute_stats = observableOf(response.stats_by_institute);
-                this.taxon_stats = observableOf(response.stats_by_taxon);
+        this.country = this.countryService.retrieve(this.code,
+            {fields: 'code,name'});
+        this.countryService.retrieve(this.code, {'fields': 'stats_by_institute'})
+            .subscribe(
+                (response: Country) => {
+                    this.instituteStats = observableOf(response.stats_by_institute);
+                }
+            );
+        this.countryService.retrieve(this.code, {'fields': 'stats_by_taxa'})
+            .subscribe(
+                (response: Country) => {
+                    this.taxonStats = observableOf(response.stats_by_taxa);
             }
         );
     }

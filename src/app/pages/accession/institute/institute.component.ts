@@ -7,15 +7,8 @@ import { InstituteService } from 'src/app/shared/services/institute.service';
   templateUrl: './institute.component.html',
   styleUrls: ['./institute.component.scss']
 })
-export class InstituteComponent implements OnInit {
-    @Input() instituteCode: string;
-    institute: Institute;
+export class InstituteComponent {
+    @Input() institute: Institute;
 
     constructor(private instituteService: InstituteService) {}
-
-    ngOnInit() {
-        this.instituteService.retrieve(this.instituteCode)
-            .subscribe(institute => this.institute = institute);
-    }
-
 }

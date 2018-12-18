@@ -1,0 +1,36 @@
+<table mat-table [dataSource]='dataTable' matSort class='datatable mat-elevation-z2'>
+    <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+        <td mat-cell *matCellDef="let country">
+            <a routerLink='/countries/{{country.code}}'> {{country.code}}</a> </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Name </th>
+        <td mat-cell *matCellDef="let country"> {{country.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="num_accessions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessions </th>
+        <td  mat-cell *matCellDef="let country">
+            <a mat-button (click)="navigateTo(appUrls.accessions, {country: country.code})">
+                {{country.num_accessions}}
+            </a>
+    </ng-container>
+    <ng-container matColumnDef="num_accessionsets">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessionsets </th>
+        <td  mat-cell *matCellDef="let country">
+            <a mat-button (click)="navigateTo(appUrls.accessionsets, {country: country.code})">
+                {{country.num_accessionsets}}
+            </a>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+
+</table>
+<mat-paginator
+               [length]="dataTable.data.length"
+               [pageIndex]="0"
+               [pageSize]="10"
+               [pageSizeOptions]="[10, 25, 50, 100]">
+</mat-paginator>

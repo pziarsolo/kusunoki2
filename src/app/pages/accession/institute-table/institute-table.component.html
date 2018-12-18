@@ -1,0 +1,43 @@
+<table mat-table  [dataSource]='dataTable' matSort class='datatable mat-elevation-z2'>
+    <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+        <td mat-cell *matCellDef="let institutes">
+            <a color='primary' [routerLink]="['/', appUrls['institutes'],
+                                            institutes.code]">
+                {{institutes.code}}
+            </a>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let institutes">
+            {{institutes.name}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="num_accessions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessions </th>
+        <td mat-cell *matCellDef="let institutes">
+            <a mat-button (click)="navigateTo(appUrls.accessions, {institute_code: institutes.code})">
+                {{institutes.num_accessions}}
+            </a>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="num_accessionsets">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessionsets </th>
+        <td mat-cell *matCellDef="let institutes">
+            <a mat-button (click)="navigateTo(appUrls.accessionsets, {institute_code: institutes.code})">
+                {{institutes.num_accessionsets}}
+            </a>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
+</table>
+<mat-paginator #paginator
+                [length]="dataTable.data.length"
+                [pageIndex]="0"
+                [pageSize]="10"
+                [pageSizeOptions]="[10, 25, 50, 100]">
+</mat-paginator>

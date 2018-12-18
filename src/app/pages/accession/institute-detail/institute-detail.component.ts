@@ -20,11 +20,12 @@ export class InstituteDetailComponent implements OnInit {
     country_stats: Observable<Country[]>;
     taxon_stats: Observable<any>;
 
-    pdci_char_config = {headers: [['', 'Num. Passports']],
-                        title: 'Pdci Distribution',
-                        ticks: [0, 1, 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10],
-                        htitle: 'pdci',
-                        vtitle: 'Num passports'};
+    pdciCharConfig = {
+        headers: [['', 'Num. Passports']],
+        title: 'Pdci Distribution',
+        ticks: [0, 1, 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10],
+        htitle: 'pdci',
+        vtitle: 'Num passports'};
 
     constructor(private route: ActivatedRoute,
                 private instituteService: InstituteService) {
@@ -34,13 +35,22 @@ export class InstituteDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.institute = this.instituteService.retrieve(this.instituteCode);
-        this.institute.subscribe(
-            (response: Institute) => {
-                // kusunoki-country-table only accepts observables as inputs
-                this.country_stats = observableOf(response.stats_by_country);
-                this.taxon_stats = observableOf(response.stats_by_taxon);
-            }
-        );
+        this.institute = this.instituteService.retrieve(
+            this.instituteCode, {fields: 'name,instituteCode,pdcis'});
+
+        this.instituteService.retrieve(
+            this.instituteCode, {fields: 'stats_by_country'})
+                .subscribe(
+                    (response: Institute) => {
+                        this.country_stats = observableOf(response.stats_by_country);
+                    }
+                );
+        this.instituteService.retrieve(
+            this.instituteCode, {fields: 'stats_by_taxa'})
+                .subscribe(
+                    (response: Institute) => {
+                        this.taxon_stats = observableOf(response.stats_by_taxa);
+                    }
+                );
     }
 }
