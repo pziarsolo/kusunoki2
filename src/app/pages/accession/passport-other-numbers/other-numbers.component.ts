@@ -1,97 +1,81 @@
-// import { Component, EventEmitter, Input, OnInit, Output,
-//          ViewChildren, QueryList, AfterViewChecked } from '@angular/core';
-// import { AccessionId } from 'src/app/shared/entities/accession.model';
+import { Component, EventEmitter, Input, OnInit, Output,
+         ViewChildren, QueryList, AfterViewChecked } from '@angular/core';
+import { AccessionId } from 'src/app/shared/entities/accession.model';
+import { OtherNumberComponent } from './other-number.component';
 
 
 
+@Component({
+    selector: 'kusunoki2-other-numbers',
+    templateUrl: './other-numbers.component.html',
+    styleUrls: ['./other-numbers.component.scss'],
+})
+export class OtherNumbersComponent implements OnInit, AfterViewChecked {
+    childrenComponents: OtherNumberComponent[];
 
-// @Component({
-//     selector: 'kusunoki2-other-numbers',
-//     templateUrl: './other-numbers.component.html',
-//     styleUrls: ['./other-numbers.component.scss'],
-// })
-// export class OtherNumbersComponent implements OnInit, AfterViewChecked {
-//     childrenComponents: OtherNumberComponent[];
+    @ViewChildren(OtherNumberComponent)
+    otherNumberChildren: QueryList<OtherNumberComponent>;
 
-//     @ViewChildren(OtherNumberComponent)
-//     inline_children: QueryList<OtherNumberComponent>;
+    @Input() otherNumbers: AccessionId[];
+    @Input() editMode: boolean;
+    @Input() createMode: boolean;
+    @Output() validationStateEvent = new EventEmitter<any>();
+    config = {name: 'otherNumbers'};
+    allInputAreValid: boolean;
+    inputsValidStatuses = {};
+    initialValue: AccessionId[];
 
-//     @Input() otherNumbers: AccessionId[];
-//     @Input() editMode: boolean;
-//     @Input() createMode: boolean;
-//     @Output() validationStateEvent = new EventEmitter<any>();
+    ngOnInit() {
+        this.initialValue = this.otherNumbers.map(x => Object.assign({}, x));
+    }
 
-//     form_valid_status = {};
-//     initialValue: AccessionId[];
+    ngAfterViewChecked() {
+        this.childrenComponents = this.otherNumberChildren.toArray();
+    }
 
-//     ngOnInit() {
-//         this.initialValue = this.otherNumbers;
-//     }
+    checkAllInputAreValid() {
+        return Object.keys(this.inputsValidStatuses)
+                    .map(k => this.inputsValidStatuses[k])
+                    .every(v => v);
+    }
 
-//     ngAfterViewChecked() {
-//         this.children_components = this.inline_children.toArray();
-//     }
+    checkFormValid(event) {
+        Object.assign(this.inputsValidStatuses, event);
+        this.allInputAreValid = this.checkAllInputAreValid();
+        this.validationStateEvent.emit({'otherNumbers': this.allInputAreValid});
+    }
 
-//     all_children_are_valid() {
-//         return  Object.keys(this.form_valid_status)
-//                     .map(k => this.form_valid_status[k])
-//                     .every(v => v);
-//     }
+    getValueIfFormValid() {
+        if (this.allInputAreValid) {
+            const validFormData = [];
+            for (const component of this.childrenComponents) {
+                const value = component.getValueIfFormValid();
+                if (value !== undefined) {
+                    validFormData.push(value);
+                }
+            }
+            return validFormData;
+        }
+    }
 
-//     on_successful_validation(event) {}
+    resetForm() {
+        this.otherNumbers = this.initialValue;
+        this.editMode = false;
+    }
 
-//     _check_form_valid(event) {
-//         const are_all_valid = this.all_children_are_valid();
-//         if (are_all_valid && event !== undefined) {
-//             this.on_successful_validation(event);
-//         }
-//         this.validation_state_event.emit({[this.model_name]: are_all_valid});
-//     }
+    clearForm() {
+        for (const children of this.childrenComponents) {
+            children.clearForm();
+        }
+    }
 
-//     check_form_valid(event) {
-//         Object.assign(this.form_valid_status, event);
-//         this._check_form_valid(event);
-//     }
+    addInputWidget() {
+        this.otherNumbers.push(new AccessionId());
+    }
 
-//     _getFormDataIfValid() {
-//         if (this.all_children_are_valid()) {
-//             const valid_form_data = [];
-//             for (const component of this.children_components) {
-//                 const value = component.getFormDataIfValid();
-//                 valid_form_data.push(value);
-//                 if (value !== undefined) {
-//                     // valid_form_data[component.config.name] = component.getFormDataIfValid();
-//                 }
-//             }
-//             return valid_form_data;
-//         }
-//     }
+    removeInputWidget(index) {
+        this.otherNumbers.splice(index, 1);
+        delete this.inputsValidStatuses[index];
+    }
+}
 
-//     getFormDataIfValid() {
-//         const data = this._getFormDataIfValid();
-//         const items = [];
-//         for (let item of data) {
-//             if (this.output_data_type !== undefined) {
-//                 item = new this.output_data_type(item);
-//             }
-//             items.push(item);
-//         }
-//         return items;
-//     }
-
-//     formReset() {
-//         this.input_form_data = this.initial_value;
-//         this.edit_mode = false;
-//     }
-
-//     addInputWidget() {
-//         this.input_form_data.push(new AccessionId());
-//     }
-
-//     removeInputWidget(index) {
-//         this.input_form_data.splice(index, 1);
-//         delete this.form_valid_status[index];
-//         this._check_form_valid(undefined);
-
-//     }
-// }

@@ -29,6 +29,8 @@ import { CountryTableComponent } from './country-table/country-table.component';
 import { TaxonStatsComponent } from './taxon-stats/taxon-stats.component';
 import { InstituteTableComponent } from './institute-table/institute-table.component';
 import { TaxaStatsPageComponent } from './taxa-stats-page/taxa-stats-page.component';
+import { OtherNumbersComponent } from './passport-other-numbers/other-numbers.component';
+import { OtherNumberComponent } from './passport-other-numbers/other-number.component';
 
 const routes: Routes = [
     {
@@ -113,7 +115,9 @@ const routes: Routes = [
         CountryTableComponent,
         InstituteTableComponent,
         TaxonStatsComponent,
-        TaxaStatsPageComponent
+        TaxaStatsPageComponent,
+        OtherNumberComponent,
+        OtherNumbersComponent
     ],
     imports: [
         SharedModule,

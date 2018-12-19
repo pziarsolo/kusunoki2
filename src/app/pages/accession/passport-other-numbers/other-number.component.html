@@ -1,0 +1,23 @@
+<div fxLayout="row" fxLayoutAlign="start center"
+    fxLayoutGap="10px" fxLayout.xs="column">
+    <kusunoki2-inline-auto-institute fxFlex
+        [editMode]="editMode"
+        [config]="childrenConfig['instituteCode']"
+        [value]="input_form_data['instituteCode']"
+        (validationStateEvent)="checkFormValid($event)">
+    </kusunoki2-inline-auto-institute>
+    <kusunoki2-inline-edit fxFlex
+        [label]="'GermplasmNumber'"
+        [editMode]="editMode"
+        [config]="childrenConfig['germplasmNumber']"
+        [value]="input_form_data['germplasmNumber']"
+        (validationStateEvent)="checkFormValid($event)">
+        <span class='label'>Accession Number</span>
+        <span class='value'>
+            <a [routerLink]="['/', appUrls.accessions,
+                              input_form_data.instituteCode,
+                              input_form_data.germplasmNumber]">
+                {{input_form_data.germplasmNumber}}</a>
+        </span>
+    </kusunoki2-inline-edit>
+</div>

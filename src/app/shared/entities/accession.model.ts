@@ -170,7 +170,7 @@ export class Passport {
             apiData['collectionSource'] = this.collectionSource;
         }
         if (this.biologicalStatus) {
-            apiData['biologicalStatus'] = this.biologicalStatus;
+            apiData['biologicalStatusOfAccessionCode'] = this.biologicalStatus;
         }
         if (this.acquisitionDate) {
             apiData['acquisitionDate'] = this.acquisitionDate.format('YYYYMMDD');

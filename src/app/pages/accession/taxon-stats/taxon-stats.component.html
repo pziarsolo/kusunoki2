@@ -13,7 +13,7 @@
                         <ng-container matColumnDef="num_accessions">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessions </th>
                             <td mat-cell *matCellDef="let item">
-                                <a mat-button (click)="navigateTo(appUrls.accessions, {taxon_exact: item.taxon_name, taxon_rank:rank})">
+                                <a mat-button (click)="navigateTo(appUrls.accessions, {taxon: item.taxon_name, rank:rank})">
                                     {{item.num_accessions}}
                                  </a>
                             </td>
@@ -21,7 +21,7 @@
                         <ng-container matColumnDef="num_accessionsets">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. AccessionSets </th>
                             <td mat-cell *matCellDef="let item">
-                                <a mat-button (click)="navigateTo(appUrls.accessionsets, {taxon_exact: item.taxon_name, taxon_rank:rank})">
+                                <a mat-button (click)="navigateTo(appUrls.accessionsets, {taxon: item.taxon_name, rank:rank})">
                                      {{item.num_accessionsets}}
                                     </a>
                             </td>

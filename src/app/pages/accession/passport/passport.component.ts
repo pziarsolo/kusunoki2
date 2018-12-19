@@ -1,16 +1,17 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, AfterViewChecked, ViewChild } from '@angular/core';
 import { Passport } from 'src/app/shared/entities/accession.model';
 import { BaseInlinesForm2Component } from 'src/app/shared/components/base-inlines2-form/base-inlines-form2.component';
 import { Validators } from '@angular/forms';
 import { biological_status } from '../assets/biologicalStatus';
 import { collection_sources } from '../assets/collectionSources';
+import { OtherNumbersComponent } from '../passport-other-numbers/other-numbers.component';
 
 @Component({
   selector: 'kusunoki2-passport',
   templateUrl: './passport.component.html',
   styleUrls: ['./passport.component.scss']
 })
-export class PassportComponent extends BaseInlinesForm2Component {
+export class PassportComponent extends BaseInlinesForm2Component implements AfterViewChecked {
     @Input() passport: Passport;
     @Input() editMode: boolean;
     @Input() componentId: string;
@@ -114,5 +115,10 @@ export class PassportComponent extends BaseInlinesForm2Component {
         },
 
     };
+    @ViewChild(OtherNumbersComponent) OtherNumbers;
 
+    ngAfterViewChecked() {
+        super.ngAfterViewChecked();
+        this.childrenComponents.push(this.OtherNumbers);
+    }
 }

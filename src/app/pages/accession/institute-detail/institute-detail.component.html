@@ -12,7 +12,7 @@
             <kusunoki2-country-table
                 [columnsToDisplay]="countryColumnsToDisplay"
                 [items]="country_stats"
-                [initialQueryParams]="{institute_code: code}">
+                [initialQueryParams]="{institute_code: (institute|async)?.instituteCode}">
             </kusunoki2-country-table>
 
         </mat-card>
@@ -60,6 +60,6 @@
     <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
     <kusunoki2-taxon-stats
         [stats]="taxon_stats|async"
-        [initialQueryParams]="{instituteCode: code}">
+        [initialQueryParams]="{instituteCode: (institute|async)?.instituteCode}">
     </kusunoki2-taxon-stats>
 </mat-expansion-panel>

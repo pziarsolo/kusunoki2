@@ -1,5 +1,5 @@
 import { Component, Input, SimpleChanges, OnChanges, ViewChildren, OnInit } from '@angular/core';
-import { Accession, Passport } from 'src/app/shared/entities/accession.model';
+import { Accession, Passport, AccessionId } from 'src/app/shared/entities/accession.model';
 import { AccessionService } from 'src/app/shared/services/accession.service';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { InlineAutoInstituteComponent } from '../inline-auto-institute/inline-auto-institute.component';
@@ -72,6 +72,7 @@ export class AccessionComponent  implements OnChanges {
             this.inlineForms.map(inlineForm => inlineForm.resetForm());
             this.inlineAutoInstitutes.map(inlineForm => inlineForm.resetForm());
             this.inlineFormSelect.map(inlineForm => inlineForm.resetForm());
+            this.passports.map(passportComponent => passportComponent.resetForm());
         }
     }
 
@@ -199,6 +200,8 @@ export class AccessionComponent  implements OnChanges {
                     passport.taxonomy.forma.name = value;
                 } else if (key === 'forma_author') {
                     passport.taxonomy.forma.author = value;
+                } else if (key === 'otherNumbers') {
+                    passport.otherNumbers = value.map(item => new AccessionId(item));
                 }
             }
             accession.data.passports.push(passport);
@@ -250,7 +253,6 @@ export class AccessionComponent  implements OnChanges {
     }
     createAccession() {
         const accession = this.getModelFromFormValidData();
-        console.log(accession.getApiDocument());
         if (accession) {
             this.accessionService.create(accession.getApiDocument())
                 .subscribe(

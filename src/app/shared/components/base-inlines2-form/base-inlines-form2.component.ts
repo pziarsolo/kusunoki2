@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output, QueryList,
-        ViewChildren, AfterViewChecked} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output,
+        ViewChildren, AfterViewChecked } from '@angular/core';
 
 import { AppUrls } from 'src/app/pages/appUrls';
 import { InlineEditComponent } from '../inline-edit/inline-edit.component';
