@@ -43,7 +43,6 @@ export class AccessionComponent  implements OnChanges {
         private readonly router: Router,
         private readonly currentUserService: CurrentUserService,
         public dialog: MatDialog) {
-        console.log('accession');
         }
 
     ngOnChanges(changes: SimpleChanges): void {
