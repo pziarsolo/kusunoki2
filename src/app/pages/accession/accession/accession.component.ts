@@ -24,6 +24,7 @@ export class AccessionComponent  implements OnChanges {
     @Input() editMode = false;
     @Input() createMode = false;
     @Input() onTop = true;
+    @Input() mapId;
     userCanEdit: boolean;
 
     conservation_statuses = conservation_statuses;
@@ -41,7 +42,9 @@ export class AccessionComponent  implements OnChanges {
         private readonly statusService: StatusService,
         private readonly router: Router,
         private readonly currentUserService: CurrentUserService,
-        public dialog: MatDialog) { }
+        public dialog: MatDialog) {
+        console.log('accession');
+        }
 
     ngOnChanges(changes: SimpleChanges): void {
         if ('accession' in changes && this.accession) {

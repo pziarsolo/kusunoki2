@@ -1,9 +1,11 @@
+map {{mapId}}
 <div style='margin-bottom:20px;' *ngIf="accession && accession.data.passports[0].collectionSite.latitude && accession.data.passports[0].collectionSite.longitude">
-        <kusunoki2-google-map
-            [latitude]="accession.data.passports[0].collectionSite.latitude"
-            [longitude]="accession.data.passports[0].collectionSite.longitude">
-        </kusunoki2-google-map>
-    </div>
+    <kusunoki2-google-map
+        [id]="mapId"
+        [latitude]="accession.data.passports[0].collectionSite.latitude"
+        [longitude]="accession.data.passports[0].collectionSite.longitude">
+    </kusunoki2-google-map>
+</div>
 <mat-card *ngIf='accession'>
     <mat-card-title>Accession <span class='key' fxflex> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span></mat-card-title>
     <mat-card-content>

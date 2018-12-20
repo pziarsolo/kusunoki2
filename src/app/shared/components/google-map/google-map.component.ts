@@ -3,6 +3,7 @@ import { Component, OnInit, Input, SimpleChanges, OnChanges,
          AfterViewInit, AfterViewChecked, ElementRef, Output,
          EventEmitter
 } from '@angular/core';
+import { timeout } from 'rxjs/operators';
 
 declare var google: any;
 
@@ -11,7 +12,7 @@ declare var google: any;
     templateUrl: './google-map.component.html',
     styleUrls: ['./google-map.component.scss']
 })
-export class GoogleMapComponent implements OnChanges, AfterViewInit {
+export class GoogleMapComponent implements OnChanges, AfterViewChecked {
     defConfig = {zoom: 8,
                  draggable: true,
                  zoomControl: true,
@@ -20,32 +21,34 @@ export class GoogleMapComponent implements OnChanges, AfterViewInit {
     @Input() config: any = this.defConfig;
     @Input() latitude;
     @Input() longitude;
+    private _id;
+    @Input() set id(_id: string) {
+        this._id = _id;
+        this.refreshMap();
+    }
+    get id() {
+        return this._id;
+    }
     @Output() whenMapReady: EventEmitter<any> = new EventEmitter();
 
     map: google.maps.Map;
     marker: google.maps.Marker;
 
-    map_id: string;
-    constructor() {
-        this.map_id = (Math.floor(Math.random() * 100) + 1).toString() ;
-        console.log(this.map_id);
-    }
-
     ngOnChanges(changes: SimpleChanges) {
-        if ('latitude' in changes || 'longitude' in changes) {
-            this.drawMap(this.map_id, this.latitude, this.longitude, this.config);
+        if (('latitude' in changes || 'longitude' in changes) && this.id) {
+            this.drawMap(this.id, this.latitude, this.longitude, this.config);
             this.centerMap();
         }
     }
-    ngAfterViewInit() {
+    ngAfterViewChecked(): void {
         this.refreshMap();
     }
 
     refreshMap() {
-        this.drawMap(this.map_id, this.latitude, this.longitude, this.config);
+        this.drawMap(this.id, this.latitude, this.longitude, this.config);
     }
     drawMap(map_id, latitude, longitude, config) {
-        if (document.getElementById(this.map_id)) {
+        if (map_id !== undefined && document.getElementById(map_id)) {
             if (longitude && latitude) {
                 if (!this.map) {
                     const center = new google.maps.LatLng(latitude, longitude);

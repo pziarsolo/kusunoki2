@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:8000/api/',
+    apiUrl: 'https://vavilov.comav.upv.es/api/',
     config: {
         defaultDataSource: {'code': 'CRF', kind: 'project'},
         defaultAccessionSetInstitute: 'ESP004'

@@ -32,6 +32,7 @@ export class AccessionSetComponent implements OnChanges {
         }
 
     }
+
     // formReset() {
     //     this.edit_mode = false;
     //     this.model = new AccessionSet(Object.assign({}, this.pristine_model));
