@@ -37,24 +37,38 @@ export class TaxonStatsComponent implements OnChanges, AfterViewChecked {
                 if (rank in this.stats) {
                     this.ranksInStats.push(rank);
                     const statsByRank = [];
-                    const statsByRankBar = [];
-                    const barHeaders = ['', 'Num. Accessions', 'Num. Accessionsets'];
-                    statsByRankBar.push(barHeaders);
+                    let statsByRankPie = [['', 'Num. Accessions', 'Num. Accessionsets']];
 
                     for (const taxon_name of Object.keys(this.stats[rank])) {
-                        const taxa_stat = {'taxon_name': taxon_name,
-                                        'num_accessions': this.stats[rank][taxon_name]['num_accessions'],
-                                        'num_accessionsets': this.stats[rank][taxon_name]['num_accessionsets']};
-
+                        const taxa_stat = {
+                            'taxon_name': taxon_name,
+                            'num_accessions': this.stats[rank][taxon_name]['num_accessions'],
+                            'num_accessionsets': this.stats[rank][taxon_name]['num_accessionsets']};
                         statsByRank.push(taxa_stat);
-                        const statsBarStat = [taxon_name,
-                                            this.stats[rank][taxon_name]['num_accessions'],
-                                            this.stats[rank][taxon_name]['num_accessionsets']
-                                            ];
-                        statsByRankBar.push(statsBarStat);
                     }
-                    this.rankStats[rank] = new MatTableDataSource(statsByRank);
-                    this.rankStatsBar[rank] = statsByRankBar;
+
+                    const sortedStatsByRank = statsByRank.sort((obj1, obj2) => {
+                        if (obj1.num_accessions > obj2.num_accessions) {
+                            return -1;
+                        }
+                        if (obj2.num_accessions > obj1.num_accessions) {
+                            return 1;
+                        }
+                        return 0;
+                    });
+                    const sortedStatsByRankPie = sortedStatsByRank.map(item => Object.values(item));
+                    statsByRankPie = statsByRankPie.concat(sortedStatsByRankPie.slice(0, 9));
+                    let sum_accession = 0;
+                    let sum_accessionset = 0;
+                    sortedStatsByRankPie.slice(9).map(item => {
+                        sum_accession += item[1];
+                        sum_accessionset += item[2];
+                    });
+                    statsByRankPie.push(['Other', sum_accession, sum_accessionset]);
+
+                    this.rankStats[rank] = new MatTableDataSource(sortedStatsByRank);
+                    this.rankStatsBar[rank] = {accession: statsByRankPie.map(item => [item[0], item[1]]),
+                                               accessionset: statsByRankPie.map(item => [item[0], item[2]])};
                 }
             }
 

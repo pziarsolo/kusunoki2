@@ -1,12 +1,12 @@
 <mat-card style='margin:8px;'>
     <mat-card-title>Country</mat-card-title>
     <mat-card-content>
-        <div fxLayout='column' fxLayoutGap='20px' *ngIf="country|async"  style='margin:5px'>
-            <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px'>
+        <div fxLayout='column' fxLayoutGap='20px' *ngIf="country|async"  style='margin:5px; padding:10px'>
+            <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px; padding:5px'>
                 <div class='key' fxFlex='8em'>Code</div>
                 <div fXflex><a routerLink='/institutes/{{(country |async)?.code}}'>{{(country |async)?.code}}</a></div>
             </div>
-            <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px'>
+            <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px; padding:5px'>
                 <div class='key' fxFlex='8em'>Name</div>
                 <div fXflex>{{(country |async)?.name}}</div>
             </div>
@@ -28,7 +28,7 @@
             <mat-tab-group>
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        Passport Stats
+                        Accession Stats
                     </ng-template>
                     <ng-template matTabContent>
                         <kusunoki2-google-treemap
@@ -40,11 +40,11 @@
                 </mat-tab>
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        Accession Stats
+                        AccessionSet Stats
                     </ng-template>
                     <ng-template matTabContent>
                         <kusunoki2-google-treemap
-                            [statsType]="'accessions'"
+                            [statsType]="'accessionsets'"
                             [chartData]="instituteStats|async"
                             [id]="'accessionset_id'">
                         </kusunoki2-google-treemap>

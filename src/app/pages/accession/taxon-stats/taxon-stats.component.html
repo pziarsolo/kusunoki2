@@ -37,11 +37,16 @@
                     </mat-paginator>
                 </mat-card>
                 <mat-card fxFlex>
-                    <kusunoki2-google-barchart
-                        [chartData]='rankStatsBar[rank]'
-                        [div_id]='rank +"_div"'
-                        [config]="barcharConfig">
-                    </kusunoki2-google-barchart>
+                    <kusunoki2-google-piechart
+                        [chartData]='rankStatsBar[rank]["accession"]'
+                        [div_id]='rank +"_div" + "_accession"'
+                        [config]="{title: 'Accession Pie'}">
+                    </kusunoki2-google-piechart>
+                    <kusunoki2-google-piechart
+                        [chartData]='rankStatsBar[rank]["accessionset"]'
+                        [div_id]='rank +"_div" + "_accessionset"'
+                        [config]="{title: 'Accessionset Pie'}">
+                    </kusunoki2-google-piechart>
                 </mat-card>
 
             </div>
