@@ -6,7 +6,7 @@
             [accessions]="accessions"
             (accessionSelected)="selectedTabIndex = $event">
         </kusunoki2-accessionset-accession-table >
-
+        <h2>Accessions in this accessionset</h2>
         <kusunoki2-accession
             *ngIf='accessions && accessions.length === 1'
             [accession]="accessions[0]">
