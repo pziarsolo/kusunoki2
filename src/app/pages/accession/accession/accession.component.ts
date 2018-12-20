@@ -49,7 +49,6 @@ export class AccessionComponent  implements OnChanges {
         if ('accession' in changes && this.accession) {
             this.evalUserPermissions();
         }
-
     }
     evalUserPermissions() {
         if (this.userCanEdit === undefined) {

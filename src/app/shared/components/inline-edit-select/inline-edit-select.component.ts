@@ -14,7 +14,12 @@ export class InlineEditSelectComponent extends InlineEditComponent  implements O
     constructor(private changeDetectorRef: ChangeDetectorRef) {
         super();
     }
-
+    setConfigDefaultValues() {
+        super.setConfigDefaultValues();
+        if (this.config.showCode === undefined) {
+            this.config.showCode = true;
+        }
+    }
     afterOnInit() {
         if (this.value) {
             this.initialValue = this.choices.filter(item => item.code === Number(this.value) || item.code === this.value)[0];

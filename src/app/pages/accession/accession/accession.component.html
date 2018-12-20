@@ -41,12 +41,13 @@
                 [editMode]="editMode"
                 [choices]="conservation_statuses"
                 [config]="{name: 'conservationStatus',
-                        is_editable: true}"
+                           is_editable: true,
+                           showCode: false}"
                 (validationStateEvent)="checkFormValid($event)">
                 <span class='value'>{{accession.data.conservation_status}}</span>
             </kusunoki2-inline-edit-select>
             <kusunoki2-inline-edit fxFlex
-                [label]="'Is Available'"
+                [label]="'Availability'"
                 [value]="accession.data.is_available"
                 [editMode]="editMode"
                 [config]="{name: 'isAvailable',

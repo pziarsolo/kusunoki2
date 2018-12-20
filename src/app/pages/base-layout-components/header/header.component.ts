@@ -14,7 +14,7 @@ import { CurrentUserService } from 'src/app/shared/services/current-user.service
 export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     showAddMenu: Observable<Boolean>;
     apiUrl = environment.apiUrl;
-    apiDocs = this.apiUrl + '/docs';
+    apiDocs = this.apiUrl + 'doc';
 
     appUrls = AppUrls;
 

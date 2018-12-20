@@ -2,6 +2,7 @@
     <h2>Passport Data</h2>
     <div fxLayout='row' fxLayoutGap="20px">
         <kusunoki2-inline-edit-select fxFlex='grow'
+            [label]="'Biological Status'"
             *ngIf="editMode || passport.biologicalStatus"
             [editMode]="editMode"
             [config]="childrenConfig['biologicalStatus']"
@@ -54,7 +55,7 @@
 <div fxLayout='column'>
     <div fxLayout='row' fxLayout.xs='column' fxLayoutGap="20px">
         <div fxFlex='50%' fxFlex.xs='grow' *ngIf='editMode || passport.collectionSite.hasData'>
-            <h2>GeoLocation</h2>
+            <h2>Geolocation</h2>
             <div fxLayout='column'>
                 <div fxLayout="row" fxLayoutAlign='start center' fxLayoutGap="10px"
                         *ngIf="editMode || (passport.collectionSite.country)"
