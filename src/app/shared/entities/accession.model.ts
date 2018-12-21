@@ -237,7 +237,7 @@ export class Taxon {
     }
 
     get isEmpty() {
-        return name === undefined  ? true : false;
+        return this.name === undefined  ? true : false;
     }
 
     getApiDocument() {
