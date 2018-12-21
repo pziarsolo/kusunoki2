@@ -60,6 +60,6 @@
     <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
     <kusunoki2-taxon-stats
         [stats]="taxon_stats|async"
-        [initialQueryParams]="{instituteCode: (institute|async)?.instituteCode}">
+        [initialQueryParams]="{institute_code: (institute|async)?.instituteCode}">
     </kusunoki2-taxon-stats>
 </mat-expansion-panel>
