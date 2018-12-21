@@ -43,7 +43,6 @@ export class AccessionBulkCreateComponent {
         this.accessionService.bulkCreate(dataSource, this.uploadedFile)
             .subscribe(
                 (event) => {
-                    console.log(event);
                     if (event.type === HttpEventType.UploadProgress) {
                         // calculate the progress percentage
                         const percentDone = Math.round(100 * event.loaded / event.total);
