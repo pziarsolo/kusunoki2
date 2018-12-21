@@ -57,12 +57,16 @@
                     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
 
                 </table>
-                <mat-paginator #paginator
-                            [length]="dataSource.totalCount"
-                            [pageIndex]="0"
-                            [pageSize]="25"
-                            [pageSizeOptions]="[10, 25, 50, 100]">
-                </mat-paginator>
+                <div fxLayout='row' fxLayoutAlign="start center" style='margin-top:3px;'>
+                    <button mat-button (click)="downloadCsv()">Download results in CSV </button>
+                    <span fxFlex></span>
+                    <mat-paginator  #paginator
+                                [length]="dataSource.totalCount"
+                                [pageIndex]="0"
+                                [pageSize]="25"
+                                [pageSizeOptions]="[10, 25, 50, 100]">
+                    </mat-paginator>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>
@@ -70,5 +74,5 @@
 
 <mat-menu #moreMenu="matMenu">
     <!-- <button *ngIf="(userToken|async).is_staff" mat-menu-item (click)="makeItemsPublic()">Make All public</button> -->
-    <button mat-menu-item (click)="downloadCsv()">Download results in CSV </button>
+
 </mat-menu>
