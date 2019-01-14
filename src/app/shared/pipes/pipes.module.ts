@@ -6,6 +6,8 @@ import {HasOwnPropertyPipe} from './hasownproperty.pipe';
 import {KeysPipe} from './keys.pipe';
 import {ToStringPipe} from './tostring.pipe';
 import { CommonModule } from '@angular/common';
+import { MomentsMCPDPipe } from './momentsMCPD.pipe';
+
 @NgModule({
     imports: [
         CommonModule
@@ -15,14 +17,16 @@ import { CommonModule } from '@angular/common';
         Minus2SpacePipe,
         HasOwnPropertyPipe,
         KeysPipe,
-        ToStringPipe
+        ToStringPipe,
+        MomentsMCPDPipe
     ],
     exports: [
         ContainsPipe,
         Minus2SpacePipe,
         HasOwnPropertyPipe,
         KeysPipe,
-        ToStringPipe
+        ToStringPipe,
+        MomentsMCPDPipe
     ]
 })
 export class PipesModule { }

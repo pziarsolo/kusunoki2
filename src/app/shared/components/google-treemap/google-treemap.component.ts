@@ -25,7 +25,7 @@ export class GoogleTreemapComponent implements OnChanges {
     prepareData(chartData, statsType) {
         const data = [['code', 'Parent', `Num. ${statsType}`], ['All', null, 0]];
         for (const inst_data of chartData) {
-            data.push([inst_data.code, 'All', inst_data[`num_${statsType}`]]);
+            data.push([inst_data.instituteCode, 'All', inst_data[`num_${statsType}`]]);
         }
         return data;
     }

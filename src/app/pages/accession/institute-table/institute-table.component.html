@@ -2,9 +2,9 @@
     <ng-container matColumnDef="code">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
         <td mat-cell *matCellDef="let institutes">
-            <a color='primary' [routerLink]="['/', appUrls['institutes'],
-                                            institutes.code]">
-                {{institutes.code}}
+            <a color='primary' [routerLink]="['/', appUrls.institutes,
+                                            institutes.instituteCode]">
+                {{institutes.instituteCode}}
             </a>
         </td>
     </ng-container>
@@ -18,7 +18,7 @@
     <ng-container matColumnDef="num_accessions">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessions </th>
         <td mat-cell *matCellDef="let institutes">
-            <a mat-button (click)="navigateTo(appUrls.accessions, {institute_code: institutes.code})">
+            <a mat-button (click)="navigateTo(appUrls.accessions, {institute_code: institutes.instituteCode})">
                 {{institutes.num_accessions}}
             </a>
         </td>
@@ -26,7 +26,7 @@
     <ng-container matColumnDef="num_accessionsets">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessionsets </th>
         <td mat-cell *matCellDef="let institutes">
-            <a mat-button (click)="navigateTo(appUrls.accessionsets, {institute_code: institutes.code})">
+            <a mat-button (click)="navigateTo(appUrls.accessionsets, {institute_code: institutes.instituteCode})">
                 {{institutes.num_accessionsets}}
             </a>
         </td>

@@ -26,6 +26,7 @@ export class ObservableTableComponent implements OnChanges, AfterViewInit {
 
     navigateTo(baseUrl, queryParams) {
         queryParams = {...this.initialQueryParams, ...queryParams};
+        console.log(queryParams);
         this.router.navigate([baseUrl], {queryParams: queryParams});
 
     }

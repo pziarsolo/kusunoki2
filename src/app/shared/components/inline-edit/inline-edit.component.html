@@ -2,7 +2,7 @@
     <div [ngSwitch]='config.widget.type'>
         <ng-container *ngSwitchCase="'text_input'">
             <mat-form-field style='width: 100%;'>
-                <mat-label>{{label}}</mat-label>
+                <mat-label>{{label|titlecase}}</mat-label>
                 <input matInput [type]='config.text_input_type' [hidden]='hideInput()'
                     formControlName="inputControl" [required]='config.is_required && editMode'>
                 <span [hidden]='!hideInput()'><ng-content select=".value"></ng-content></span>
@@ -60,7 +60,7 @@
                        [required]='config.is_required && editMode'>
                 <mat-datepicker-toggle [disabled]='hideInput()' matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <span [hidden]='!hideInput()'>{{inputControl.value|date: 'shortDate'}}</span>
+                <span [hidden]='!hideInput()'>{{inputControl.value|momentsMCPD}}</span>
                 <button mat-button *ngIf="config.is_editable && inputControl.value && editMode" matSuffix mat-icon-button aria-label="Clear"
                     (click)="clearForm()">
                     <mat-icon>close</mat-icon>
