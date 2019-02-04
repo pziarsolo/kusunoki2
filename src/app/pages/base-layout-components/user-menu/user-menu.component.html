@@ -12,6 +12,7 @@
 
     <mat-menu #usermenu="matMenu" yPosition="above">
         <button mat-menu-item [routerLink]="['/', appUrls.users, userToken.username]" >Hello, {{(user|async)?.username}} </button>
+        <button mat-menu-item [routerLink]="['/', appUrls.tasks]"> Tasks </button>
         <button mat-menu-item (click)="logout()">Logout </button>
     </mat-menu>
 </div>

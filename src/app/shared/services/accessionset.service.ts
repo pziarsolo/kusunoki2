@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { ApiUrls } from './apiUrls';
 import { AccessionSet } from '../entities/accessionset.model';
 import { paramsToHttpParams } from './utils';
+import { Task } from '../entities/task.model';
 
 
 @Injectable({
@@ -54,7 +55,7 @@ export class AccessionSetService {
             );
     }
 
-    bulkCreate(file): Observable<HttpEvent<AccessionSet[]>> {
+    bulkCreate(file): Observable<HttpEvent<Task>> {
         const bulkUrl = this.endPoint + 'bulk/';
 
         const formData: FormData = new FormData();

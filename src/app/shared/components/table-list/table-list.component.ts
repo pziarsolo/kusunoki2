@@ -17,6 +17,7 @@ import { InstituteService } from '../../services/institute.service';
 import { CountryService } from '../../services/country.service';
 import { AccessionService } from '../../services/accession.service';
 import { AccessionSetService } from '../../services/accessionset.service';
+import { TaskService } from '../../services/task.service';
 
 
 export abstract class SearchDataSource<T> implements DataSource<T> {
@@ -115,6 +116,8 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
             this.service = this.serviceLocator.injector.get(InstituteService);
         } else if (this.entityType === 'country') {
             this.service = this.serviceLocator.injector.get(CountryService);
+        } else if (this.entityType === 'task') {
+            this.service = this.serviceLocator.injector.get(TaskService);
         }
         this.createDatasource();
 

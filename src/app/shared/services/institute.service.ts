@@ -7,6 +7,7 @@ import { ApiUrls } from './apiUrls';
 import { paramsToHttpParams } from './utils';
 import { Institute } from '../entities/institute.model';
 import { DataSource } from '../entities/data_source.model';
+import { Task } from '../entities/task.model';
 
 
 @Injectable({
@@ -47,7 +48,7 @@ export class InstituteService {
         return this.http.delete(detailUrl);
     }
 
-    bulkCreate(file: File): Observable<HttpEvent<Institute[]>> {
+    bulkCreate(file: File): Observable<HttpEvent<Task>> {
         const bulk_url = this.endPoint + 'bulk/';
 
         const formData: FormData = new FormData();

@@ -1,0 +1,27 @@
+<mat-card *ngIf="task">
+    <mat-card-content [ngSwitch]="task.status">
+        <div *ngSwitchCase="'FAILURE'">
+
+            <h2>{{task.name}} failed</h2>
+            <p>Status: {{task.status}}(Finished)</p>
+            <mat-list>
+                <mat-list-item *ngFor="let msg of task.result">
+                    <mat-icon>error</mat-icon>{{msg}}
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-list>
+        </div>
+        <div *ngSwitchCase="'SUCCESS'">
+            <h2>{{task.name}}  successful</h2>
+            <p>Status: {{task.status}}(Finished)</p>
+            <p>{{task.result}}</p>
+
+        </div>
+        <div *ngSwitchCase="'PENDING'">
+            <h2>{{task.name}}  is running</h2>
+            <p>You can reload the page manually or it will  reload in {{reload_time}} seconds</p>
+            </div>
+
+    </mat-card-content>
+
+</mat-card>

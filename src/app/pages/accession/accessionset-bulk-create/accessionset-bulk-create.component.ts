@@ -3,6 +3,8 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 import { StatusService } from '../../../shared/StatusModule/status.service';
 import { AccessionSetService } from '../../../shared/services/accessionset.service';
+import { AppUrls } from '../../appUrls';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +23,8 @@ export class AccessionSetBulkCreateComponent {
     uploadSuccessful;
 
     constructor(private accessionSetService: AccessionSetService,
-                private statusService: StatusService) {}
+                private statusService: StatusService,
+                private router: Router) {}
 
     onFileAdded() {
         this.uploadTried = true;
@@ -37,14 +40,11 @@ export class AccessionSetBulkCreateComponent {
                         const percentDone = Math.round(100 * event.loaded / event.total);
                         // pass the percentage into the progress-stream
                     } else if (event instanceof HttpResponse) {
-                        // Close the progress-stream if we get an answer form the API
-                        // The upload is complete
-                        this.num_uploaded = event.body.length;
-                        // Close the progress-stream if we get an answer form the API
-                        // The upload is complete
                         this.processing = false;
                         this.uploadSuccessful = true;
-                        this.statusService.info('AccessionSets sucessfully added');
+                        const task_id = event.body.task_id;
+                        this.statusService.info('Task sendend. Redirecting to task result page');
+                        this.router.navigate(['/', AppUrls.tasks, task_id]);
                     }
 
                 },

@@ -31,6 +31,11 @@ const routes: Routes = [
                 // canActivate: [IsAuthGuard]
             },
             {
+                path: 'tasks',
+                loadChildren: './tasks/tasks.module#TaskModule',
+                // canActivate: [IsAuthGuard]
+            },
+            {
                 path: '',
                 component: HomeComponent
             },

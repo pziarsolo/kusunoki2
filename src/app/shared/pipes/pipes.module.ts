@@ -7,6 +7,7 @@ import {KeysPipe} from './keys.pipe';
 import {ToStringPipe} from './tostring.pipe';
 import { CommonModule } from '@angular/common';
 import { MomentsMCPDPipe } from './momentsMCPD.pipe';
+import { ImproveTaskNamePipe } from './improveTaskName.pipe';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { MomentsMCPDPipe } from './momentsMCPD.pipe';
         HasOwnPropertyPipe,
         KeysPipe,
         ToStringPipe,
-        MomentsMCPDPipe
+        MomentsMCPDPipe,
+        ImproveTaskNamePipe
     ],
     exports: [
         ContainsPipe,
@@ -26,7 +28,8 @@ import { MomentsMCPDPipe } from './momentsMCPD.pipe';
         HasOwnPropertyPipe,
         KeysPipe,
         ToStringPipe,
-        MomentsMCPDPipe
+        MomentsMCPDPipe,
+        ImproveTaskNamePipe
     ]
 })
 export class PipesModule { }

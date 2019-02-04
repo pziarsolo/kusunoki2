@@ -6,5 +6,6 @@ export const AppUrls = {
     data_sources: 'data_sources',
     login: 'login',
     taxonomy_stats: 'stats/taxonomy',
-    users: 'users'
+    users: 'users',
+    tasks: 'tasks'
 };

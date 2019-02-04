@@ -6,6 +6,8 @@ import { Subject } from 'rxjs';
 import { InstituteService } from 'src/app/shared/services/institute.service';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DataSource } from 'src/app/shared/entities/data_source.model';
+import { Router } from '@angular/router';
+import { AppUrls } from '../../appUrls';
 
 
 @Component({
@@ -27,7 +29,8 @@ export class InstituteBulkCreateComponent {
     uploadSuccessful;
 
     constructor(private instituteService: InstituteService,
-                private statusService: StatusService) {}
+                private statusService: StatusService,
+                private router: Router) {}
 
 
     onFileAdded() {
@@ -47,11 +50,11 @@ export class InstituteBulkCreateComponent {
                         this.progressSubject.next(percentDone);
 
                     } else if (event instanceof HttpResponse) {
-                        this.num_uploaded = event.body.length;
-                        this.progressSubject.complete();
                         this.processing = false;
                         this.uploadSuccessful = true;
-                        this.statusService.info('Institutes added sucessfully');
+                        const task_id = event.body.task_id;
+                        this.statusService.info('Task sendend. Redirecting to task result page');
+                        this.router.navigate(['/', AppUrls.tasks, task_id]);
                     }
                 },
                 error => {
