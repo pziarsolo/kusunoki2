@@ -1,6 +1,7 @@
 import { Metadata } from './metadata.model';
 import { Moment } from 'moment';
 import * as moment from 'moment';
+import { ɵConsole } from '@angular/core';
 
 export class Accession {
     data: AccessionData;
@@ -93,6 +94,7 @@ export class Passport {
     ancestry: string;
     remarks: any;
     mlsStatus: string;
+    breedingInstitute: string;
 
     constructor(object?) {
         if (object) {
@@ -117,6 +119,7 @@ export class Passport {
             this.ancestry = object.ancestry;
             this.remarks = object.remarks;
             this.mlsStatus = object.mlsStatus;
+            this.breedingInstitute = object.breedingInstitute;
         } else {
             this.version = '1.0';
             this.taxonomy = new Taxonomy();
@@ -135,6 +138,7 @@ export class Passport {
             this.ancestry = undefined;
             this.remarks = undefined;
             this.mlsStatus = undefined;
+            this.breedingInstitute = undefined;
         }
     }
     getApiDocument() {
@@ -187,6 +191,12 @@ export class Passport {
         if (this.mlsStatus) {
             apiData['mlsStatus'] = this.mlsStatus;
         }
+        console.log(this.breedingInstitute);
+        if (this.breedingInstitute) {
+            console.log(this.breedingInstitute);
+            apiData['breedingInstitute'] = this.breedingInstitute;
+        }
+        console.log(apiData);
         return apiData;
     }
 }

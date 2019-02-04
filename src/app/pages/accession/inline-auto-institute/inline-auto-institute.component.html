@@ -1,6 +1,7 @@
 <form [formGroup]="form" [hidden]='hideForm()'>
     <mat-form-field style='width: 100%;' >
-        <mat-placeholder> Institute </mat-placeholder>
+        <mat-placeholder *ngIf='label'>{{label}}  </mat-placeholder>
+        <mat-placeholder *ngIf='!label'>Institute  </mat-placeholder>
         <input matInput type="text" [hidden]="!config.is_editable ||(config.is_editable && !editMode)"
             formControlName="inputControl"
             #input_control [matAutocomplete]="autocomplete"

@@ -86,6 +86,25 @@ export class PassportComponent extends BaseInlinesForm2Component implements Afte
             is_editable: true,
             widget: {type: 'datePicker'}
         },
+        mlsStatus: {
+            name: 'mlsStatus',
+            showCode: false
+        },
+        breedingInstitute: {
+            name: 'breedingInstitute'
+        },
+        germplasmName: {
+            name: 'germplasmName'
+        },
+        ancestry: {
+            name: 'ancestry'
+        },
+        remarks: {
+            name: 'remarks'
+        },
+        commonCropName: {
+            name: 'commonCropName'
+        },
         acquisition_date: {
             name: 'acquisition_date',
             is_editable: true,

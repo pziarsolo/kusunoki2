@@ -115,7 +115,7 @@ export class AccessionComponent  implements OnChanges {
             const passport = new Passport();
 
             for (const key of Object.keys(formValidData['passport'])) {
-                const value = formValidData['passport'][key];
+                let value = formValidData['passport'][key];
                 if (key === 'germplasmNumber') {
                     passport.germplasmNumber.germplasmNumber = value;
                 } else if (key === 'instituteCode') {
@@ -203,6 +203,17 @@ export class AccessionComponent  implements OnChanges {
                     passport.taxonomy.forma.author = value;
                 } else if (key === 'otherNumbers') {
                     passport.otherNumbers = value.map(item => new AccessionId(item));
+                } else if (key === 'ancestry') {
+                    passport.ancestry = value;
+                } else if (key === 'mlsStatus') {
+                    passport.mlsStatus = value;
+                } else if (key === 'remarks') {
+                    if (value) {
+                        value = {'genebank_management': value};
+                    }
+                    passport.remarks = value;
+                } else if (key === 'breedingInstitute') {
+                    passport.breedingInstitute = value;
                 }
             }
             accession.data.passports.push(passport);
