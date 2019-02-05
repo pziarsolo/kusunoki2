@@ -84,6 +84,7 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
     entityType: string;
     coords: any[];
     dataSource;
+    csvDownloading: boolean;
     columnsToDisplay: String[];
     paginatorPageSize = 25;
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -194,10 +195,12 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
         params['offset'] = 0;
         params['limit'] = this.dataSource.totalCount;
         delete params['fields'];
+        this.csvDownloading = true;
         return this.service.downloadCsv(params)
             .subscribe(blob => {
                 const downloadUrl = URL.createObjectURL(blob);
                 window.open(downloadUrl, '_parent');
+                this.csvDownloading = false;
             });
     }
     loadMap() {

@@ -48,6 +48,7 @@
                 </table>
                 <div fxLayout='row' fxLayoutAlign="start center" style='margin-top:3px;'>
                     <button mat-button (click)="downloadCsv()">Download results in CSV </button>
+                    <mat-spinner style='margin-left: 3px;' diameter='30' *ngIf='csvDownloading'></mat-spinner>
                     <span fxFlex></span>
                     <mat-paginator #paginator
                         [length]="dataSource.totalCount"
