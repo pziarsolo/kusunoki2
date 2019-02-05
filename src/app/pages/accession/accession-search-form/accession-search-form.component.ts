@@ -41,7 +41,7 @@ import { Accession } from 'src/app/shared/entities/accession.model';
         }
 
         filterNumber(val) {
-            return this.accessionService.list({numbers: val,
+            return this.accessionService.list({number_contains: val,
                                                fields: 'germplasmNumber'})
                 .pipe(map(response => response.body));
         }
