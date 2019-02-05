@@ -33,9 +33,9 @@ export class GoogleTreemapComponent implements OnChanges {
     drawTreeMap(chartData, div_id, statsType) {
         const chartFunc = () => new google.visualization.TreeMap(document.getElementById(div_id));
         const options = {
-            minColor: '#f00',
-            midColor: '#ddd',
-            maxColor: '#0d0',
+            minColor: '5900ff',
+            midColor: '#00ffbb',
+            maxColor: '#a6ff00',
             headerHeight: 15,
             fontColor: 'black',
             showScale: true

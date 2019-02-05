@@ -221,6 +221,19 @@ export class AccessionComponent  implements OnChanges {
             // return accession;
         }
     }
+    tooglePublic() {
+        this.accession.metadata.is_public = !this.accession.metadata.is_public;
+        this.accessionService.update(this.accession.data.instituteCode,
+                                     this.accession.data.germplasmNumber,
+                                     this.accession.getApiDocument())
+            .subscribe(
+                (updatedAccession: Accession) => {
+                    this.accession = updatedAccession;
+                    this.statusService.info('Accession sucessfully updated');
+                },
+                (error) => console.log(error)
+            );
+    }
 
     updateAccession() {
         const accession = this.getModelFromFormValidData();

@@ -70,9 +70,13 @@
     </mat-card-content>
     <mat-card-actions>
         <button *ngIf='!editMode && userCanEdit' mat-button color='accent' (click)="editMode=true">Edit</button>
-        <button *ngIf='!editMode && userCanEdit' mat-button color='warn' (click)="deleteAccession()">Delete</button>
-        <button *ngIf='editMode' mat-button color='primary' (click)="cancelChange()">Cancel</button>
+        <button *ngIf='userCanEdit' mat-button color='primary' (click)="tooglePublic()">
+            Make <span *ngIf='!accession.metadata.is_public'>Public</span><span *ngIf='accession.metadata.is_public'>Private</span></button>
         <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="updateAccession()">Update</button>
+        <button *ngIf='editMode' mat-button color='primary' (click)="cancelChange()">Cancel</button>
+
+        <span fxFlex></span>
+        <button *ngIf='!editMode && userCanEdit' mat-raised-button color='warn' (click)="deleteAccession()">Delete</button>
         <button *ngIf='createMode && editMode' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="createAccession()">Create</button>
     </mat-card-actions>
 

@@ -2,14 +2,14 @@
     <div fxLayoutAlign="start center">
         <span fxFlex='60pt'class='key'>Passport Id</span>
         <kusunoki2-inline-auto-institute fxFlex style="width:'100%"
-                    [label]="'Institute Code'"
+                    [label]="'Institute code'"
                     [value]="passport.germplasmNumber.instituteCode"
                     [config]="childrenConfig.instituteCode"
                     [editMode]="editMode"
                     (validationStateEvent)="checkFormValid($event)">
         </kusunoki2-inline-auto-institute>
         <kusunoki2-inline-edit fxFlex
-                [label]="'Germplasm Number'"
+                [label]="'Germplasm number'"
                 [value]="passport.germplasmNumber.germplasmNumber"
                 [config]="childrenConfig.germplasmNumber"
                 [editMode]="editMode"
