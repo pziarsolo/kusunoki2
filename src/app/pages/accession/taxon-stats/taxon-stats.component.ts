@@ -4,7 +4,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { AppUrls } from '../../appUrls';
 import { GooglePieChartComponent } from 'src/app/shared/components/google-piechart/google-piechart.component';
 
-const ALLOWED_RANKS = ['genus', 'species', 'variety', 'convarietas', 'group', 'forma'];
+const ALLOWED_RANKS = ['genus', 'species', 'subspecies', 'variety', 'convarietas', 'group', 'forma'];
 
 @Component({
     selector: 'kusunoki2-taxon-stats',
