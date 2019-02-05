@@ -74,6 +74,13 @@ import { Accession } from 'src/app/shared/entities/accession.model';
                         this.countryTrigger.closePanel();
                     }
                 });
+            this.instituteTrigger.panelClosingActions
+                .subscribe(e => {
+                    if (!(e && e.source)) {
+                        delete this.searchParams.institute_code;
+                        this.instituteTrigger.closePanel();
+                    }
+                });
             this.taxaTrigger.panelClosingActions
                 .subscribe(e => {
                     if (!(e && e.source)) {

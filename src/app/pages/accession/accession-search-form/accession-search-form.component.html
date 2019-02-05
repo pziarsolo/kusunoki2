@@ -8,7 +8,8 @@
                     <input type="text" matInput [(ngModel)]="searchParams.institute_code"
                             (ngModelChange) = "suggestedInstitutes = filterInstitute(searchParams.institute_code)"
                             [matAutocomplete]="instituteAuto"
-                            #countryAuto  name="institute">
+                            #instituteAuto
+                            name="institute">
                     <mat-autocomplete #instituteAuto="matAutocomplete">
                         <mat-option *ngFor="let institute of suggestedInstitutes|async " [value]="institute.instituteCode">
                             {{ institute.name }}
