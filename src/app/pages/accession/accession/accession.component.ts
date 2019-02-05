@@ -113,8 +113,8 @@ export class AccessionComponent  implements OnChanges {
             accession.data.conservation_status = formValidData['conservationStatus'];
             accession.data.is_available = formValidData['isAvailable'];
             const passport = new Passport();
-
             for (const key of Object.keys(formValidData['passport'])) {
+
                 let value = formValidData['passport'][key];
                 if (key === 'germplasmNumber') {
                     passport.germplasmNumber.germplasmNumber = value;
@@ -157,7 +157,7 @@ export class AccessionComponent  implements OnChanges {
                 } else if (key === 'collectingInstitute') {
                     passport.collectionNumber.instituteCode = value;
                 } else if (key === 'collectingFieldNumber') {
-                    passport.collectionNumber.fieldNumber = value;
+                    passport.collectionNumber.fieldCollectionNumber = value;
                 } else if (key === 'donorInstitute') {
                     passport.donor.instituteCode = value;
                 } else if (key === 'donorNumber') {
@@ -214,11 +214,14 @@ export class AccessionComponent  implements OnChanges {
                     passport.remarks = value;
                 } else if (key === 'breedingInstitute') {
                     passport.breedingInstitute = value;
+                } else if (key === 'germplasmName') {
+                    passport.germplasmName = value;
+                }  else if (key === 'commonCropName') {
+                    passport.commonCropName = value;
                 }
             }
             accession.data.passports.push(passport);
             return accession;
-            // return accession;
         }
     }
     tooglePublic() {
@@ -237,6 +240,7 @@ export class AccessionComponent  implements OnChanges {
 
     updateAccession() {
         const accession = this.getModelFromFormValidData();
+
         accession.metadata.is_public = this.accession.metadata.is_public;
         accession.metadata.group = this.accession.metadata.group;
         this.editMode = false;

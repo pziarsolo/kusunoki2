@@ -191,12 +191,9 @@ export class Passport {
         if (this.mlsStatus) {
             apiData['mlsStatus'] = this.mlsStatus;
         }
-        console.log(this.breedingInstitute);
         if (this.breedingInstitute) {
-            console.log(this.breedingInstitute);
             apiData['breedingInstitute'] = this.breedingInstitute;
         }
-        console.log(apiData);
         return apiData;
     }
 }
@@ -247,7 +244,11 @@ export class Taxon {
     }
 
     get isEmpty() {
-        return this.name === undefined  ? true : false;
+        if (this.name === undefined) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     getApiDocument() {
@@ -301,7 +302,7 @@ export class Taxonomy {
         }
     }
     get hasData() {
-        if (Object.values(this).filter(item => item !== undefined).filter(item => item.isEmpty).length > 0) {
+        if (Object.values(this).filter(item => item !== undefined).filter(item => !item.isEmpty).length > 0) {
             return true;
         }
         return false;
@@ -342,7 +343,7 @@ export class Taxonomy {
 export class AccessionId {
     instituteCode: string;
     germplasmNumber: string;
-    fieldNumber: string;
+    fieldCollectionNumber: string;
     url: string;
     pui: string;
 
@@ -350,13 +351,13 @@ export class AccessionId {
         if (object) {
             this.instituteCode = object.instituteCode;
             this.germplasmNumber = object.germplasmNumber;
-            this.fieldNumber = object.field_number;
+            this.fieldCollectionNumber = object.fieldCollectionNumber;
             this.url = object.url;
             this.pui = object.pui;
         } else {
             this.instituteCode = undefined;
             this.germplasmNumber = undefined;
-            this.fieldNumber = undefined;
+            this.fieldCollectionNumber = undefined;
             this.url = undefined;
             this.pui = undefined;
         }
@@ -376,8 +377,8 @@ export class AccessionId {
         if (this.instituteCode) {
             apiDoc['instituteCode'] = this.instituteCode;
         }
-        if (this.fieldNumber) {
-            apiDoc['fieldCollectionNumber'] = this.fieldNumber;
+        if (this.fieldCollectionNumber) {
+            apiDoc['fieldCollectionNumber'] = this.fieldCollectionNumber;
         }
         if (this.url) {
             apiDoc['germplasmURL'] = this.url;

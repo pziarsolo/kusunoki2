@@ -140,4 +140,26 @@ export class PassportComponent extends BaseInlinesForm2Component implements Afte
         super.ngAfterViewChecked();
         this.childrenComponents.push(this.OtherNumbers);
     }
+    hasAdinitionalData() {
+
+        if (this.passport.biologicalStatus ||
+            this.passport.collectionSource ||
+            this.passport.acquisitionDate ||
+            this.passport.mlsStatus ||
+            this.passport.ancestry ||
+            (this.passport.remarks  && this.passport.remarks.genebank_management) ||
+            this.passport.breedingInstitute) {
+            return true;
+        }
+        return false;
+    }
+    hasCollectionData() {
+        if (this.passport.collectionSite.hasData ||
+            this.passport.collectionNumber.hasData ||
+            this.passport.germplasmName) {
+            return true;
+        }
+        return false;
+
+    }
 }

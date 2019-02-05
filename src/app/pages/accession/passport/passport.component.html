@@ -20,7 +20,7 @@
 </div>
 <div fxLayout='row' fxLayout.xs='column' fxLayoutGap="20px" >
     <div fxLayout='column' fxLayoutGap="10px" fxFlex='50%'>
-        <div *ngIf='editMode || passport.taxonomy.hasData'>
+        <div *ngIf='editMode || passport.taxonomy.hasData || passport.commonCropName'>
             <h2>Taxonomy</h2>
             <div fxLayout='column'>
                 <kusunoki2-inline-edit fxFlex='grow'
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf='editMode || passport.biologicalStatus || passport.collectionSource ||passport.acquisitionDate' >
+        <div *ngIf='editMode || hasAdinitionalData()' >
             <h2>Additional Descriptors</h2>
             <div fxLayout='column' fxLayoutGap="5px">
                 <kusunoki2-inline-edit-select fxFlex='grow'
@@ -184,7 +184,7 @@
 
     </div>
     <div fxLayout='column' fxLayoutGap="20px" fxFlex='50%'>
-        <div *ngIf='editMode || passport.collectionSite.hasData || passport.collectionNumber.hasData'>
+        <div *ngIf='editMode || hasCollectionData()'>
             <h2>Collecting Data</h2>
             <div fxLayout='column'>
                 <div fxLayout='row' fxLayoutGap="10px">
@@ -199,9 +199,9 @@
                         [label]="'Collection field number'"
                         [editMode]="editMode"
                         [config]="childrenConfig['collectingFieldNumber']"
-                        [value]="passport.collectionNumber.fieldNumber"
+                        [value]="passport.collectionNumber.fieldCollectionNumber"
                         (validationStateEvent)="checkFormValid($event)">
-                        <span class='value'>{{passport.collectionNumber.fieldNumber}}</span>
+                        <span class='value'>{{passport.collectionNumber.fieldCollectionNumber}}</span>
                     </kusunoki2-inline-edit>
                 </div>
                 <kusunoki2-inline-edit fxFlex='grow'
