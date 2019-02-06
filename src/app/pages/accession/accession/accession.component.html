@@ -6,7 +6,15 @@
     </kusunoki2-google-map>
 </div>
 <mat-card *ngIf='accession'>
-    <mat-card-title>Accession <span class='key' fxflex> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span></mat-card-title>
+    <mat-card-title>
+        Accession <span class='key' fxflex style='margin-left:5px;'> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span>
+        <span fxFlex></span>
+        <button mat-raised-button color='accent'
+                *ngIf='userCanEdit && !createMode'
+                [matMenuTriggerFor]="accessionActionMenu">
+            Actions
+        </button>
+    </mat-card-title>
     <mat-card-content>
     <div fxLayout="column">
         <div
@@ -68,17 +76,20 @@
         (validationStateEvent)=checkFormValid($event)>
     </kusunoki2-passport>
     </mat-card-content>
-    <mat-card-actions>
-        <button *ngIf='!editMode && userCanEdit' mat-button color='accent' (click)="editMode=true">Edit</button>
-        <button *ngIf='userCanEdit' mat-button color='primary' (click)="tooglePublic()">
-            Make <span *ngIf='!accession.metadata.is_public'>Public</span><span *ngIf='accession.metadata.is_public'>Private</span></button>
+    <mat-card-actions *ngIf='editMode || createMode'>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
         <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="updateAccession()">Update</button>
-        <button *ngIf='editMode' mat-button color='primary' (click)="cancelChange()">Cancel</button>
-
-        <span fxFlex></span>
-        <button *ngIf='!editMode && userCanEdit' mat-raised-button color='warn' (click)="deleteAccession()">Delete</button>
         <button *ngIf='createMode && editMode' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="createAccession()">Create</button>
     </mat-card-actions>
 
 </mat-card>
 
+<mat-menu #accessionActionMenu="matMenu">
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
+            <mat-icon *ngIf='!accession.metadata.is_public'>public</mat-icon>
+            <mat-icon *ngIf='accession.metadata.is_public' color='warn'>public</mat-icon>
+            Make <span *ngIf='!accession.metadata.is_public'>Public</span><span *ngIf='accession.metadata.is_public'>Private</span>
+        </button>
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteAccession()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+</mat-menu>

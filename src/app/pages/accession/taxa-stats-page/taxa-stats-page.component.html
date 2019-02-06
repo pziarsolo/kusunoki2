@@ -1,6 +1,9 @@
 <mat-card style='margin:8px;' >
     <mat-card-content>
-        <mat-card-title>Taxa Stats</mat-card-title>
+        <mat-card-title>Taxa Stats
+            <span fxFlex></span>
+            <mat-spinner *ngIf='statsCalculating' diameter='30'></mat-spinner>
+        </mat-card-title>
         <kusunoki2-taxon-stats
             [ColumnsToDisplay]="['taxon_name', 'num_accessions', 'num_accessionsets']"
             [stats]="stats">

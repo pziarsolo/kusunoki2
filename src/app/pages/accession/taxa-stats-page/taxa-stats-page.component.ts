@@ -9,12 +9,15 @@ import { TaxonService } from 'src/app/shared/services/taxon.service';
 })
 export class TaxaStatsPageComponent implements OnInit {
     stats = {};
+    statsCalculating: boolean;
     constructor(private taxaStatsService: TaxonService) { }
 
     ngOnInit() {
+        this.statsCalculating = true;
         this.taxaStatsService.statsByRank()
             .subscribe(response => {
                 this.stats = response;
+                this.statsCalculating = false;
             });
     }
 

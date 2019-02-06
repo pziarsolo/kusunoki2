@@ -1,5 +1,12 @@
 <mat-card style='margin:8px;' *ngIf='accessionset'>
-    <mat-card-title>Accessionset {{accessionset.data.accessionsetNumber}}</mat-card-title>
+    <mat-card-title>
+        Accessionset
+        <span class='key' fxflex style='margin-left:5px;'> {{accessionset.data.accessionsetNumber}}</span>
+        <span fxFlex></span>
+        <button mat-raised-button color='accent' [matMenuTriggerFor]="accessionsetActionMenu">
+            Actions
+        </button>
+    </mat-card-title>
     <mat-card-content>
         <kusunoki2-accessionset-accession-table
             *ngIf="accessions"
@@ -29,3 +36,11 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<mat-menu #accessionsetActionMenu="matMenu">
+    <button *ngIf='userCanEdit' mat-menu-item color='primary' (click)="tooglePublic()">
+        <mat-icon *ngIf='!accessionset.metadata.is_public'>public</mat-icon>
+        <mat-icon *ngIf='accessionset.metadata.is_public' color='warn'>public</mat-icon>
+        Make <span *ngIf='!accessionset.metadata.is_public'>Public</span><span *ngIf='accessionset.metadata.is_public'>Private</span>
+    </button>
+</mat-menu>

@@ -75,7 +75,8 @@ export class AccessionSetData {
             apiDoc['instituteCode'] = this.instituteCode;
         }
         if (this.accessions.length > 0) {
-            const accs = this.accessions.map(item => item.getApiDocument()).filter(item => item === undefined);
+            let accs = this.accessions.map(item => item.getApiDocument());
+            accs = accs.filter(item => item !== undefined);
             if (accs.length > 0) {
                 apiDoc['accessions'] = accs;
             }
