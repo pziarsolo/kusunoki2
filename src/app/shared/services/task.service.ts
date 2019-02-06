@@ -27,4 +27,8 @@ export class TaskService {
         return this.http.get<Task[]>(this.endPoint,
             {params: getParams, observe: 'response'});
     }
+    delete(taskId: string) {
+        const detailUrl = this.composeDetailUrl(taskId);
+        return this.http.delete(detailUrl);
+    }
 }

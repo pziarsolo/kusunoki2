@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material';
 import { AppUrls } from '../../appUrls';
 import { Router } from '@angular/router';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
+import { AccessionSetService } from 'src/app/shared/services/accessionset.service';
 
 @Component({
     selector: 'kusunoki2-accession',
@@ -25,6 +26,9 @@ export class AccessionComponent  implements OnChanges {
     @Input() createMode = false;
     @Input() onTop = true;
     @Input() mapId;
+
+    appUrls = AppUrls;
+    accessionsets: string[];
     userCanEdit: boolean;
 
     conservation_statuses = conservation_statuses;
@@ -42,12 +46,22 @@ export class AccessionComponent  implements OnChanges {
         private readonly statusService: StatusService,
         private readonly router: Router,
         private readonly currentUserService: CurrentUserService,
+        private readonly accessionsetService: AccessionSetService,
         public dialog: MatDialog) {
         }
 
     ngOnChanges(changes: SimpleChanges): void {
         if ('accession' in changes && this.accession) {
             this.evalUserPermissions();
+            this.accessionsetService.list(
+                {accession_number: this.accession.data.germplasmNumber,
+                 accession_institute: this.accession.data.instituteCode})
+                .subscribe(
+                    response => {
+                        this.accessionsets = response.body.map(item => item.data.accessionsetNumber);
+                    },
+                    error => console.log(error)
+                );
         }
     }
     evalUserPermissions() {

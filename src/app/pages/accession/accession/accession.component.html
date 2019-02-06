@@ -40,7 +40,13 @@
                         name: 'germplasmNumber'}"
                 [editMode]="editMode"
                 (validationStateEvent)="checkFormValid($event)">
-                <span class='value'>{{accession.data.germplasmNumber}}</span>
+                <span class='value'>
+                    <a [routerLink]="['/', appUrls.accessions,
+                                           accession.data.instituteCode,
+                                           accession.data.germplasmNumber]">
+                        {{accession.data.germplasmNumber}}
+                    </a>
+                </span>
             </kusunoki2-inline-edit>
 
             <kusunoki2-inline-edit-select fxFlex
@@ -68,7 +74,13 @@
         </div>
 
     </div>
-
+    <div *ngIf='accessionsets'>
+        <span style='margin-right: 5px;'>This accession belongs to this accesisionSets:</span>
+        <span *ngFor="let item of accessionsets; let $last=last">
+            <a [routerLink]="['/', appUrls.accessionsets, item]">{{item}}</a>
+            <span *ngIf="!$last; LastElem" class="list-format">,</span>
+        </span>
+    </div>
     <kusunoki2-passport
         [passport]="accession.data.passports[0]"
         [editMode]='editMode'

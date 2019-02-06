@@ -22,6 +22,7 @@ class TaskDataSource extends SearchDataSource<Task> {
 export class TaskListComponent extends TableListComponent {
     entityType = 'task';
     columnsToDisplay = ['task_id', 'status', 'task_name', 'date_done', 'owner'];
+    columnsToDisplay2 = this.columnsToDisplay.concat('delete');
     hasSearchService = false;
     extraSearchParams = {};
     constructor(router: Router,
@@ -35,6 +36,16 @@ export class TaskListComponent extends TableListComponent {
         this.dataSource = new TaskDataSource(this.service, this.router,
                                              this.columnsToDisplay,
                                              this.extraSearchParams);
+    }
+    deleteTask(taskId) {
+        this.service.delete(taskId)
+            .subscribe(
+                () => {
+                    this.makeQuery({});
+                    this.statusService.info('task log successfully deleted');
+                },
+                (error) => console.log(error)
+            );
     }
     getId(searchItem) {
         return {task_id: searchItem['task_id']};
