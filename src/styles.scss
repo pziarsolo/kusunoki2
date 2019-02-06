@@ -28,7 +28,7 @@ a {
     font-style: normal;
 }
 a:hover {
-    font-weight: bold;
+    color:mat-color(mat-palette($mat-teal, 900, A300, A700));
 }
 // h1, h2, h3, h4 {
 //     // font-weight: normal;

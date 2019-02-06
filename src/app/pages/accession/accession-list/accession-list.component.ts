@@ -18,7 +18,7 @@ class AccessionDataSource extends SearchDataSource<Accession> {
 @Component({
     selector: 'kusunoki2-accession-list',
     templateUrl: './accession-list.component.html',
-    styleUrls: ['./accession-list.component.css'],
+    styleUrls: ['./accession-list.component.scss'],
 })
 export class AccessionListComponent extends TableListComponent {
     entityType = 'accession';
