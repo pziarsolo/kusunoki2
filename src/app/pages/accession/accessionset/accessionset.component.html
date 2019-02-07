@@ -16,7 +16,8 @@
         <h2>Accessions in this accessionset</h2>
         <kusunoki2-accession
             *ngIf='accessions && accessions.length === 1'
-            [accession]="accessions[0]">
+            [accession]="accessions[0]"
+            [mapId]="'map1'">
         </kusunoki2-accession>
         <div  *ngIf='accessions && accessions.length > 1'  style='margin:0; padding:0'>
             <mat-tab-group

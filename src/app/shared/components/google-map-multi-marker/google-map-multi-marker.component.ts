@@ -23,6 +23,7 @@ export class GoogleMapMultiMarkerComponent implements OnChanges, AfterViewChecke
 
     ngOnChanges(changes: SimpleChanges): void {
         if ('markers' in changes) {
+            this.map = undefined;
             this.drawMap();
             // this.drawMarkers();
             // console.log(changes.markers);
@@ -34,14 +35,17 @@ export class GoogleMapMultiMarkerComponent implements OnChanges, AfterViewChecke
                 const uid = accessionSet.data.accessionsetNumber;
                 const latitude = accessionSet.data.latitudes[0];
                 const longitude = accessionSet.data.longitudes[0];
-                const _marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(latitude, longitude),
-                    map: this.map,
-                    title: uid,
-                    url: AppUrls.accessionsets + '/' + uid});
-                google.maps.event.addListener(_marker, 'click', function() {
-                    window.location.href = _marker.url;
-                });
+                if (latitude && longitude) {
+                    const _marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(latitude, longitude),
+                        map: this.map,
+                        title: uid,
+                        url: AppUrls.accessionsets + '/' + uid
+                    });
+                    google.maps.event.addListener(_marker, 'click', function() {
+                        window.location.href = _marker.url;
+                    });
+                }
                 // for (const marker of accessionSet.coords) {
                 //     if (marker.latitude && marker.longitude) {
                 //         const _marker = new google.maps.Marker(

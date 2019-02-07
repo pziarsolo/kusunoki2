@@ -131,7 +131,7 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
             }
         });
         if (this.doMultiMapSearch) {
-            this.loadMap();
+            this.loadMap(this.params);
         }
         this.userToken = this.currentUserService.userToken;
 
@@ -147,6 +147,7 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
         this.searchDone = true;
         this.updatePaginatorState(this.params);
         this.dataSource.loadItems(this.params);
+
     }
 
     ngAfterViewInit() {
@@ -173,6 +174,9 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
         const url = this.composeUrlWithParams();
         this.router.navigateByUrl(url.slice(0, -1));
         // this.location.go(this.router.url.split('?')[0], search_params);
+        if (this.doMultiMapSearch) {
+            this.loadMap(search_params);
+        }
     }
 
     composeUrlWithParams() {
@@ -203,8 +207,8 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.csvDownloading = false;
             });
     }
-    loadMap() {
-        const params = Object.assign({}, this.params);
+    loadMap(search_params) {
+        const params = Object.assign({}, search_params);
         params['limit'] = 500; // this.dataSource.totalCount;
         params['fields'] = this.fieldsForCoordRequest;
         this.service.list(params)

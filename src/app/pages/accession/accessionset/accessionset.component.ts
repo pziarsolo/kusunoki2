@@ -24,16 +24,21 @@ export class AccessionSetComponent implements OnChanges {
                 private statusService: StatusService,
                 private currentUserService: CurrentUserService) { }
 
+    loadData() {
+        this.evalUserPermissions();
+        const calls = [];
+        this.accessionset.data.accessions.map(item => {
+            calls.push(this.accessionService.retrieve(item.instituteCode, item.germplasmNumber));
+        });
+        forkJoin(...calls)
+            .subscribe((responses: Accession[]) => {
+                this.accessions = responses;
+            });
+    }
     ngOnChanges(changes: SimpleChanges): void {
 
         if ('accessionset' in changes && this.accessionset !== undefined) {
-            this.evalUserPermissions();
-            const calls = [];
-            this.accessionset.data.accessions.map(item => {
-                calls.push(this.accessionService.retrieve(item.instituteCode, item.germplasmNumber));
-            });
-            forkJoin(...calls)
-                .subscribe((responses: Accession[]) => this.accessions = responses);
+            this.loadData();
         }
 
     }
