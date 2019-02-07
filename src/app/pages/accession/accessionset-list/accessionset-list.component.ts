@@ -24,6 +24,10 @@ export class AccessionSetListComponent  extends TableListComponent {
     columnsToDisplay = ['accessionsetNumber', 'countries', 'genera'];
     entityType = 'accessionset';
     extraSearchParams = {};
+
+    doMultiMapSearch = true;
+    fieldsForCoordRequest = 'accessionsetNumber,latitudes,longitudes';
+
     constructor(router: Router,
                 route: ActivatedRoute,
                 currentUserService: CurrentUserService,

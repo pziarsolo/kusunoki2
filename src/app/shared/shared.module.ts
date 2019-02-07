@@ -22,6 +22,7 @@ import { ObservableTableComponent } from './components/observable-table/observab
 import { GoogleBarchartComponent } from './components/google-barchart/google-barchart.component';
 import { GoogleTreemapComponent } from './components/google-treemap/google-treemap.component';
 import { GooglePieChartComponent } from './components/google-piechart/google-piechart.component';
+import { GoogleMapMultiMarkerComponent } from './components/google-map-multi-marker/google-map-multi-marker.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { GooglePieChartComponent } from './components/google-piechart/google-pie
         GoogleBarchartComponent,
         GoogleTreemapComponent,
         GooglePieChartComponent,
+        GoogleMapMultiMarkerComponent,
         ObservableTableComponent,
 
     ],
@@ -76,6 +78,7 @@ import { GooglePieChartComponent } from './components/google-piechart/google-pie
         GoogleBarchartComponent,
         GoogleTreemapComponent,
         GooglePieChartComponent,
+        GoogleMapMultiMarkerComponent,
         ObservableTableComponent
     ]
 })

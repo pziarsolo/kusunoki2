@@ -88,9 +88,9 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
     columnsToDisplay: String[];
     paginatorPageSize = 25;
     @ViewChild(MatPaginator) paginator: MatPaginator;
-
+    fieldsForCoordRequest: string;
     hasSearchService: Boolean; true;
-
+    doMultiMapSearch = false;
     userToken: Observable<JWTUser>;
     searchDone: Boolean = false;
     appUrls = AppUrls;
@@ -130,8 +130,8 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.params = {};
             }
         });
-        if (this.entityType === 'accessionset') {
-            // this.loadMap();
+        if (this.doMultiMapSearch) {
+            this.loadMap();
         }
         this.userToken = this.currentUserService.userToken;
 
@@ -204,9 +204,13 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
             });
     }
     loadMap() {
-        this.params['limit'] = 500; // this.dataSource.totalCount;
-        this.service.listUnpaginatedCoords(this.params)
-            .subscribe(data => this.coords = data);
+        const params = Object.assign({}, this.params);
+        params['limit'] = 500; // this.dataSource.totalCount;
+        params['fields'] = this.fieldsForCoordRequest;
+        this.service.list(params)
+            .subscribe(data => {
+                this.coords = data.body;
+            });
     }
     makeItemPublic(item, partialUpdate) {
         return this.service.partialUpdate(
