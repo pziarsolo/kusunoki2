@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/shared/services/task.service';
 import { Task } from 'src/app/shared/entities/task.model';
 
-import { distinctUntilChanged, takeWhile } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { distinctUntilChanged, takeWhile, startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'kusunoki2-task-detail',
@@ -15,7 +15,9 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
     taskId: string;
     task: Task;
     routerSubscription: Subscription;
-    reload_time = 1;
+    poolingSubscription: Subscription;
+    reload_time = 5;
+    progressMeter = String(0);
     constructor(
         private route: ActivatedRoute,
         private service: TaskService) { }
@@ -23,19 +25,28 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.routerSubscription = this.route.params.subscribe(params => {
             this.taskId = params.task_id;
-            this.service.retrieve(this.taskId)
-                // .pipe(
-                //     // timer(5000),
-                //     takeWhile(x => x.status !== 'FAILURE')
-                // )
+            const source = interval(this.reload_time * 1000)
+                .pipe(
+                    startWith(0),
+                    switchMap(() => this.service.retrieve(this.taskId)),
+                );
+            this.poolingSubscription = source
                 .subscribe((task: Task) => {
-                    console.log('aa');
+                    if (this.progressMeter === '100') {
+                        this.progressMeter = '0';
+                    } else {
+                        this.progressMeter = String(Number(this.progressMeter) + 5);
+                    }
                     this.task = task;
+                    if (task.status !== 'PENDING') {
+                        this.poolingSubscription.unsubscribe();
+                    }
                 });
         });
     }
 
     ngOnDestroy(): void {
         this.routerSubscription.unsubscribe();
+        this.poolingSubscription.unsubscribe();
     }
 }

@@ -23,6 +23,7 @@ import {
     MatTooltipModule,
     MatGridListModule,
     MatTabsModule,
+    MatProgressBarModule
 } from '@angular/material';
 
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -53,7 +54,8 @@ import {MatCardModule} from '@angular/material/card';
         MatTooltipModule,
         MatMomentDateModule,
         MatGridListModule,
-        MatTabsModule
+        MatTabsModule,
+        MatProgressBarModule
     ]
 })
 export class MaterialBaseModule { }
