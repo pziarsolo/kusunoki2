@@ -28,7 +28,8 @@ a {
     font-style: normal;
 }
 a:hover {
-    color:mat-color(mat-palette($mat-teal, 900, A300, A700));
+    text-decoration: underline;
+    // color:mat-color(mat-palette($mat-teal, 900, A300, A700));
 }
 // h1, h2, h3, h4 {
 //     // font-weight: normal;
