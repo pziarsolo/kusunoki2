@@ -17,7 +17,6 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
     routerSubscription: Subscription;
     poolingSubscription: Subscription;
     reload_time = 5;
-    progressMeter = String(0);
     constructor(
         private route: ActivatedRoute,
         private service: TaskService) { }
@@ -32,11 +31,6 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
                 );
             this.poolingSubscription = source
                 .subscribe((task: Task) => {
-                    if (this.progressMeter === '100') {
-                        this.progressMeter = '0';
-                    } else {
-                        this.progressMeter = String(Number(this.progressMeter) + 5);
-                    }
                     this.task = task;
                     if (task.status !== 'PENDING') {
                         this.poolingSubscription.unsubscribe();
