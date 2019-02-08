@@ -3,7 +3,7 @@
         Accessionset
         <span class='key' fxflex style='margin-left:5px;'> {{accessionset.data.accessionsetNumber}}</span>
         <span fxFlex></span>
-        <button mat-raised-button color='accent' [matMenuTriggerFor]="accessionsetActionMenu">
+        <button *ngIf='userCanEdit' mat-raised-button color='accent' [matMenuTriggerFor]="accessionsetActionMenu">
             Actions
         </button>
     </mat-card-title>
