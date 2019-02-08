@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { DataSource } from '@angular/cdk/table';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, MatDialogRef, MatDialog } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CollectionViewer } from '@angular/cdk/collections';
 import { HttpResponse } from '@angular/common/http';
@@ -18,6 +18,7 @@ import { CountryService } from '../../services/country.service';
 import { AccessionService } from '../../services/accession.service';
 import { AccessionSetService } from '../../services/accessionset.service';
 import { TaskService } from '../../services/task.service';
+import { ProgressSpinnerDialogComponent } from '../progress-spinner-dialog/progress-spinner-dialog.component';
 
 
 export abstract class SearchDataSource<T> implements DataSource<T> {
@@ -34,6 +35,7 @@ export abstract class SearchDataSource<T> implements DataSource<T> {
 
     connect(collectionViewer: CollectionViewer): Observable<T[]> {
         return this.itemsSubject.asObservable();
+
     }
     disconnect(collectionViewer: CollectionViewer): void {
         this.itemsSubject.complete();
@@ -97,11 +99,14 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
     params; // : AccessionSearchParams | AccessionSetSearchParams;
     pageSubscription: Subscription;
     operationInProgress: Boolean = false;
+    spinnerDialog: MatDialogRef<ProgressSpinnerDialogComponent>;
+    loadingSubjectSubscription: Subscription;
 
     constructor(protected router: Router, protected route: ActivatedRoute,
                 protected currentUserService: CurrentUserService,
                 protected serviceLocator: ServiceLocatorService,
-                protected statusService: StatusService) {
+                protected statusService: StatusService,
+                protected dialog: MatDialog) {
     }
 
     createDatasource() {
@@ -121,6 +126,7 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
             this.service = this.serviceLocator.injector.get(TaskService);
         }
         this.createDatasource();
+        this.showSpinnerDialog();
 
         this.route.queryParams.subscribe(params => {
             if (Object.keys(params).length) {
@@ -135,7 +141,7 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
         }
         this.userToken = this.currentUserService.userToken;
 
-        // if the componenthas no search form and is used just as a list
+        // if the component has no search form and is used just as a list
         // we have to make the first query to api
         if (this.hasSearchService === false) {
             this.makeQuery({});
@@ -167,10 +173,14 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.pageSubscription.unsubscribe();
+        this.loadingSubjectSubscription.unsubscribe();
     }
 
     reciveParams(search_params) {
-        this.makeQuery(search_params);
+        this.params = Object.assign({}, search_params);
+        this.searchDone = true;
+        this.updatePaginatorState(this.params);
+
         const url = this.composeUrlWithParams();
         this.router.navigateByUrl(url.slice(0, -1));
         // this.location.go(this.router.url.split('?')[0], search_params);
@@ -224,5 +234,23 @@ export class TableListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     getId(searchItem) {
         throwError('not implemented: create datastore here');
+    }
+
+    showSpinnerDialog() {
+        this.loadingSubjectSubscription = this.dataSource.loadingSubject
+            .subscribe((value: Boolean) => {
+                if (value) {
+                    this.spinnerDialog = this.dialog.open(ProgressSpinnerDialogComponent, {
+                        panelClass: 'transparent',
+                        disableClose: true
+                    });
+                } else {
+                    if (this.spinnerDialog) {
+                        this.spinnerDialog.close();
+                        this.spinnerDialog.close();
+                    }
+                }
+                // console.log('loading:', value);
+            });
     }
 }

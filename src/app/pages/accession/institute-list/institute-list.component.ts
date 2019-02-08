@@ -6,6 +6,7 @@ import { StatusService } from '../../../shared/StatusModule/status.service';
 import { SearchDataSource, TableListComponent } from '../../../shared/components/table-list/table-list.component';
 import { Institute } from '../../../shared/entities/institute.model';
 import { ServiceLocatorService } from 'src/app/shared/services/service-locator.service';
+import { MatDialog } from '@angular/material';
 
 
 
@@ -25,13 +26,15 @@ export class InstituteListComponent extends TableListComponent {
     columnsToDisplay = ['instituteCode', 'name', 'num_accessions', 'num_accessionsets'];
     hasSearchService = false;
     extraSearchParams = {'only_with_accessions': true};
-    constructor(router: Router,
-                route: ActivatedRoute,
-                currentUserService: CurrentUserService,
-                serviceLocator: ServiceLocatorService,
-                statusService: StatusService) {
-
-        super(router, route, currentUserService, serviceLocator, statusService);
+    constructor(
+        router: Router,
+        route: ActivatedRoute,
+        currentUserService: CurrentUserService,
+        serviceLocator: ServiceLocatorService,
+        statusService: StatusService,
+        protected dialog: MatDialog) {
+        super(router, route, currentUserService, serviceLocator, statusService,
+              dialog);
     }
     createDatasource() {
         this.dataSource = new InstituteStatsDataSource(this.service,

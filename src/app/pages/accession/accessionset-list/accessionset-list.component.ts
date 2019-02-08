@@ -6,6 +6,7 @@ import { AppUrls } from '../../appUrls';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { ServiceLocatorService } from 'src/app/shared/services/service-locator.service';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
+import { MatDialog } from '@angular/material';
 
 
 
@@ -32,8 +33,10 @@ export class AccessionSetListComponent  extends TableListComponent {
                 route: ActivatedRoute,
                 currentUserService: CurrentUserService,
                 serviceLocator: ServiceLocatorService,
-                statusService: StatusService) {
-        super(router, route, currentUserService, serviceLocator, statusService);
+                statusService: StatusService,
+                dialog: MatDialog) {
+        super(router, route, currentUserService, serviceLocator, statusService,
+            dialog);
     }
     createDatasource() {
         this.dataSource = new AccessionSetDataSource(this.service,

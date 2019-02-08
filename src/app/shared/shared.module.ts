@@ -23,6 +23,7 @@ import { GoogleBarchartComponent } from './components/google-barchart/google-bar
 import { GoogleTreemapComponent } from './components/google-treemap/google-treemap.component';
 import { GooglePieChartComponent } from './components/google-piechart/google-piechart.component';
 import { GoogleMapMultiMarkerComponent } from './components/google-map-multi-marker/google-map-multi-marker.component';
+import { ProgressSpinnerDialogComponent } from './components/progress-spinner-dialog/progress-spinner-dialog.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { GoogleMapMultiMarkerComponent } from './components/google-map-multi-mar
         GooglePieChartComponent,
         GoogleMapMultiMarkerComponent,
         ObservableTableComponent,
+        ProgressSpinnerDialogComponent,
 
     ],
     imports: [
@@ -55,7 +57,8 @@ import { GoogleMapMultiMarkerComponent } from './components/google-map-multi-mar
         ReactiveFormsModule
     ],
     entryComponents: [
-        DeleteDialogComponent
+        DeleteDialogComponent,
+        ProgressSpinnerDialogComponent
     ],
     exports : [
         CommonModule,
@@ -79,7 +82,8 @@ import { GoogleMapMultiMarkerComponent } from './components/google-map-multi-mar
         GoogleTreemapComponent,
         GooglePieChartComponent,
         GoogleMapMultiMarkerComponent,
-        ObservableTableComponent
+        ObservableTableComponent,
+        ProgressSpinnerDialogComponent
     ]
 })
 export class SharedModule { }

@@ -6,6 +6,7 @@ import { Country } from 'src/app/shared/entities/country.model';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { ServiceLocatorService } from 'src/app/shared/services/service-locator.service';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
+import { MatDialog } from '@angular/material';
 
 
 
@@ -27,11 +28,13 @@ export class CountryListComponent extends TableListComponent {
     extraSearchParams = {'only_with_accessions': true};
 
     constructor(router: Router,
-                route: ActivatedRoute,
-                currentUserService: CurrentUserService,
-                serviceLocator: ServiceLocatorService,
-                statusService: StatusService) {
-        super(router, route, currentUserService, serviceLocator, statusService);
+        route: ActivatedRoute,
+        currentUserService: CurrentUserService,
+        serviceLocator: ServiceLocatorService,
+        statusService: StatusService,
+        protected dialog: MatDialog) {
+        super(router, route, currentUserService, serviceLocator, statusService,
+              dialog);
     }
     createDatasource() {
         this.dataSource = new CountryStatsDataSource(this.service,
