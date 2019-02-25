@@ -13,5 +13,10 @@ export const ApiUrls = {
     tokenCreate: environment.apiUrl + 'auth/token/',
     tokenRefresh: environment.apiUrl + 'auth/token/refresh/',
     tokenVerify: environment.apiUrl + 'auth/token/verify/',
-    tasks: environment.apiUrl + 'tasks/'
+    tasks: environment.apiUrl + 'tasks/',
+    studies: environment.apiUrl + 'studies/',
+    observations: environment.apiUrl + 'observations/',
+    scales: environment.apiUrl + 'scales/',
+    traits: environment.apiUrl + 'traits/',
+    observationVariables: environment.apiUrl + 'observation_variables/',
 };

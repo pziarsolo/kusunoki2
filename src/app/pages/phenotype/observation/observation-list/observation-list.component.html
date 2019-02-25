@@ -1,0 +1,11 @@
+<kusunoki2-observation-search-form
+    (searchSubmitted)="receiveParams($event)"
+    [hidden]='searchDone'>
+</kusunoki2-observation-search-form>
+
+<div [hidden]='!searchDone'>
+    <kusunoki2-observation-table [searchParams]='searchParams'
+        (searchParamsChanged)="searchParamsChanged($event)">
+   </kusunoki2-observation-table>
+</div>
+

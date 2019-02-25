@@ -21,11 +21,6 @@ const routes: Routes = [
                 // loadChildren: '../kusunoki/login/login.module#LoginModule'
             },
             {
-                path: '',
-                loadChildren: './accession/accession.module#AccessionModule',
-                // canActivate: [IsAuthGuard]
-            },
-            {
                 path: 'users',
                 loadChildren: './users/users.module#UserModule',
                 // canActivate: [IsAuthGuard]
@@ -36,13 +31,23 @@ const routes: Routes = [
                 // canActivate: [IsAuthGuard]
             },
             {
+                path: AppUrls.phenotypeSubDir,
+                loadChildren: './phenotype/phenotype.module#PhenotypeModule',
+                // canActivate: [IsAuthGuard]
+            },
+            {
+                path: '',
+                loadChildren: './accession/accession.module#AccessionModule',
+                // canActivate: [IsAuthGuard]
+            },
+            {
                 path: '',
                 component: HomeComponent
             },
             {
                 path: '**',
                 component: NotFoundComponent
-            }
+            },
         ]
     }
 ];

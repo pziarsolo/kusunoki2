@@ -89,7 +89,7 @@
                     *ngIf="editMode || passport.mlsStatus"
                     [editMode]="editMode"
                     [config]="childrenConfig['mlsStatus']"
-                    [choices]="[{'code':'Y', name: 'Y'}, {code: 'N', name: 'N'}]"
+                    [choices]="[{'code':'Y', name: 'Yes'}, {code: 'N', name: 'No'}]"
                     [value]="passport.mlsStatus"
                     (validationStateEvent)="checkFormValid($event)">
                     <span class='label'>MLS Status:</span>

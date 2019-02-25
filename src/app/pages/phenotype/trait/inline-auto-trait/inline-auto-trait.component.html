@@ -1,0 +1,36 @@
+<form [formGroup]="form" [hidden]='hideForm()'>
+    <mat-form-field style='width: 100%;' >
+        <mat-placeholder> Trait </mat-placeholder>
+        <input matInput type="text" [hidden]="!config.is_editable ||(config.is_editable && !editMode)"
+            formControlName="inputControl"
+            #input_control [matAutocomplete]="autocomplete"
+            [required]='config.is_required && editMode'>
+
+        <div [hidden]='config.is_editable && editMode'>
+            <span *ngIf='initialValue'> {{initialValue}}
+                <!-- <a routerLink='/countries/{{initialValue.code}}'
+                    [matTooltip]="initialValue.name"
+                    matTooltipPosition='after'>
+                    {{initialValue.code}}: {{initialValue.name}}
+                </a> -->
+            </span>
+            <span *ngIf='!initialValue'>''</span>
+
+        </div>
+        <button *ngIf="config.is_editable && inputControl.value && editMode"
+                matSuffix mat-icon-button aria-label="Clear"
+                (click)="clearForm()">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="inputControl.errors?.required">
+            This value is required
+        </mat-error>
+        <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]='display'>
+            <mat-option *ngFor="let trait of suggestions |async "
+                        [value]="trait">
+                <strong>{{ trait.name}}</strong> <span *ngIf="trait.ontology_id">({{trait.ontology_id}})</span><br>
+                ({{trait.description}})
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

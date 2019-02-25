@@ -24,6 +24,12 @@ import { GoogleTreemapComponent } from './components/google-treemap/google-treem
 import { GooglePieChartComponent } from './components/google-piechart/google-piechart.component';
 import { GoogleMapMultiMarkerComponent } from './components/google-map-multi-marker/google-map-multi-marker.component';
 import { ProgressSpinnerDialogComponent } from './components/progress-spinner-dialog/progress-spinner-dialog.component';
+import { TableWithFilterComponent } from './components/table-with-filter/table-with-filter.component';
+import { ObservationTableComponent } from './components/observation-table/observation-table.component';
+import { StudyTableComponent } from './components/study-table/study-table.component';
+import { BulkCreateComponent } from './components/bulk-create/bulk-create.component';
+import { RouterModule } from '@angular/router';
+import { TableSearchPageComponent } from './components/table-search-page/table-search-page.component';
 
 @NgModule({
     declarations: [
@@ -44,6 +50,11 @@ import { ProgressSpinnerDialogComponent } from './components/progress-spinner-di
         GoogleMapMultiMarkerComponent,
         ObservableTableComponent,
         ProgressSpinnerDialogComponent,
+        TableWithFilterComponent,
+        ObservationTableComponent,
+        StudyTableComponent,
+        BulkCreateComponent,
+        TableSearchPageComponent
 
     ],
     imports: [
@@ -54,7 +65,8 @@ import { ProgressSpinnerDialogComponent } from './components/progress-spinner-di
         StatusModule,
         PipesModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ],
     entryComponents: [
         DeleteDialogComponent,
@@ -83,7 +95,9 @@ import { ProgressSpinnerDialogComponent } from './components/progress-spinner-di
         GooglePieChartComponent,
         GoogleMapMultiMarkerComponent,
         ObservableTableComponent,
-        ProgressSpinnerDialogComponent
+        ProgressSpinnerDialogComponent,
+        ObservationTableComponent,
+        StudyTableComponent
     ]
 })
 export class SharedModule { }

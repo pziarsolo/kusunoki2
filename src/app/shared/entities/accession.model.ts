@@ -1,230 +1,6 @@
 import { Metadata } from './metadata.model';
 import { Moment } from 'moment';
 import * as moment from 'moment';
-import { ɵConsole } from '@angular/core';
-
-export class Accession {
-    data: AccessionData;
-    metadata: Metadata;
-    constructor(object?: Accession) {
-        if (object) {
-            this.data = new AccessionData(object.data);
-            this.metadata = new Metadata(object.metadata);
-        } else {
-            this.data = new AccessionData();
-            this.metadata = new Metadata();
-        }
-    }
-    getApiDocument() {
-        return {'data': this.data.getApiDocument(),
-                'metadata': this.metadata.getApiDocument()};
-    }
-}
-
-export class AccessionData {
-    instituteCode: string;
-    germplasmNumber: string;
-    is_available: boolean;
-    conservation_status: string;
-    countries: string[];
-    genera: string[];
-    passports: Passport[];
-
-    constructor(object?: AccessionData) {
-        if (object) {
-            this.instituteCode = object.instituteCode;
-            this.germplasmNumber = object.germplasmNumber;
-            this.is_available = object.is_available;
-            this.conservation_status = object.conservation_status;
-            this.countries = object.countries;
-            this.genera = object.genera;
-            this.passports = object.passports.map(item => new Passport(item));
-        } else {
-            this.instituteCode = undefined;
-            this.germplasmNumber = undefined;
-            this.is_available = undefined;
-            this.conservation_status = undefined;
-            this.countries = undefined;
-            this.genera = undefined;
-            this.passports = [];
-        }
-    }
-    getApiDocument() {
-        const apiDoc = {};
-        if (this.instituteCode) {
-            apiDoc['instituteCode'] = this.instituteCode;
-        }
-        if (this.germplasmNumber) {
-            apiDoc['germplasmNumber'] = this.germplasmNumber;
-        }
-        if (this.is_available !== undefined) {
-            apiDoc['is_available'] = this.is_available;
-        }
-        if (this.conservation_status) {
-            apiDoc['conservation_status'] = this.conservation_status;
-        }
-        if (this.countries) {
-            apiDoc['countries'] = this.countries;
-        }
-        if (this.genera) {
-            apiDoc['genera'] = this.genera;
-        }
-        if (this.passports) {
-            apiDoc['passports'] = this.passports.map(item => item.getApiDocument());
-        }
-        return apiDoc;
-    }
-}
-
-export class Passport {
-    version: string;
-    taxonomy: Taxonomy;
-    dataSource: DataSource;
-    otherNumbers: AccessionId[];
-    germplasmName: string;
-    collectionSite: GeoLocation;
-    commonCropName: string;
-    germplasmNumber: AccessionId;
-    collectionNumber: AccessionId;
-    donor: AccessionId;
-    collectionSource: string;
-    biologicalStatus: string;
-    acquisitionDate: Moment;
-    collectionDate: Moment;
-    ancestry: string;
-    remarks: any;
-    mlsStatus: string;
-    breedingInstitute: string;
-
-    constructor(object?) {
-        if (object) {
-            this.version = object.version;
-            this.taxonomy = new Taxonomy(object.taxonomy);
-            this.dataSource = new DataSource(object.dataSource);
-            if (object.otherNumbers) {
-                this.otherNumbers = object.otherNumbers.map(item => new AccessionId(item));
-            } else {
-                this.otherNumbers = [];
-            }
-            this.germplasmName = object.germplasmName;
-            this.collectionSite = new GeoLocation(object.collectionSite);
-            this.commonCropName = object.commonCropName;
-            this.germplasmNumber = new AccessionId(object.germplasmNumber);
-            this.collectionNumber = new AccessionId(object.collectionNumber);
-            this.donor = new AccessionId(object.donor);
-            this.collectionSource = object.collectionSource;
-            this.biologicalStatus = object.biologicalStatusOfAccessionCode;
-            this.acquisitionDate = parseMCPDate(object.acquisitionDate);
-            this.collectionDate = parseMCPDate(object.collectionDate);
-            this.ancestry = object.ancestry;
-            this.remarks = object.remarks;
-            this.mlsStatus = object.mlsStatus;
-            this.breedingInstitute = object.breedingInstitute;
-        } else {
-            this.version = '1.0';
-            this.taxonomy = new Taxonomy();
-            this.dataSource = new DataSource();
-            this.otherNumbers = [];
-            this.germplasmName = undefined;
-            this.collectionSite = new GeoLocation();
-            this.commonCropName = undefined;
-            this.germplasmNumber = new AccessionId();
-            this.collectionNumber = new AccessionId();
-            this.donor = new AccessionId();
-            this.collectionSource = undefined;
-            this.biologicalStatus = undefined;
-            this.acquisitionDate = undefined;
-            this.collectionDate = undefined;
-            this.ancestry = undefined;
-            this.remarks = undefined;
-            this.mlsStatus = undefined;
-            this.breedingInstitute = undefined;
-        }
-    }
-    getApiDocument() {
-        const apiData = {'version': this.version};
-        if (this.germplasmNumber) {
-            apiData['germplasmNumber'] = this.germplasmNumber.getApiDocument();
-        }
-        if (this.collectionNumber) {
-            apiData['collectionNumber'] = this.collectionNumber.getApiDocument();
-        }
-        if (this.donor) {
-            apiData['donor'] = this.donor.getApiDocument();
-        }
-        if (this.taxonomy) {
-            apiData['taxonomy'] = this.taxonomy.getApiDocument();
-        }
-        if (this.otherNumbers) {
-            apiData['otherNumbers'] = this.otherNumbers.map(item => item.getApiDocument());
-        }
-        if (this.dataSource) {
-            apiData['dataSource'] = this.dataSource.getApiDocument();
-        }
-        if (this.germplasmName) {
-            apiData['germplasmName'] = this.germplasmName;
-        }
-        if (this.collectionSite) {
-            apiData['collectionSite'] = this.collectionSite.getApiDocument();
-        }
-        if (this.commonCropName) {
-            apiData['commonCropName'] = this.commonCropName;
-        }
-        if (this.collectionSource) {
-            apiData['collectionSource'] = this.collectionSource;
-        }
-        if (this.biologicalStatus) {
-            apiData['biologicalStatusOfAccessionCode'] = this.biologicalStatus;
-        }
-        if (this.acquisitionDate) {
-            apiData['acquisitionDate'] = this.acquisitionDate.format('YYYYMMDD');
-        }
-        if (this.collectionDate) {
-            apiData['collectionDate'] = this.collectionDate.format('YYYYMMDD');
-        }
-        if (this.ancestry) {
-            apiData['ancestry'] = this.ancestry;
-        }
-        if (this.remarks) {
-            apiData['remarks'] = this.remarks;
-        }
-        if (this.mlsStatus) {
-            apiData['mlsStatus'] = this.mlsStatus;
-        }
-        if (this.breedingInstitute) {
-            apiData['breedingInstitute'] = this.breedingInstitute;
-        }
-        return apiData;
-    }
-}
-
-function parseMCPDate(strdate?: string): Moment {
-    if (!strdate) {
-        return undefined;
-    }
-    let year: string;
-    let month: string;
-    let day: String;
-
-    year = strdate.substring(0, 4);
-    month = strdate.substring(4, 6);
-    day = strdate.substring(6);
-
-    if (month === '--') {
-        month = '01';
-    }
-
-    if (day === '--') {
-        day = '01';
-    }
-    const a = moment(year + month + day);
-    return moment(year + month + day);
-}
-
-function pad(num, size) {
-    const s = '000000000' + num;
-    return s.substr(s.length - size);
-}
 
 export class Taxon {
     name: string;
@@ -532,4 +308,227 @@ export class DataSource {
         return apiDoc;
     }
 
+}
+
+export class Passport {
+    version: string;
+    taxonomy: Taxonomy;
+    dataSource: DataSource;
+    otherNumbers: AccessionId[];
+    germplasmName: string;
+    collectionSite: GeoLocation;
+    commonCropName: string;
+    germplasmNumber: AccessionId;
+    collectionNumber: AccessionId;
+    donor: AccessionId;
+    collectionSource: string;
+    biologicalStatus: string;
+    acquisitionDate: Moment;
+    collectionDate: Moment;
+    ancestry: string;
+    remarks: any;
+    mlsStatus: string;
+    breedingInstitute: string;
+
+    constructor(object?) {
+        if (object) {
+            this.version = object.version;
+            this.taxonomy = new Taxonomy(object.taxonomy);
+            this.dataSource = new DataSource(object.dataSource);
+            if (object.otherNumbers) {
+                this.otherNumbers = object.otherNumbers.map(item => new AccessionId(item));
+            } else {
+                this.otherNumbers = [];
+            }
+            this.germplasmName = object.germplasmName;
+            this.collectionSite = new GeoLocation(object.collectionSite);
+            this.commonCropName = object.commonCropName;
+            this.germplasmNumber = new AccessionId(object.germplasmNumber);
+            this.collectionNumber = new AccessionId(object.collectionNumber);
+            this.donor = new AccessionId(object.donor);
+            this.collectionSource = object.collectionSource;
+            this.biologicalStatus = object.biologicalStatusOfAccessionCode;
+            this.acquisitionDate = parseMCPDate(object.acquisitionDate);
+            this.collectionDate = parseMCPDate(object.collectionDate);
+            this.ancestry = object.ancestry;
+            this.remarks = object.remarks;
+            this.mlsStatus = object.mlsStatus;
+            this.breedingInstitute = object.breedingInstitute;
+        } else {
+            this.version = '1.0';
+            this.taxonomy = new Taxonomy();
+            this.dataSource = new DataSource();
+            this.otherNumbers = [];
+            this.germplasmName = undefined;
+            this.collectionSite = new GeoLocation();
+            this.commonCropName = undefined;
+            this.germplasmNumber = new AccessionId();
+            this.collectionNumber = new AccessionId();
+            this.donor = new AccessionId();
+            this.collectionSource = undefined;
+            this.biologicalStatus = undefined;
+            this.acquisitionDate = undefined;
+            this.collectionDate = undefined;
+            this.ancestry = undefined;
+            this.remarks = undefined;
+            this.mlsStatus = undefined;
+            this.breedingInstitute = undefined;
+        }
+    }
+    getApiDocument() {
+        const apiData = {'version': this.version};
+        if (this.germplasmNumber) {
+            apiData['germplasmNumber'] = this.germplasmNumber.getApiDocument();
+        }
+        if (this.collectionNumber) {
+            apiData['collectionNumber'] = this.collectionNumber.getApiDocument();
+        }
+        if (this.donor) {
+            apiData['donor'] = this.donor.getApiDocument();
+        }
+        if (this.taxonomy) {
+            apiData['taxonomy'] = this.taxonomy.getApiDocument();
+        }
+        if (this.otherNumbers) {
+            apiData['otherNumbers'] = this.otherNumbers.map(item => item.getApiDocument());
+        }
+        if (this.dataSource) {
+            apiData['dataSource'] = this.dataSource.getApiDocument();
+        }
+        if (this.germplasmName) {
+            apiData['germplasmName'] = this.germplasmName;
+        }
+        if (this.collectionSite) {
+            apiData['collectionSite'] = this.collectionSite.getApiDocument();
+        }
+        if (this.commonCropName) {
+            apiData['commonCropName'] = this.commonCropName;
+        }
+        if (this.collectionSource) {
+            apiData['collectionSource'] = this.collectionSource;
+        }
+        if (this.biologicalStatus) {
+            apiData['biologicalStatusOfAccessionCode'] = this.biologicalStatus;
+        }
+        if (this.acquisitionDate) {
+            apiData['acquisitionDate'] = this.acquisitionDate.format('YYYYMMDD');
+        }
+        if (this.collectionDate) {
+            apiData['collectionDate'] = this.collectionDate.format('YYYYMMDD');
+        }
+        if (this.ancestry) {
+            apiData['ancestry'] = this.ancestry;
+        }
+        if (this.remarks) {
+            apiData['remarks'] = this.remarks;
+        }
+        if (this.mlsStatus) {
+            apiData['mlsStatus'] = this.mlsStatus;
+        }
+        if (this.breedingInstitute) {
+            apiData['breedingInstitute'] = this.breedingInstitute;
+        }
+        return apiData;
+    }
+}
+
+function parseMCPDate(strdate?: string): Moment {
+    if (!strdate) {
+        return undefined;
+    }
+    let year: string;
+    let month: string;
+    let day: String;
+
+    year = strdate.substring(0, 4);
+    month = strdate.substring(4, 6);
+    day = strdate.substring(6);
+
+    if (month === '--') {
+        month = '01';
+    }
+
+    if (day === '--') {
+        day = '01';
+    }
+    const a = moment(year + month + day);
+    return moment(year + month + day);
+}
+
+function pad(num, size) {
+    const s = '000000000' + num;
+    return s.substr(s.length - size);
+}
+
+export class AccessionData {
+    instituteCode: string;
+    germplasmNumber: string;
+    is_available: boolean;
+    conservation_status: string;
+    countries: string[];
+    genera: string[];
+    passports: Passport[];
+
+    constructor(object?: AccessionData) {
+        if (object) {
+            this.instituteCode = object.instituteCode;
+            this.germplasmNumber = object.germplasmNumber;
+            this.is_available = object.is_available;
+            this.conservation_status = object.conservation_status;
+            this.countries = object.countries;
+            this.genera = object.genera;
+            this.passports = object.passports.map(item => new Passport(item));
+        } else {
+            this.instituteCode = undefined;
+            this.germplasmNumber = undefined;
+            this.is_available = undefined;
+            this.conservation_status = undefined;
+            this.countries = undefined;
+            this.genera = undefined;
+            this.passports = [];
+        }
+    }
+    getApiDocument() {
+        const apiDoc = {};
+        if (this.instituteCode) {
+            apiDoc['instituteCode'] = this.instituteCode;
+        }
+        if (this.germplasmNumber) {
+            apiDoc['germplasmNumber'] = this.germplasmNumber;
+        }
+        if (this.is_available !== undefined) {
+            apiDoc['is_available'] = this.is_available;
+        }
+        if (this.conservation_status) {
+            apiDoc['conservation_status'] = this.conservation_status;
+        }
+        if (this.countries) {
+            apiDoc['countries'] = this.countries;
+        }
+        if (this.genera) {
+            apiDoc['genera'] = this.genera;
+        }
+        if (this.passports) {
+            apiDoc['passports'] = this.passports.map(item => item.getApiDocument());
+        }
+        return apiDoc;
+    }
+}
+
+export class Accession {
+    data: AccessionData;
+    metadata: Metadata;
+    constructor(object?: Accession) {
+        if (object) {
+            this.data = new AccessionData(object.data);
+            this.metadata = new Metadata(object.metadata);
+        } else {
+            this.data = new AccessionData();
+            this.metadata = new Metadata();
+        }
+    }
+    getApiDocument() {
+        return {'data': this.data.getApiDocument(),
+                'metadata': this.metadata.getApiDocument()};
+    }
 }

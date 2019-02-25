@@ -51,7 +51,7 @@ export class AccessionComponent  implements OnChanges {
         }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if ('accession' in changes && this.accession) {
+        if ('accession' in changes && this.accession && this.accession.data.germplasmNumber) {
             this.evalUserPermissions();
             this.accessionsetService.list(
                 {accession_number: this.accession.data.germplasmNumber,

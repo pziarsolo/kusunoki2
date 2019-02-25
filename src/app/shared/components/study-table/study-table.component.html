@@ -1,0 +1,52 @@
+<table mat-table [dataSource]='dataSource' matSort class='datatable mat-elevation-z2'>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+        <td mat-cell *matCellDef="let study">
+            <a [routerLink]="['/', appUrls.phenotypeSubDir,
+                                   appUrls.phenotype.studies, study.data.name]">
+                 {{study.data.name}}
+            </a>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description</th>
+        <td mat-cell *matCellDef="let study"> {{study.data.description}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="start_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Start date</th>
+        <td mat-cell *matCellDef="let study">{{study.data.start_date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="end_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> End date</th>
+        <td mat-cell *matCellDef="let study">{{study.data.end_date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Active</th>
+        <td mat-cell *matCellDef="let study"> {{study.data.active}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="contacts">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Contacts</th>
+        <td mat-cell *matCellDef="let study"> {{study.data.contacts}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+
+</table>
+<div fxLayout='row' fxLayoutAlign="start center" style='margin-top:3px;'>
+    <button mat-button (click)="downloadCsv()">Download in CSV </button>
+    <mat-spinner style='margin-left: 3px;' diameter='30' *ngIf='csvDownloading'></mat-spinner>
+    <span fxFlex></span>
+    <mat-paginator  #paginator
+                [length]="dataSource.totalCount"
+                [pageIndex]="0"
+                [pageSize]="25"
+                [pageSizeOptions]="[1, 2, 3, 10, 25, 50, 100]">
+    </mat-paginator>
+</div>

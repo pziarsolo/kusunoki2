@@ -1,0 +1,18 @@
+<mat-card style='margin:8px;'>
+    <mat-card-title color='accent'>Study Search </mat-card-title>
+    <mat-card-content>
+        <form #searchForm="ngForm" ngSubmit="doSumbit()">
+            <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
+                <mat-form-field fxFlex>
+                    <mat-label>Name</mat-label>
+                    <input type="text"
+                        matInput
+                        [(ngModel)]="searchParams.name"
+                        name="institute">
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" >Search</button>
+            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams={}" >Clear</button>
+        </form>
+    </mat-card-content>
+</mat-card>

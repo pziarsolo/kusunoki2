@@ -2,3 +2,8 @@
                      [editMode]="editMode"
                      [mapId]="'googlemap'">
 </kusunoki2-accession>
+<kusunoki2-observation-table *ngIf="instituteCode && germplasmNumber"
+    [searchParams]="{'accession_number': germplasmNumber,
+                     'accession_institute': instituteCode}" >
+
+</kusunoki2-observation-table>

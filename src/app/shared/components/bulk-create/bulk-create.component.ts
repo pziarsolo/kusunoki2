@@ -1,0 +1,78 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { AppUrls } from 'src/app/pages/appUrls';
+import { ServiceLocatorService } from '../../services/service-locator.service';
+import { AppConfigService } from '../../services/app-config.service';
+import { Router } from '@angular/router';
+import { StatusService } from '../../StatusModule/status.service';
+import { StudyService } from '../../services/study.service';
+import { ObservationService } from '../../services/observation.service';
+import { InstituteService } from '../../services/institute.service';
+import { AccessionSetService } from '../../services/accessionset.service';
+import { AccessionService } from '../../services/accession.service';
+
+@Component({
+    selector: 'kusunoki2-bulk-create',
+    templateUrl: './bulk-create.component.html',
+    styleUrls: ['./bulk-create.component.scss']
+})
+export class BulkCreateComponent implements OnInit {
+    @ViewChild('file') file;
+    errors: String[];
+    uploadedFile: File;
+    num_uploaded: Number;
+
+    uploadTried = false;
+    processing = false;
+    uploadSuccessful;
+
+    service;
+    entityType: string;
+    entityTypePlural: string;
+    constructor(
+        protected serviceLocator: ServiceLocatorService,
+        private statusService: StatusService,
+        private router: Router) {}
+
+    ngOnInit() {
+        if (this.entityType === 'accession') {
+            this.service = this.serviceLocator.injector.get(AccessionService);
+        } else if (this.entityType === 'accessionset') {
+            this.service = this.serviceLocator.injector.get(AccessionSetService);
+        } else if (this.entityType === 'institute') {
+            this.service = this.serviceLocator.injector.get(InstituteService);
+        } else if (this.entityType === 'observation') {
+            this.service = this.serviceLocator.injector.get(ObservationService);
+        } else if (this.entityType === 'study') {
+            this.service = this.serviceLocator.injector.get(StudyService);
+        }
+    }
+    onFileAdded() {
+        this.uploadTried = true;
+        this.processing = true;
+        this.errors = undefined;
+        this.uploadedFile = this.file.nativeElement.files[0];
+        this.service.bulkCreate(this.uploadedFile)
+            .subscribe(
+                (event) => {
+                    if (event.type === HttpEventType.UploadProgress) {
+                        // calculate the progress percentage
+                        const percentDone = Math.round(100 * event.loaded / event.total);
+                        // pass the percentage into the progress-stream
+                    } else if (event instanceof HttpResponse) {
+                        this.processing = false;
+                        this.uploadSuccessful = true;
+                        const task_id = event.body.task_id;
+                        this.statusService.info('Task sendend. Redirecting to task result page');
+                        this.router.navigate(['/', AppUrls.tasks, task_id]);
+                    }
+                },
+                (error) => {
+                    this.processing = false;
+                    this.uploadSuccessful = false;
+                    this.errors = error.error.details;
+                    this.statusService.error('Check the errors');
+                }
+            );
+    }
+}

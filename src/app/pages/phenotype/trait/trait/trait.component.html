@@ -1,0 +1,46 @@
+<div fxLayout="column" *ngIf="trait">
+    <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+        style="width:100%;">
+        <kusunoki2-inline-edit fxFlex
+            [label]="'Trait name'"
+            [value]="trait.name"
+            [config]="config.name"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value' *ngIf="trait.name">
+                <a [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.traits, trait.name]">{{trait.name}}</a> </span>
+            <span class='value' *ngIf="!trait.name">"" </span>
+        </kusunoki2-inline-edit>
+    </div>
+    <kusunoki2-inline-edit fxFlex
+        [label]="'Trait Description'"
+        [value]="trait.description"
+        [config]="config.description"
+        [editMode]="editMode"
+        (validationStateEvent)="checkFormValid($event)">
+        <span class='value' *ngIf="trait.description">{{trait.description}} </span>
+        <span class='value' *ngIf="!trait.description">"" </span>
+    </kusunoki2-inline-edit>
+    <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+        style="width:100%;">
+        <kusunoki2-inline-edit fxFlex
+            [label]="'Ontology'"
+            [value]="trait.ontology"
+            [config]="config.ontology"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value' *ngIf="trait.ontology">{{trait.ontology}} </span>
+            <span class='value' *ngIf="!trait.ontology">"" </span>
+        </kusunoki2-inline-edit>
+        <kusunoki2-inline-edit fxFlex
+            [label]="'Ontology ID'"
+            [value]="trait.ontology_id"
+            [config]="config.ontology_id"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value' *ngIf="trait.ontology_id">{{trait.ontology_id}} </span>
+            <span class='value' *ngIf="!trait.ontology_id">"" </span>
+        </kusunoki2-inline-edit>
+    </div>
+    <button mat-button *ngIf='createMode' (click)="createTrait()">Create Trait</button>
+</div>

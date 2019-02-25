@@ -1,0 +1,18 @@
+<kusunoki2-study-search-form
+    (searchSubmitted)="receiveParams($event)"
+    [hidden]="searchDone">
+</kusunoki2-study-search-form>
+
+<div [hidden]="!searchDone">
+    <mat-card>
+        <mat-card-title>Studies</mat-card-title>
+        <mat-card-content>
+            <div [hidden]="table.dataSource.totalCount"> Not found</div>
+            <kusunoki2-study-table #table
+                [hidden]="!table.dataSource.totalCount"
+                [searchParams]="searchParams"
+                (searchParamsChanged)="searchParamsChanged($event)">
+            </kusunoki2-study-table>
+        </mat-card-content>
+    </mat-card>
+</div>
