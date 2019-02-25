@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AccessionSetService } from '../../../shared/services/accessionset.service';
 import { AccessionSet } from 'src/app/shared/entities/accessionset.model';
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 import { AppConfig } from 'src/app/shared/entities/app-config.model';
+import { AccessionSetService } from 'src/app/shared/services/accessionset.service';
 
 
 @Component({

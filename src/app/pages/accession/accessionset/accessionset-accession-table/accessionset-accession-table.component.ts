@@ -1,7 +1,7 @@
 import { Component, Input, EventEmitter, Output, OnInit, SimpleChange, SimpleChanges, OnChanges } from '@angular/core';
 
-import { Accession } from '../../../shared/entities/accession.model';
 import { MatTableDataSource } from '@angular/material';
+import { Accession } from 'src/app/shared/entities/accession.model';
 
 @Component({
     selector: 'kusunoki2-accessionset-accession-table',

@@ -1,12 +1,12 @@
 import { Component} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { CurrentUserService } from '../../../shared/services/current-user.service';
-import { StatusService } from '../../../shared/StatusModule/status.service';
-import { SearchDataSource, TableListComponent } from '../../../shared/components/table-list/table-list.component';
-import { Institute } from '../../../shared/entities/institute.model';
 import { ServiceLocatorService } from 'src/app/shared/services/service-locator.service';
 import { MatDialog } from '@angular/material';
+import { SearchDataSource, TableListComponent } from 'src/app/shared/components/table-list/table-list.component';
+import { Institute } from 'src/app/shared/entities/institute.model';
+import { CurrentUserService } from 'src/app/shared/services/current-user.service';
+import { StatusService } from 'src/app/shared/StatusModule/status.service';
 
 
 

@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, ViewEncapsulation, SimpleChange, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Accession } from 'src/app/shared/entities/accession.model';
 import { AccessionSet } from 'src/app/shared/entities/accessionset.model';
 import { AccessionSetService } from 'src/app/shared/services/accessionset.service';
 import { AccessionService } from 'src/app/shared/services/accession.service';
 import { forkJoin } from 'rxjs';
-import { mergeMap, map } from 'rxjs/operators';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 

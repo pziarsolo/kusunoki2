@@ -2,18 +2,18 @@ import { Component, Input, SimpleChanges, OnChanges, ViewChildren, OnInit } from
 import { Accession, Passport, AccessionId } from 'src/app/shared/entities/accession.model';
 import { AccessionService } from 'src/app/shared/services/accession.service';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
-import { InlineAutoInstituteComponent } from '../inline-auto-institute/inline-auto-institute.component';
-import { conservation_statuses } from '../assets/conservationStatus';
 import { InlineEditSelectComponent } from 'src/app/shared/components/inline-edit-select/inline-edit-select.component';
 import * as moment from 'moment';
-import { PassportComponent } from '../passport/passport.component';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material';
-import { AppUrls } from '../../appUrls';
 import { Router } from '@angular/router';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { AccessionSetService } from 'src/app/shared/services/accessionset.service';
+import { AppUrls } from 'src/app/pages/appUrls';
+import { conservation_statuses } from '../../assets/conservationStatus';
+import { InlineAutoInstituteComponent } from '../../institute/inline-auto-institute/inline-auto-institute.component';
+import { PassportComponent } from '../../passport/passport.component';
 
 @Component({
     selector: 'kusunoki2-accession',

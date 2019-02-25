@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchDataSource, TableListComponent } from 'src/app/shared/components/table-list/table-list.component';
 import { Accession } from 'src/app/shared/entities/accession.model';
-import { AppUrls } from '../../appUrls';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { ServiceLocatorService } from 'src/app/shared/services/service-locator.service';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { MatDialog } from '@angular/material';
+import { AppUrls } from 'src/app/pages/appUrls';
 
 
 class AccessionDataSource extends SearchDataSource<Accession> {

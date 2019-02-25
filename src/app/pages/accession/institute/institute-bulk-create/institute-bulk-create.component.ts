@@ -7,7 +7,7 @@ import { InstituteService } from 'src/app/shared/services/institute.service';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DataSource } from 'src/app/shared/entities/data_source.model';
 import { Router } from '@angular/router';
-import { AppUrls } from '../../appUrls';
+import { AppUrls } from 'src/app/pages/appUrls';
 
 
 @Component({

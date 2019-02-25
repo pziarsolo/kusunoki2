@@ -3,9 +3,9 @@ import {Component, EventEmitter, Input, OnInit, Output,
 
 import { AppUrls } from 'src/app/pages/appUrls';
 import { InlineEditComponent } from '../inline-edit/inline-edit.component';
-import { InlineAutoInstituteComponent } from 'src/app/pages/accession/inline-auto-institute/inline-auto-institute.component';
 import { InlineEditSelectComponent } from '../inline-edit-select/inline-edit-select.component';
-import { InlineAutoCountryComponent } from 'src/app/pages/accession/inline-auto-country/inline-auto-country.component';
+import { InlineAutoInstituteComponent } from 'src/app/pages/accession/institute/inline-auto-institute/inline-auto-institute.component';
+import { InlineAutoCountryComponent } from 'src/app/pages/accession/country/inline-auto-country/inline-auto-country.component';
 
 
 @Component({

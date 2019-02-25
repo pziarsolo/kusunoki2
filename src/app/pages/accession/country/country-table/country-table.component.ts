@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation} from '@angular/core';
 import { ObservableTableComponent } from 'src/app/shared/components/observable-table/observable-table.component';
-import { AppUrls } from '../../appUrls';
+import { AppUrls } from 'src/app/pages/appUrls';
 
 
 @Component({

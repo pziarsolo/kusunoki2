@@ -3,64 +3,59 @@ import { MatAutocompleteTrigger } from '@angular/material';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AccessionSearchParams } from 'src/app/shared/entities/search-params.model';
+import { AccessionSetSearchParams } from 'src/app/shared/entities/search-params.model';
 import { Institute } from 'src/app/shared/entities/institute.model';
 import { Country } from 'src/app/shared/entities/country.model';
-import { biological_status } from '../assets/biologicalStatus';
-import { InstituteService } from 'src/app/shared/services/institute.service';
 import { Taxon } from 'src/app/shared/entities/taxon.model';
+import { InstituteService } from 'src/app/shared/services/institute.service';
 import { CountryService } from 'src/app/shared/services/country.service';
 import { TaxonService } from 'src/app/shared/services/taxon.service';
-import { AccessionService } from 'src/app/shared/services/accession.service';
-import { Accession } from 'src/app/shared/entities/accession.model';
+import { NumbersService } from 'src/app/shared/services/numbers.service';
+import { biological_status } from '../../assets/biologicalStatus';
 
 
 @Component({
-    selector: 'kusunoki2-accession-search-form',
-    templateUrl: './accession-search-form.component.html',
-    // styleUrls: ['./accession-search-form.component.scss']
+    selector: 'kusunoki2-accessionset-search-form',
+    templateUrl: './accessionset-search-form.component.html',
+    styleUrls: ['./accessionset-search-form.component.scss']
   })
-  export class AccessionSearchFormComponent implements AfterViewInit {
-        @Output() searchSubmitted = new EventEmitter<AccessionSearchParams>();
-        searchParams: AccessionSearchParams = {};
+  export class AccessionSetSearchFormComponent implements AfterViewInit {
+        @Output() searchSubmitted = new EventEmitter<AccessionSetSearchParams>();
+        searchParams: AccessionSetSearchParams = {};
 
-        suggestedAccessions: Observable<Accession[]>;
-        suggestedInstitutes: Observable<Institute[]>;
+        suggestedNumbers: Observable<any[]>;
+        // suggestedInstitutes: Observable<Institute[]>;
         suggestedCountries: Observable<Country[]>;
         suggestedTaxa: Observable<Taxon[]>;
         biologicalStatus = biological_status;
 
         @ViewChild('countryAuto', {read: MatAutocompleteTrigger}) countryTrigger: MatAutocompleteTrigger;
-        @ViewChild('instituteAuto', {read: MatAutocompleteTrigger}) instituteTrigger: MatAutocompleteTrigger;
+        // @ViewChild('instituteAuto', {read: MatAutocompleteTrigger}) instituteTrigger: MatAutocompleteTrigger;
         @ViewChild('taxaAuto', {read: MatAutocompleteTrigger}) taxaTrigger: MatAutocompleteTrigger;
 
         constructor(private instituteService: InstituteService,
                     private countryService: CountryService,
                     private taxaService: TaxonService,
-                    private accessionService: AccessionService) {
+                    private numberService: NumbersService) {
         }
 
         filterNumber(val) {
-            return this.accessionService.list({number_contains: val,
-                                               fields: 'germplasmNumber'})
-                .pipe(map(response => response.body));
+            return this.numberService.list({number__icontains: val})
+                .pipe(map(response => response));
         }
+
         filterInstitute(val) {
-            return this.instituteService.list({name__icontains: val,
-                                               fields: 'instituteCode,name'})
-                .pipe(map(response => response.body));
+            return this.instituteService.list({code_or_name: val, fields: 'instituteCode,name'})
+                .pipe(map(response => response));
         }
         filterCountry(val) {
-            return this.countryService.list({name: val,
-                                             fields: 'code,name'})
+            return this.countryService.list({code_or_name: val, fields: 'code,name'})
                 .pipe(map(response => response.body));
         }
         filterTaxa(name) {
-            return this.taxaService.list({name__icontains: name,
-                                          fields: 'name'})
+            return this.taxaService.list({name__icontains: name, fields: 'name'})
                 .pipe(map(response => response.body));
         }
-
 
         doSubmit() {
             this.searchSubmitted.emit(this.searchParams);
@@ -74,13 +69,6 @@ import { Accession } from 'src/app/shared/entities/accession.model';
                         this.countryTrigger.closePanel();
                     }
                 });
-            this.instituteTrigger.panelClosingActions
-                .subscribe(e => {
-                    if (!(e && e.source)) {
-                        delete this.searchParams.institute_code;
-                        this.instituteTrigger.closePanel();
-                    }
-                });
             this.taxaTrigger.panelClosingActions
                 .subscribe(e => {
                     if (!(e && e.source)) {
@@ -88,7 +76,5 @@ import { Accession } from 'src/app/shared/entities/accession.model';
                         this.taxaTrigger.closePanel();
                     }
                 });
-
         }
     }
-
