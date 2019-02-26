@@ -25,11 +25,13 @@ import { GooglePieChartComponent } from './components/google-piechart/google-pie
 import { GoogleMapMultiMarkerComponent } from './components/google-map-multi-marker/google-map-multi-marker.component';
 import { ProgressSpinnerDialogComponent } from './components/progress-spinner-dialog/progress-spinner-dialog.component';
 import { TableWithFilterComponent } from './components/table-with-filter/table-with-filter.component';
-import { ObservationTableComponent } from './components/observation-table/observation-table.component';
-import { StudyTableComponent } from './components/study-table/study-table.component';
 import { BulkCreateComponent } from './components/bulk-create/bulk-create.component';
 import { RouterModule } from '@angular/router';
 import { TableSearchPageComponent } from './components/table-search-page/table-search-page.component';
+import { ObservationTableComponent } from './components/entity-tables/observation-table/observation-table.component';
+import { StudyTableComponent } from './components/entity-tables/study-table/study-table.component';
+import { AccessionTableComponent } from './components/entity-tables/accession-table/accession-table.component';
+import { AccessionsetTableComponent } from './components/entity-tables/accessionset-table/accessionset-table.component';
 
 @NgModule({
     declarations: [
@@ -54,7 +56,9 @@ import { TableSearchPageComponent } from './components/table-search-page/table-s
         ObservationTableComponent,
         StudyTableComponent,
         BulkCreateComponent,
-        TableSearchPageComponent
+        TableSearchPageComponent,
+        AccessionTableComponent,
+        AccessionsetTableComponent
 
     ],
     imports: [
@@ -97,7 +101,9 @@ import { TableSearchPageComponent } from './components/table-search-page/table-s
         ObservableTableComponent,
         ProgressSpinnerDialogComponent,
         ObservationTableComponent,
-        StudyTableComponent
+        StudyTableComponent,
+        AccessionTableComponent,
+        AccessionsetTableComponent
     ]
 })
 export class SharedModule { }

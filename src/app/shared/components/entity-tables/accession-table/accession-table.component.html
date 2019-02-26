@@ -1,0 +1,54 @@
+<table mat-table #table [dataSource]='dataSource' class='datatable mat-elevation-z2'>
+    <ng-container matColumnDef="instituteCode">
+        <th mat-header-cell *matHeaderCellDef> Institute </th>
+        <td mat-cell *matCellDef="let accessions">
+            <a mat-button [routerLink]="['/', appUrls['institutes'],
+                                        accessions.data.instituteCode]">
+                {{accessions.data.instituteCode}}
+            </a>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="germplasmNumber">
+        <th mat-header-cell *matHeaderCellDef> Accession Number </th>
+        <td mat-cell *matCellDef="let accessions">
+            <a mat-button color='primary' [routerLink]="['/', appUrls.accessions,
+                                                        accessions.data.instituteCode,
+                                                        accessions.data.germplasmNumber]">
+                {{accessions.data.germplasmNumber}}
+            </a>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="countries">
+        <th mat-header-cell *matHeaderCellDef> Country </th>
+        <td mat-cell *matCellDef="let accessions">
+            <a *ngFor="let country of accessions.data.countries" mat-button
+                [routerLink]="['/', appUrls.countries, country]">
+                {{country}}</a>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="genera">
+        <th mat-header-cell *matHeaderCellDef> Genus </th>
+        <td mat-cell *matCellDef="let accessions">
+            <span *ngFor="let genus of accessions.data.genera; let isLast=last">
+                {{genus}}{{isLast ? '' : ' / '}}
+            </span>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
+</table>
+<div fxLayout='row' fxLayoutAlign="start center" style='margin-top:3px;'>
+        <button mat-button (click)="downloadCsv()">Download in CSV </button>
+        <mat-spinner style='margin-left: 3px;' diameter='30' *ngIf='csvDownloading'></mat-spinner>
+        <span fxFlex></span>
+        <mat-paginator  #paginator
+                    [length]="dataSource.totalCount"
+                    [pageIndex]="0"
+                    [pageSize]="25"
+                    [pageSizeOptions]="[1, 2, 3, 10, 25, 50, 100]">
+        </mat-paginator>
+    </div>

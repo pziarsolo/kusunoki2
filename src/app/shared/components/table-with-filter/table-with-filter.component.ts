@@ -13,6 +13,8 @@ import { StatusService } from '../../StatusModule/status.service';
 import { ObservationService } from '../../services/observation.service';
 import { StudyService } from '../../services/study.service';
 import { AppUrls } from 'src/app/pages/appUrls';
+import { AccessionService } from '../../services/accession.service';
+import { AccessionSetService } from '../../services/accessionset.service';
 
 export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
     private itemsSubject = new BehaviorSubject<any[]>([]);
@@ -94,6 +96,10 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
             this.service = this.serviceLocator.injector.get(ObservationService);
         } else if (this.entityType === 'study') {
             this.service = this.serviceLocator.injector.get(StudyService);
+        } else if (this.entityType === 'accession') {
+            this.service = this.serviceLocator.injector.get(AccessionService);
+        }else if (this.entityType === 'accessionset') {
+            this.service = this.serviceLocator.injector.get(AccessionSetService);
         }
         this.createDatasource();
         if (this.searchParams !== undefined) {

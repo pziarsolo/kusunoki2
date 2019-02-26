@@ -31,6 +31,8 @@ import { AccessionSetAccessionTableComponent } from './accessionset/accessionset
 import { CountryTableComponent } from './country/country-table/country-table.component';
 import { InstituteTableComponent } from './institute/institute-table/institute-table.component';
 import { TaxonStatsComponent } from './taxon-stats/taxon-stats.component';
+import { Accession2ListComponent } from './accession/accession2-list/accession2-list.component';
+import { Accessionset2ListComponent } from './accessionset/accessionset2-list/accessionset2-list.component';
 
 const routes: Routes = [
     {
@@ -56,6 +58,10 @@ const routes: Routes = [
     },
     {
         path: AppUrls.accessions,
+        component: Accession2ListComponent
+    },
+    {
+        path: 'accessions2',
         component: AccessionListComponent
     },
     {
@@ -72,7 +78,7 @@ const routes: Routes = [
     },
     {
         path: AppUrls.accessionsets,
-        component: AccessionSetListComponent
+        component: Accessionset2ListComponent
     },
     {
         path: AppUrls.accessionsets + '/bulk_create',
@@ -117,7 +123,9 @@ const routes: Routes = [
         TaxonStatsComponent,
         TaxaStatsPageComponent,
         OtherNumberComponent,
-        OtherNumbersComponent
+        OtherNumbersComponent,
+        Accession2ListComponent,
+        Accessionset2ListComponent
     ],
     imports: [
         SharedModule,

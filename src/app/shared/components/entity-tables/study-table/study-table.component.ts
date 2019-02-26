@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SearchDataSourceNoRouter, TableWithFilterComponent } from '../table-with-filter/table-with-filter.component';
-import { Study } from '../../entities/study.model';
-import { StatusService } from '../../StatusModule/status.service';
-import { ServiceLocatorService } from '../../services/service-locator.service';
-import { CurrentUserService } from '../../services/current-user.service';
+import { Component} from '@angular/core';
+import { SearchDataSourceNoRouter, TableWithFilterComponent } from '../../table-with-filter/table-with-filter.component';
+import { Study } from 'src/app/shared/entities/study.model';
 
 class StudyDataSource extends SearchDataSourceNoRouter<Study> {}
 
