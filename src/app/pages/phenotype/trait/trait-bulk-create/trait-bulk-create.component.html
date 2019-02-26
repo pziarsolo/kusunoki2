@@ -1,0 +1,25 @@
+<mat-card >
+    <mat-card-title>Upload
+        <span *ngIf='entityTypePlural'>{{entityTypePlural}}</span>
+        <span *ngIf='!entityTypePlural'>{{entityType}}s</span>
+    </mat-card-title>
+    <mat-card-content *ngIf='!uploadTried && !uploadSuccessful' >
+        <p>Choose a obo file to upload <button mat-raised-button color='primary' (click)="file.click()">Choose</button></p>
+        <input hidden type="file" #file (change)="onFileAdded()">
+
+    </mat-card-content>
+    <mat-spinner *ngIf="processing">
+    </mat-spinner>
+    <mat-card-content *ngIf='uploadTried && uploadSuccessful === false'>
+        <p>Something went wrong</p>
+        <mat-list *ngIf="errors">
+            <mat-list-item *ngFor='let error of errors'>
+                <mat-icon>clear</mat-icon>{{error}}
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-content *ngIf='uploadTried && uploadSuccessful'>
+        <p>File succesfully uploaded</p>
+        <p>{{num_uploaded}} {{entityType}}}s added</p>
+    </mat-card-content>
+</mat-card>

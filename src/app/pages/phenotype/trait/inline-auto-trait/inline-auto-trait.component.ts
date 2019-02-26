@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewInit, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewInit, ViewChild, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { Observable, Subscription, of } from 'rxjs';
 import { Trait } from 'src/app/shared/entities/trait.model';
@@ -14,7 +14,7 @@ import { startWith, filter, debounceTime, distinctUntilChanged, switchMap, map }
 export class InlineAutoTraitComponent  extends InlineEditComponent implements OnChanges, AfterViewInit {
     suggestions: Observable<Trait[]>;
     subscription: Subscription;
-
+    @Output() AddNewTraitRequested  = new EventEmitter<any>();
     @ViewChild(MatAutocompleteTrigger) trigger;
 
     constructor(public service: TraitService) {

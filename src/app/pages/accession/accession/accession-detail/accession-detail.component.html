@@ -2,8 +2,19 @@
                      [editMode]="editMode"
                      [mapId]="'googlemap'">
 </kusunoki2-accession>
-<kusunoki2-observation-table *ngIf="instituteCode && germplasmNumber"
-    [searchParams]="{'accession_number': germplasmNumber,
-                     'accession_institute': instituteCode}" >
-
-</kusunoki2-observation-table>
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header><h3 class='key'>Observations of this accession</h3></mat-expansion-panel-header>
+        <kusunoki2-observation-table *ngIf="instituteCode && germplasmNumber"
+            [searchParams]="{'accession_number': germplasmNumber,
+                            'accession_institute': instituteCode}" >
+        </kusunoki2-observation-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header><h3 class='key'>Studies where accession has been used</h3></mat-expansion-panel-header>
+        <kusunoki2-study-table *ngIf="instituteCode && germplasmNumber"
+            [searchParams]="{'germplasm_number': germplasmNumber,
+                            'institute': instituteCode}" >
+        </kusunoki2-study-table>
+    </mat-expansion-panel>
+</mat-accordion>

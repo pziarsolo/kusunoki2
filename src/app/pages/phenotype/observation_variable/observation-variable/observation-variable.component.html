@@ -1,6 +1,6 @@
 <mat-card *ngIf="observationVariable">
     <mat-card-title>
-        Trait description methodology (ObservationVariable) <span style='margin-left:3px' class="key">{{observationVariable.data.name}}</span>
+        Trait methodologies (ObservationVariable) <span style='margin-left:3px' class="key">{{observationVariable.data.name}}</span>
         <span fxFlex></span>
         <button mat-raised-button color='accent'
                 *ngIf='userCanEdit && !createMode'
@@ -26,7 +26,7 @@
                     </span>
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit fxFlex
-                    [label]="'Method'"
+                    [label]="'Measurament method'"
                     [value]="observationVariable.data.method"
                     [config]="config.method"
                     [editMode]="editMode"
@@ -46,6 +46,7 @@
             <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center"
                 *ngIf="editMode || createMode">
                 <kusunoki2-inline-auto-trait fxFlex
+                    (AddNewTraitRequested)="addNewTrait()"
                     [label]="'Trait'"
                     [value]="observationVariable.data.trait"
                     [config]="config.trait"
@@ -53,7 +54,6 @@
                     (validationStateEvent)="checkFormValid($event)">
                     <span class='value'> {{observationVariable.data.trait}}</span>
                 </kusunoki2-inline-auto-trait>
-                <button mat-button color='primary' (click)="addNewTrait()">Add new trait</button>
             </div>
             <kusunoki2-inline-edit fxFlex
             *ngIf="editMode || createMode"

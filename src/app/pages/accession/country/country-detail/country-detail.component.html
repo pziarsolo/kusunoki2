@@ -18,11 +18,11 @@
     <mat-expansion-panel-header>Stats by institute</mat-expansion-panel-header>
     <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column" >
         <mat-card fxFlex='grow'>
-            <kusunoki2-institute-table
+            <kusunoki2-institute-stats-table
                 [columnsToDisplay]="['code', 'name', 'num_accessions', 'num_accessionsets']"
                 [items]="instituteStats"
                 [initialQueryParams]="{country: (country|async)?.code}">
-            </kusunoki2-institute-table>
+            </kusunoki2-institute-stats-table>
         </mat-card>
         <mat-card fxFlex='grow'>
             <mat-tab-group>

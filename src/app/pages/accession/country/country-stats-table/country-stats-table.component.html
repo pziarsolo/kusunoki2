@@ -1,4 +1,4 @@
-<table mat-table [dataSource]='dataSource' matSort class='datatable mat-elevation-z2'>
+<table mat-table [dataSource]='dataTable' matSort class='datatable mat-elevation-z2'>
     <ng-container matColumnDef="code">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
         <td mat-cell *matCellDef="let country">
@@ -29,8 +29,8 @@
 
 </table>
 <mat-paginator
-                [length]="dataSource.totalCount"
-                [pageIndex]="0"
-                [pageSize]="25"
-                [pageSizeOptions]="[10, 25, 50, 100]">
+               [length]="dataTable.data.length"
+               [pageIndex]="0"
+               [pageSize]="10"
+               [pageSizeOptions]="[10, 25, 50, 100]">
 </mat-paginator>

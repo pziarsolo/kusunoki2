@@ -1,49 +1,8 @@
 <mat-card style='margin:8px;' >
     <mat-card-content>
         <mat-card-title>Institutes</mat-card-title>
-        <table mat-table  [dataSource]='dataSource' matSort class='datatable mat-elevation-z2'>
-            <ng-container matColumnDef="instituteCode">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
-                <td mat-cell *matCellDef="let institutes">
-                    <a color='primary' [routerLink]="['/', appUrls['institutes'],
-                                                    institutes.instituteCode]">
-                        {{institutes.instituteCode}}
-                    </a>
-                </td>
-            </ng-container>
-
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let institutes">
-                    {{institutes.name}}
-                </td>
-            </ng-container>
-
-            <ng-container matColumnDef="num_accessions">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessions </th>
-                <td mat-cell *matCellDef="let institutes">
-                    <a mat-button (click)="navigateTo(appUrls.accessions, {institute_code: institutes.instituteCode})">
-                        {{institutes.num_accessions}}
-                    </a>
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="num_accessionsets">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. Accessionsets </th>
-                <td mat-cell *matCellDef="let institutes">
-                    <a mat-button (click)="navigateTo(appUrls.accessionsets, {institute_code: institutes.instituteCode})">
-                        {{institutes.num_accessionsets}}
-                    </a>
-                </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-            <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
-
-        </table>
-        <mat-paginator #paginator
-                        [length]="dataSource.totalCount"
-                        [pageIndex]="0"
-                        [pageSize]="25"
-                        [pageSizeOptions]="[10, 25, 50, 100]">
-        </mat-paginator>
+        <kusunoki2-institute-table
+            [searchParams]="{}">
+        </kusunoki2-institute-table>
     </mat-card-content>
 </mat-card>

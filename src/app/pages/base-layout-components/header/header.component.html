@@ -48,10 +48,6 @@
         <mat-icon>show_chart</mat-icon>
         Stats
     </button>
-    <button mat-button [matMenuTriggerFor]="phenotypingMenu" fxHide fxShow.gt-sm mat-button>
-        <mat-icon>filter_vintage</mat-icon>
-        Characterization
-    </button>
     <button *ngIf="(userToken|async)?.isAuthenticated"
             mat-button [matMenuTriggerFor]="addmenu" fxHide fxShow.gt-sm mat-button>
         <mat-icon>add</mat-icon>
@@ -79,6 +75,9 @@
         <!-- <mat-icon>chevron_right</mat-icon> -->
         <span>AccessionSet</span>
     </a>
+    <button mat-menu-item [matMenuTriggerFor]="phenotypingMenu">
+        Characterization
+    </button>
 </mat-menu>
 
 <mat-menu #statsmenu="matMenu" yPosition="above">
@@ -103,11 +102,11 @@
     </a> -->
 </mat-menu>
 <mat-menu #apimenu="matMenu" yPosition="above">
-    <a href='{{apiUrl}}' mat-menu-item>
+    <a [href]='apiUrl' mat-menu-item>
         <mat-icon>computer</mat-icon>
         <span>Browse</span>
     </a>
-    <a href='{{apiDocs}}' mat-menu-item>
+    <a [href]='apiDocs' mat-menu-item>
         <mat-icon>school</mat-icon>
         <span>Docs</span>
     </a>
@@ -141,11 +140,12 @@
 
 <mat-menu #addMenuPhenotype="matMenu">
     <a mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.studies, 'create']">Study</a>
-    <a mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observation_variables, 'create']">Trait methodology descriptors</a>
+    <a mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observation_variables, 'create']">Trait methodologies</a>
     <button mat-menu-item [matMenuTriggerFor]="addBulkMenuPhenotype">Bulk Upoads</button>
 </mat-menu>
 <mat-menu #addBulkMenuPhenotype="matMenu">
     <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.studies, 'bulk_create']">Studies</button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.traits, 'bulk_create']">Traits</button>
     <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observations, 'bulk_create']">Observations</button>
 
 </mat-menu>

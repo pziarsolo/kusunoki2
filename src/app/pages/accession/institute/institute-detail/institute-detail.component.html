@@ -9,11 +9,11 @@
     <mat-expansion-panel-header>Country Stats</mat-expansion-panel-header>
     <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column">
         <mat-card fxFlex>
-            <kusunoki2-country-table
+            <kusunoki2-country-stats-table
                 [columnsToDisplay]="countryColumnsToDisplay"
                 [items]="country_stats"
                 [initialQueryParams]="{institute_code: (institute|async)?.instituteCode}">
-            </kusunoki2-country-table>
+            </kusunoki2-country-stats-table>
 
         </mat-card>
         <mat-card fxFlex>

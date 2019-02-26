@@ -26,10 +26,11 @@
             This value is required
         </mat-error>
         <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]='display'>
+            <mat-option (click)='AddNewTraitRequested.emit()'>Add new Trait... or keep typing for search</mat-option>
             <mat-option *ngFor="let trait of suggestions |async "
                         [value]="trait">
-                <strong>{{ trait.name}}</strong> <span *ngIf="trait.ontology_id">({{trait.ontology_id}})</span><br>
-                ({{trait.description}})
+                <strong>{{ trait.name}}</strong> <span style='margin-left: 5px' *ngIf="trait.ontology_id">({{trait.ontology_id}})</span><br>
+                <span style='font-size: 90%'>{{trait.description}}</span>
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>

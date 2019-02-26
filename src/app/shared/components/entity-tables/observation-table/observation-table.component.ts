@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TableWithFilterComponent, SearchDataSourceNoRouter
 } from 'src/app/shared/components/table-with-filter/table-with-filter.component';
 import { Observation } from 'src/app/shared/entities/observation.model';
@@ -15,9 +15,10 @@ class ObservationDataSource extends SearchDataSourceNoRouter<Observation> {}
 })
 export class ObservationTableComponent extends TableWithFilterComponent {
     entityType = 'observation';
-    columnsToDisplay = ['observation_id', 'study', 'observation_unit',
-                        'accession', 'observation_variable', 'value',
-                        'creation_time'];
+    defColumnsToDisplay = ['observation_id', 'study', 'observation_unit',
+                           'accession', 'observation_variable', 'value',
+                           'creation_time'];
+    @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
     extraSearchParams = {};
     appUrls = AppUrls;
 

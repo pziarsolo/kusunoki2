@@ -28,11 +28,13 @@ import { AccessionSetListComponent } from './accessionset/accessionset-list/acce
 import { AccessionSetDetailComponent } from './accessionset/accessionset-detail/accessionset-detail.component';
 import { AccessionSetComponent } from './accessionset/accessionset/accessionset.component';
 import { AccessionSetAccessionTableComponent } from './accessionset/accessionset-accession-table/accessionset-accession-table.component';
-import { CountryTableComponent } from './country/country-table/country-table.component';
-import { InstituteTableComponent } from './institute/institute-table/institute-table.component';
 import { TaxonStatsComponent } from './taxon-stats/taxon-stats.component';
 import { Accession2ListComponent } from './accession/accession2-list/accession2-list.component';
 import { Accessionset2ListComponent } from './accessionset/accessionset2-list/accessionset2-list.component';
+import { CountryStatsTableComponent } from './country/country-stats-table/country-stats-table.component';
+import { CountryTableComponent } from './country/country-table/country-table.component';
+import { InstituteStatsTableComponent } from './institute/institute-stats-table/institute-stats-table.component';
+import { InstituteTableComponent } from './institute/institute-table/institute-table.component';
 
 const routes: Routes = [
     {
@@ -118,14 +120,16 @@ const routes: Routes = [
         AccessionSetDetailComponent,
         AccessionSetComponent,
         AccessionSetAccessionTableComponent,
-        CountryTableComponent,
-        InstituteTableComponent,
+        CountryStatsTableComponent,
+        InstituteStatsTableComponent,
         TaxonStatsComponent,
         TaxaStatsPageComponent,
         OtherNumberComponent,
         OtherNumbersComponent,
         Accession2ListComponent,
-        Accessionset2ListComponent
+        Accessionset2ListComponent,
+        CountryTableComponent,
+        InstituteTableComponent
     ],
     imports: [
         SharedModule,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AppUrls } from 'src/app/pages/appUrls';
 import { SearchDataSourceNoRouter, TableWithFilterComponent } from '../../table-with-filter/table-with-filter.component';
 import { AccessionSet } from 'src/app/shared/entities/accessionset.model';
@@ -12,7 +12,8 @@ class AccessionSetDataSource extends SearchDataSourceNoRouter<AccessionSet> {}
 })
 export class AccessionsetTableComponent extends TableWithFilterComponent {
     entityType = 'accessionset';
-    columnsToDisplay = ['accessionsetNumber', 'countries', 'genera'];
+    defColumnsToDisplay = ['accessionsetNumber', 'countries', 'genera'];
+    @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
     extraSearchParams = {};
     appUrls = AppUrls;
 

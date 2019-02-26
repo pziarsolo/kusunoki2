@@ -15,6 +15,9 @@ import { StudyService } from '../../services/study.service';
 import { AppUrls } from 'src/app/pages/appUrls';
 import { AccessionService } from '../../services/accession.service';
 import { AccessionSetService } from '../../services/accessionset.service';
+import { CountryService } from '../../services/country.service';
+import { InstituteService } from '../../services/institute.service';
+import { Router } from '@angular/router';
 
 export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
     private itemsSubject = new BehaviorSubject<any[]>([]);
@@ -75,7 +78,10 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     get searchParams(): any {
         return this._searchParams;
     }
+    defColumnsToDisplay: string[];
+    @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
     @Output() searchParamsChanged = new EventEmitter<any>();
+    @Output() searchFinished = new EventEmitter<number>();
     entityType: string;
     service;
     dataSource;
@@ -88,7 +94,8 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     constructor(
         protected currentUserService: CurrentUserService,
         protected serviceLocator: ServiceLocatorService,
-        protected statusService: StatusService) {
+        protected statusService: StatusService,
+        private router: Router) {
     }
 
     ngOnInit() {
@@ -98,8 +105,12 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
             this.service = this.serviceLocator.injector.get(StudyService);
         } else if (this.entityType === 'accession') {
             this.service = this.serviceLocator.injector.get(AccessionService);
-        }else if (this.entityType === 'accessionset') {
+        } else if (this.entityType === 'accessionset') {
             this.service = this.serviceLocator.injector.get(AccessionSetService);
+        } else if (this.entityType === 'country') {
+            this.service = this.serviceLocator.injector.get(CountryService);
+        } else if (this.entityType === 'institute') {
+            this.service = this.serviceLocator.injector.get(InstituteService);
         }
         this.createDatasource();
         if (this.searchParams !== undefined) {
@@ -130,6 +141,8 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
             searchParams = Object.assign({}, searchParams);
             this.updatePaginatorState(searchParams);
             this.dataSource.loadItems(searchParams);
+            console.log(this.dataSource.totalCount);
+            this.searchFinished.emit(this.dataSource.totalCount);
             // if (this.searchParams !== undefined) {
             //     this.searchParamsChanged.emit(this.searchParams);
             // }
@@ -166,5 +179,11 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
                     this.statusService.error(error);
                     this.csvDownloading = false;
                 });
+    }
+    navigateTo(baseUrl, queryParams) {
+        queryParams = {...this.searchParams, ...queryParams};
+        console.log(queryParams);
+        this.router.navigate([baseUrl], {queryParams: queryParams});
+
     }
 }

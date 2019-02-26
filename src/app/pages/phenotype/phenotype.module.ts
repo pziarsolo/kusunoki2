@@ -21,6 +21,7 @@ import { ScaleComponent } from './scale/scale/scale.component';
 import { TraitComponent } from './trait/trait/trait.component';
 import { ObservationVariableComponent } from './observation_variable/observation-variable/observation-variable.component';
 import { ObservationSearchFormComponent } from './observation/observation-search-form/observation-search-form.component';
+import { TraitBulkCreateComponent } from './trait/trait-bulk-create/trait-bulk-create.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
     {
         path: AppUrls.phenotype.observation_variables + '/:name',
         component: ObservationVariableDetailComponent,
+    },
+    {
+        path: AppUrls.phenotype.traits + '/bulk_create',
+        component: TraitBulkCreateComponent,
     },
     {
         path: AppUrls.phenotype.traits + '/:name',
@@ -78,6 +83,7 @@ const routes: Routes = [
         TraitDetailComponent,
         ScaleDetailComponent,
         ScaleComponent,
+        TraitBulkCreateComponent,
     ],
     entryComponents: [
         TraitCreateDialogComponent,

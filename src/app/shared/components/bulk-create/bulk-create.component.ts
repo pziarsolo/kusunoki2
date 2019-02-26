@@ -10,6 +10,7 @@ import { ObservationService } from '../../services/observation.service';
 import { InstituteService } from '../../services/institute.service';
 import { AccessionSetService } from '../../services/accessionset.service';
 import { AccessionService } from '../../services/accession.service';
+import { TraitService } from '../../services/trait.service';
 
 @Component({
     selector: 'kusunoki2-bulk-create',
@@ -45,6 +46,8 @@ export class BulkCreateComponent implements OnInit {
             this.service = this.serviceLocator.injector.get(ObservationService);
         } else if (this.entityType === 'study') {
             this.service = this.serviceLocator.injector.get(StudyService);
+        } else if (this.entityType === 'trait') {
+            this.service = this.serviceLocator.injector.get(TraitService);
         }
     }
     onFileAdded() {
