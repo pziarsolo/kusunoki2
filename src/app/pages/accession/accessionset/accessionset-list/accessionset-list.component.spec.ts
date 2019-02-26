@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Accession2ListComponent } from './accession2-list.component';
+import { Accessionset2ListComponent } from './accessionset-list.component';
 
-describe('Accession2ListComponent', () => {
-  let component: Accession2ListComponent;
-  let fixture: ComponentFixture<Accession2ListComponent>;
+describe('Accessionset2ListComponent', () => {
+  let component: Accessionset2ListComponent;
+  let fixture: ComponentFixture<Accessionset2ListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Accession2ListComponent ]
+      declarations: [ Accessionset2ListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Accession2ListComponent);
+    fixture = TestBed.createComponent(Accessionset2ListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -18,6 +18,7 @@ import { AccessionSetService } from '../../services/accessionset.service';
 import { CountryService } from '../../services/country.service';
 import { InstituteService } from '../../services/institute.service';
 import { Router } from '@angular/router';
+import { TaskService } from '../../services/task.service';
 
 export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
     private itemsSubject = new BehaviorSubject<any[]>([]);
@@ -111,6 +112,8 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
             this.service = this.serviceLocator.injector.get(CountryService);
         } else if (this.entityType === 'institute') {
             this.service = this.serviceLocator.injector.get(InstituteService);
+        } else if (this.entityType === 'task') {
+            this.service = this.serviceLocator.injector.get(TaskService);
         }
         this.createDatasource();
         if (this.searchParams !== undefined) {

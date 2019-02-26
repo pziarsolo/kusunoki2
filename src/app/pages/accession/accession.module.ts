@@ -29,8 +29,6 @@ import { AccessionSetDetailComponent } from './accessionset/accessionset-detail/
 import { AccessionSetComponent } from './accessionset/accessionset/accessionset.component';
 import { AccessionSetAccessionTableComponent } from './accessionset/accessionset-accession-table/accessionset-accession-table.component';
 import { TaxonStatsComponent } from './taxon-stats/taxon-stats.component';
-import { Accession2ListComponent } from './accession/accession2-list/accession2-list.component';
-import { Accessionset2ListComponent } from './accessionset/accessionset2-list/accessionset2-list.component';
 import { CountryStatsTableComponent } from './country/country-stats-table/country-stats-table.component';
 import { CountryTableComponent } from './country/country-table/country-table.component';
 import { InstituteStatsTableComponent } from './institute/institute-stats-table/institute-stats-table.component';
@@ -60,7 +58,7 @@ const routes: Routes = [
     },
     {
         path: AppUrls.accessions,
-        component: Accession2ListComponent
+        component: AccessionListComponent
     },
     {
         path: 'accessions2',
@@ -80,7 +78,7 @@ const routes: Routes = [
     },
     {
         path: AppUrls.accessionsets,
-        component: Accessionset2ListComponent
+        component: AccessionSetListComponent
     },
     {
         path: AppUrls.accessionsets + '/bulk_create',
@@ -126,8 +124,6 @@ const routes: Routes = [
         TaxaStatsPageComponent,
         OtherNumberComponent,
         OtherNumbersComponent,
-        Accession2ListComponent,
-        Accessionset2ListComponent,
         CountryTableComponent,
         InstituteTableComponent
     ],

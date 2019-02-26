@@ -13,7 +13,6 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home-component';
-import { TableListComponent } from './components/table-list/table-list.component';
 import { InlineEditSelectComponent } from './components/inline-edit-select/inline-edit-select.component';
 import { BaseInlinesForm2Component } from './components/base-inlines2-form/base-inlines-form2.component';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
@@ -31,7 +30,7 @@ import { TableSearchPageComponent } from './components/table-search-page/table-s
 import { ObservationTableComponent } from './components/entity-tables/observation-table/observation-table.component';
 import { StudyTableComponent } from './components/entity-tables/study-table/study-table.component';
 import { AccessionTableComponent } from './components/entity-tables/accession-table/accession-table.component';
-import { AccessionsetTableComponent } from './components/entity-tables/accessionset-table/accessionset-table.component';
+import { AccessionSetTableComponent } from './components/entity-tables/accessionset-table/accessionset-table.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +41,6 @@ import { AccessionsetTableComponent } from './components/entity-tables/accession
         PasswordFormComponent,
         DeleteDialogComponent,
         HomeComponent,
-        TableListComponent,
         InlineEditSelectComponent,
         GoogleMapComponent,
         GoogleMapchartComponent,
@@ -58,7 +56,7 @@ import { AccessionsetTableComponent } from './components/entity-tables/accession
         BulkCreateComponent,
         TableSearchPageComponent,
         AccessionTableComponent,
-        AccessionsetTableComponent
+        AccessionSetTableComponent
 
     ],
     imports: [
@@ -90,7 +88,6 @@ import { AccessionsetTableComponent } from './components/entity-tables/accession
         PasswordFormComponent,
         DeleteDialogComponent,
         HomeComponent,
-        TableListComponent,
         InlineEditSelectComponent,
         GoogleMapComponent,
         GoogleMapchartComponent,
@@ -103,7 +100,7 @@ import { AccessionsetTableComponent } from './components/entity-tables/accession
         ObservationTableComponent,
         StudyTableComponent,
         AccessionTableComponent,
-        AccessionsetTableComponent
+        AccessionSetTableComponent
     ]
 })
 export class SharedModule { }

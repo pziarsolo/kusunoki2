@@ -10,7 +10,7 @@ class AccessionSetDataSource extends SearchDataSourceNoRouter<AccessionSet> {}
   templateUrl: './accessionset-table.component.html',
   styleUrls: ['./accessionset-table.component.scss']
 })
-export class AccessionsetTableComponent extends TableWithFilterComponent {
+export class AccessionSetTableComponent extends TableWithFilterComponent {
     entityType = 'accessionset';
     defColumnsToDisplay = ['accessionsetNumber', 'countries', 'genera'];
     @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
