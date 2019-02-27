@@ -15,13 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home-component';
 import { InlineEditSelectComponent } from './components/inline-edit-select/inline-edit-select.component';
 import { BaseInlinesForm2Component } from './components/base-inlines2-form/base-inlines-form2.component';
-import { GoogleMapComponent } from './components/google-map/google-map.component';
-import { GoogleMapchartComponent } from './components/google-mapchart/google-mapchart.component';
 import { ObservableTableComponent } from './components/observable-table/observable-table.component';
-import { GoogleBarchartComponent } from './components/google-barchart/google-barchart.component';
-import { GoogleTreemapComponent } from './components/google-treemap/google-treemap.component';
-import { GooglePieChartComponent } from './components/google-piechart/google-piechart.component';
-import { GoogleMapMultiMarkerComponent } from './components/google-map-multi-marker/google-map-multi-marker.component';
 import { ProgressSpinnerDialogComponent } from './components/progress-spinner-dialog/progress-spinner-dialog.component';
 import { TableWithFilterComponent } from './components/table-with-filter/table-with-filter.component';
 import { BulkCreateComponent } from './components/bulk-create/bulk-create.component';
@@ -31,6 +25,12 @@ import { ObservationTableComponent } from './components/entity-tables/observatio
 import { StudyTableComponent } from './components/entity-tables/study-table/study-table.component';
 import { AccessionTableComponent } from './components/entity-tables/accession-table/accession-table.component';
 import { AccessionSetTableComponent } from './components/entity-tables/accessionset-table/accessionset-table.component';
+import { GoogleMapComponent } from './components/google/google-map/google-map.component';
+import { GoogleMapchartComponent } from './components/google/google-mapchart/google-mapchart.component';
+import { GoogleBarchartComponent } from './components/google/google-barchart/google-barchart.component';
+import { GoogleTreemapComponent } from './components/google/google-treemap/google-treemap.component';
+import { GooglePieChartComponent } from './components/google/google-piechart/google-piechart.component';
+import { GoogleMapMultiMarkerComponent } from './components/google/google-map-multi-marker/google-map-multi-marker.component';
 
 @NgModule({
     declarations: [

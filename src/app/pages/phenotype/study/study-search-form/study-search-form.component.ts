@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { StudySearchParams } from 'src/app/shared/entities/search-params.model';
 
 @Component({
   selector: 'kusunoki2-study-search-form',
@@ -7,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class StudySearchFormComponent {
     @Output() searchSubmitted = new EventEmitter<any>();
-    searchParams = {};
+    searchParams: StudySearchParams = {};
 
     doSubmit() {
         this.searchSubmitted.emit(this.searchParams);

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TableSearchPageComponent } from 'src/app/shared/components/table-search-page/table-search-page.component';
 import { AccessionTableComponent } from 'src/app/shared/components/entity-tables/accession-table/accession-table.component';
 

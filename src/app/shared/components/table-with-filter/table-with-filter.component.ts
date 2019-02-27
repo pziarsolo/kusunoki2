@@ -144,7 +144,6 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
             searchParams = Object.assign({}, searchParams);
             this.updatePaginatorState(searchParams);
             this.dataSource.loadItems(searchParams);
-            console.log(this.dataSource.totalCount);
             this.searchFinished.emit(this.dataSource.totalCount);
             // if (this.searchParams !== undefined) {
             //     this.searchParamsChanged.emit(this.searchParams);

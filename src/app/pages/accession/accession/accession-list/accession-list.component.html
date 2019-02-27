@@ -10,7 +10,7 @@
                 <!-- <mat-spinner diameter='30' *ngIf='operationInProgress'></mat-spinner> -->
                 <button  mat-icon-button [matMenuTriggerFor]="moreMenu"><mat-icon>more_vert</mat-icon></button>
         </mat-card-title>
-        <mat-card-subtitle>Total: {{table.dataSource.totalCount}} accessoins found</mat-card-subtitle>
+        <mat-card-subtitle>Total: {{table.dataSource.totalCount}} accessions found</mat-card-subtitle>
         <mat-card-content>
             <div [hidden]="table.dataSource.totalCount"> Not found</div>
             <kusunoki2-accession-table #table

@@ -22,3 +22,11 @@ export interface AccessionSetSearchParams extends AccessionSearchParams {
     accessionset_number_contains?: string;
     accessionset_number?: string;
 }
+
+export interface ObservationSearchParams {
+    study?: string;
+}
+
+export interface StudySearchParams {
+    name?: string;
+}

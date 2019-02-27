@@ -2,7 +2,7 @@ import { Component, Input, SimpleChanges, OnChanges, ViewChildren, AfterViewChec
 import { Router } from '@angular/router';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { AppUrls } from '../../appUrls';
-import { GooglePieChartComponent } from 'src/app/shared/components/google-piechart/google-piechart.component';
+import { GooglePieChartComponent } from 'src/app/shared/components/google/google-piechart/google-piechart.component';
 
 const ALLOWED_RANKS = ['genus', 'species', 'subspecies', 'variety', 'convarietas', 'group', 'forma'];
 

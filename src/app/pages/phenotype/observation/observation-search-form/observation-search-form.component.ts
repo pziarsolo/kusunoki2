@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { ObservationSearchParams } from 'src/app/shared/entities/search-params.model';
 
 @Component({
   selector: 'kusunoki2-observation-search-form',
@@ -7,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ObservationSearchFormComponent {
     @Output() searchSubmitted = new EventEmitter<any>();
-    searchParams = {};
+    searchParams: ObservationSearchParams =  {};
 
     doSubmit() {
         this.searchSubmitted.emit(this.searchParams);
