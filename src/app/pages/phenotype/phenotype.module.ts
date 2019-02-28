@@ -22,6 +22,8 @@ import { TraitComponent } from './trait/trait/trait.component';
 import { ObservationVariableComponent } from './observation_variable/observation-variable/observation-variable.component';
 import { ObservationSearchFormComponent } from './observation/observation-search-form/observation-search-form.component';
 import { TraitBulkCreateComponent } from './trait/trait-bulk-create/trait-bulk-create.component';
+import { InlineAutoScaleComponent } from './scale/inline-auto-scale/inline-auto-scale.component';
+import { ScaleCreateDialogComponent } from './scale/scale-create-dialog/scale-create-dialog.component';
 
 
 const routes: Routes = [
@@ -84,9 +86,12 @@ const routes: Routes = [
         ScaleDetailComponent,
         ScaleComponent,
         TraitBulkCreateComponent,
+        InlineAutoScaleComponent,
+        ScaleCreateDialogComponent,
     ],
     entryComponents: [
         TraitCreateDialogComponent,
+        ScaleCreateDialogComponent
     ],
     imports: [
         SharedModule,

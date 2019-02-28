@@ -1,3 +1,74 @@
-<p>
-  scale works!
-</p>
+<div fxLayout="column" *ngIf="scale">
+    <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+        style="width:100%;">
+        <kusunoki2-inline-edit fxFlex
+            [label]="'Scale name'"
+            [value]="scale.name"
+            [config]="config.name"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value' *ngIf="scale.name">
+                <a [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.scales, scale.name]">{{scale.name}}</a> </span>
+            <span class='value' *ngIf="!scale.name">"" </span>
+        </kusunoki2-inline-edit>
+        <kusunoki2-inline-edit-select fxFlex #dataType
+            [label]="'Scale Data type'"
+            [value]="scale.data_type"
+            [choices]="dataTypeChoices"
+            [config]="config.data_type"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+        </kusunoki2-inline-edit-select>
+    </div>
+    <kusunoki2-inline-edit fxFlex
+        [label]="'Scale Description'"
+        [value]="scale.description"
+        [config]="config.description"
+        [editMode]="editMode"
+        (validationStateEvent)="checkFormValid($event)">
+        <span class='value' *ngIf="scale.description">{{scale.description}} </span>
+        <span class='value' *ngIf="!scale.description">"" </span>
+    </kusunoki2-inline-edit>
+
+    <div *ngIf="dataType.value && dataType.value.code === 'Numerical'"
+        fxlayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+        style="width:100%;">
+        <kusunoki2-inline-edit fxFlex #decimalPlaces
+            [label]="'Scale decimal places'"
+            [value]="scale.decimal_places"
+            [config]="config.decimal_places"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value' *ngIf="scale.decimal_places !== undefined">{{scale.decimal_places}} </span>
+            <span class='value' *ngIf="scale.decimal_places === undefined">"" </span>
+        </kusunoki2-inline-edit>
+        <kusunoki2-inline-edit fxFlex
+            [label]="'Scale min'"
+            [value]="scale.min"
+            [config]="config.min"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value' *ngIf="scale.min !== undefined">{{scale.min}} </span>
+            <span class='value' *ngIf="scale.min === undefined">"" </span>
+        </kusunoki2-inline-edit>
+        <kusunoki2-inline-edit fxFlex
+            [label]="'Scale max'"
+            [value]="scale.max"
+            [config]="config.max"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value' *ngIf="scale.max !== undefined">{{scale.max}} </span>
+            <span class='value' *ngIf="scale.max === undefined">"" </span>
+        </kusunoki2-inline-edit>
+    </div>
+    <div *ngIf="dataType.value && dataType.value.code && dataType.value.code !== 'Numerical'">
+        <kusunoki2-inline-edit-list
+            [label]="'Valid Values'"
+            [value]="scale.valid_values"
+            [config]="config.valid_values"
+            [sortable]="dataType.value && dataType.value.code === 'Ordinal'"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+        </kusunoki2-inline-edit-list>
+    </div>
+</div>

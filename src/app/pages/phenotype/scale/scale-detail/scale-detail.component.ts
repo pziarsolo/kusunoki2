@@ -1,6 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CurrentUserService } from 'src/app/shared/services/current-user.service';
+import { AppUrls } from 'src/app/pages/appUrls';
+import { ScaleComponent } from '../scale/scale.component';
 
 @Component({
   selector: 'kusunoki2-scale-detail',
@@ -12,11 +15,18 @@ export class ScaleDetailComponent implements OnInit, OnDestroy {
     editMode = false;
     createMode = false;
     routerSubscription: Subscription;
+    userCanEdit: boolean;
 
-    constructor(private route: ActivatedRoute) { }
+    @ViewChild(ScaleComponent) scaleComponent;
+
+    constructor(
+        private route: ActivatedRoute,
+        private currentUserService: CurrentUserService,
+        private router: Router) { }
 
     ngOnInit(): void {
         this.routerSubscription = this.route.params.subscribe(params => {
+            this.evalUserPermissions();
             if (params.name === 'create') {
                 this.createMode = true;
                 this.editMode = true;
@@ -28,5 +38,38 @@ export class ScaleDetailComponent implements OnInit, OnDestroy {
     }
     ngOnDestroy(): void {
         this.routerSubscription.unsubscribe();
+    }
+    evalUserPermissions() {
+        if (this.userCanEdit === undefined) {
+            const userToken = this.currentUserService.currentUserSubject.value;
+
+            if (userToken.is_staff) {
+                this.userCanEdit = true;
+            } else {
+                this.userCanEdit = false;
+            }
+        }
+    }
+    scaleCreated(scale) {
+        this.router.navigate(['/', AppUrls.phenotypeSubDir,
+                              AppUrls.phenotype.scales,
+                              scale.name]);
+        this.editMode = false;
+        this.createMode = false;
+    }
+    scaleDeleted($event) {
+        this.router.navigate(['/', AppUrls.phenotypeSubDir,
+                              AppUrls.phenotype.scales]);
+    }
+    cancelChange() {
+        if (this.createMode) {
+            this.router.navigate([
+                AppUrls.phenotypeSubDir,
+                AppUrls.phenotype.scales]);
+        } else {
+            this.editMode = false;
+            this.scaleComponent.resetForm();
+
+        }
     }
 }

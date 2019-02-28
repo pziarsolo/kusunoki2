@@ -1,5 +1,35 @@
-<kusunoki2-observation-variable
-    [name]="name"
-    [editMode]="editMode"
-    [createMode]="createMode">
-</kusunoki2-observation-variable>
+<mat-card>
+    <mat-card-title>
+        Trait methodologies (ObservationVariable) <span style='margin-left:3px' class="key">{{name}}</span>
+        <span fxFlex></span>
+        <button mat-raised-button color='accent'
+                *ngIf='userCanEdit && !createMode'
+                [matMenuTriggerFor]="ActionMenu">
+            Actions
+        </button>
+    </mat-card-title>
+    <mat-card-content>
+        <kusunoki2-observation-variable #variable
+            [name]="name"
+            [editMode]="editMode"
+            [createMode]="createMode"
+            (variableCreated)="variableCreated($event)"
+            (variableDeleted)="variableDeleted($event)" >
+        </kusunoki2-observation-variable>
+    </mat-card-content>
+    <mat-card-actions *ngIf='editMode || createMode'>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
+        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!variable.allInputAreValid' mat-raised-button color='accent' (click)="variable.updateVariable()">Update</button>
+        <button *ngIf='createMode && editMode' [disabled]='!variable.allInputAreValid' mat-raised-button color='accent' (click)="variable.createVariable()">Create</button>
+    </mat-card-actions>
+
+</mat-card>
+<mat-menu #ActionMenu="matMenu">
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+    <!-- <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
+        <mat-icon *ngIf='!study.metadata.is_public'>public</mat-icon>
+        <mat-icon *ngIf='study.metadata.is_public' color='warn'>public</mat-icon>
+        Make <span *ngIf='!study.metadata.is_public'>Public</span><span *ngIf='study.metadata.is_public'>Private</span>
+    </button> -->
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="variable.deleteVariable()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+</mat-menu>

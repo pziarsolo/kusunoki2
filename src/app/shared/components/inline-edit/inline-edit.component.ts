@@ -37,8 +37,17 @@ export class InlineEditComponent implements OnInit, OnDestroy {
 
     constructor() {}
 
+    setInitialValue() {
+        if (this.value === undefined || this.value === null) {
+            this.initialValue = this.value;
+        } else {
+            this.initialValue = this.value;
+        }
+
+    }
     ngOnInit() {
-        this.initialValue = this.value;
+        this.setInitialValue();
+
         this.setConfigDefaultValues();
         this.inputControl = new FormControl(this.value,
                                              this.config.validators);
@@ -134,6 +143,7 @@ export class InlineEditComponent implements OnInit, OnDestroy {
     }
 
     getValueIfFormValid() {
+        console.log(this.config.name, this.inputControl.valid, this.inputControl.value)
         if (this.inputControl.valid) {
             if (this.inputControl.value !== null &&
                 this.inputControl.value !== undefined &&

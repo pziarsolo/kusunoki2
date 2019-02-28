@@ -1,6 +1,6 @@
 <form [formGroup]="form" [hidden]='hideForm()'>
     <mat-form-field style='width: 100%;' >
-        <mat-placeholder> Trait </mat-placeholder>
+        <mat-placeholder> Scale </mat-placeholder>
         <input matInput type="text" [hidden]="!config.is_editable ||(config.is_editable && !editMode)"
             formControlName="inputControl"
             #input_control [matAutocomplete]="autocomplete"
@@ -8,11 +8,6 @@
 
         <div [hidden]='config.is_editable && editMode'>
             <span *ngIf='initialValue'> {{initialValue}}
-                <!-- <a routerLink='/countries/{{initialValue.code}}'
-                    [matTooltip]="initialValue.name"
-                    matTooltipPosition='after'>
-                    {{initialValue.code}}: {{initialValue.name}}
-                </a> -->
             </span>
             <span *ngIf='!initialValue'>''</span>
 
@@ -27,11 +22,10 @@
         </mat-error>
         <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]='display'>
             <mat-option *ngIf="userCanCreate"
-                        (click)='AddNewTraitRequested.emit()'>Add new Trait... or keep typing for search</mat-option>
-            <mat-option *ngFor="let trait of suggestions |async "
-                        [value]="trait">
-                <strong>{{ trait.name}}</strong> <span style='margin-left: 5px' *ngIf="trait.ontology_id">({{trait.ontology_id}})</span><br>
-                <span style='font-size: 90%'>{{trait.description}}</span>
+                        (click)='AddNewScaleRequested.emit()'>Add new Scale... or keep typing for search</mat-option>
+            <mat-option *ngFor="let scale of suggestions |async "
+                        [value]="scale">
+                <strong>{{ scale.name}}</strong> <span style='margin-left: 5px'>({{scale.description}})</span>
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>

@@ -1,11 +1,29 @@
 <mat-card>
-    <mat-card-title>Trait <span class='key' style='margin-left:5px'> {{name}}</span>
+    <mat-card-title>
+        Trait <span class='key' style='margin-left:5px'> {{name}}</span>
+        <span fxFlex></span>
+        <button mat-raised-button color='accent'
+                *ngIf='userCanEdit && !createMode'
+                [matMenuTriggerFor]="ActionMenu">
+            Actions
+        </button>
     </mat-card-title>
     <mat-card-content>
-        <kusunoki2-trait
+        <kusunoki2-trait #trait
             [name]="name"
             [editMode]="editMode"
-            [createMode]="createMode">
+            [createMode]="createMode"
+            (traitCreated)="traitCreated($event)"
+            (traitDeleted)="traitDeleted($event)">
         </kusunoki2-trait>
     </mat-card-content>
+    <mat-card-actions *ngIf='editMode || createMode'>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
+        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!trait.allInputAreValid' mat-raised-button color='accent' (click)="editMode=false;trait.updateTrait()">Update</button>
+        <button *ngIf='createMode && editMode' [disabled]='!trait.allInputAreValid' mat-raised-button color='accent' (click)="trait.createTrait()">Create</button>
+    </mat-card-actions>
 </mat-card>
+<mat-menu #ActionMenu="matMenu">
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="trait.deleteTrait()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+</mat-menu>

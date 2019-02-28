@@ -31,6 +31,7 @@ import { GoogleBarchartComponent } from './components/google/google-barchart/goo
 import { GoogleTreemapComponent } from './components/google/google-treemap/google-treemap.component';
 import { GooglePieChartComponent } from './components/google/google-piechart/google-piechart.component';
 import { GoogleMapMultiMarkerComponent } from './components/google/google-map-multi-marker/google-map-multi-marker.component';
+import { InlineEditListComponent } from './components/inline-edit-list/inline-edit-list.component';
 
 @NgModule({
     declarations: [
@@ -56,7 +57,8 @@ import { GoogleMapMultiMarkerComponent } from './components/google/google-map-mu
         BulkCreateComponent,
         TableSearchPageComponent,
         AccessionTableComponent,
-        AccessionSetTableComponent
+        AccessionSetTableComponent,
+        InlineEditListComponent
 
     ],
     imports: [
@@ -100,7 +102,8 @@ import { GoogleMapMultiMarkerComponent } from './components/google/google-map-mu
         ObservationTableComponent,
         StudyTableComponent,
         AccessionTableComponent,
-        AccessionSetTableComponent
+        AccessionSetTableComponent,
+        InlineEditListComponent
     ]
 })
 export class SharedModule { }

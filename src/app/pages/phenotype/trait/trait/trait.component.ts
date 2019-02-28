@@ -3,6 +3,9 @@ import { TraitService } from 'src/app/shared/services/trait.service';
 import { Trait } from 'src/app/shared/entities/trait.model';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { AppUrls } from '../../../appUrls';
+import { StatusService } from 'src/app/shared/StatusModule/status.service';
+import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'kusunoki2-trait',
@@ -14,12 +17,12 @@ export class TraitComponent implements OnChanges {
     @Input() createMode: boolean;
     @Input() name: string;
     @Output() traitCreated = new EventEmitter<Trait>();
+    @Output() traitDeleted = new EventEmitter<any>();
     trait: Trait;
     errorMsg: string;
     allInputAreValid: boolean;
     inputsValidStatuses = {};
     appUrls = AppUrls;
-    constructor(private traitService: TraitService) { }
 
     @ViewChildren(InlineEditComponent) inlineForms;
     config = {
@@ -28,6 +31,10 @@ export class TraitComponent implements OnChanges {
         ontology:{is_required: false, is_editable: true, name: 'ontology'},
         ontology_id:{is_required: false, is_editable: true, name: 'ontology_id'}
     };
+
+    constructor(private traitService: TraitService,
+                private statusService: StatusService,
+                private dialog: MatDialog) { }
 
     makeAllFieldEditable() {
         for (const child of Object.keys(this.config)) {
@@ -87,5 +94,33 @@ export class TraitComponent implements OnChanges {
                     (createdTrait: Trait) => this.traitCreated.emit(createdTrait));
 
         }
+    }
+    updateTrait() {
+        const trait = this.getModelFromFormValidData();
+        if (trait) {
+            this.traitService.update(this.name, trait)
+                .subscribe((updatedTrait: Trait) => {
+                    this.statusService.info('Update Successful');
+                    this.trait = updatedTrait;
+                });
+        }
+    }
+    deleteTrait() {
+        const dialogRef = this.dialog.open(DeleteDialogComponent, {
+            width: '400px',
+            data: {type: 'Trait',
+                   description: `Trait: ${this.trait.name}`}
+        });
+        dialogRef.afterClosed().subscribe(doDeleteAccession => {
+            if (doDeleteAccession) {
+                this.traitService.delete(this.name)
+                    .subscribe(() => {
+                        this.statusService.info('Trait Deleted');
+                        this.traitDeleted.emit();
+                        },
+                        error => this.statusService.error('Could not delete observation variable')
+                    );
+            }
+        });
     }
 }

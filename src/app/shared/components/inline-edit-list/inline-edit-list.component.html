@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutGap="5px">
+    <h4 style="color:rgba(0, 0, 0, 0.54);" fxFlex='8em'>{{label}}</h4>
+
+    <div [cdkDropListDisabled]='!editMode' cdkDropList cdkDropListOrientation="horizontal" class="draggable-list" (cdkDropListDropped)="drop($event)">
+        <div fxLayout='row'fxLayoutGap="1px" fxLayoutAlign="'start center"
+            class="draggable-box" *ngFor="let category of value; let i = index"
+            cdkDragLockAxis='x' cdkDrag>
+            <div [hidden]='!editMode || !sortable' class="drag-handle" cdkDragHandle>
+                <mat-icon style="margin:0; padding:0">drag_handle</mat-icon >
+            </div>
+            <span fxFlex>{{category}}</span>
+            <span fxFlex='grow'></span>
+            <button mat-icon-button (click)=deleteItem(i) *ngIf='editMode'
+                    style="margin:0; padding:0">
+                <mat-icon fxFlex style="margin:0; padding:0" >delete</mat-icon>
+            </button>
+        </div>
+        <div *ngIf='editMode' fxLayout='row' fxLayoutGap="3px" fxLayoutAlign="start center">
+            <mat-form-field>
+                <mat-label>Add new Item...</mat-label>
+                <input matInput [(ngModel)]='itemToAdd'>
+            </mat-form-field>
+            <button style='height: 40px'mat-raised-button color='accent' (click)='addItem(itemToAdd)'>Add... </button>
+        </div>
+    </div>
+</div>

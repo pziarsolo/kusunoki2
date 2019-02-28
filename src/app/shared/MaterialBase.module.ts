@@ -29,6 +29,7 @@ import {
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import {MatCardModule} from '@angular/material/card';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
     exports : [
         MatIconModule,
@@ -55,7 +56,8 @@ import {MatCardModule} from '@angular/material/card';
         MatMomentDateModule,
         MatGridListModule,
         MatTabsModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        DragDropModule
     ]
 })
 export class MaterialBaseModule { }

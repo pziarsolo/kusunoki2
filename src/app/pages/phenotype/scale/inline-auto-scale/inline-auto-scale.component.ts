@@ -1,24 +1,24 @@
-import { Component, OnInit, OnChanges, AfterViewInit, ViewChild, SimpleChanges, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnChanges, Output, ViewChild, SimpleChanges, EventEmitter, Input } from '@angular/core';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { Observable, Subscription, of } from 'rxjs';
-import { Trait } from 'src/app/shared/entities/trait.model';
 import { MatAutocompleteTrigger } from '@angular/material';
-import { TraitService } from 'src/app/shared/services/trait.service';
+import { Scale } from 'src/app/shared/entities/scale.model';
 import { startWith, filter, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
+import { ScaleService } from 'src/app/shared/services/scale.service';
 
 @Component({
-  selector: 'kusunoki2-inline-auto-trait',
-  templateUrl: './inline-auto-trait.component.html',
-  styleUrls: ['./inline-auto-trait.component.scss']
+  selector: 'kusunoki2-inline-auto-scale',
+  templateUrl: './inline-auto-scale.component.html',
+  styleUrls: ['./inline-auto-scale.component.scss']
 })
-export class InlineAutoTraitComponent  extends InlineEditComponent implements OnChanges, AfterViewInit {
-    suggestions: Observable<Trait[]>;
+export class InlineAutoScaleComponent  extends InlineEditComponent implements OnChanges, AfterViewInit {
+    suggestions: Observable<Scale[]>;
     subscription: Subscription;
     @Input() userCanCreate: boolean;
-    @Output() AddNewTraitRequested  = new EventEmitter<any>();
+    @Output() AddNewScaleRequested  = new EventEmitter<any>();
     @ViewChild(MatAutocompleteTrigger) trigger;
 
-    constructor(public service: TraitService) {
+    constructor(public service: ScaleService) {
         super();
     }
 
@@ -41,7 +41,7 @@ export class InlineAutoTraitComponent  extends InlineEditComponent implements On
         } else if (typeof this.value === 'string') {
             this.subscription = this.service.retrieve(this.value)
                 .subscribe(
-                    (response: Trait) => {
+                    (response: Scale) => {
                         this.initialValue = response;
                         this.inputControl.patchValue(this.initialValue);
                     }
@@ -54,9 +54,7 @@ export class InlineAutoTraitComponent  extends InlineEditComponent implements On
     ngAfterViewInit() {
         this.trigger.panelClosingActions
             .subscribe(e => {
-                console.log(e);
                 if (!(e && e.source)) {
-                    console.log(this.inputControl.value);
                     this.inputControl.setValue(null);
                     this.trigger.closePanel();
                 }

@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges, ViewChildren, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, ViewChildren, ViewChild, EventEmitter, Output } from '@angular/core';
 import { ObservationVariableService } from 'src/app/shared/services/observation_variable.service';
 import { ObservationVariable } from 'src/app/shared/entities/onservation_variable.model';
-import { ScaleService } from 'src/app/shared/services/scale.service';
-import { TraitService } from 'src/app/shared/services/trait.service';
 import { Scale } from 'src/app/shared/entities/scale.model';
 import { Router } from '@angular/router';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
@@ -13,6 +11,8 @@ import { MatDialog } from '@angular/material';
 import { AppUrls } from 'src/app/pages/appUrls';
 import { InlineAutoTraitComponent } from '../../trait/inline-auto-trait/inline-auto-trait.component';
 import { TraitCreateDialogComponent } from '../../trait/trait-create-dialog/trait-create-dialog.component';
+import { InlineAutoScaleComponent } from '../../scale/inline-auto-scale/inline-auto-scale.component';
+import { ScaleCreateDialogComponent } from '../../scale/scale-create-dialog/scale-create-dialog.component';
 
 
 @Component({
@@ -24,7 +24,8 @@ export class ObservationVariableComponent implements OnChanges {
     @Input() name: string;
     @Input() editMode = false;
     @Input() createMode = false;
-
+    @Output() variableCreated = new EventEmitter<ObservationVariable>();
+    @Output() variableDeleted = new EventEmitter<any>();
     observationVariable: ObservationVariable;
     scale: Scale;
 
@@ -35,6 +36,8 @@ export class ObservationVariableComponent implements OnChanges {
 
     @ViewChildren(InlineEditComponent) inlineForms;
     @ViewChild(InlineAutoTraitComponent) inlineAutoTraitForm;
+    @ViewChild(InlineAutoScaleComponent) inlineAutoScaleForm;
+
     config = {
         name: {is_required: true, is_editable: false, name: 'name'},
         description: {is_required: true, is_editable: true, name: 'description'},
@@ -45,7 +48,6 @@ export class ObservationVariableComponent implements OnChanges {
 
     constructor(
         private observationVariableService: ObservationVariableService,
-        private readonly router: Router,
         private currentUserService: CurrentUserService,
         private statusService: StatusService,
         public dialog: MatDialog) { }
@@ -82,20 +84,15 @@ export class ObservationVariableComponent implements OnChanges {
         } else if ('createMode' in changes && this.createMode && this.name===undefined) {
             this.observationVariable = new ObservationVariable();
             this.makeAllFieldEditable();
-        }
-    }
-    cancelChange() {
-        if (this.createMode) {
-            this.router.navigate([
-                AppUrls.phenotypeSubDir,
-                AppUrls.phenotype.studies
-            ]);
-        } else {
-            this.editMode = false;
-            this.inlineForms.map(inlineForm => inlineForm.resetForm());
+            this.evalUserPermissions();
         }
     }
 
+    resetForm() {
+        this.inlineForms.map(inlineForm => inlineForm.resetForm());
+        this.inlineAutoTraitForm.resetForm();
+        this.inlineAutoScaleForm.resetForm();
+    }
     checkAllInputAreValid() {
         return  Object.keys(this.inputsValidStatuses)
                     .map(k => this.inputsValidStatuses[k])
@@ -112,11 +109,11 @@ export class ObservationVariableComponent implements OnChanges {
             formValidData[inlineForm.config.name] = inlineForm.getValueIfFormValid();
         });
         formValidData['trait'] = this.inlineAutoTraitForm.getValueIfFormValid();
+        formValidData['scale'] = this.inlineAutoScaleForm.getValueIfFormValid();
         return formValidData;
     }
     getModelFromFormValidData() {
         const formValidData = this.getFormValidData();
-        console.log(formValidData);
         if (formValidData) {
             const variable = new ObservationVariable();
             variable.metadata.group = this.observationVariable.metadata.group;
@@ -146,8 +143,8 @@ export class ObservationVariableComponent implements OnChanges {
             .subscribe((newVariable: ObservationVariable) => {
                 this.observationVariable = newVariable;
                 this.statusService.info('Observation variable successfully created');
-                this.editMode = false;
-                this.createMode = false;
+                this.variableCreated.emit(newVariable);
+
             });
 
     }
@@ -163,8 +160,7 @@ export class ObservationVariableComponent implements OnChanges {
                     .subscribe(
                         response => {
                             this.statusService.info('ObservationVariable sucessfully deleted');
-                            this.router.navigate(['/', AppUrls.phenotypeSubDir,
-                                                    AppUrls.phenotype.observation_variables]);
+                            this.variableDeleted.emit(true);
                         },
                         error => this.statusService.error('Could not delete observation variable')
                     );
@@ -176,10 +172,22 @@ export class ObservationVariableComponent implements OnChanges {
             width: '700px',
         });
         dialogRef.afterClosed().subscribe(trait => {
+            console.log(trait);
             if (trait) {
-                this.inlineAutoTraitForm.inputControl.setValue(trait);
+                this.inlineAutoTraitForm.inputControl.setValue(trait.name);
             }
         });
     }
+    addNewScale() {
+        const dialogRef = this.dialog.open(ScaleCreateDialogComponent, {
+            width: '700px',
+        });
+        dialogRef.afterClosed().subscribe(scale => {
+            if (scale) {
+                this.inlineAutoScaleForm.inputControl.setValue(scale);
+            }
+        });
+    }
+
 
 }

@@ -1,100 +1,79 @@
-<mat-card *ngIf="observationVariable">
-    <mat-card-title>
-        Trait methodologies (ObservationVariable) <span style='margin-left:3px' class="key">{{observationVariable.data.name}}</span>
-        <span fxFlex></span>
-        <button mat-raised-button color='accent'
-                *ngIf='userCanEdit && !createMode'
-                [matMenuTriggerFor]="ActionMenu">
-            Actions
-        </button>
-    </mat-card-title>
-    <mat-card-content>
-        <div fxLayout="column">
-            <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center">
-                <kusunoki2-inline-edit fxFlex
-                    [label]="'Name'"
-                    [value]="observationVariable.data.name"
-                    [config]="config.name"
-                    [editMode]="editMode"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>
-                        <a [routerLink]="['/', appUrls.phenotypeSubDir,
-                                          appUrls.phenotype.observation_variables,
-                                          observationVariable.data.name]">
-                            {{observationVariable.data.name}}
-                        </a>
-                    </span>
-                </kusunoki2-inline-edit>
-                <kusunoki2-inline-edit fxFlex
-                    [label]="'Measurament method'"
-                    [value]="observationVariable.data.method"
-                    [config]="config.method"
-                    [editMode]="editMode"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'> {{observationVariable.data.method}}</span>
-                </kusunoki2-inline-edit>
-            </div>
+<div *ngIf='observationVariable'>
+    <div fxLayout="column">
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center">
             <kusunoki2-inline-edit fxFlex
-                [label]="'Description'"
-                [value]="observationVariable.data.description"
-                [config]="config.description"
+                [label]="'Name'"
+                [value]="observationVariable.data.name"
+                [config]="config.name"
                 [editMode]="editMode"
                 (validationStateEvent)="checkFormValid($event)">
-                <span class='value'> {{observationVariable.data.description}}</span>
+                <span class='value'>
+                    <a [routerLink]="['/', appUrls.phenotypeSubDir,
+                                        appUrls.phenotype.observation_variables,
+                                        observationVariable.data.name]">
+                        {{observationVariable.data.name}}
+                    </a>
+                </span>
             </kusunoki2-inline-edit>
-
-            <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center"
-                *ngIf="editMode || createMode">
-                <kusunoki2-inline-auto-trait fxFlex
-                    (AddNewTraitRequested)="addNewTrait()"
-                    [label]="'Trait'"
-                    [value]="observationVariable.data.trait"
-                    [config]="config.trait"
-                    [editMode]="editMode"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'> {{observationVariable.data.trait}}</span>
-                </kusunoki2-inline-auto-trait>
-            </div>
             <kusunoki2-inline-edit fxFlex
-            *ngIf="editMode || createMode"
-                [label]="'Scale'"
-                [value]="observationVariable.data.scale"
-                [config]="config.scale"
+                [label]="'Measurament method'"
+                [value]="observationVariable.data.method"
+                [config]="config.method"
                 [editMode]="editMode"
                 (validationStateEvent)="checkFormValid($event)">
-                <span class='value'> {{observationVariable.data.scale}}</span>
+                <span class='value'> {{observationVariable.data.method}}</span>
             </kusunoki2-inline-edit>
         </div>
+        <kusunoki2-inline-edit fxFlex
+            [label]="'Description'"
+            [value]="observationVariable.data.description"
+            [config]="config.description"
+            [editMode]="editMode"
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value'> {{observationVariable.data.description}}</span>
+        </kusunoki2-inline-edit>
 
-        <mat-accordion *ngIf="!(editMode || createMode)">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>Trait</mat-expansion-panel-header>
-                <kusunoki2-trait
-                    [name]="observationVariable.data.trait"
-                    [editMode]=false
-                    [createMode]=false>
-                </kusunoki2-trait>
+        <kusunoki2-inline-auto-trait fxFlex
+            *ngIf="editMode || createMode"
+            (AddNewTraitRequested)="addNewTrait()"
+            [label]="'Trait'"
+            [value]="observationVariable.data.trait"
+            [config]="config.trait"
+            [editMode]="editMode"
+            [userCanCreate]='userCanEdit'
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value'> {{observationVariable.data.trait}}</span>
+        </kusunoki2-inline-auto-trait>
+        <kusunoki2-inline-auto-scale fxFlex
+            (AddNewScaleRequested)="addNewScale()"
+            *ngIf="editMode || createMode"
+            [label]="'Scale'"
+            [value]="observationVariable.data.scale"
+            [config]="config.scale"
+            [editMode]="editMode"
+            [userCanCreate]='userCanEdit'
+            (validationStateEvent)="checkFormValid($event)">
+            <span class='value'> {{observationVariable.data.scale}}</span>
+        </kusunoki2-inline-auto-scale>
+    </div>
 
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>Scale</mat-expansion-panel-header>
-                {{scale | json}}
-            </mat-expansion-panel>
-        </mat-accordion>
-        <mat-card-actions *ngIf='editMode || createMode'>
-            <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
-            <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="updateVariable()">Update</button>
-            <button *ngIf='createMode && editMode' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="createVariable()">Create</button>
-        </mat-card-actions>
-    </mat-card-content>
+    <mat-accordion *ngIf="!(editMode || createMode)">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>Trait</mat-expansion-panel-header>
+            <kusunoki2-trait
+                [name]="observationVariable.data.trait"
+                [editMode]=false
+                [createMode]=false>
+            </kusunoki2-trait>
 
-</mat-card>
-<mat-menu #ActionMenu="matMenu">
-    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
-    <!-- <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
-        <mat-icon *ngIf='!study.metadata.is_public'>public</mat-icon>
-        <mat-icon *ngIf='study.metadata.is_public' color='warn'>public</mat-icon>
-        Make <span *ngIf='!study.metadata.is_public'>Public</span><span *ngIf='study.metadata.is_public'>Private</span>
-    </button> -->
-    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteVariable()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
-</mat-menu>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>Scale</mat-expansion-panel-header>
+            <kusunoki2-scale
+                [name]="observationVariable.data.scale"
+                [editMode]=false
+                [createMode]=false>
+            </kusunoki2-scale>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

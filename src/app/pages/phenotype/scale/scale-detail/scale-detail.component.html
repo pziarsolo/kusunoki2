@@ -1,11 +1,30 @@
 <mat-card>
-        <mat-card-title>Scale <span class='key' style='margin-left:5px'> {{name}}</span>
-        </mat-card-title>
-        <mat-card-content>
-            <kusunoki2-trait
-                [name]="name"
-                [editMode]="editMode"
-                [createMode]="createMode">
-            </kusunoki2-trait>
-        </mat-card-content>
-    </mat-card>
+    <mat-card-title>Scale <span class='key' style='margin-left:5px'> {{name}}</span>
+
+        <span fxFlex></span>
+        <button mat-raised-button color='accent'
+                *ngIf='userCanEdit && !createMode'
+                [matMenuTriggerFor]="ActionMenu">
+            Actions
+        </button>
+    </mat-card-title>
+    <mat-card-content>
+        <kusunoki2-scale #scale
+            [name]="name"
+            [editMode]="editMode"
+            [createMode]="createMode"
+            (scaleCreated)="scaleCreated($event)"
+            (scaleDeleted)="scaleDeleted($event)">
+        </kusunoki2-scale>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf='editMode || createMode'>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
+        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!scale.allInputAreValid' mat-raised-button color='accent' (click)="editMode=false;scale.updateScale()">Update</button>
+        <button *ngIf='createMode && editMode' [disabled]='!scale.allInputAreValid' mat-raised-button color='accent' (click)="scale.createScale()">Create</button>
+    </mat-card-actions>
+</mat-card>
+<mat-menu #ActionMenu="matMenu">
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="scale.deleteScale()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+</mat-menu>
