@@ -105,6 +105,13 @@
 </mat-menu>
 <mat-accordion *ngIf="!(editMode || createMode)">
     <mat-expansion-panel>
+            <mat-expansion-panel-header><h3>Accessions used in this study</h3></mat-expansion-panel-header>
+            <kusunoki2-accession-table
+                *ngIf="study"
+                [searchParams]="{study: study.data.name}">
+            </kusunoki2-accession-table>
+        </mat-expansion-panel>
+    <mat-expansion-panel>
         <mat-expansion-panel-header><h3>Observations on this study</h3></mat-expansion-panel-header>
         <kusunoki2-observation-table
             *ngIf="study"

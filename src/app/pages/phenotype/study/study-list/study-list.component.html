@@ -6,6 +6,7 @@
 <div [hidden]="!searchDone">
     <mat-card>
         <mat-card-title>Studies</mat-card-title>
+        <mat-card-subtitle>Total: {{table.dataSource.totalCount}} studies found</mat-card-subtitle>
         <mat-card-content>
             <div [hidden]="table.dataSource.totalCount"> Not found</div>
             <kusunoki2-study-table #table

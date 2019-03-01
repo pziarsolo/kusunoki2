@@ -4,8 +4,15 @@
 </kusunoki2-observation-search-form>
 
 <div [hidden]='!searchDone'>
-    <kusunoki2-observation-table [searchParams]='searchParams'
-        (searchParamsChanged)="searchParamsChanged($event)">
-   </kusunoki2-observation-table>
+    <mat-card>
+        <mat-card-title>Observations</mat-card-title>
+        <mat-card-subtitle>Total: {{table.dataSource.totalCount}} observations found</mat-card-subtitle>
+        <mat-card-content>
+            <div [hidden]="table.dataSource.totalCount"> Not found</div>
+            <kusunoki2-observation-table [searchParams]='searchParams' #table
+                (searchParamsChanged)="searchParamsChanged($event)">
+            </kusunoki2-observation-table>
+        </mat-card-content>
+    </mat-card>
 </div>
 

@@ -57,7 +57,6 @@ export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
             )
             .subscribe(
                 response => {
-                    console.log(response);
                     this.totalCount = Number(response.headers.get('X-Total-Count'));
                     this.itemsSubject.next(response.body);
                 },
