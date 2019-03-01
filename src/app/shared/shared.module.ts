@@ -11,7 +11,7 @@ import { InlineEditComponent } from './components/inline-edit/inline-edit.compon
 import { PasswordFormComponent } from './components/password-form/password-form.component';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { PipesModule } from './pipes/pipes.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NG_VALIDATORS } from '@angular/forms';
 import { HomeComponent } from './components/home-component';
 import { InlineEditSelectComponent } from './components/inline-edit-select/inline-edit-select.component';
 import { BaseInlinesForm2Component } from './components/base-inlines2-form/base-inlines-form2.component';
@@ -32,6 +32,9 @@ import { GoogleTreemapComponent } from './components/google/google-treemap/googl
 import { GooglePieChartComponent } from './components/google/google-piechart/google-piechart.component';
 import { GoogleMapMultiMarkerComponent } from './components/google/google-map-multi-marker/google-map-multi-marker.component';
 import { InlineEditListComponent } from './components/inline-edit-list/inline-edit-list.component';
+import { ObservationVariableTableComponent
+} from './components/entity-tables/observation-variable-table/observation-variable-table.component';
+import { AlreadyInArray } from './validators/alreadyInArray.validator';
 
 @NgModule({
     declarations: [
@@ -58,7 +61,8 @@ import { InlineEditListComponent } from './components/inline-edit-list/inline-ed
         TableSearchPageComponent,
         AccessionTableComponent,
         AccessionSetTableComponent,
-        InlineEditListComponent
+        InlineEditListComponent,
+        ObservationVariableTableComponent
 
     ],
     imports: [
@@ -103,7 +107,8 @@ import { InlineEditListComponent } from './components/inline-edit-list/inline-ed
         StudyTableComponent,
         AccessionTableComponent,
         AccessionSetTableComponent,
-        InlineEditListComponent
+        InlineEditListComponent,
+        ObservationVariableTableComponent
     ]
 })
 export class SharedModule { }

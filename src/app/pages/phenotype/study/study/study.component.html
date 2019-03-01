@@ -111,4 +111,11 @@
             [searchParams]="{study: study.data.name}">
         </kusunoki2-observation-table>
     </mat-expansion-panel>
+    <mat-expansion-panel>
+            <mat-expansion-panel-header><h3>Trait methologies used on this study</h3></mat-expansion-panel-header>
+            <kusunoki2-observation-variable-table
+                *ngIf="study"
+                [searchParams]="{study: study.data.name}">
+            </kusunoki2-observation-variable-table>
+        </mat-expansion-panel>
 </mat-accordion>

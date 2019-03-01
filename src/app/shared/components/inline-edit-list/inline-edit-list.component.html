@@ -8,7 +8,7 @@
             <div [hidden]='!editMode || !sortable' class="drag-handle" cdkDragHandle>
                 <mat-icon style="margin:0; padding:0">drag_handle</mat-icon >
             </div>
-            <span fxFlex>{{category}}</span>
+            <span fxFlex>{{category|json}}</span>
             <span fxFlex='grow'></span>
             <button mat-icon-button (click)=deleteItem(i) *ngIf='editMode'
                     style="margin:0; padding:0">

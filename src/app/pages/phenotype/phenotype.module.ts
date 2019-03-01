@@ -24,6 +24,8 @@ import { ObservationSearchFormComponent } from './observation/observation-search
 import { TraitBulkCreateComponent } from './trait/trait-bulk-create/trait-bulk-create.component';
 import { InlineAutoScaleComponent } from './scale/inline-auto-scale/inline-auto-scale.component';
 import { ScaleCreateDialogComponent } from './scale/scale-create-dialog/scale-create-dialog.component';
+import { ObservationVariableListComponent } from './observation_variable/observation-variable-list/observation-variable-list.component';
+import { InlineScaleValidValuesComponent } from './scale/inline-scale-valid-values/inline-scale-valid-values.component';
 
 
 const routes: Routes = [
@@ -50,6 +52,10 @@ const routes: Routes = [
     {
         path: AppUrls.phenotype.observation_variables + '/:name',
         component: ObservationVariableDetailComponent,
+    },
+    {
+        path: AppUrls.phenotype.observation_variables,
+        component: ObservationVariableListComponent,
     },
     {
         path: AppUrls.phenotype.traits + '/bulk_create',
@@ -88,6 +94,8 @@ const routes: Routes = [
         TraitBulkCreateComponent,
         InlineAutoScaleComponent,
         ScaleCreateDialogComponent,
+        ObservationVariableListComponent,
+        InlineScaleValidValuesComponent,
     ],
     entryComponents: [
         TraitCreateDialogComponent,

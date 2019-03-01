@@ -62,13 +62,13 @@
         </kusunoki2-inline-edit>
     </div>
     <div *ngIf="dataType.value && dataType.value.code && dataType.value.code !== 'Numerical'">
-        <kusunoki2-inline-edit-list
+        <kusunoki2-inline-scale-valid-values
             [label]="'Valid Values'"
             [value]="scale.valid_values"
             [config]="config.valid_values"
             [sortable]="dataType.value && dataType.value.code === 'Ordinal'"
             [editMode]="editMode"
             (validationStateEvent)="checkFormValid($event)">
-        </kusunoki2-inline-edit-list>
+        </kusunoki2-inline-scale-valid-values>
     </div>
 </div>

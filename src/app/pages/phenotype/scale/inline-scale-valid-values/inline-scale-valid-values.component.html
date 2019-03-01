@@ -1,0 +1,35 @@
+<div *ngIf='value.length > 0 || editMode'>
+    <div fxLayout="row" fxLayoutGap="5px"  scale.valid_values.length >
+        <h4 style="color:rgba(0, 0, 0, 0.54);" fxFlex='8em'>{{label}}</h4>
+
+        <div [cdkDropListDisabled]='!editMode' cdkDropList class="draggable-list" (cdkDropListDropped)="drop($event)">
+            <div fxLayout='row'fxLayoutGap="1px" fxLayoutAlign="'start center"
+                class="draggable-box" *ngFor="let category of value; let i = index"
+                cdkDragLockAxis='x' cdkDrag>
+                <div fxFlex [hidden]='!editMode || !sortable' class="drag-handle" cdkDragHandle>
+                    <mat-icon style="margin:0; padding:0">drag_handle</mat-icon >
+                </div>
+                <span fxFlex='10em'>{{category.value}} - {{category.description}}</span>
+                <span fxFlex></span>
+                <button mat-icon-button (click)=deleteItem(i) *ngIf='editMode'
+                        style="margin:0; padding:0">
+                    <mat-icon  style="margin:0; padding:0" >delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf='editMode' >
+        <form fxLayout='row' fxLayoutGap="3px" fxLayoutAlign="start center" #form="ngForm">
+            <span fxFlex=8em></span>
+            <mat-form-field>
+                <mat-label>Add new Value...</mat-label>
+                <input #valueInput matInput name='value' [(ngModel)]='itemToAdd.value' required  >
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>And the description...</mat-label>
+                <input #descriptionInput matInput name='description' [(ngModel)]='itemToAdd.description'required>
+            </mat-form-field>
+            <button [disabled]='!form.valid' style='height: 40px'mat-raised-button color='accent' (click)='addItem(itemToAdd)'>Add... </button>
+        </form>
+    </div>
+</div>

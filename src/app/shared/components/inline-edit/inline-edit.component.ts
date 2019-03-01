@@ -143,7 +143,8 @@ export class InlineEditComponent implements OnInit, OnDestroy {
     }
 
     getValueIfFormValid() {
-        console.log(this.config.name, this.inputControl.valid, this.inputControl.value)
+        console.log(this.config.name, this.inputControl.valid, this.inputControl.value,
+                    this.value);
         if (this.inputControl.valid) {
             if (this.inputControl.value !== null &&
                 this.inputControl.value !== undefined &&

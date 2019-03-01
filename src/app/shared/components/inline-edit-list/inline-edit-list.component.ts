@@ -7,7 +7,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./inline-edit-list.component.scss']
 })
 export class InlineEditListComponent extends InlineEditComponent {
-    itemToAdd: string;
+    itemToAdd: any;
+
     @Input() sortable: boolean;
 
     setInitialValue() {

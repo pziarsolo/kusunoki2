@@ -1,3 +1,7 @@
+export class ScaleCategories {
+    value: string;
+    description: string;
+}
 
 export class Scale {
     name: string;
@@ -6,7 +10,7 @@ export class Scale {
     data_type: string;
     min: number;
     max: number;
-    valid_values: string[];
+    valid_values: ScaleCategories[];
 
     constructor(object?: Scale) {
         if (object) {

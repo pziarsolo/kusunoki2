@@ -11,6 +11,7 @@ import { InlineEditSelectComponent } from 'src/app/shared/components/inline-edit
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material';
+import { InlineScaleValidValuesComponent } from '../inline-scale-valid-values/inline-scale-valid-values.component';
 
 @Component({
   selector: 'kusunoki2-scale',
@@ -35,7 +36,7 @@ export class ScaleComponent implements OnChanges {
 
     @ViewChildren(InlineEditComponent) inlineForms;
     @ViewChild(InlineEditSelectComponent) inlineSelectForm;
-    @ViewChild(InlineEditListComponent) inlineListForm;
+    @ViewChild(InlineScaleValidValuesComponent) inlineListForm;
 
     config = {
         name: {is_required: true, is_editable: false, name: 'name'},
@@ -100,7 +101,7 @@ export class ScaleComponent implements OnChanges {
         if (this.inlineListForm) {
             formValidData['valid_values'] = this.inlineListForm.getValueIfFormValid();
         }
-        console.log(formValidData);
+
         return formValidData;
     }
 
@@ -115,10 +116,9 @@ export class ScaleComponent implements OnChanges {
                 scale.decimal_places = formValidData['decimal_places'];
                 scale.min = formValidData['min'];
                 scale.max = formValidData['max'];
-            } else if (scale.data_type in ['Nominal', 'Cardinal']) {
+            } else if (scale.data_type.indexOf('Nominal') > -1 || scale.data_type.indexOf('Ordinal') > -1) {
                 scale.valid_values = formValidData['valid_values'];
             }
-
             return scale;
         }
     }
@@ -133,19 +133,27 @@ export class ScaleComponent implements OnChanges {
         const scale = this.getModelFromFormValidData();
         if (scale) {
             this.service.create(scale)
-                .subscribe((createdScale: Scale) => this.scaleCreated.emit(createdScale))
+                .subscribe(
+                    (createdScale: Scale) => this.scaleCreated.emit(createdScale),
+                    (error) => this.statusService.error(error.error.detail[0])
+                );
         }
     }
     updateScale() {
         const scale = this.getModelFromFormValidData();
         if (scale) {
             this.service.update(this.name, scale)
-                .subscribe((updatedScale: Scale) => {
-                    this.statusService.info('Scale updated successfully');
-                    this.scale = updatedScale;
-                })
+                .subscribe(
+                    (updatedScale: Scale) => {
+                        this.statusService.info('Scale updated successfully');
+                        this.scale = updatedScale;
+                    },
+                    (error) => {
+                        this.statusService.error(error.error.detail[0]);
+                        this.resetForm();
+                    }
+                );
         }
-        console.log(scale);
     }
     deleteScale() {
         const dialogRef = this.dialog.open(DeleteDialogComponent, {
@@ -157,7 +165,7 @@ export class ScaleComponent implements OnChanges {
             if (doDeleteAccession) {
                 this.service.delete(this.name)
                     .subscribe(() => {
-                        this.statusService.info('Successfully deleted')
+                        this.statusService.info('Successfully deleted');
                         this.scaleDeleted.emit(true);
                     },
                     error => this.statusService.error('Could not delete scale')

@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-title>Trait methodologies</mat-card-title>
+    <mat-card-content>
+        <div [hidden]="table.dataSource.totalCount"> Not found</div>
+        <kusunoki2-observation-variable-table #table
+            [hidden]="!table.dataSource.totalCount"
+            [searchParams]="{}"
+            (searchParamsChanged)="searchParamsChanged($event)">
+        </kusunoki2-observation-variable-table>
+    </mat-card-content>
+</mat-card>
