@@ -24,6 +24,7 @@ export class ScaleComponent implements OnChanges {
     @Input() name: string;
     @Output() scaleCreated = new EventEmitter<Scale>();
     @Output() scaleDeleted = new EventEmitter<any>();
+    @Output() scaleNotFound = new EventEmitter<any>();
     @Output() changeCanceled = new EventEmitter<any>();
 
     scale: Scale;
@@ -68,7 +69,13 @@ export class ScaleComponent implements OnChanges {
         }
         if ('name' in changes && this.name !== undefined && !this.createMode) {
             this.service.retrieve(this.name)
-                .subscribe((scale: Scale) => this.scale = scale);
+                .subscribe(
+                    (scale: Scale) => this.scale = scale,
+                    (error) => {
+                        if (error.status === 404) {
+                            this.scaleNotFound.emit();
+                        }
+                    });
         }
     }
     checkAllInputAreValid() {

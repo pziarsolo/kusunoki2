@@ -18,6 +18,7 @@ export class TraitComponent implements OnChanges {
     @Input() name: string;
     @Output() traitCreated = new EventEmitter<Trait>();
     @Output() traitDeleted = new EventEmitter<any>();
+    @Output() traitNotFound = new EventEmitter<any>();
     trait: Trait;
     errorMsg: string;
     allInputAreValid: boolean;
@@ -53,7 +54,14 @@ export class TraitComponent implements OnChanges {
         }
         if ('name' in changes && this.name !== undefined && !this.createMode) {
             this.traitService.retrieve(this.name)
-                .subscribe((trait: Trait) => this.trait = trait);
+                .subscribe(
+                    (trait: Trait) => this.trait = trait,
+                    (error) => {
+                        if (error.status === 404) {
+                            this.traitNotFound.emit(true);
+                        }
+                        this.statusService.info('Trait not Found');
+                    });
         }
     }
 

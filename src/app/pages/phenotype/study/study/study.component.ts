@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChildren, Output, EventEmitter } from '@angular/core';
 import { StudyService } from 'src/app/shared/services/study.service';
 import { Study } from 'src/app/shared/entities/study.model';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
@@ -18,6 +18,11 @@ export class StudyComponent implements OnChanges {
     @Input() name: string;
     @Input() editMode = false;
     @Input() createMode = false;
+    @Output() studyCreated = new EventEmitter<Study>();
+    @Output() studyRequestFinished = new EventEmitter<Study>();
+    @Output() studyDeleted = new EventEmitter<any>();
+    @Output() editCanceled = new  EventEmitter<any>();
+
     study: Study;
 
     userCanEdit: boolean;
@@ -43,50 +48,39 @@ export class StudyComponent implements OnChanges {
     constructor(
         private studyService: StudyService,
         private readonly statusService: StatusService,
-        private readonly router: Router,
-        private readonly currentUserService: CurrentUserService,
-        public dialog: MatDialog) { }
+        public dialog: MatDialog) {
+    }
+
     makeAllFieldEditable() {
         for (const child of Object.keys(this.config)) {
             this.config[child]['is_editable'] = true;
         }
     }
+
     ngOnChanges(changes: SimpleChanges) {
         if ('name' in changes && this.name) {
             this.studyService.retrieve(this.name)
-                .subscribe((study: Study) => {
-                    this.study = new Study(study);
-                    this.evalUserPermissions();
-                });
-        } else if ('createMode' in changes && this.createMode && this.name===undefined) {
+                .subscribe(
+                    (study: Study) => {
+                        this.study = new Study(study);
+                        this.studyRequestFinished.emit(study);
+                    },
+                    (error) => {
+                        if (error.status === 404) {
+                            this.studyRequestFinished.emit(undefined);
+                            this.statusService.info('study not found');
+                        }
+                    }
+                );
+        } else if ('createMode' in changes && this.createMode && this.name === undefined) {
             this.study = new Study();
             this.makeAllFieldEditable();
         }
     }
-    evalUserPermissions() {
-        if (this.userCanEdit === undefined) {
-            const userToken = this.currentUserService.currentUserSubject.value;
-            const group = this.study.metadata.group;
-            const is_public = this.study.metadata.is_public;
-            if (userToken.is_staff) {
-                this.userCanEdit = true;
-            } else if (userToken.groups && group in userToken.groups &&  !is_public) {
-                this.userCanEdit = true;
-            } else {
-                this.userCanEdit = false;
-            }
-        }
-    }
-    cancelChange() {
-        if (this.createMode) {
-            this.router.navigate([
-                AppUrls.phenotypeSubDir,
-                AppUrls.phenotype.studies
-            ]);
-        } else {
-            this.editMode = false;
-            this.inlineForms.map(inlineForm => inlineForm.resetForm());
-        }
+
+    resetForm() {
+        this.editMode = false;
+        this.inlineForms.map(inlineForm => inlineForm.resetForm());
     }
 
     checkAllInputAreValid() {
@@ -166,8 +160,7 @@ export class StudyComponent implements OnChanges {
                     .subscribe(
                         response => {
                             this.statusService.info('Study sucessfully deleted');
-                            this.router.navigate(['/', AppUrls.phenotypeSubDir,
-                                                  AppUrls.phenotype.studies]);
+                            this.studyDeleted.emit();
                         },
                         error => this.statusService.error('Could not delete study')
                     );
@@ -180,11 +173,7 @@ export class StudyComponent implements OnChanges {
             this.studyService.create(study.getApiDocument())
                 .subscribe(
                     (createdStudy: Study) => {
-                        this.router.navigate([
-                            AppUrls.phenotypeSubDir,
-                            AppUrls.phenotype.studies,
-                            createdStudy.data.name]);
-
+                        this.studyCreated.emit(createdStudy);
                         this.statusService.info('Study sucessfully created');
                     },
                     (error) => console.log(error)

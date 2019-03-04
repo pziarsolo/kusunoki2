@@ -17,6 +17,7 @@ export class TraitDetailComponent implements OnInit, OnDestroy {
     createMode = false;
     routerSubscription: Subscription;
     userCanEdit: boolean;
+    traitFound = true;
 
     @ViewChild(TraitComponent) traitComponent;
 

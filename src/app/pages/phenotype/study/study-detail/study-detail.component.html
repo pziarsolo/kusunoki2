@@ -1,4 +1,60 @@
-<kusunoki2-study [name]="name"
-    [editMode]="editMode"
-    [createMode]="createMode">
-</kusunoki2-study>
+<mat-card *ngIf='!studyFound'>
+    Study {{name}} Not found
+</mat-card>
+<mat-card *ngIf='studyFound || createMode || editMode'>
+    <mat-card-title>
+        Study <span class='key' fxflex style='margin-left:5px;'> {{name}}</span>
+        <span fxFlex></span>
+        <button mat-raised-button color='accent'
+                *ngIf='userCanEdit && !createMode'
+                [matMenuTriggerFor]="studyActionMenu">
+            Actions
+        </button>
+    </mat-card-title>
+    <mat-card-content>
+        <kusunoki2-study #studyComp
+            [name]="name"
+            [editMode]="editMode"
+            [createMode]="createMode"
+            (studyRequestFinished)="evalUserPermissions($event)"
+            (studyCreated)="studyCreated($event)"
+            (studyDeleted)="studyDeleted($event)"
+            (editCanceled)="editCanceled($event)">
+        </kusunoki2-study>
+    </mat-card-content>
+    <mat-card-actions *ngIf='editMode || createMode'>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="editCanceled()">Cancel</button>
+        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!studyComp.allInputAreValid' mat-raised-button color='accent' (click)="studyComp.updateStudy()">Update</button>
+        <button *ngIf='createMode && editMode' [disabled]='!studyComp.allInputAreValid' mat-raised-button color='accent' (click)="studyComp.createStudy()">Create</button>
+    </mat-card-actions>
+</mat-card>
+<mat-menu #studyActionMenu="matMenu">
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
+            <mat-icon *ngIf='!study.metadata.is_public'>public</mat-icon>
+            <mat-icon *ngIf='study.metadata.is_public' color='warn'>public</mat-icon>
+            Make <span *ngIf='!study.metadata.is_public'>Public</span><span *ngIf='study.metadata.is_public'>Private</span>
+        </button>
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteStudy()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+</mat-menu>
+
+<mat-accordion *ngIf="study">
+    <mat-expansion-panel>
+            <mat-expansion-panel-header><h3>Accessions used in this study</h3></mat-expansion-panel-header>
+            <kusunoki2-accession-table
+                [searchParams]="{study: name}">
+            </kusunoki2-accession-table>
+        </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header><h3>Observations on this study</h3></mat-expansion-panel-header>
+        <kusunoki2-observation-table
+            [searchParams]="{study: name}">
+        </kusunoki2-observation-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+            <mat-expansion-panel-header><h3>Trait methologies used on this study</h3></mat-expansion-panel-header>
+            <kusunoki2-observation-variable-table
+                [searchParams]="{study: name}">
+            </kusunoki2-observation-variable-table>
+        </mat-expansion-panel>
+</mat-accordion>

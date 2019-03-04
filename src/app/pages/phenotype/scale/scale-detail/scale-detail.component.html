@@ -1,4 +1,7 @@
-<mat-card>
+<mat-card *ngIf="!scaleInDatabase">
+    Scale {{name }} not found
+</mat-card>
+<mat-card *ngIf="scaleInDatabase">
     <mat-card-title>Scale <span class='key' style='margin-left:5px'> {{name}}</span>
 
         <span fxFlex></span>
@@ -14,7 +17,8 @@
             [editMode]="editMode"
             [createMode]="createMode"
             (scaleCreated)="scaleCreated($event)"
-            (scaleDeleted)="scaleDeleted($event)">
+            (scaleDeleted)="scaleDeleted($event)"
+            (scaleNotFound)="scaleInDatabase = false">
         </kusunoki2-scale>
     </mat-card-content>
 

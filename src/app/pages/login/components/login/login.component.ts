@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
+import { RouterExtService } from 'src/app/shared/services/router-extension.service';
 
 
 @Component({
@@ -18,10 +19,10 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
     errorMsg: string;
     hide: Boolean = true;
-    constructor(private route: ActivatedRoute,
-                private router: Router,
+    constructor(private router: Router,
                 private auth_service: AuthService,
-                private status_service: StatusService) {
+                private status_service: StatusService,
+                private routerExt: RouterExtService) {
     }
 
     createFormControls() {
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
         // this.auth_service.logout();
         this.createFormControls();
         this.createForm();
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.routerExt.getPreviousUrl(); // this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     onLogin() {

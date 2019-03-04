@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { HttpErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { RouterExtService } from './shared/services/router-extension.service';
 
 const routes: Routes = [
     // exposed routes
@@ -31,4 +32,6 @@ const routes: Routes = [
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(private routerExtService: RouterExtService){}
+}

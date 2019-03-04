@@ -34,7 +34,6 @@ import { GoogleMapMultiMarkerComponent } from './components/google/google-map-mu
 import { InlineEditListComponent } from './components/inline-edit-list/inline-edit-list.component';
 import { ObservationVariableTableComponent
 } from './components/entity-tables/observation-variable-table/observation-variable-table.component';
-import { AlreadyInArray } from './validators/alreadyInArray.validator';
 
 @NgModule({
     declarations: [

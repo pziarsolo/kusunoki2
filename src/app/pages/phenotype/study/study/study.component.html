@@ -1,128 +1,77 @@
-<mat-card *ngIf='study || createMode || editMode'>
-    <mat-card-title>
-        Study <span class='key' fxflex style='margin-left:5px;'> {{study.data.name}}</span>
-        <span fxFlex></span>
-        <button mat-raised-button color='accent'
-                *ngIf='userCanEdit && !createMode'
-                [matMenuTriggerFor]="studyActionMenu">
-            Actions
-        </button>
-    </mat-card-title>
-    <mat-card-content>
-
-        <div fxLayout="column">
-            <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
-                style="width:100%;">
-                <kusunoki2-inline-edit fxFlex
-                    [label]="'Study name'"
-                    [value]="study.data.name"
-                    [config]="config.name"
-                    [editMode]="editMode"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>
-                        <a [routerLink]="['/', appUrls.phenotypeSubDir,
-                                          appUrls.phenotype.studies,
-                                          study.data.name]">
-                            {{study.data.name}}
-                        </a>
-                    </span>
-                </kusunoki2-inline-edit>
-                <kusunoki2-inline-edit fxFlex
-                    [label]="'Active'"
-                    [value]="study.data.active"
-                    [editMode]="editMode"
-                    [config]="config.active"
-                    (validationStateEvent)="checkFormValid($event)">
-                </kusunoki2-inline-edit>
-            </div>
-            <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
-                style="width:100%;">
-                <kusunoki2-inline-edit fxFlex='grow'
-                    [label]="'Study description'"
-                    [value]="study.data.description"
-                    [config]="config.description"
-                    [editMode]="editMode"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{study.data.description}}</span>
-                </kusunoki2-inline-edit>
-                <kusunoki2-inline-edit fxFlex
-                    *ngIf="editMode || study.data.start_date"
-                    [label]="'Start date'"
-                    [editMode]="editMode"
-                    [config]="config.start_date"
-                    [value]="study.data.start_date"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{study.data.start_date|date: "shortDate"}}</span>
-                    <!-- <span class='value'>{{input_form_data['acquisition_date']}}</span> -->
-                </kusunoki2-inline-edit>
-                <kusunoki2-inline-edit fxFlex
-                    *ngIf="editMode || study.data.end_date"
-                    [label]="'End date'"
-                    [editMode]="editMode"
-                    [config]="config.end_date"
-                    [value]="study.data.end_date"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <!-- <span class='value'>{{input_form_data['acquisition_date']}}</span> -->
-                </kusunoki2-inline-edit>
-            </div>
-            <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
-                style="width:100%;">
-                <kusunoki2-inline-edit fxFlex
-                    [label]="'Location'"
-                    [value]="study.data.location"
-                    [config]="config.location"
-                    [editMode]="editMode"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{study.data.location}}</span>
-                </kusunoki2-inline-edit>
-                <kusunoki2-inline-edit fxFlex
-                    [label]="'Contacts'"
-                    [value]="study.data.contacts"
-                    [config]="config.contacts"
-                    [editMode]="editMode"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{study.data.contacts}}</span>
-                </kusunoki2-inline-edit>
-            </div>
+<div *ngIf="study">
+    <div fxLayout="column">
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+            style="width:100%;">
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Study name'"
+                [value]="study.data.name"
+                [config]="config.name"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>
+                    <a [routerLink]="['/', appUrls.phenotypeSubDir,
+                                        appUrls.phenotype.studies,
+                                        study.data.name]">
+                        {{study.data.name}}
+                    </a>
+                </span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Active'"
+                [value]="study.data.active"
+                [editMode]="editMode"
+                [config]="config.active"
+                (validationStateEvent)="checkFormValid($event)">
+            </kusunoki2-inline-edit>
         </div>
-    </mat-card-content>
-    <mat-card-actions *ngIf='editMode || createMode'>
-        <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
-        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="updateStudy()">Update</button>
-        <button *ngIf='createMode && editMode' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="createStudy()">Create</button>
-    </mat-card-actions>
-
-</mat-card>
-
-<mat-menu #studyActionMenu="matMenu">
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
-            <mat-icon *ngIf='!study.metadata.is_public'>public</mat-icon>
-            <mat-icon *ngIf='study.metadata.is_public' color='warn'>public</mat-icon>
-            Make <span *ngIf='!study.metadata.is_public'>Public</span><span *ngIf='study.metadata.is_public'>Private</span>
-        </button>
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteStudy()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
-</mat-menu>
-<mat-accordion *ngIf="!(editMode || createMode)">
-    <mat-expansion-panel>
-            <mat-expansion-panel-header><h3>Accessions used in this study</h3></mat-expansion-panel-header>
-            <kusunoki2-accession-table
-                *ngIf="study"
-                [searchParams]="{study: study.data.name}">
-            </kusunoki2-accession-table>
-        </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header><h3>Observations on this study</h3></mat-expansion-panel-header>
-        <kusunoki2-observation-table
-            *ngIf="study"
-            [searchParams]="{study: study.data.name}">
-        </kusunoki2-observation-table>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-            <mat-expansion-panel-header><h3>Trait methologies used on this study</h3></mat-expansion-panel-header>
-            <kusunoki2-observation-variable-table
-                *ngIf="study"
-                [searchParams]="{study: study.data.name}">
-            </kusunoki2-observation-variable-table>
-        </mat-expansion-panel>
-</mat-accordion>
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+            style="width:100%;">
+            <kusunoki2-inline-edit fxFlex='grow'
+                [label]="'Study description'"
+                [value]="study.data.description"
+                [config]="config.description"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{study.data.description}}</span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                *ngIf="editMode || study.data.start_date"
+                [label]="'Start date'"
+                [editMode]="editMode"
+                [config]="config.start_date"
+                [value]="study.data.start_date"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{study.data.start_date|date: "shortDate"}}</span>
+                <!-- <span class='value'>{{input_form_data['acquisition_date']}}</span> -->
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                *ngIf="editMode || study.data.end_date"
+                [label]="'End date'"
+                [editMode]="editMode"
+                [config]="config.end_date"
+                [value]="study.data.end_date"
+                (validationStateEvent)="checkFormValid($event)">
+                <!-- <span class='value'>{{input_form_data['acquisition_date']}}</span> -->
+            </kusunoki2-inline-edit>
+        </div>
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+            style="width:100%;">
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Location'"
+                [value]="study.data.location"
+                [config]="config.location"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{study.data.location}}</span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Contacts'"
+                [value]="study.data.contacts"
+                [config]="config.contacts"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{study.data.contacts}}</span>
+            </kusunoki2-inline-edit>
+        </div>
+    </div>
+</div>

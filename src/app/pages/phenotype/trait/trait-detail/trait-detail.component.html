@@ -1,4 +1,7 @@
-<mat-card>
+<mat-card *ngIf='!traitFound'>
+    Trait {{name}} not found
+</mat-card>
+<mat-card *ngIf='traitFound'>
     <mat-card-title>
         Trait <span class='key' style='margin-left:5px'> {{name}}</span>
         <span fxFlex></span>
@@ -14,7 +17,8 @@
             [editMode]="editMode"
             [createMode]="createMode"
             (traitCreated)="traitCreated($event)"
-            (traitDeleted)="traitDeleted($event)">
+            (traitDeleted)="traitDeleted($event)"
+            (traitNotFound)="traitFound=false">
         </kusunoki2-trait>
     </mat-card-content>
     <mat-card-actions *ngIf='editMode || createMode'>

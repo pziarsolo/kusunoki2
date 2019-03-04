@@ -16,7 +16,7 @@ export class ScaleDetailComponent implements OnInit, OnDestroy {
     createMode = false;
     routerSubscription: Subscription;
     userCanEdit: boolean;
-
+    scaleInDatabase = true;
     @ViewChild(ScaleComponent) scaleComponent;
 
     constructor(
