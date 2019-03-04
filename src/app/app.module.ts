@@ -33,5 +33,5 @@ const routes: Routes = [
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(private routerExtService: RouterExtService){}
+    constructor(private routerExtService: RouterExtService) {}
 }

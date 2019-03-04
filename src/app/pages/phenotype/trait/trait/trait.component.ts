@@ -29,8 +29,8 @@ export class TraitComponent implements OnChanges {
     config = {
         name: {is_required: true, is_editable: false, name: 'name'},
         description: {is_required: true, is_editable: true, name: 'description'},
-        ontology:{is_required: false, is_editable: true, name: 'ontology'},
-        ontology_id:{is_required: false, is_editable: true, name: 'ontology_id'}
+        ontology: {is_required: false, is_editable: true, name: 'ontology'},
+        ontology_id: {is_required: false, is_editable: true, name: 'ontology_id'}
     };
 
     constructor(private traitService: TraitService,
@@ -88,7 +88,7 @@ export class TraitComponent implements OnChanges {
         if (formValidData) {
             const trait = new Trait();
             trait.name = formValidData['name'];
-            trait.description = formValidData['description']
+            trait.description = formValidData['description'];
             trait.ontology = formValidData['ontology'];
             trait.ontology_id = formValidData['ontology_id'];
             return trait;
