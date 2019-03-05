@@ -47,11 +47,15 @@ export class ObservationService {
         return this.http.delete(detailUrl);
     }
 
-    bulkCreate(file: File): Observable<HttpEvent<Task>> {
+    bulkCreate(file: File, conf: any): Observable<HttpEvent<Task>> {
+        console.log(conf);
         const bulk_url = this.endPoint + 'bulk/';
 
         const formData: FormData = new FormData();
-        formData.append('csv', file, file.name);
+        formData.append('file', file, file.name);
+        for (const key of Object.keys(conf)) {
+            formData.append(key, conf[key]);
+        }
 
         const req = new HttpRequest('POST', bulk_url, formData,
                                     {reportProgress: true});
