@@ -54,9 +54,7 @@ export class InlineAutoTraitComponent  extends InlineEditComponent implements On
     ngAfterViewInit() {
         this.trigger.panelClosingActions
             .subscribe(e => {
-                console.log(e);
-                if (!(e && e.source)) {
-                    console.log(this.inputControl.value);
+                if (typeof(this.value) === 'string') {
                     this.inputControl.setValue(null);
                     this.trigger.closePanel();
                 }

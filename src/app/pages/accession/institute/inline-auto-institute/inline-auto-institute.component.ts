@@ -57,7 +57,8 @@ export class InlineAutoInstituteComponent extends InlineEditComponent implements
     ngAfterViewInit() {
         this.trigger.panelClosingActions
             .subscribe(e => {
-                if (!(e && e.source)) {
+                if (typeof(this.value) === 'string') {
+                // if (!(e && e.source)) {
                     this.inputControl.setValue(null);
                     this.trigger.closePanel();
                 }

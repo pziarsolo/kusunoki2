@@ -4,13 +4,14 @@
         name="undefined"
         createMode="true"
         editMode="true"
-        (traitCreated)=close($event)>
+        (scaleCreated)=close($event)>
     </kusunoki2-scale>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-raised-button mat-dialog-close>Cancel</button>
   <button mat-raised-button mat-dialog-close
     color='primary'
-    (click)="scale.createScale()"
-    [disabled]="!scale.allInputAreValid">Create</button>
+    [disabled]="!scale.allInputAreValid"
+    (click)="scale.createScale()">Create
+</button>
 </mat-dialog-actions>

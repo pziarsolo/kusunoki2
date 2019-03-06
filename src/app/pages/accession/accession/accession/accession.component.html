@@ -26,9 +26,7 @@
                     <kusunoki2-inline-auto-institute fxFlex
                         [label]="'Institute Code'"
                         [value]="accession.data.instituteCode"
-                        [config]="{is_required: true,
-                                is_editable: true,
-                                name: 'instituteCode'}"
+                        [config]="config.institute"
                         [editMode]="editMode"
                         (validationStateEvent)="checkFormValid($event)">
                     </kusunoki2-inline-auto-institute>
@@ -36,9 +34,7 @@
                     <kusunoki2-inline-edit fxFlex
                         [label]="'Germplasm Number'"
                         [value]="accession.data.germplasmNumber"
-                        [config]="{is_required: true,
-                                is_editable: true,
-                                name: 'germplasmNumber'}"
+                        [config]="config.germplasmNumber"
                         [editMode]="editMode"
                         (validationStateEvent)="checkFormValid($event)">
                         <span class='value'>
@@ -55,9 +51,7 @@
                         [value]="accession.data.conservation_status"
                         [editMode]="editMode"
                         [choices]="conservation_statuses"
-                        [config]="{name: 'conservationStatus',
-                                is_editable: true,
-                                showCode: false}"
+                        [config]="config.conservation_status"
                         (validationStateEvent)="checkFormValid($event)">
                         <span class='value'>{{accession.data.conservation_status}}</span>
                     </kusunoki2-inline-edit-select>
@@ -65,11 +59,7 @@
                         [label]="'Availability'"
                         [value]="accession.data.is_available"
                         [editMode]="editMode"
-                        [config]="{name: 'isAvailable',
-                                is_editable: true,
-                                widget: {type: 'switch',
-                                            conf: {'true': 'Is available',
-                                                'false': 'Is Not Available'}}}"
+                        [config]="config.is_available"
                         (validationStateEvent)="checkFormValid($event)">
                     </kusunoki2-inline-edit>
                 </div>

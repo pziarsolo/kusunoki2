@@ -55,7 +55,7 @@ export class InlineAutoCountryComponent extends InlineEditComponent implements O
     ngAfterViewInit() {
         this.trigger.panelClosingActions
             .subscribe(e => {
-                if (!(e && e.source)) {
+                if (typeof(this.value) === 'string') {
                     this.inputControl.setValue(null);
                     this.trigger.closePanel();
                 }

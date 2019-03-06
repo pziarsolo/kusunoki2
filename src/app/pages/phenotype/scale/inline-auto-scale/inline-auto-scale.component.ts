@@ -54,7 +54,7 @@ export class InlineAutoScaleComponent  extends InlineEditComponent implements On
     ngAfterViewInit() {
         this.trigger.panelClosingActions
             .subscribe(e => {
-                if (!(e && e.source)) {
+                if (typeof(this.value) === 'string') {
                     this.inputControl.setValue(null);
                     this.trigger.closePanel();
                 }

@@ -27,7 +27,6 @@ export class ObservationVariableComponent implements OnChanges {
     @Output() variableCreated = new EventEmitter<ObservationVariable>();
     @Output() variableDeleted = new EventEmitter<any>();
     observationVariable: ObservationVariable;
-    scale: Scale;
 
     userCanEdit: boolean;
     allInputAreValid: boolean;
@@ -174,7 +173,7 @@ export class ObservationVariableComponent implements OnChanges {
         dialogRef.afterClosed().subscribe(trait => {
             console.log(trait);
             if (trait) {
-                this.inlineAutoTraitForm.inputControl.setValue(trait.name);
+                this.inlineAutoTraitForm.inputControl.patchValue(trait);
             }
         });
     }
@@ -183,8 +182,9 @@ export class ObservationVariableComponent implements OnChanges {
             width: '700px',
         });
         dialogRef.afterClosed().subscribe(scale => {
+            console.log(scale);
             if (scale) {
-                this.inlineAutoScaleForm.inputControl.setValue(scale);
+                this.inlineAutoScaleForm.inputControl.patchValue(scale);
             }
         });
     }

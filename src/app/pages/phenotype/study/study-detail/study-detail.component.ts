@@ -76,11 +76,12 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
             AppUrls.phenotype.studies, study.data.name]);
     }
     editCanceled() {
+        this.editMode = false;
+        this.createMode = false;
         if (this.createMode) {
             this.router.navigate([ AppUrls.phenotypeSubDir, AppUrls.phenotype.studies]);
         } else {
             this.studyComp.resetForm();
         }
-
     }
 }

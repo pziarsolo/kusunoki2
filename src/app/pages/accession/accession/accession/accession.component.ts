@@ -40,6 +40,19 @@ export class AccessionComponent  implements OnChanges {
     @ViewChildren(InlineEditSelectComponent) inlineFormSelect;
     @ViewChildren(PassportComponent) passports;
 
+    config = {
+        institute: {
+            is_required: true, is_editable: false, name: 'instituteCode'},
+        germplasmNumber: {
+            is_required: true, is_editable: false, name: 'germplasmNumber'},
+        conservation_status: {
+            name: 'conservationStatus', is_editable: true, showCode: false},
+        is_available: {
+            name: 'isAvailable', is_editable: true,
+            widget: {type: 'switch',
+                        conf: {'true': 'Is available',
+                            'false': 'Is Not Available'}}},
+    };
 
     constructor(
         private readonly accessionService: AccessionService,
@@ -48,8 +61,12 @@ export class AccessionComponent  implements OnChanges {
         private readonly currentUserService: CurrentUserService,
         private readonly accessionsetService: AccessionSetService,
         public dialog: MatDialog) {
+    }
+    makeAllFieldEditable() {
+        for (const child of Object.keys(this.config)) {
+            this.config[child]['is_editable'] = true;
         }
-
+    }
     ngOnChanges(changes: SimpleChanges): void {
         if ('accession' in changes && this.accession && this.accession.data.germplasmNumber) {
             this.evalUserPermissions();
@@ -62,6 +79,8 @@ export class AccessionComponent  implements OnChanges {
                     },
                     error => console.log(error)
                 );
+        } else if ('createMode' in changes && this.createMode) {
+            this.makeAllFieldEditable();
         }
     }
     evalUserPermissions() {

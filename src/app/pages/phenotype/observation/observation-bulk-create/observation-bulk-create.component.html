@@ -24,8 +24,8 @@
         </div>
     </mat-card-content>
 
-    <mat-spinner *ngIf="processing">
-    </mat-spinner>
+    <mat-spinner *ngIf="processing"></mat-spinner>
+
     <mat-card-content *ngIf='uploadTried && uploadSuccessful === false'>
         <p>Something went wrong</p>
         <mat-list *ngIf="errors">
@@ -33,9 +33,5 @@
                 <mat-icon>clear</mat-icon>{{error.detail}}
             </mat-list-item>
         </mat-list>
-    </mat-card-content>
-    <mat-card-content *ngIf='uploadTried && uploadSuccessful'>
-        <p>File succesfully uploaded</p>
-        <p>{{num_uploaded}} observations added</p>
     </mat-card-content>
 </mat-card>
