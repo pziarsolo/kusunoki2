@@ -27,7 +27,7 @@ import {
 } from '@angular/material';
 
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatCardModule} from '@angular/material/card';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
@@ -57,7 +57,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         MatGridListModule,
         MatTabsModule,
         MatProgressBarModule,
-        DragDropModule
+        DragDropModule,
+        ScrollingModule
     ]
 })
 export class MaterialBaseModule { }

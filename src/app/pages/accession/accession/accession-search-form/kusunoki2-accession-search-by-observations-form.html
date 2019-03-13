@@ -1,0 +1,8 @@
+<div *ngFor='let observation_filter of filters; let i = index' fxLayout='row'>
+    <kusunoki2-accession-search-by-observation-form fxFlex='grow'
+        [filterExpression]="observation_filter"
+        (formChanged)="checkFormValid()">
+    </kusunoki2-accession-search-by-observation-form >
+    <button mat-icon-button (click)='deleteFilter(i)'><mat-icon>delete</mat-icon></button>
+</div>
+<button mat-button color='primary' (click)='addFilter()'><mat-icon>add</mat-icon> Filter</button>

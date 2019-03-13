@@ -34,6 +34,8 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
                 this.name = undefined;
             } else {
                 this.name = params.name;
+                this.createMode = false;
+                this.editMode = false;
             }
         });
     }
@@ -42,6 +44,7 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
     }
 
     evalUserPermissions(study) {
+        console.log('aa');
         this.study = study;
         if (this.study) {
             this.studyFound = true;

@@ -1,0 +1,36 @@
+<form #obsForm='ngForm'>
+    <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="33%">
+            <mat-label>Trait Methodology</mat-label>
+            <input type="text" matInput [(ngModel)]="filterExpression.variable"
+                (ngModelChange) = "suggestedVariables = filterVariables(filterExpression.variable)"
+                [matAutocomplete]="variableAuto"
+                #variableAuto
+                required
+                name="variable">
+            <mat-autocomplete #variableAuto="matAutocomplete"
+                [displayWith]='variableDisplay'
+                (optionSelected)='variableSelectedTrigger($event)'>
+                <mat-option *ngFor="let variable of suggestedVariables|async " [value]="variable">
+                    {{ variable.data.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field fxFlex="33%" *ngIf="availablelookUpExpressions && filterExpression.variable">
+            <mat-select placeholder="LookupExpression"
+                [(ngModel)]='filterExpression.lookupExpression'
+                name='lookupExpression'>
+                <mat-option *ngFor="let expr of availablelookUpExpressions" [value]='expr'>{{expr}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="33%" *ngIf="availablelookUpExpressions && filterExpression.variable">
+            <mat-label> Value </mat-label>
+            <input matInput [(ngModel)]="filterExpression.value" name="value" required>
+        </mat-form-field>
+        <mat-form-field fxFlex="33%" *ngIf="availableCategories && filterExpression.variable">
+            <mat-select name='categrories' placeholder="Categories" required [(ngModel)]='filterExpression.value'>
+                <mat-option *ngFor="let expr of availableCategories" [value]='expr.value'>{{expr.description}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</form>

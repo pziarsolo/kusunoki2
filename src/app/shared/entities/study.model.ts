@@ -10,6 +10,8 @@ export class StudyData {
     end_date: Moment;
     location: string;
     contacts: string;
+    season: string;
+    institution: string;
 
     constructor(object?: StudyData) {
         if (object) {
@@ -28,6 +30,8 @@ export class StudyData {
             }
             this.location = object.location;
             this.contacts = object.contacts;
+            this.institution = object.institution;
+            this.season = object.season;
         } else {
             this.name = undefined;
             this.description = undefined;
@@ -36,6 +40,8 @@ export class StudyData {
             this.end_date = undefined;
             this.location = undefined;
             this.contacts = undefined;
+            this.season = undefined;
+            this.institution = undefined;
         }
     }
 
@@ -61,6 +67,12 @@ export class StudyData {
         }
         if (this.contacts) {
             apiDoc['contacts'] = this.contacts;
+        }
+        if (this.season) {
+            apiDoc['season'] = this.season;
+        }
+        if (this.institution) {
+            apiDoc['institution'] = this.institution;
         }
         return apiDoc;
     }

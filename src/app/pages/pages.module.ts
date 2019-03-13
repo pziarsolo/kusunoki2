@@ -37,12 +37,12 @@ const routes: Routes = [
             },
             {
                 path: '',
-                loadChildren: './accession/accession.module#AccessionModule',
-                // canActivate: [IsAuthGuard]
+                component: HomeComponent
             },
             {
                 path: '',
-                component: HomeComponent
+                loadChildren: './accession/accession.module#AccessionModule',
+                // canActivate: [IsAuthGuard]
             },
             {
                 path: '**',

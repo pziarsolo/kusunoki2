@@ -16,6 +16,8 @@ export interface AccessionSearchParams extends SearchParams {
     taxon_contains?: string;
     taxon_rank?: string;
     site?: string;
+    study?: string;
+    observation_filters?: [];
 }
 
 export interface AccessionSetSearchParams extends AccessionSearchParams {

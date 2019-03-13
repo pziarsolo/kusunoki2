@@ -8,7 +8,7 @@ import { PassportComponent } from './passport/passport.component';
 import { TaxaStatsPageComponent } from './taxa-stats-page/taxa-stats-page.component';
 import { OtherNumbersComponent } from './passport-other-numbers/other-numbers.component';
 import { OtherNumberComponent } from './passport-other-numbers/other-number.component';
-import { AccessionSearchFormComponent } from './accession/accession-search-form/accession-search-form.component';
+import { AccessionSearchFormComponent, AccessionSearchByObservationFormComponent, AccessionSearchByObservationsFormComponent } from './accession/accession-search-form/accession-search-form.component';
 import { AccessionListComponent } from './accession/accession-list/accession-list.component';
 import { AccessionDetailComponent } from './accession/accession-detail/accession-detail.component';
 import { AccessionCreateComponent } from './accession/accession-create/accession-create.component';
@@ -125,7 +125,9 @@ const routes: Routes = [
         OtherNumberComponent,
         OtherNumbersComponent,
         CountryTableComponent,
-        InstituteTableComponent
+        InstituteTableComponent,
+        AccessionSearchByObservationsFormComponent,
+        AccessionSearchByObservationFormComponent
     ],
     imports: [
         SharedModule,

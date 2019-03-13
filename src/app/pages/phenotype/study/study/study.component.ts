@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChildren, Output, EventEmitter } from '@angular/core';
 import { StudyService } from 'src/app/shared/services/study.service';
 import { Study } from 'src/app/shared/entities/study.model';
-import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
-import { Router } from '@angular/router';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { MatDialog } from '@angular/material';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
@@ -41,8 +39,10 @@ export class StudyComponent implements OnChanges {
         description: {is_required: true, is_editable: true, name: 'description'},
         start_date: {widget: {type: 'datePicker'}, name: 'start_date'},
         end_date: {widget: {type: 'datePicker'}, name: 'end_date'},
-        location: {is_required: true, is_editable: true, name: 'location'},
-        contacts: {is_required: true, is_editable: true, name: 'contacts'}
+        location: {is_required: false, is_editable: true, name: 'location'},
+        contacts: {is_required: false, is_editable: true, name: 'contacts'},
+        season: {is_required: false, is_editable: true, name: 'season'},
+        institution: {is_required: false, is_editable: true, name: 'institition'}
     };
 
     constructor(

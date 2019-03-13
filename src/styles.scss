@@ -16,6 +16,11 @@ $warn:    mat-palette($mat-red, 500);
 $kusunoki-theme: mat-light-theme($kusunoki-primary, $kusunoki-accent, $kusunoki-warn);
 
 @include angular-material-theme($kusunoki-theme);
+
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+    transform: none !important;
+}
+
 body {
     font-family: Roboto, 'Helvetica Neue', sans-serif;
     font-weight: normal;

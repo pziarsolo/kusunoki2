@@ -73,8 +73,31 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" >Search</button>
-            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams = {}" >Clear</button>
+            <div fxLayout='column' style='margin-bottom:10px;'>
+                <button mat-raised-button color='primary'
+                    *ngIf="!showcharaCriteria" style='width: 17em'
+                    (click)="showcharaCriteria=true">Add characterization criteria</button>
+                <div fxLayout='column' [style.display]="showcharaCriteria?'inherit':'none'" style='margin-left:20px'>
+                    <h3>Characterization criteria</h3>
+                    <mat-form-field fxFlex>
+                        <mat-label>Study</mat-label>
+                        <input type="text" matInput [(ngModel)]="searchParams.study"
+                                (ngModelChange) = "suggestedStudies = filterStudies(searchParams.study)"
+                                [matAutocomplete]="studyAuto"
+                                #studyAuto  name="study">
+                        <mat-autocomplete #studyAuto="matAutocomplete">
+                            <mat-option *ngFor="let study of suggestedStudies|async " [value]="study.data.name">
+                                {{ study.data.name }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <h4>Observations</h4>
+                    <kusunoki2-accession-search-by-observations-form #observation_filters>
+                    </kusunoki2-accession-search-by-observations-form>
+                </div>
+            </div>
+            <button mat-raised-button [disabled]="!observation_filters.allInputAreValid" color='accent' type="submit" (click)="doSubmit()" >Search</button>
+            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="resetForm()" >Clear</button>
         </form>
         <!-- <pre>{{searchParams | json}}</pre> -->
     </mat-card-content>

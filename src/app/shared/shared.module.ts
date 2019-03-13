@@ -34,6 +34,7 @@ import { GoogleMapMultiMarkerComponent } from './components/google/google-map-mu
 import { InlineEditListComponent } from './components/inline-edit-list/inline-edit-list.component';
 import { ObservationVariableTableComponent
 } from './components/entity-tables/observation-variable-table/observation-variable-table.component';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,7 @@ import { ObservationVariableTableComponent
         AccessionTableComponent,
         AccessionSetTableComponent,
         InlineEditListComponent,
-        ObservationVariableTableComponent
+        ObservationVariableTableComponent,
 
     ],
     imports: [
@@ -73,7 +74,8 @@ import { ObservationVariableTableComponent
         PipesModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        NgxGalleryModule
     ],
     entryComponents: [
         DeleteDialogComponent,
