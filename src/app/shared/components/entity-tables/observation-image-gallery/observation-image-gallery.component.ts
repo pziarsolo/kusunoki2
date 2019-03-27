@@ -38,7 +38,7 @@ export class ObservationImageGalleryComponent implements OnInit {
                 width: '600px', height: '400px', previewCloseOnClick: true,
                 previewCloseOnEsc: true, previewAnimation: false, previewZoom: true,
                 previewRotate: true, previewDownload: true,
-                thumbnailsRemainingCount: true, thumbnailsArrowsAutoHide: true,
+                thumbnailsArrowsAutoHide: true,
                 imageArrowsAutoHide: true, arrowPrevIcon: 'fa fa-angle-left',
                 arrowNextIcon: 'fa fa-angle-right', closeIcon: 'fa fa-times',
                 fullscreenIcon: 'fa fa-expands-arrows',
