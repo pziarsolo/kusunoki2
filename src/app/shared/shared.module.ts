@@ -35,6 +35,7 @@ import { InlineEditListComponent } from './components/inline-edit-list/inline-ed
 import { ObservationVariableTableComponent
 } from './components/entity-tables/observation-variable-table/observation-variable-table.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { ObservationImageGalleryComponent } from './components/entity-tables/observation-image-gallery/observation-image-gallery.component';
 
 @NgModule({
     declarations: [
@@ -63,6 +64,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
         AccessionSetTableComponent,
         InlineEditListComponent,
         ObservationVariableTableComponent,
+        ObservationImageGalleryComponent,
 
     ],
     imports: [
@@ -109,7 +111,9 @@ import { NgxGalleryModule } from 'ngx-gallery';
         AccessionTableComponent,
         AccessionSetTableComponent,
         InlineEditListComponent,
-        ObservationVariableTableComponent
+        ObservationVariableTableComponent,
+        ObservationImageGalleryComponent,
+        NgxGalleryModule
     ]
 })
 export class SharedModule { }

@@ -14,6 +14,7 @@ import { AppUrls } from 'src/app/pages/appUrls';
 import { conservation_statuses } from '../../assets/conservationStatus';
 import { InlineAutoInstituteComponent } from '../../institute/inline-auto-institute/inline-auto-institute.component';
 import { PassportComponent } from '../../passport/passport.component';
+import { ObservationImageGalleryComponent } from 'src/app/shared/components/entity-tables/observation-image-gallery/observation-image-gallery.component';
 
 @Component({
     selector: 'kusunoki2-accession',
@@ -39,6 +40,7 @@ export class AccessionComponent  implements OnChanges {
     @ViewChildren(InlineAutoInstituteComponent) inlineAutoInstitutes;
     @ViewChildren(InlineEditSelectComponent) inlineFormSelect;
     @ViewChildren(PassportComponent) passports;
+    @ViewChildren(ObservationImageGalleryComponent) gallery;
 
     config = {
         institute: {

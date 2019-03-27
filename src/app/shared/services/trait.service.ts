@@ -48,10 +48,10 @@ export class TraitService {
     }
 
     bulkCreate(file: File): Observable<HttpEvent<Task>> {
-        const bulk_url = this.endPoint + 'bulk/';
+        const bulk_url = this.endPoint + 'create_by_obo/';
 
         const formData: FormData = new FormData();
-        formData.append('csv', file, file.name);
+        formData.append('obo', file, file.name);
 
         const req = new HttpRequest('POST', bulk_url, formData,
                                     {reportProgress: true});

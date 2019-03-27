@@ -76,9 +76,9 @@ export class BaseInlinesFormComponent implements OnInit, AfterViewChecked {
         if (this.all_children_are_valid()) {
             const valid_form_data = {};
             for (const component of this.children_components) {
-                const value = component.getFormDataIfValid();
+                const value = component.getValueIfFormValid();
                 if (value !== undefined) {
-                    valid_form_data[component.config.name] = component.getFormDataIfValid();
+                    valid_form_data[component.config.name] = value;
                 }
             }
             return valid_form_data;
@@ -96,7 +96,6 @@ export class BaseInlinesFormComponent implements OnInit, AfterViewChecked {
 
     formReset() {
         for (const children of this.children_components) {
-            console.log(children);
             children.resetForm();
         }
         this.edit_mode = false;

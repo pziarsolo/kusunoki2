@@ -42,7 +42,6 @@ export class UserComponent extends BaseInlinesFormComponent {
                 private readonly currentUserService: CurrentUserService) {
         super();
     }
-
     afterInit() {
         const userToken = this.currentUserService.currentUserSubject.value;
         if (userToken) {

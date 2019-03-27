@@ -6,7 +6,7 @@
                                 [editMode]="edit_mode"
                                 [config]="children_config[component_name]"
                                 [value]="input_form_data[component_name]"
-                                (validation_state_event)="check_form_valid($event)">
+                                (validationStateEvent)="check_form_valid($event)">
                 <span *ngIf="component_name === 'username'" class='value'>
                     <a [routerLink]="['/', appUrls.users, input_form_data[component_name]]">
                         {{input_form_data[component_name]}}
@@ -39,7 +39,7 @@
             <mat-icon>done</mat-icon>Update User
         </button>
         <button mat-button [disabled]="!form_valid || !passwordForm.form.valid" *ngIf='create_mode' color='accent' (click)="doCreate(); groupsComponent.edit_mode=false">
-            <mat-icon>done</mat-icon>Create Accession
+            <mat-icon>done</mat-icon>Create User
         </button>
 
         <button mat-button color='warn' *ngIf="!create_mode" (click)=doChangePassword()>

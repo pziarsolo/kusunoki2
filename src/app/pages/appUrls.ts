@@ -14,6 +14,7 @@ export const AppUrls = {
         observations: 'observations',
         observation_variables: 'observation_variables',
         traits: 'traits',
-        scales: 'scales'
+        scales: 'scales',
+        observation_images: 'observation_images'
     }
 };

@@ -14,7 +14,7 @@
             [editMode]="editMode"
             [createMode]="createMode"
             (variableCreated)="variableCreated($event)"
-            (variableDeleted)="variableDeleted($event)" >
+            (variableDeleted)="variableDeleted()" >
         </kusunoki2-observation-variable>
     </mat-card-content>
     <mat-card-actions *ngIf='editMode || createMode'>

@@ -26,6 +26,8 @@ import { InlineAutoScaleComponent } from './scale/inline-auto-scale/inline-auto-
 import { ScaleCreateDialogComponent } from './scale/scale-create-dialog/scale-create-dialog.component';
 import { ObservationVariableListComponent } from './observation_variable/observation-variable-list/observation-variable-list.component';
 import { InlineScaleValidValuesComponent } from './scale/inline-scale-valid-values/inline-scale-valid-values.component';
+import { ObservationImageBulkCreateComponent
+} from './observation_image/observation-image-bulk-create/observation-image-bulk-create.component';
 
 
 const routes: Routes = [
@@ -69,7 +71,10 @@ const routes: Routes = [
         path: AppUrls.phenotype.scales + '/:name',
         component: ScaleDetailComponent,
     },
-
+    {
+        path: AppUrls.phenotype.observation_images + '/bulk_create',
+        component: ObservationImageBulkCreateComponent,
+    },
 
 ];
 
@@ -96,6 +101,7 @@ const routes: Routes = [
         ScaleCreateDialogComponent,
         ObservationVariableListComponent,
         InlineScaleValidValuesComponent,
+        ObservationImageBulkCreateComponent,
     ],
     entryComponents: [
         TraitCreateDialogComponent,

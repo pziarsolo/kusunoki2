@@ -117,11 +117,13 @@ export class StudyComponent implements OnChanges {
     }
     tooglePublic() {
         this.study.metadata.is_public = !this.study.metadata.is_public;
+        console.log()
         this.studyService.update(this.study.data.name,
                                  this.study.getApiDocument())
             .subscribe(
                 (updatedStudy: Study) => {
-                    this.study = updatedStudy;
+                    this.study = new Study(updatedStudy);
+                    this.studyRequestFinished.emit(this.study);
                     this.statusService.info('Accession sucessfully updated');
                 },
                 (error) => console.log(error)
@@ -138,7 +140,8 @@ export class StudyComponent implements OnChanges {
                                          study.getApiDocument())
                 .subscribe(
                     (updatedStudy: Study) => {
-                        this.study = updatedStudy;
+                        this.study = new Study(updatedStudy);
+                        this.studyRequestFinished.emit(this.study);
                         this.statusService.info('Study sucessfully updated');
                     },
                     (error) => console.log(error)
