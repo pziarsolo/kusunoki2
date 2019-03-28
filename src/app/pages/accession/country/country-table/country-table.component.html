@@ -1,4 +1,6 @@
-<table mat-table [dataSource]='dataSource' matSort class='datatable mat-elevation-z2'>
+<table mat-table [dataSource]='dataSource' matSort
+    class='datatable mat-elevation-z2'
+    (matSortChange)="dataSource.sortData($event)">
     <ng-container matColumnDef="code">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
         <td mat-cell *matCellDef="let country">

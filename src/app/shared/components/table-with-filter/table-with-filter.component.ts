@@ -26,7 +26,7 @@ export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
     private loadingSubject = new BehaviorSubject<boolean>(false);
     totalCount: number;
     lastSeachParams;
-    mappingFields;
+    mappingFields = {};
 
     constructor(private searchService,
                 private retrieveFields: string[],

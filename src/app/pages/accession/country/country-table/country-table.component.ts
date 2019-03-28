@@ -4,7 +4,12 @@ import { SearchDataSourceNoRouter, TableWithFilterComponent
 import { Country } from 'src/app/shared/entities/country.model';
 import { AppUrls } from 'src/app/pages/appUrls';
 
-class CountryDataSource extends SearchDataSourceNoRouter<Country> {}
+class CountryDataSource extends SearchDataSourceNoRouter<Country> {
+    mappingFields = {
+        'num_accessions': 'by_num_accessions',
+        'num_accessionsets': 'by_num_accessionsets'
+    };
+}
 
 @Component({
   selector: 'kusunoki2-country-table',
