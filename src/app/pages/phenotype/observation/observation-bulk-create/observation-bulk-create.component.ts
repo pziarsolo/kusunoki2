@@ -15,7 +15,7 @@ export class ObservationBulkCreateComponent {
     createObservationUnits: boolean;
     @ViewChild('file') file;
     filename: string;
-    errors: String[];
+    errors;
     uploadedFile: File;
     num_uploaded: Number;
 

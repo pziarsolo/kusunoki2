@@ -29,8 +29,8 @@
     <mat-card-content *ngIf='uploadTried && uploadSuccessful === false'>
         <p>Something went wrong</p>
         <mat-list *ngIf="errors">
-            <mat-list-item *ngFor='let error of errors'>
-                <mat-icon>clear</mat-icon>{{error.detail}}
+            <mat-list-item *ngFor='let error of errors.detail'>
+                <mat-icon>clear</mat-icon>{{error}}
             </mat-list-item>
         </mat-list>
     </mat-card-content>

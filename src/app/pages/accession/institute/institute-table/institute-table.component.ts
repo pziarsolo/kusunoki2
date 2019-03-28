@@ -4,7 +4,14 @@ import { TableWithFilterComponent, SearchDataSourceNoRouter
 import { AppUrls } from 'src/app/pages/appUrls';
 import { Institute } from 'src/app/shared/entities/institute.model';
 
-class InstituteDataSource extends SearchDataSourceNoRouter<Institute> {}
+class InstituteDataSource extends SearchDataSourceNoRouter<Institute> {
+    mappingFields = {
+        'instituteCode': 'code',
+        'num_accessions': 'by_num_accessions',
+        'num_accessionsets': 'by_num_accessionsets'
+    };
+}
+
 
 @Component({
   selector: 'kusunoki2-institute-table',

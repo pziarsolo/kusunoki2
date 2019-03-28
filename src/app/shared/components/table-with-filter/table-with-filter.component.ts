@@ -25,6 +25,8 @@ export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
     private itemsSubject = new BehaviorSubject<any[]>([]);
     private loadingSubject = new BehaviorSubject<boolean>(false);
     totalCount: number;
+    lastSeachParams;
+    mappingFields;
 
     constructor(private searchService,
                 private retrieveFields: string[],
@@ -38,17 +40,23 @@ export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
     disconnect(collectionViewer: CollectionViewer): void {
         this.itemsSubject.complete();
         this.loadingSubject.complete();
+        this.lastSeachParams = undefined;
     }
     get data(): T[] {
         return this.itemsSubject.value;
     }
 
-    loadItems(search_params)  {
+    loadItems(search_params, ordering?)  {
         this.loadingSubject.next(true);
         search_params['fields'] = this.retrieveFields.join(',');
 
         if (this.extraSearchParams) {
             search_params = Object.assign(search_params, this.extraSearchParams);
+        }
+        if (!ordering) {
+            this.lastSeachParams = search_params;
+        } else {
+            search_params = Object.assign(search_params, ordering);
         }
         this.searchService.list(search_params)
             .pipe(
@@ -63,6 +71,17 @@ export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
                 error => {
                     console.log('error');
                 });
+    }
+    sortData(event) {
+        const direction = event.direction === 'asc' ? '-' : '+';
+        let tableField;
+        if (Object.keys(this.mappingFields).indexOf(event.active) > -1) {
+            tableField = this.mappingFields[event.active];
+        } else {
+            tableField = event.active;
+        }
+        const ordering = {'ordering': `${direction}${tableField}`};
+        this.loadItems(this.lastSeachParams, ordering);
     }
 }
 

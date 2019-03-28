@@ -19,7 +19,7 @@ import { TraitService } from '../../services/trait.service';
 })
 export class BulkCreateComponent implements OnInit {
     @ViewChild('file') file;
-    errors: String[];
+    errors;
     uploadedFile: File;
     num_uploaded: Number;
 
@@ -70,10 +70,10 @@ export class BulkCreateComponent implements OnInit {
                         this.router.navigate(['/', AppUrls.tasks, task_id]);
                     }
                 },
-                (error) => {
+                (errors) => {
                     this.processing = false;
                     this.uploadSuccessful = false;
-                    this.errors = error.error.details;
+                    this.errors = errors.error;
                     this.statusService.error('Check the errors');
                 }
             );
