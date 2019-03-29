@@ -59,7 +59,7 @@ export class AccessionService {
         const bulkUrl = this.endPoint + 'bulk/';
 
         const formData: FormData = new FormData();
-        formData.append('csv', file, file.name);
+        formData.append('file', file, file.name);
         formData.append('data_source_code', dataSource.code);
         if (dataSource.kind) {
             formData.append('data_source_kind', dataSource.kind);

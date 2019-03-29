@@ -1,9 +1,22 @@
-<kusunoki2-accession [accession]="accession"
-                     [editMode]="editMode"
-                     [mapId]="'googlemap'">
+<kusunoki2-accession
+    *ngIf="accession"
+    #accessionComp
+    [accession]="accession"
+    [editMode]="editMode"
+    [mapId]="'googlemap'">
 </kusunoki2-accession>
-<mat-accordion>
-    <mat-expansion-panel>
+{{accessionComp?.editMode}}
+<mat-accordion *ngIf="germplasmNumber && instituteCode && !accessionComp?.editMode">
+    <mat-expansion-panel [expanded]="editMode">
+        <mat-expansion-panel-header><h3 class='key'>Images</h3></mat-expansion-panel-header>
+        <div fxFlex></div>
+        <kusunoki2-observation-image-gallery fxFlex
+            [searchParams]="{accession_number: germplasmNumber,
+                            accession_institute: instituteCode}">
+        </kusunoki2-observation-image-gallery>
+        <div fxFlex></div>
+    </mat-expansion-panel>
+    <mat-expansion-panel >
         <mat-expansion-panel-header><h3 class='key'>Observations of this accession</h3></mat-expansion-panel-header>
         <kusunoki2-observation-table *ngIf="instituteCode && germplasmNumber"
             [searchParams]="{'accession_number': germplasmNumber,

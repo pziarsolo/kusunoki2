@@ -59,7 +59,7 @@ export class AccessionSetService {
         const bulkUrl = this.endPoint + 'bulk/';
 
         const formData: FormData = new FormData();
-        formData.append('csv', file, file.name);
+        formData.append('file', file, file.name);
         const req = new HttpRequest('POST', bulkUrl, formData,
                                     {reportProgress: true});
 

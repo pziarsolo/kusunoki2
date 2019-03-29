@@ -51,7 +51,7 @@ export class ScaleService {
         const bulk_url = this.endPoint + 'bulk/';
 
         const formData: FormData = new FormData();
-        formData.append('csv', file, file.name);
+        formData.append('file', file, file.name);
 
         const req = new HttpRequest('POST', bulk_url, formData,
                                     {reportProgress: true});
