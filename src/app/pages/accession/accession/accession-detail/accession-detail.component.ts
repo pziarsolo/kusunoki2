@@ -1,8 +1,9 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccessionService } from 'src/app/shared/services/accession.service';
 import { Accession } from 'src/app/shared/entities/accession.model';
 import { Subscription } from 'rxjs';
+import { AccessionComponent } from '../accession/accession.component';
 
 @Component({
   selector: 'kusunoki2-accession-detail',
@@ -15,7 +16,7 @@ export class AccessionDetailComponent  implements OnInit, OnDestroy {
     accession: Accession;
     editMode = false;
     routerSubscription: Subscription;
-
+    @ViewChild('accessionComp') accessionComp: AccessionComponent;
     constructor(
         private route: ActivatedRoute,
         private readonly accessionService: AccessionService

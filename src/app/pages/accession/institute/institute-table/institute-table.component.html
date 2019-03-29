@@ -3,7 +3,7 @@
     <ng-container matColumnDef="instituteCode">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
         <td mat-cell *matCellDef="let institutes">
-            <a color='primary' [routerLink]="['/', appUrls['institutes'],
+            <a style='margin-right: 5px' color='primary' [routerLink]="['/', appUrls['institutes'],
                                             institutes.instituteCode]">
                 {{institutes.instituteCode}}
             </a>

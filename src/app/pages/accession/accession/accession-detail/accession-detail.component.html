@@ -5,7 +5,6 @@
     [editMode]="editMode"
     [mapId]="'googlemap'">
 </kusunoki2-accession>
-{{accessionComp?.editMode}}
 <mat-accordion *ngIf="germplasmNumber && instituteCode && !accessionComp?.editMode">
     <mat-expansion-panel [expanded]="editMode">
         <mat-expansion-panel-header><h3 class='key'>Images</h3></mat-expansion-panel-header>
