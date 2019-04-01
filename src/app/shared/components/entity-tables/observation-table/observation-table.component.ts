@@ -5,7 +5,15 @@ import { Observation } from 'src/app/shared/entities/observation.model';
 import { AppUrls } from 'src/app/pages/appUrls';
 
 
-class ObservationDataSource extends SearchDataSourceNoRouter<Observation> {}
+class ObservationDataSource extends SearchDataSourceNoRouter<Observation> {
+    mappingFields = {
+        study: 'observation_unit__study__name',
+        observation_unit: 'observation_unit__name',
+        accession: 'observation_unit__accession__germplasm_number',
+        value_beauty: 'value',
+        observation_variable: 'observation_variable__name'
+    };
+}
 
 
 @Component({

@@ -31,11 +31,11 @@ export class StudyComponent implements OnChanges {
     @ViewChildren(InlineEditComponent) inlineForms;
     config = {
         name: {is_required: true, is_editable: false, name: 'name'},
-        active: {
-            name: 'active', is_editable: true,
-            widget: {
-                type: 'switch', conf: {'true': 'Is active', 'false': 'Is Not active'}
-            }},
+        // active: {
+        //     name: 'active', is_editable: true,
+        //     widget: {
+        //         type: 'switch', conf: {'true': 'Is active', 'false': 'Is Not active'}
+        //     }},
         description: {is_required: true, is_editable: true, name: 'description'},
         start_date: {widget: {type: 'datePicker'}, name: 'start_date'},
         end_date: {widget: {type: 'datePicker'}, name: 'end_date'},

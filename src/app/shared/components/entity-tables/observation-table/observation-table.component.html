@@ -1,6 +1,7 @@
 <div [hidden]='dataSource.totalCount !== 0'>No Observations Found</div>
 <div [hidden]='dataSource.totalCount === 0'>
-    <table mat-table [dataSource]='dataSource' matSort class='datatable mat-elevation-z2' >
+    <table mat-table [dataSource]='dataSource' matSort
+         class='datatable mat-elevation-z2'  (matSortChange)="dataSource.sortData($event)">
 
         <ng-container matColumnDef="observation_id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Observation id</th>
