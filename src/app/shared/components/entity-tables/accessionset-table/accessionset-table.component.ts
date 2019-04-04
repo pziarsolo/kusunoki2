@@ -22,3 +22,4 @@ export class AccessionSetTableComponent extends TableWithFilterComponent {
             this.service, this.columnsToDisplay, this.extraSearchParams);
     }
 }
+

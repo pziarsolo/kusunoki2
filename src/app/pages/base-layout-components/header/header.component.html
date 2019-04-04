@@ -1,13 +1,13 @@
 <mat-toolbar color="primary" role="header">
-    <button type="button" aria-label="Toggle sidenav"
+    <!-- <button type="button" aria-label="Toggle sidenav"
         mat-icon-button (click)="toggleSidenav()">
         <mat-icon aria-label="Side nav toggle icon">{{menuIcon}}</mat-icon>
-    </button>
+    </button> -->
 
-    <a mat-button [routerLink]="['/']">
+    <button mat-button [routerLink]="['/']">
         <mat-icon>home</mat-icon>
-        <span> Home</span>
-    </a>
+        <span>Home</span>
+    </button>
     <button fxShow fxHide.gt-sm mat-button [matMenuTriggerFor]="rootMenu">
         <mat-icon>search</mat-icon>
         <span>Menu</span>

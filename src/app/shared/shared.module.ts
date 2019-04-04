@@ -113,7 +113,7 @@ import { ObservationImageGalleryComponent } from './components/entity-tables/obs
         InlineEditListComponent,
         ObservationVariableTableComponent,
         ObservationImageGalleryComponent,
-        NgxGalleryModule
+        NgxGalleryModule,
     ]
 })
 export class SharedModule { }

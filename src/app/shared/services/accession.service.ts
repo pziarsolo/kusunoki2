@@ -80,4 +80,14 @@ export class AccessionService {
                                              responseType: 'blob' });
 
     }
+
+    togglePublic(searchParams, publicValue: boolean) {
+        const url = this.endPoint + 'toggle_public/';
+
+        const data = {
+            search_params: searchParams,
+            public: publicValue
+        };
+        return this.http.post(url, data);
+    }
 }

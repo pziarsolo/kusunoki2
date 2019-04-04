@@ -75,6 +75,15 @@ export class AccessionSetService {
         const getParams = paramsToHttpParams(searchParams);
         return this.http.get(this.endPoint, {params: getParams,
                                              responseType: 'blob' });
+    }
 
+    togglePublic(searchParams, publicValue: boolean) {
+        const url = this.endPoint + 'toggle_public/';
+
+        const data = {
+            search_params: searchParams,
+            public: publicValue
+        };
+        return this.http.post(url, data);
     }
 }

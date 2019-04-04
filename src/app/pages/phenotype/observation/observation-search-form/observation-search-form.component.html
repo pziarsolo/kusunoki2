@@ -2,17 +2,23 @@
     <mat-card-title color='accent'>Observation Search </mat-card-title>
     <mat-card-content>
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
-            <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
-                <mat-form-field fxFlex>
-                    <mat-label>Study</mat-label>
-                    <input type="text"
-                        matInput
-                        [(ngModel)]="searchParams.study"
-                        name="institute">
-                </mat-form-field>
+            <div fxLayout='column' fxLayoutGap="5px" fxLayoutAlign="start start"
+            style='width: 100%'>
+                <kusunoki2-study-multi-autocomplete
+                    #studiesForm
+                    style='width: 100%'>
+                </kusunoki2-study-multi-autocomplete>
+                <kusunoki2-observation-variable-multi-autocomplete
+                    #observationVariableForm
+                    style='width: 100%'>
+
+                </kusunoki2-observation-variable-multi-autocomplete>
             </div>
+
+
+
             <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" >Search</button>
-            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams = {}" >Clear</button>
+            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="formReset()" >Clear</button>
         </form>
     </mat-card-content>
 </mat-card>

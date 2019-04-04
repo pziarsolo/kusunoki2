@@ -4,11 +4,27 @@
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
                 <mat-form-field fxFlex>
-                    <mat-label>Name</mat-label>
+                    <mat-label>Name or description</mat-label>
                     <input type="text"
                         matInput
-                        [(ngModel)]="searchParams.name"
-                        name="institute">
+                        [(ngModel)]="searchParams.name_or_description"
+                        name="name_or_Desc">
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label>Location</mat-label>
+                    <input type="text"
+                        matInput
+                        [(ngModel)]="searchParams.location_contains"
+                        name="location">
+                </mat-form-field>
+            </div>
+            <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
+                <mat-form-field fxFlex>
+                    <mat-label>Responsable</mat-label>
+                    <input type="text"
+                        matInput
+                        [(ngModel)]="searchParams.contact_contains"
+                        name="contact">
                 </mat-form-field>
             </div>
             <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" >Search</button>

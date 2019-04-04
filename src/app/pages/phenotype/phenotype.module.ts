@@ -28,6 +28,8 @@ import { ObservationVariableListComponent } from './observation_variable/observa
 import { InlineScaleValidValuesComponent } from './scale/inline-scale-valid-values/inline-scale-valid-values.component';
 import { ObservationImageBulkCreateComponent
 } from './observation_image/observation-image-bulk-create/observation-image-bulk-create.component';
+import { StudyMultiAutocompleteComponent } from './study/study-multi-autocomplete/study-multi-autocomplete.component';
+import { ObservationVariableMultiAutocompleteComponent } from './observation_variable/observation_variable-multi-autocomplete/observation-variable-multi-autocomplete.component';
 
 
 const routes: Routes = [
@@ -102,6 +104,8 @@ const routes: Routes = [
         ObservationVariableListComponent,
         InlineScaleValidValuesComponent,
         ObservationImageBulkCreateComponent,
+        StudyMultiAutocompleteComponent,
+        ObservationVariableMultiAutocompleteComponent
     ],
     entryComponents: [
         TraitCreateDialogComponent,

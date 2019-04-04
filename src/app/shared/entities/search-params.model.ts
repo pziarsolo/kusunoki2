@@ -27,8 +27,15 @@ export interface AccessionSetSearchParams extends AccessionSearchParams {
 
 export interface ObservationSearchParams {
     study?: string;
+    studies?: string[];
 }
 
 export interface StudySearchParams {
     name?: string;
+    name_contains?: string;
+    location_contains?: string;
+    group?: string;
+    contact?: string;
+    contact_contains?: string;
+    name_or_description?: string;
 }

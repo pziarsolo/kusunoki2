@@ -23,7 +23,8 @@ import {
     MatTooltipModule,
     MatGridListModule,
     MatTabsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatChipsModule
 } from '@angular/material';
 
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -58,7 +59,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         MatTabsModule,
         MatProgressBarModule,
         DragDropModule,
-        ScrollingModule
+        ScrollingModule,
+        MatChipsModule
     ]
 })
 export class MaterialBaseModule { }

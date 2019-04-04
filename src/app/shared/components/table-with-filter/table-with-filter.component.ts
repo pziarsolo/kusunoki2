@@ -112,6 +112,7 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     pageSubscription: Subscription;
     extraSearchParams;
     appUrls = AppUrls;
+    userToken;
     constructor(
         protected currentUserService: CurrentUserService,
         protected serviceLocator: ServiceLocatorService,
@@ -142,6 +143,7 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
         if (this.searchParams !== undefined) {
             this.doSearch(this.searchParams);
         }
+        this.userToken = this.currentUserService.userToken;
     }
 
     ngAfterViewInit() {
@@ -210,5 +212,12 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
         console.log(queryParams);
         this.router.navigate([baseUrl], {queryParams: queryParams});
 
+    }
+
+    togglePublic(publicValue) {
+        this.service.togglePublic(this.dataSource.lastSeachParams, publicValue)
+            .subscribe(result => {
+                this.statusService.info(result.detail);
+            });
     }
 }
