@@ -81,7 +81,7 @@
         </mat-card-content>
 
     </mat-card>
-    <mat-accordion>
+    <mat-accordion multi="true">
         <mat-expansion-panel [expanded]="editMode">
             <mat-expansion-panel-header><span fxFlex></span><h3>Passport Data</h3><span fxFlex></span></mat-expansion-panel-header>
             <kusunoki2-passport
@@ -91,11 +91,35 @@
                 (validationStateEvent)=checkFormValid($event)>
             </kusunoki2-passport>
             <mat-action-row *ngIf='editMode || createMode'>
-                <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
-                <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="updateAccession()">Update</button>
-                <button *ngIf='createMode && editMode' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="createAccession()">Create</button>
+                <button style='margin-right: 5px' *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
+                <button style='margin-right: 5px' *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="updateAccession()">Update</button>
+                <button style='margin-right: 5px' *ngIf='createMode && editMode' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="createAccession()">Create</button>
             </mat-action-row>
         </mat-expansion-panel>
+        <mat-expansion-panel *ngIf='!editMode && accession && accession.data.germplasmNumber && accession.data.instituteCode'>
+            <mat-expansion-panel-header><span fxFlex></span><h3>Images</h3><span fxFlex></span></mat-expansion-panel-header>
+            <div fxFlex></div>
+            <kusunoki2-observation-image-gallery fxFlex
+                [searchParams]="{accession_number: accession.data.germplasmNumber,
+                                accession_institute: accession.data.instituteCode}">
+            </kusunoki2-observation-image-gallery>
+            <div fxFlex></div>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngIf="!editMode && accession && accession.data.germplasmNumber && accession.data.instituteCode">
+            <mat-expansion-panel-header><span fxFlex></span><h3>Observations of this accession</h3><span fxFlex></span></mat-expansion-panel-header>
+            <kusunoki2-observation-table
+                [searchParams]="{'accession_number': accession.data.germplasmNumber,
+                                'accession_institute': accession.data.instituteCode}" >
+            </kusunoki2-observation-table>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngIf="!editMode && accession && accession.data.germplasmNumber && accession.data.instituteCode">
+            <mat-expansion-panel-header><span fxFlex></span><h3>Studies where accession has been used</h3><span fxFlex></span></mat-expansion-panel-header>
+            <kusunoki2-study-table
+                [searchParams]="{'germplasm_number':  accession.data.germplasmNumber,
+                                'institute': accession.data.instituteCode}" >
+            </kusunoki2-study-table>
+        </mat-expansion-panel>
+
     </mat-accordion>
 </div>
 <mat-menu #accessionActionMenu="matMenu">
