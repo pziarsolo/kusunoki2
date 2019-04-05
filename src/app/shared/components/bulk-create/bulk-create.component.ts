@@ -30,11 +30,19 @@ export class BulkCreateComponent implements OnInit {
     service;
     entityType: string;
     entityTypePlural: string;
+    fieldConfiguration = [];
+    exampleFileUrl: string;
+    icon = false;
+
     constructor(
         protected serviceLocator: ServiceLocatorService,
         private statusService: StatusService,
         private router: Router) {}
 
+
+    toogle_button() {
+        this.icon = !this.icon;
+    }
     ngOnInit() {
         if (this.entityType === 'accession') {
             this.service = this.serviceLocator.injector.get(AccessionService);

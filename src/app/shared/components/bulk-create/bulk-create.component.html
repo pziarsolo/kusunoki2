@@ -4,9 +4,36 @@
         <span *ngIf='!entityTypePlural'>{{entityType}}s</span>
     </mat-card-title>
     <mat-card-content *ngIf='!uploadTried && !uploadSuccessful' >
-        <p>Choose a file to upload <button mat-raised-button color='primary' (click)="file.click()">Choose</button></p>
-        <input hidden type="file" #file (change)="onFileAdded()">
-
+            <div>
+                <p>You can add multiple {{entityTypePlural}} uploading one file.</p>
+                <p>The file must be and excel file and must have a formated header</p>
+                <p *ngIf="exampleFileUrl"><a [href]="exampleFileUrl">Example File</a></p>
+                <mat-accordion displayMode="flat">
+                <mat-expansion-panel class="mat-elevation-z0" hideToggle="true" (click)="toogle_button()">
+                    <mat-expansion-panel-header style='padding-left: 1px;'>
+                        <mat-panel-title fxLayout='row' fxLayoutAlign="start center">
+                            <mat-icon>{{icon  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+                            <div  class="col-md-9">
+                                <span class='key'>Documentation: Column definitions</span>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <h4 style='margin-left: 10px; color: gray'>Fields in bold are mandatory</h4>
+                    <mat-list *ngIf="fieldConfiguration">
+                        <mat-list-item *ngFor="let field of fieldConfiguration">
+                            <h3 matLine *ngIf='field.mandatory' ><strong>{{field.name}}</strong></h3>
+                            <h3 matLine *ngIf='!field.mandatory' >{{field.name}}</h3>
+                            <span matLine *ngFor="let description of field.description">{{description}}</span>
+                            <mat-divider></mat-divider>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-expansion-panel>
+            </mat-accordion>
+            </div>
+            <mat-card-actions>
+                <button mat-raised-button color='accent' (click)="file.click()">Upload file</button>
+                <input hidden type="file" #file (change)="onFileAdded()">
+            </mat-card-actions>
     </mat-card-content>
     <mat-spinner *ngIf="processing">
     </mat-spinner>

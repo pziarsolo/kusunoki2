@@ -38,7 +38,7 @@ export class AccessionSearchFormComponent implements AfterViewInit {
     suggestedTaxa: Observable<Taxon[]>;
     suggestedStudies: Observable<Study[]>;
     biologicalStatus = biological_status;
-
+    icon = false;
     @ViewChild('countryAuto', {read: MatAutocompleteTrigger}) countryTrigger: MatAutocompleteTrigger;
     @ViewChild('instituteAuto', {read: MatAutocompleteTrigger}) instituteTrigger: MatAutocompleteTrigger;
     @ViewChild('taxaAuto', {read: MatAutocompleteTrigger}) taxaTrigger: MatAutocompleteTrigger;
@@ -51,7 +51,9 @@ export class AccessionSearchFormComponent implements AfterViewInit {
                 private accessionService: AccessionService,
                 private studyService: StudyService) {
     }
-
+    toogleButton() {
+        this.icon = !this.icon;
+    }
     filterNumber(val) {
         return this.accessionService.list({number_contains: val,
                                            fields: 'germplasmNumber'})

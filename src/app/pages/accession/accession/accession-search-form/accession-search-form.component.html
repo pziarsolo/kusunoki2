@@ -73,7 +73,32 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div fxLayout='column' style='margin-bottom:10px;'>
+            <mat-expansion-panel class="mat-elevation-z0" style='margin-bottom: 20px' hideToggle="true" (click)="toogleButton()">
+                <mat-expansion-panel-header>
+                    <mat-panel-title fxLayout='row' fxLayoutAlign="start center">
+                        <mat-icon>{{icon  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+                        <span class='key'>Add characterization criteria</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div fxLayout='column' style='margin-left:20px'>
+                    <mat-form-field fxFlex>
+                        <mat-label>Study</mat-label>
+                        <input type="text" matInput [(ngModel)]="searchParams.study"
+                                (ngModelChange) = "suggestedStudies = filterStudies(searchParams.study)"
+                                [matAutocomplete]="studyAuto"
+                                #studyAuto  name="study">
+                        <mat-autocomplete #studyAuto="matAutocomplete">
+                            <mat-option *ngFor="let study of suggestedStudies|async " [value]="study.data.name">
+                                {{ study.data.name }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <h4>Observations</h4>
+                    <kusunoki2-accession-search-by-observations-form #observation_filters>
+                    </kusunoki2-accession-search-by-observations-form>
+                </div>
+            </mat-expansion-panel>
+            <!-- <div fxLayout='column' style='margin-bottom:10px;'>
                 <button mat-raised-button color='primary'
                     *ngIf="!showcharaCriteria" style='width: 17em'
                     (click)="showcharaCriteria=true">Add characterization criteria</button>
@@ -95,7 +120,7 @@
                     <kusunoki2-accession-search-by-observations-form #observation_filters>
                     </kusunoki2-accession-search-by-observations-form>
                 </div>
-            </div>
+            </div> -->
             <button mat-raised-button [disabled]="!observation_filters.allInputAreValid" color='accent' type="submit" (click)="doSubmit()" >Search</button>
             <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="resetForm()" >Clear</button>
         </form>
