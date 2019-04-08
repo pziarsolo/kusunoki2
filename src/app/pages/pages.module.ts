@@ -7,7 +7,7 @@ import { LoginComponent } from './login/components/login/login.component';
 import { LoginModule } from './login/login.module';
 import { AppUrls } from './appUrls';
 import { NotFoundComponent } from '../shared/components/not-found-component';
-import { HomeComponent } from '../shared/components/home-component';
+import { HomeComponent } from '../shared/components/home-component/home-component';
 
 const routes: Routes = [
     {

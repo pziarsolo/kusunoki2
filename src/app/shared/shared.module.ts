@@ -12,7 +12,7 @@ import { PasswordFormComponent } from './components/password-form/password-form.
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule, NG_VALIDATORS } from '@angular/forms';
-import { HomeComponent } from './components/home-component';
+import { HomeComponent } from './components/home-component/home-component';
 import { InlineEditSelectComponent } from './components/inline-edit-select/inline-edit-select.component';
 import { BaseInlinesForm2Component } from './components/base-inlines2-form/base-inlines-form2.component';
 import { ObservableTableComponent } from './components/observable-table/observable-table.component';
