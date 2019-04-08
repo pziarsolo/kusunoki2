@@ -3,8 +3,12 @@
         <span *ngIf='entityTypePlural'>{{entityTypePlural}}</span>
         <span *ngIf='!entityTypePlural'>{{entityType}}s</span>
     </mat-card-title>
-    <mat-card-content *ngIf='!uploadTried && !uploadSuccessful' >
-        <p>Choose a obo file to upload <button mat-raised-button color='primary' (click)="file.click()">Choose</button></p>
+    <mat-card-content *ngIf='!uploadTried && !uploadSuccessful'>
+        <p>You can upload a trait ontology uploading a <a href='https://owlcollab.github.io/oboformat/doc/GO.format.obo-1_4.html'>Obo</a> file</p>
+        <p>For example you can load <a href='http://browser.planteome.org/amigo/term/TO:0000387#display-lineage-tab'>Plant Trait Ontology</a> throuth this <a href='http://purl.obolibrary.org/obo/to.obo' download>file</a></p>
+
+        <p>Choose a obo file to upload</p>
+        <button mat-raised-button color='accent' (click)="file.click()">Upload</button>
         <input hidden type="file" #file (change)="onFileAdded()">
 
     </mat-card-content>

@@ -1,27 +1,85 @@
 <mat-card >
     <mat-card-title>Upload Observations</mat-card-title>
     <mat-card-content *ngIf='!uploadTried && !uploadSuccessful' >
-        <div fxLayout='column' fxLayoutGap="10px">
-            <div fxLayout='row'>
-                <mat-form-field>
-                    <mat-label>Choose a file to upload</mat-label>
-                    <input matInput type="text" [(ngModel)]='filename' disabled>
-                </mat-form-field>
-                <input hidden type='file' id="file" #file (change)="onFileAdded()">
-                <button mat-icon-button color='primary' (click)="file.click()">
-                    <mat-icon>attach_file</mat-icon>
-                </button>
-            </div>
+        <p>Here You can add observations to the database</p>
+        <p>You can add two format of files</p>
 
-            <mat-slide-toggle
-                [(ngModel)]="traitsInColumn">
-                Traits in columns
-            </mat-slide-toggle>
-            <button [disabled]="!uploadedFile"
-                mat-raised-button (click)="OnSubmit()"
-                color='accent'
-                style='width:15em'>Add</button>
-        </div>
+        <mat-accordion displayMode="flat">
+            <mat-expansion-panel class="mat-elevation-z0" hideToggle="true" (click)="toogle_button1()"
+                *ngIf="obsPerRowfieldConfiguration.length > 0">
+                <mat-expansion-panel-header style='padding-left: 1px;'>
+                    <mat-panel-title fxLayout='row' fxLayoutAlign="start center">
+                        <mat-icon>{{icon1  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+                        <div  class="col-md-9">
+                            <span class='key'>One observation per row</span>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <h4 style='margin-left: 10px; color: gray'>Fields in bold are mandatory</h4>
+                <p style='margin-left: 10px;'><a href='/assets/upload_examples/observations.xlsx'>Example file</a></p>
+                <mat-list>
+                    <mat-list-item *ngFor="let field of obsPerRowfieldConfiguration">
+                        <h3 matLine *ngIf='field.mandatory' ><strong>{{field.name}}</strong></h3>
+                        <h3 matLine *ngIf='!field.mandatory' >{{field.name}}</h3>
+                        <span matLine *ngFor="let description of field.description">{{description}}</span>
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+                </mat-list>
+                <div fxLayout='column' fxLayoutGap="10px" style='margin-top: 20px'>
+                    <div fxLayout='row'>
+                        <mat-form-field>
+                            <mat-label>Choose a file to upload</mat-label>
+                            <input matInput type="text" [(ngModel)]='filename' disabled>
+                        </mat-form-field>
+                        <input hidden type='file' id="file" #file (change)="onFileAdded1()">
+                        <button mat-icon-button color='primary' (click)="file.click()">
+                            <mat-icon>attach_file</mat-icon>
+                        </button>
+                    </div>
+                    <button [disabled]="!uploadedFile"
+                        mat-raised-button (click)="OnSubmit()"
+                        color='accent' style='width:15em'>Add
+                    </button>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="mat-elevation-z0" hideToggle="true" (click)="toogle_button2()"
+            *ngIf="accPerRowfieldConfiguration.length > 0">
+                <mat-expansion-panel-header style='padding-left: 1px;'>
+                    <mat-panel-title fxLayout='row' fxLayoutAlign="start center">
+                        <mat-icon>{{icon2  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+                        <div  class="col-md-9">
+                            <span class='key'>One accession per row and traits in colums</span>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <h4 style='margin-left: 10px; color: gray'>Fields in bold are mandatory</h4>
+                <p style='margin-left: 10px;'><a href='/assets/upload_examples/observations_in_columns.xlsx'>Example file</a></p>
+                <mat-list >
+                    <mat-list-item *ngFor="let field of accPerRowfieldConfiguration">
+                        <h3 matLine *ngIf='field.mandatory' ><strong>{{field.name}}</strong></h3>
+                        <h3 matLine *ngIf='!field.mandatory' >{{field.name}}</h3>
+                        <span matLine *ngFor="let description of field.description">{{description}}</span>
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+                </mat-list>
+                <div fxLayout='column' fxLayoutGap="10px" style='margin-top: 20px'>
+                    <div fxLayout='row'>
+                        <mat-form-field>
+                            <mat-label>Choose a file to upload</mat-label>
+                            <input matInput type="text" [(ngModel)]='filename2' disabled>
+                        </mat-form-field>
+                        <input hidden type='file' id="file2" #file2 (change)="onFileAdded2()">
+                        <button mat-icon-button color='primary' (click)="file2.click()">
+                            <mat-icon>attach_file</mat-icon>
+                        </button>
+                    </div>
+                    <button [disabled]="!uploadedFile2"
+                        mat-raised-button (click)="OnSubmit()"
+                        color='accent'
+                        style='width:15em'>Add</button>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
     </mat-card-content>
 
     <mat-spinner *ngIf="processing"></mat-spinner>
@@ -29,8 +87,8 @@
     <mat-card-content *ngIf='uploadTried && uploadSuccessful === false'>
         <p>Something went wrong</p>
         <mat-list *ngIf="errors">
-            <mat-list-item *ngFor='let error of errors.detail'>
-                <mat-icon>clear</mat-icon>{{error}}
+            <mat-list-item *ngFor='let error of errors'>
+                <mat-icon>clear</mat-icon>{{error.detail}}
             </mat-list-item>
         </mat-list>
     </mat-card-content>

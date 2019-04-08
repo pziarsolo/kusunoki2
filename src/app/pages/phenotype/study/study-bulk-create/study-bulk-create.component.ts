@@ -3,7 +3,8 @@ import { BulkCreateComponent } from 'src/app/shared/components/bulk-create/bulk-
 
 @Component({
     selector: 'kusunoki2-study-bulk-create',
-    templateUrl: './study-bulk-create.component.html'
+    templateUrl: '../../../../shared/components/bulk-create/bulk-create.component.html',
+  styleUrls: ['../../../../shared/components/bulk-create/bulk-create.component.scss']
 })
 export class StudyBulkCreateComponent extends BulkCreateComponent {
     entityType = 'study';

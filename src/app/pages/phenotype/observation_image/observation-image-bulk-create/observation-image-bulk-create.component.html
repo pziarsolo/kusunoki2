@@ -1,6 +1,15 @@
 <mat-card >
     <mat-card-title>Upload Observation Images</mat-card-title>
     <mat-card-content *ngIf='!uploadTried && !uploadSuccessful' >
+        <mat-list>
+            <mat-list-item> Here you can upload images for the already uploaded Accessions</mat-list-item>
+            <mat-list-item> You can not upload twice the same image</mat-list-item>
+            <mat-list-item> All images must be correctly identified with accession and study</mat-list-item>
+            <mat-list-item> The structure of the uploaded zip file must be:</mat-list-item>
+            <mat-list-item> -> Accession Folder -> StudyFolder -> Images</mat-list-item>
+            <mat-list-item> Accession Folder  format must be: INSTITUTE_CODE:ACCESSION_NUMBER</mat-list-item>
+
+        </mat-list>
         <div fxLayout='column' fxLayoutGap="10px">
             <div fxLayout='row'>
                 <mat-form-field>
