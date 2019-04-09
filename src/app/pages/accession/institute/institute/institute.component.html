@@ -1,9 +1,9 @@
 
 <div *ngIf='institute'>
     <div fxLayout="column">
-        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+        <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center"
             style="width:100%;">
-            <kusunoki2-inline-edit fxFlex
+            <kusunoki2-inline-edit fxFlex='20%'
                 [label]="'Institute Code'"
                 [value]="institute.instituteCode"
                 [config]="config.instituteCode"
@@ -25,9 +25,11 @@
                 <span class='value'>{{institute.name}}</span>
             </kusunoki2-inline-edit>
         </div>
-        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+        <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center"
             style="width:100%;">
-            <kusunoki2-inline-edit fxFlex
+            <kusunoki2-inline-edit
+                fxFlex
+                *ngIf="editMode || institute.address"
                 [label]="'Address'"
                 [value]="institute.address"
                 [config]="config.address"
@@ -35,7 +37,9 @@
                 (validationStateEvent)="checkFormValid($event)">
                 <span class='value'>{{institute.address}}</span>
             </kusunoki2-inline-edit>
-            <kusunoki2-inline-edit fxFlex
+            <kusunoki2-inline-edit
+                fxFlex
+                *ngIf="editMode || institute.city"
                 [label]="'City'"
                 [value]="institute.city"
                 [config]="config.city"
@@ -43,7 +47,9 @@
                 (validationStateEvent)="checkFormValid($event)">
                 <span class='value'>{{institute.city}}</span>
             </kusunoki2-inline-edit>
-            <kusunoki2-inline-edit fxFlex
+            <kusunoki2-inline-edit
+                fxFlex
+                *ngIf="editMode || institute.zipcode"
                 [label]="'Zipcode'"
                 [value]="institute.zipcode"
                 [config]="config.zipcode"
@@ -52,9 +58,10 @@
                 <span class='value'>{{institute.zipcode}}</span>
             </kusunoki2-inline-edit>
         </div>
-        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+        <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center"
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
+                *ngIf="editMode || institute.phone"
                 [label]="'Phone'"
                 [value]="institute.phone"
                 [config]="config.phone"
@@ -63,6 +70,7 @@
                 <span class='value'>{{institute.phone}}</span>
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
+                *ngIf="editMode || institute.email"
                 [label]="'Email'"
                 [value]="institute.email"
                 [config]="config.email"
@@ -71,6 +79,7 @@
                 <span class='value'>{{institute.email}}</span>
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
+                *ngIf="editMode || institute.url"
                 [label]="'Url'"
                 [value]="institute.url"
                 [config]="config.url"
@@ -81,9 +90,10 @@
                 </span>
             </kusunoki2-inline-edit>
         </div>
-        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+        <div fxLayout="row wrap" fxLayoutGap="2px" fxLayoutAlign="start center"
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
+            *ngIf="editMode || institute.manager"
                 [label]="'Manager'"
                 [value]="institute.manager"
                 [config]="config.manager"

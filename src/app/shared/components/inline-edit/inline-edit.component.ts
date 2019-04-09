@@ -93,7 +93,9 @@ export class InlineEditComponent implements OnInit, OnDestroy {
         } else {
             has_value = true;
         }
-        return (!has_value && !this.editMode);
+        const hide = (!has_value && !this.editMode);
+
+        return  hide;
     }
     hideInput() {
         if (!this.config.is_editable) {

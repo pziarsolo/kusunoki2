@@ -125,6 +125,7 @@
             <h2>Data Source</h2>
             <div fxLayout='row'>
                 <kusunoki2-inline-edit
+                    *ngIf="editMode || passport.dataSource.code"
                     [label]="'Data source'"
                     [editMode]="editMode"
                     [config]="childrenConfig['dataSourceCode']"
@@ -133,6 +134,7 @@
                     <span class='value'>{{passport.dataSource.code}}</span>
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit
+                    *ngIf="editMode || passport.dataSource.kind"
                     [label]="'Data source kind'"
                     [editMode]="editMode"
                     [config]="childrenConfig['dataSourceKind']"
@@ -141,6 +143,7 @@
                     <span class='value'>{{passport.dataSource.kind}}</span>
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit
+                    *ngIf="editMode || passport.dataSource.retrievalDate"
                     [label]="'Retrieval date'"
                     [editMode]="editMode"
                     [config]="childrenConfig['dataSourceRetriavelDate']"
@@ -187,15 +190,17 @@
         <div *ngIf='editMode || hasCollectionData()'>
             <h2>Collecting Data</h2>
             <div fxLayout='column'>
-                <div fxLayout='row' fxLayoutGap="10px">
+                <div fxLayout='row' fxLayoutGap="10px" fxFlex>
                     <kusunoki2-inline-auto-institute fxFlex
+                        *ngIf="editMode || passport.collectionNumber.instituteCode"
                         [label]="'Collecting institute'"
                         [value]="passport.collectionNumber.instituteCode"
                         [config]="childrenConfig['collectingInstitute']"
                         [editMode]="editMode"
                         (validationStateEvent)="checkFormValid($event)">
                     </kusunoki2-inline-auto-institute>
-                    <kusunoki2-inline-edit
+                    <kusunoki2-inline-edit fxFlex
+                        *ngIf="editMode || passport.collectionNumber.fieldCollectionNumber"
                         [label]="'Collection field number'"
                         [editMode]="editMode"
                         [config]="childrenConfig['collectingFieldNumber']"

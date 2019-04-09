@@ -27,6 +27,7 @@
         <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex='grow'
+                *ngIf="editMode || study.data.description"
                 [label]="'Study description'"
                 [value]="study.data.description"
                 [config]="config.description"
@@ -57,6 +58,7 @@
         <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
+                *ngIf="editMode || study.data.location"
                 [label]="'Location'"
                 [value]="study.data.location"
                 [config]="config.location"
@@ -65,6 +67,7 @@
                 <span class='value'>{{study.data.location}}</span>
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
+                *ngIf="editMode || study.data.contacts"
                 [label]="'Contacts'"
                 [value]="study.data.contacts"
                 [config]="config.contacts"
@@ -76,6 +79,7 @@
         <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
+                *ngIf="editMode || study.data.institution"
                 [label]="'Institution'"
                 [value]="study.data.institution"
                 [config]="config.institution"
@@ -84,6 +88,7 @@
                 <span class='value'>{{study.data.institution}}</span>
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
+            *ngIf="editMode || study.data.season"
                 [label]="'Season'"
                 [value]="study.data.season"
                 [config]="config.season"
