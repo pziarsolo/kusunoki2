@@ -44,7 +44,6 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
     }
 
     evalUserPermissions(study) {
-        console.log('aa');
         this.study = study;
         if (this.study) {
             this.studyFound = true;
@@ -70,6 +69,9 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
     deleteStudy() {
         this.studyComp.deleteStudy();
     }
+    studyUpdated(study){
+        this.editMode = false;
+    }
     studyDeleted() {
         this.router.navigate(['/', AppUrls.phenotypeSubDir,
             AppUrls.phenotype.studies]);
@@ -79,12 +81,12 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
             AppUrls.phenotype.studies, study.data.name]);
     }
     editCanceled() {
-        this.editMode = false;
-        this.createMode = false;
         if (this.createMode) {
             this.router.navigate([ AppUrls.phenotypeSubDir, AppUrls.phenotype.studies]);
         } else {
             this.studyComp.resetForm();
+            this.editMode = false;
+            this.createMode = false;
         }
     }
 }

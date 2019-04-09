@@ -17,6 +17,7 @@
             [editMode]="editMode"
             [createMode]="createMode"
             (studyRequestFinished)="evalUserPermissions($event)"
+            (studyUpdated)="studyUpdated($event)"
             (studyCreated)="studyCreated($event)"
             (studyDeleted)="studyDeleted($event)"
             (editCanceled)="editCanceled($event)">

@@ -17,6 +17,7 @@ export class StudyComponent implements OnChanges {
     @Input() editMode = false;
     @Input() createMode = false;
     @Output() studyCreated = new EventEmitter<Study>();
+    @Output() studyUpdated = new EventEmitter<Study>();
     @Output() studyRequestFinished = new EventEmitter<Study>();
     @Output() studyDeleted = new EventEmitter<any>();
     @Output() editCanceled = new  EventEmitter<any>();
@@ -143,6 +144,7 @@ export class StudyComponent implements OnChanges {
                         this.study = new Study(updatedStudy);
                         this.studyRequestFinished.emit(this.study);
                         this.statusService.info('Study sucessfully updated');
+                        this.studyUpdated.emit(this.study);
                     },
                     (error) => console.log(error)
                 );

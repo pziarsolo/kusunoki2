@@ -1,12 +1,96 @@
-<div fxLayout='column' fxLayoutGap='20px' *ngIf="institute" style='margin:5px; padding:10px'>
-    <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start'style='margin:5px; padding:10px'>
-        <div class='key' fxFlex='8em'>Code</div>
-        <div fXflex><a [routerLink]="['/', appUrls.institutes, institute.instituteCode]">{{institute.instituteCode}}</a></div>
-    </div>
-    <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px; padding:10px'>
-        <div class='key' fxFlex='8em'>Name</div>
-        <div fXflex>{{institute.name}}</div>
+
+<div *ngIf='institute'>
+    <div fxLayout="column">
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+            style="width:100%;">
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Institute Code'"
+                [value]="institute.instituteCode"
+                [config]="config.instituteCode"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>
+                    <a [routerLink]="['/', appUrls.institutes,
+                                      institute.instituteCode]">
+                        {{institute.instituteCode}}
+                    </a>
+                </span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Institute name'"
+                [value]="institute.name"
+                [config]="config.name"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{institute.name}}</span>
+            </kusunoki2-inline-edit>
+        </div>
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+            style="width:100%;">
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Address'"
+                [value]="institute.address"
+                [config]="config.address"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{institute.address}}</span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'City'"
+                [value]="institute.city"
+                [config]="config.city"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{institute.city}}</span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Zipcode'"
+                [value]="institute.zipcode"
+                [config]="config.zipcode"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{institute.zipcode}}</span>
+            </kusunoki2-inline-edit>
+        </div>
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+            style="width:100%;">
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Phone'"
+                [value]="institute.phone"
+                [config]="config.phone"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{institute.phone}}</span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Email'"
+                [value]="institute.email"
+                [config]="config.email"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{institute.email}}</span>
+            </kusunoki2-inline-edit>
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Url'"
+                [value]="institute.url"
+                [config]="config.url"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>
+                    <a href="{{institute.url}}">{{institute.url}}</a>
+                </span>
+            </kusunoki2-inline-edit>
+        </div>
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
+            style="width:100%;">
+            <kusunoki2-inline-edit fxFlex
+                [label]="'Manager'"
+                [value]="institute.manager"
+                [config]="config.manager"
+                [editMode]="editMode"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{institute.manager}}</span>
+            </kusunoki2-inline-edit>
+        </div>
     </div>
 </div>
-
-

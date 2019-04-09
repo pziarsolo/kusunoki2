@@ -34,11 +34,11 @@ export class InstituteService {
             {params: getParams, observe: 'response'});
     }
 
-    create(institute: Institute): Observable<Institute> {
+    create(institute): Observable<Institute> {
         return this.http.post<Institute>(this.endPoint, institute);
     }
 
-    update(instituteCode: string, institute: Institute): Observable<Institute> {
+    update(instituteCode: string, institute): Observable<Institute> {
         const detailUrl = this.composeDetailUrl(instituteCode);
         return this.http.put<Institute>(detailUrl, institute);
     }

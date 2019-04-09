@@ -1,65 +1,92 @@
-<mat-card style='margin:8px;'>
-    <mat-card-title>Institute Stats</mat-card-title>
-        <mat-card-content>
-            <kusunoki2-institute [institute]='institute|async'></kusunoki2-institute>
-        </mat-card-content>
+<mat-card *ngIf='instituteFound || createMode || editMode'>
+    <mat-card-title>institute <span class='key' fxflex style='margin-left:5px;'> {{instituteCode}}</span>
+        <span fxFlex></span>
+        <button mat-raised-button color='accent'
+                *ngIf='userCanEdit && !createMode'
+                [matMenuTriggerFor]="instituteActionMenu">
+            Actions
+        </button>
+    </mat-card-title>
+    <mat-card-content>
+        <kusunoki2-institute
+            #instituteComp
+            [instituteCode]='instituteCode'
+            [editMode]="editMode"
+            [createMode]="createMode"
+            (instituteCreated)="instituteCreated($event)"
+            (instituteDeleted)="instituteDeleted($event)"
+            (instituteUpdated)="instituteUpdated($event)"
+            (instituteRequestFinished)="afterRequest($event)"
+            (editCanceled)="editCanceled($event)">
+        </kusunoki2-institute>
+    </mat-card-content>
+    <mat-card-actions *ngIf='editMode || createMode'>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="editCanceled()">Cancel</button>
+        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!instituteComp.allInputAreValid' mat-raised-button color='accent' (click)="instituteComp.updateInstitute()">Update</button>
+        <button *ngIf='createMode && editMode' [disabled]='!instituteComp.allInputAreValid' mat-raised-button color='accent' (click)="instituteComp.createInstitute()">Create</button>
+    </mat-card-actions>
 </mat-card>
+<mat-menu #instituteActionMenu="matMenu">
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteInstitute()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+</mat-menu>
+<mat-accordion multi=true *ngIf="!editMode">
+    <mat-expansion-panel expanded='true'>
+        <mat-expansion-panel-header>Country Stats</mat-expansion-panel-header>
+        <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column">
+            <mat-card fxFlex>
+                <kusunoki2-country-stats-table
+                    [columnsToDisplay]="countryColumnsToDisplay"
+                    [items]="country_stats"
+                    [initialQueryParams]="{institute_code: instituteCode}">
+                </kusunoki2-country-stats-table>
 
-<mat-expansion-panel expanded='true'>
-    <mat-expansion-panel-header>Country Stats</mat-expansion-panel-header>
-    <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column">
-        <mat-card fxFlex>
-            <kusunoki2-country-stats-table
-                [columnsToDisplay]="countryColumnsToDisplay"
-                [items]="country_stats"
-                [initialQueryParams]="{institute_code: (institute|async)?.instituteCode}">
-            </kusunoki2-country-stats-table>
-
-        </mat-card>
-        <mat-card fxFlex>
-            <mat-tab-group>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Accession Stats
-                    </ng-template>
-                    <ng-template matTabContent>
-                        <kusunoki2-google-mapchart
-                            [statsType]="'accessions'"
-                            [chartData]="country_stats|async"
-                            [id]="'pass_id'">
-                        </kusunoki2-google-mapchart>
-                    </ng-template>
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        AccessionSet Stats
-                    </ng-template>
-                    <ng-template matTabContent>
-                        <kusunoki2-google-mapchart
-                            [statsType]="'accessionsets'"
-                            [chartData]="country_stats|async"
-                            [id]="'acc_id'">
-                        </kusunoki2-google-mapchart>
-                    </ng-template>
-                </mat-tab>
-            </mat-tab-group>
-        </mat-card>
-    </div>
-</mat-expansion-panel>
-
-<mat-expansion-panel>
-    <mat-expansion-panel-header>Pdci Distribution</mat-expansion-panel-header>
-        <mat-card fxFlex >
-            <kusunoki2-google-barchart [div_id]="'pdci_div'"
-                                    [chartData]="(institute|async)?.pdcis"
-                                    [config]="pdciCharConfig">
-            </kusunoki2-google-barchart>
-        </mat-card>
+            </mat-card>
+            <mat-card fxFlex>
+                <mat-tab-group>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Accession Stats
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <kusunoki2-google-mapchart
+                                [statsType]="'accessions'"
+                                [chartData]="country_stats|async"
+                                [id]="'pass_id'">
+                            </kusunoki2-google-mapchart>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            AccessionSet Stats
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <kusunoki2-google-mapchart
+                                [statsType]="'accessionsets'"
+                                [chartData]="country_stats|async"
+                                [id]="'acc_id'">
+                            </kusunoki2-google-mapchart>
+                        </ng-template>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
+        </div>
     </mat-expansion-panel>
-<mat-expansion-panel expanded='true'>
-    <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
-    <kusunoki2-taxon-stats
-        [stats]="taxon_stats|async"
-        [initialQueryParams]="{institute_code: (institute|async)?.instituteCode}">
-    </kusunoki2-taxon-stats>
-</mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf='pdcis'>
+        <mat-expansion-panel-header>Pdci Distribution</mat-expansion-panel-header>
+            <mat-card fxFlex >
+                <kusunoki2-google-barchart [div_id]="'pdci_div'"
+                                        [chartData]="pdcis|async"
+                                        [config]="pdciCharConfig">
+                </kusunoki2-google-barchart>
+            </mat-card>
+        </mat-expansion-panel>
+    <mat-expansion-panel expanded='true'>
+        <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
+        <kusunoki2-taxon-stats
+            [stats]="taxon_stats|async"
+            [initialQueryParams]="{institute_code: instituteCode}">
+        </kusunoki2-taxon-stats>
+    </mat-expansion-panel>
+</mat-accordion>
