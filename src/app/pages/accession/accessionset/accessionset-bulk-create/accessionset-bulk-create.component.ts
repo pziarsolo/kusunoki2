@@ -7,7 +7,7 @@ import { BulkCreateComponent } from 'src/app/shared/components/bulk-create/bulk-
   templateUrl: '../../../../shared/components/bulk-create/bulk-create.component.html'
 })
 export class AccessionSetBulkCreateComponent extends BulkCreateComponent {
-    entityType = 'accessionSet';
+    entityType = 'accessionset';
     entityTypePlural = 'accessionsets';
     exampleFileUrl = 'assets/upload_examples/accessionsets.xlsx';
     fieldConfiguration = [

@@ -18,11 +18,14 @@
             <kusunoki2-header (notifyMenuChange)=drawer.toggle()
                              [sidenavOpened]="drawer.opened">
             </kusunoki2-header>
-
-            <div fxFlex>
-                <router-outlet></router-outlet>
+            <div fxLayout="row" fxLayoutAlign="center start" fxFlex fxFlex.md="1 1 0%">
+                <div fxFlex></div>
+                <div fxFlex="1 5 1200px" fxFlex.lt-lg="grow">
+                    <router-outlet></router-outlet>
+                </div>
+                <div fxFlex></div>
             </div>
-            <kusunoki2-footer ></kusunoki2-footer>
+            <kusunoki2-footer style='margin-top:8px' ></kusunoki2-footer>
             <kusunoki2-status></kusunoki2-status>
         </div>
     </mat-sidenav-content>

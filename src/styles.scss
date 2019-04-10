@@ -48,9 +48,12 @@ a:hover {
     font-weight: 500;
 }
 mat-card {
-    margin: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
-
+.footer {
+    margin-top: 9px;
+}
 .footer_version {
     font-size: 0.7vw;
     font-size: 10px;
