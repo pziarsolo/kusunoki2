@@ -125,7 +125,7 @@ export class StudyComponent implements OnChanges {
                 (updatedStudy: Study) => {
                     this.study = new Study(updatedStudy);
                     this.studyRequestFinished.emit(this.study);
-                    this.statusService.info('Accession sucessfully updated');
+                    this.statusService.info('Study sucessfully updated');
                 },
                 (error) => console.log(error)
             );

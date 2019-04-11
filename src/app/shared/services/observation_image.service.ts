@@ -48,7 +48,6 @@ export class ObservationImageService {
     }
 
     bulkCreate(file: File, conf: any): Observable<HttpEvent<Task>> {
-        console.log(conf);
         const bulk_url = this.endPoint + 'bulk/';
 
         const formData: FormData = new FormData();
