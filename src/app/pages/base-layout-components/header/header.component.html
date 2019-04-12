@@ -1,11 +1,12 @@
 <mat-toolbar color="primary" role="heading" >
-    <!-- <button type="button" aria-label="Toggle sidenav"
-        mat-icon-button (click)="toggleSidenav()">
-        <mat-icon aria-label="Side nav toggle icon">{{menuIcon}}</mat-icon>
-    </button> -->
+
     <div fxLayout="row" fxLayoutAlign="center start" fxFlex fxFlex.md="1 1 0%">
         <div fxFlex></div>
         <div fxFlex="1 1 {{centralColumnSize}}" fxFlex.lt-lg="grow">
+            <!-- <button type="button" aria-label="Toggle sidenav"
+                mat-icon-button (click)="toggleSidenav()">
+                <mat-icon aria-label="Side nav toggle icon">{{menuIcon}}</mat-icon>
+            </button> -->
             <button mat-button [routerLink]="['/']" >
                 <mat-icon>home</mat-icon>
                 <span>Home</span>

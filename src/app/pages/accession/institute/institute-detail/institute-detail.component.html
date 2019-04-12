@@ -1,3 +1,4 @@
+<mat-card *ngIf='!instituteFound'>Institute not found</mat-card>
 <mat-card *ngIf='instituteFound || createMode || editMode'>
     <mat-card-title>institute <span class='key' fxflex style='margin-left:5px;'> {{instituteCode}}</span>
         <span fxFlex></span>
@@ -30,7 +31,8 @@
     <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
     <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteInstitute()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
 </mat-menu>
-<mat-accordion multi=true *ngIf="!editMode">
+
+<mat-accordion multi=true *ngIf="!editMode && instituteFound">
     <mat-expansion-panel expanded='true'>
         <mat-expansion-panel-header>Country Stats</mat-expansion-panel-header>
         <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column">
@@ -73,7 +75,7 @@
         </div>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf='pdcis'>
+    <mat-expansion-panel *ngIf='pdcis|async'>
         <mat-expansion-panel-header>Pdci Distribution</mat-expansion-panel-header>
             <mat-card fxFlex >
                 <kusunoki2-google-barchart [div_id]="'pdci_div'"

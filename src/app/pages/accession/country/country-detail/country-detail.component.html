@@ -1,64 +1,67 @@
-<mat-card>
-    <mat-card-title>Country</mat-card-title>
-    <mat-card-content>
-        <div fxLayout='column' fxLayoutGap='20px' *ngIf="country|async"  style='margin:5px; padding:10px'>
-            <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px; padding:5px'>
-                <div class='key' fxFlex='8em'>Code</div>
-                <div fXflex><a routerLink='/institutes/{{(country |async)?.code}}'>{{(country |async)?.code}}</a></div>
+<mat-card *ngIf="!(country|async)">Country not found</mat-card>
+<div *ngIf="country|async">
+    <mat-card >
+        <mat-card-title>Country</mat-card-title>
+        <mat-card-content>
+            <div fxLayout='column' fxLayoutGap='20px' *ngIf="country|async"  style='margin:5px; padding:10px'>
+                <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px; padding:5px'>
+                    <div class='key' fxFlex='8em'>Code</div>
+                    <div fXflex><a routerLink='/institutes/{{(country |async)?.code}}'>{{(country |async)?.code}}</a></div>
+                </div>
+                <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px; padding:5px'>
+                    <div class='key' fxFlex='8em'>Name</div>
+                    <div fXflex>{{(country |async)?.name}}</div>
+                </div>
             </div>
-            <div fxFlex fxLayout='row' fxLayoutGap='20px' fxLayoutAlign='start' style='margin:5px; padding:5px'>
-                <div class='key' fxFlex='8em'>Name</div>
-                <div fXflex>{{(country |async)?.name}}</div>
-            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-expansion-panel expanded='true' *ngIf="country">
+        <mat-expansion-panel-header>Stats by institute</mat-expansion-panel-header>
+        <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column" >
+            <mat-card fxFlex='grow'>
+                <kusunoki2-institute-stats-table
+                    [columnsToDisplay]="['code', 'name', 'num_accessions', 'num_accessionsets']"
+                    [items]="instituteStats"
+                    [initialQueryParams]="{country: (country|async)?.code}">
+                </kusunoki2-institute-stats-table>
+            </mat-card>
+            <mat-card fxFlex='grow'>
+                <mat-tab-group>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Accession Stats
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <kusunoki2-google-treemap
+                                [statsType]="'accessions'"
+                                [chartData]="instituteStats|async"
+                                [id]="'accession_id'">
+                            </kusunoki2-google-treemap>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            AccessionSet Stats
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <kusunoki2-google-treemap
+                                [statsType]="'accessionsets'"
+                                [chartData]="instituteStats|async"
+                                [id]="'accessionset_id'">
+                            </kusunoki2-google-treemap>
+                        </ng-template>
+                    </mat-tab>
+
+                </mat-tab-group>
+            </mat-card>
         </div>
-    </mat-card-content>
-</mat-card>
-
-<mat-expansion-panel expanded='true'>
-    <mat-expansion-panel-header>Stats by institute</mat-expansion-panel-header>
-    <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column" >
-        <mat-card fxFlex='grow'>
-            <kusunoki2-institute-stats-table
-                [columnsToDisplay]="['code', 'name', 'num_accessions', 'num_accessionsets']"
-                [items]="instituteStats"
-                [initialQueryParams]="{country: (country|async)?.code}">
-            </kusunoki2-institute-stats-table>
-        </mat-card>
-        <mat-card fxFlex='grow'>
-            <mat-tab-group>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Accession Stats
-                    </ng-template>
-                    <ng-template matTabContent>
-                        <kusunoki2-google-treemap
-                            [statsType]="'accessions'"
-                            [chartData]="instituteStats|async"
-                            [id]="'accession_id'">
-                        </kusunoki2-google-treemap>
-                    </ng-template>
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        AccessionSet Stats
-                    </ng-template>
-                    <ng-template matTabContent>
-                        <kusunoki2-google-treemap
-                            [statsType]="'accessionsets'"
-                            [chartData]="instituteStats|async"
-                            [id]="'accessionset_id'">
-                        </kusunoki2-google-treemap>
-                    </ng-template>
-                </mat-tab>
-
-            </mat-tab-group>
-        </mat-card>
-    </div>
-</mat-expansion-panel>
-<mat-expansion-panel expanded='true'>
-    <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
-    <kusunoki2-taxon-stats
-        [stats]="taxonStats|async"
-        [initialQueryParams]="{country: (country|async)?.code}">
-    </kusunoki2-taxon-stats>
-</mat-expansion-panel>
+    </mat-expansion-panel>
+    <mat-expansion-panel expanded='true' *ngIf="country">
+        <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
+        <kusunoki2-taxon-stats
+            [stats]="taxonStats|async"
+            [initialQueryParams]="{country: (country|async)?.code}">
+        </kusunoki2-taxon-stats>
+    </mat-expansion-panel>
+</div>
