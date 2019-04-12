@@ -1,15 +1,20 @@
 <mat-toolbar role='footer'
              fxLayout='row'
              fxLayoutAlign="space-between center">
-
-    <span fxFlex >CRF</span>
-    <div fxFlex></div>
-    <img fxFlex height="60px" src='/assets/images/inia.jpg'>
-    <div fxFlex></div>
-    <div  fxFlex fxLayout='column' class='footer_version' fxLayoutGap="0"
-          fxLayoutAlign='center'>
-        <span>App Version: </span>
-        <span>Api Version: ApiVersion</span>
+    <div fxLayout="row" fxLayoutAlign="center start" fxFlex fxFlex.md="1 1 0%">
+        <div fxFlex></div>
+        <div fxFlex="1 1 {{centralColumnSize}}" fxFlex.lt-lg="grow">
+            <span fxFlex >CRF</span>
+            <div fxFlex></div>
+            <img fxFlex height="60px" src='/assets/images/inia.jpg'>
+            <div fxFlex></div>
+            <div  fxFlex fxLayout='column' class='footer_version' fxLayoutGap="0"
+                fxLayoutAlign='center'>
+                <span>App Version: </span>
+                <span>Api Version: ApiVersion</span>
+            </div>
+        </div>
+        <div fxFlex></div>
     </div>
 
 </mat-toolbar>

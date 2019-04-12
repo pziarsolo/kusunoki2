@@ -1,18 +1,46 @@
-<mat-toolbar color="primary" role="header">
+<mat-toolbar color="primary" role="heading" >
     <!-- <button type="button" aria-label="Toggle sidenav"
         mat-icon-button (click)="toggleSidenav()">
         <mat-icon aria-label="Side nav toggle icon">{{menuIcon}}</mat-icon>
     </button> -->
-
-    <button mat-button [routerLink]="['/']">
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
-    </button>
-    <button fxShow fxHide.gt-sm mat-button [matMenuTriggerFor]="rootMenu">
-        <mat-icon>search</mat-icon>
-        <span>Menu</span>
-    </button>
-
+    <div fxLayout="row" fxLayoutAlign="center start" fxFlex fxFlex.md="1 1 0%">
+        <div fxFlex></div>
+        <div fxFlex="1 1 {{centralColumnSize}}" fxFlex.lt-lg="grow">
+            <button mat-button [routerLink]="['/']" >
+                <mat-icon>home</mat-icon>
+                <span>Home</span>
+            </button>
+            <button fxShow fxHide.gt-xs mat-button [matMenuTriggerFor]="rootMenu">
+                <mat-icon>search</mat-icon>
+                <span>Menu</span>
+            </button>
+            <button mat-button [matMenuTriggerFor]="searchmenu" fxHide fxShow.gt-xs mat-button>
+                <mat-icon>search</mat-icon>
+                Search
+            </button>
+            <button mat-button [matMenuTriggerFor]="statsmenu" fxHide fxShow.gt-xs mat-button>
+                <mat-icon>show_chart</mat-icon>
+                Stats
+            </button>
+            <button *ngIf="(userToken|async)?.isAuthenticated"
+                    mat-button [matMenuTriggerFor]="addmenu" fxHide fxShow.gt-xs mat-button>
+                <mat-icon>add</mat-icon>
+                Add
+            </button>
+            <button *ngIf="(userToken|async)?.is_staff"
+                    mat-button [matMenuTriggerFor]="adminmenu" fxHide fxShow.gt-xs mat-button>
+                <mat-icon>settings</mat-icon>
+                Admin
+            </button>
+            <button mat-button [matMenuTriggerFor]="apimenu" fxHide fxShow.gt-xs mat-button>
+                <mat-icon>menu</mat-icon>
+                API
+            </button>
+            <span fxFlex='1 1 auto'></span>
+            <kusunoki2-user-menu></kusunoki2-user-menu>
+        </div>
+        <div fxFlex></div>
+    </div>
     <mat-menu #rootMenu="matMenu" fxLayout="row" yPosition="above">
         <a mat-menu-item [matMenuTriggerFor]="searchmenu">
             <mat-icon>search</mat-icon>
@@ -40,30 +68,6 @@
         </a>
     </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="searchmenu" fxHide fxShow.gt-sm mat-button>
-        <mat-icon>search</mat-icon>
-        Search
-    </button>
-    <button mat-button [matMenuTriggerFor]="statsmenu" fxHide fxShow.gt-sm mat-button>
-        <mat-icon>show_chart</mat-icon>
-        Stats
-    </button>
-    <button *ngIf="(userToken|async)?.isAuthenticated"
-            mat-button [matMenuTriggerFor]="addmenu" fxHide fxShow.gt-sm mat-button>
-        <mat-icon>add</mat-icon>
-        Add
-    </button>
-    <button *ngIf="(userToken|async)?.is_staff"
-            mat-button [matMenuTriggerFor]="adminmenu" fxHide fxShow.gt-sm mat-button>
-        <mat-icon>settings</mat-icon>
-        Admin
-    </button>
-    <button mat-button [matMenuTriggerFor]="apimenu" fxHide fxShow.gt-sm mat-button>
-        <mat-icon>menu</mat-icon>
-        API
-    </button>
-    <span style="flex: 1 1 auto;"></span>
-    <kusunoki2-user-menu></kusunoki2-user-menu>
 </mat-toolbar>
 
 <mat-menu #searchmenu="matMenu" yPosition="above">

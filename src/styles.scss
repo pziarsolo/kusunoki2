@@ -29,7 +29,7 @@ body {
 a {
     color:mat-color($kusunoki-accent);
     text-decoration-line: none;
-    padding: 4px 0px;
+    // padding: 4px 0px;
     font-style: normal;
 }
 a:hover {
@@ -62,10 +62,10 @@ mat-card {
     margin:0;
     padding:0;
 }
-.button-toolbar {
-    margin-top:10px;
-    margin-left: 10px;
-}
+// .button-toolbar {
+//     margin-top:10px;
+//     margin-left: 10px;
+// }
 .mat-tab-label.mat-tab-label-active {
     background-color: #d4d4d4;
 }

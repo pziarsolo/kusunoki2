@@ -5,7 +5,6 @@ import { Observable} from 'rxjs';
 import { AppUrls } from '../../appUrls';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 
-
 @Component({
     selector: 'kusunoki2-header',
     templateUrl: './header.component.html',
@@ -15,7 +14,7 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     showAddMenu: Observable<Boolean>;
     apiUrl = environment.apiUrl;
     apiDocs = this.apiUrl + 'doc';
-
+    centralColumnSize = environment.centralColumnSize;
     appUrls = AppUrls;
 
     @Output() notifyMenuChange = new EventEmitter();
