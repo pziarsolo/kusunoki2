@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { NgxGalleryOptions, NgxGalleryImage, INgxGalleryImage } from 'ngx-gallery';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { NgxGalleryOptions, NgxGalleryImage, INgxGalleryImage, NgxGalleryComponent } from 'ngx-gallery';
 import { ObservationImageService } from 'src/app/shared/services/observation_image.service';
 import { DeleteDialogComponent } from '../../delete-dialog/delete-dialog.component';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
@@ -33,7 +33,7 @@ export class ObservationImageGalleryComponent implements OnInit {
     }
     galleryOptions: NgxGalleryOptions[];
     galleryImages: NgxGalleryImageOwn[];
-
+    @ViewChild('gallery') gallery: NgxGalleryComponent;
     constructor(private service: ObservationImageService,
         private readonly statusService: StatusService,
         public dialog: MatDialog) { }
@@ -92,6 +92,7 @@ export class ObservationImageGalleryComponent implements OnInit {
                         response => {
                             this.statusService.info('Image sucessfully deleted');
                             this.galleryImages.splice(index, 1);
+                            this.gallery.preview.close();
                             // this.instituteDeleted.emit();
                         },
                         error => {
