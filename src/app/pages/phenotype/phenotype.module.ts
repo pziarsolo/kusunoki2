@@ -29,13 +29,15 @@ import { InlineScaleValidValuesComponent } from './scale/inline-scale-valid-valu
 import { ObservationImageBulkCreateComponent
 } from './observation_image/observation-image-bulk-create/observation-image-bulk-create.component';
 import { StudyMultiAutocompleteComponent } from './study/study-multi-autocomplete/study-multi-autocomplete.component';
-import { ObservationVariableMultiAutocompleteComponent } from './observation_variable/observation_variable-multi-autocomplete/observation-variable-multi-autocomplete.component';
+import { ObservationVariableMultiAutocompleteComponent
+} from './observation_variable/observation_variable-multi-autocomplete/observation-variable-multi-autocomplete.component';
 
 
 const routes: Routes = [
     {
         path: AppUrls.phenotype.studies + '/bulk_create',
         component: StudyBulkCreateComponent,
+        data: {title: 'Create New studies in bulk'}
     },
     {
         path: AppUrls.phenotype.studies + '/:name',
@@ -44,14 +46,17 @@ const routes: Routes = [
     {
         path: AppUrls.phenotype.studies,
         component: StudyListComponent,
+        data: {title: 'Studies'}
     },
     {
         path: AppUrls.phenotype.observations,
         component: ObservationListComponent,
+        data: {title: 'Observations'}
     },
     {
         path: AppUrls.phenotype.observations + '/bulk_create',
         component: ObservationBulkCreateComponent,
+        data: {title: 'Create observation in bulk'}
     },
     {
         path: AppUrls.phenotype.observation_variables + '/:name',
@@ -60,10 +65,12 @@ const routes: Routes = [
     {
         path: AppUrls.phenotype.observation_variables,
         component: ObservationVariableListComponent,
+        data: {title: 'Observation variables'}
     },
     {
         path: AppUrls.phenotype.traits + '/bulk_create',
         component: TraitBulkCreateComponent,
+        data: {title: 'Create traits in bulk'}
     },
     {
         path: AppUrls.phenotype.traits + '/:name',
@@ -72,10 +79,13 @@ const routes: Routes = [
     {
         path: AppUrls.phenotype.scales + '/:name',
         component: ScaleDetailComponent,
+        data: {title: 'Scales'}
+
     },
     {
         path: AppUrls.phenotype.observation_images + '/bulk_create',
         component: ObservationImageBulkCreateComponent,
+        data: {title: 'Upload Images'}
     },
 
 ];

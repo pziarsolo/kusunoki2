@@ -5,6 +5,7 @@ import {of as observableOf,  Observable } from 'rxjs';
 import { Country } from 'src/app/shared/entities/country.model';
 import { Institute } from 'src/app/shared/entities/institute.model';
 import { CountryService } from 'src/app/shared/services/country.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -20,12 +21,14 @@ export class CountryDetailComponent implements OnInit {
     taxonStats: Observable<any>;
 
     constructor(private route: ActivatedRoute,
-                private countryService: CountryService) {
+                private countryService: CountryService,
+                private titleService: Title) {
         this.route.params.subscribe(params => {
             this.code = params.code;
         });
     }
     ngOnInit() {
+        this.titleService.setTitle('Country ' + this.code);
         this.country = this.countryService.retrieve(this.code,
             {fields: 'code,name'});
         this.countryService.retrieve(this.code, {'fields': 'stats_by_institute'})

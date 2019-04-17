@@ -17,18 +17,21 @@ const routes: Routes = [
 
             {
                 path: AppUrls.login,
-                component: LoginComponent
-                // loadChildren: '../kusunoki/login/login.module#LoginModule'
+                component: LoginComponent,
+                // loadChildren: '../kusunoki/login/login.module#LoginModule',
+                data: {title: 'Login'}
             },
             {
                 path: 'users',
                 loadChildren: './users/users.module#UserModule',
                 // canActivate: [IsAuthGuard]
+                data: {title: 'Users'}
             },
             {
                 path: 'tasks',
                 loadChildren: './tasks/tasks.module#TaskModule',
                 // canActivate: [IsAuthGuard]
+                data: {title: 'Tasks'}
             },
             {
                 path: AppUrls.phenotypeSubDir,
@@ -37,7 +40,8 @@ const routes: Routes = [
             },
             {
                 path: '',
-                component: HomeComponent
+                component: HomeComponent,
+                data: {title: 'CRF'}
             },
             {
                 path: '',
@@ -46,7 +50,8 @@ const routes: Routes = [
             },
             {
                 path: '**',
-                component: NotFoundComponent
+                component: NotFoundComponent,
+                data: {title: 'Not Found'}
             },
         ]
     }

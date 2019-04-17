@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { AppUrls } from 'src/app/pages/appUrls';
 import { ScaleComponent } from '../scale/scale.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'kusunoki2-scale-detail',
@@ -22,17 +23,20 @@ export class ScaleDetailComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private currentUserService: CurrentUserService,
-        private router: Router) { }
+        private router: Router,
+        private titleService: Title) { }
 
     ngOnInit(): void {
         this.routerSubscription = this.route.params.subscribe(params => {
             this.evalUserPermissions();
             if (params.name === 'create') {
+                this.titleService.setTitle('Create scale');
                 this.createMode = true;
                 this.editMode = true;
                 this.name = undefined;
             } else {
                 this.name = params.name;
+                this.titleService.setTitle('Scale ' + this.name);
             }
         });
     }

@@ -10,6 +10,7 @@ import { CurrentUserService } from 'src/app/shared/services/current-user.service
 import { InstituteComponent } from '../institute/institute.component';
 import { AppUrls } from 'src/app/pages/appUrls';
 import { map } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -41,18 +42,19 @@ export class InstituteDetailComponent implements OnInit, OnDestroy {
     constructor(private route: ActivatedRoute,
                 private instituteService: InstituteService,
                 private currentUserService: CurrentUserService,
-                private router: Router) {}
+                private router: Router,
+                private titleService: Title) {}
 
     ngOnInit() {
         this.routerSubscription = this.route.params.subscribe(params => {
             if (params.instituteCode === 'create') {
-                console.log('create-detail');
+                this.titleService.setTitle('Create institute');
                 this.createMode = true;
                 this.editMode = true;
                 this.instituteCode = undefined;
             } else {
-                console.log(params)
                 this.instituteCode = params.instituteCode;
+                this.titleService.setTitle('Institute ' + this.instituteCode);
                 this.createMode = false;
                 this.editMode = false;
                 this.getStats();

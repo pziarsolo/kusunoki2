@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ObservationVariableComponent } from '../observation-variable/observation-variable.component';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { AppUrls } from 'src/app/pages/appUrls';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'kusunoki2-observation-variable-detail',
@@ -21,7 +22,8 @@ export class ObservationVariableDetailComponent implements OnInit, OnDestroy {
 
     constructor(private route: ActivatedRoute,
         private router: Router,
-        private currentUserService: CurrentUserService) { }
+        private currentUserService: CurrentUserService,
+        private titleService: Title) { }
 
     evalUserPermissions() {
         if (this.userCanEdit === undefined) {
@@ -39,11 +41,13 @@ export class ObservationVariableDetailComponent implements OnInit, OnDestroy {
         this.routerSubscription = this.route.params.subscribe(params => {
             this.evalUserPermissions();
             if (params.name === 'create') {
+                this.titleService.setTitle('Create Trait methodologie');
                 this.createMode = true;
                 this.editMode = true;
                 this.name = undefined;
             } else {
                 this.name = params.name;
+                this.titleService.setTitle('Trait methodology ' + this.name);
             }
         });
     }

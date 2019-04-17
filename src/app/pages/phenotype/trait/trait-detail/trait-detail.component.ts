@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppUrls } from 'src/app/pages/appUrls';
-import { ScaleComponent } from '../../scale/scale/scale.component';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { TraitComponent } from '../trait/trait.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'kusunoki2-trait-detail',
@@ -23,17 +23,20 @@ export class TraitDetailComponent implements OnInit, OnDestroy {
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
-                private currentUserService: CurrentUserService) { }
+                private currentUserService: CurrentUserService,
+                private titleService: Title) { }
 
     ngOnInit(): void {
         this.routerSubscription = this.route.params.subscribe(params => {
             this.evalUserPermissions();
             if (params.name === 'create') {
+                this.titleService.setTitle('Create trait');
                 this.createMode = true;
                 this.editMode = true;
                 this.name = undefined;
             } else {
                 this.name = params.name;
+                this.titleService.setTitle('Trait ' + this.name);
             }
         });
     }

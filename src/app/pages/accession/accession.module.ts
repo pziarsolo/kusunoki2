@@ -38,11 +38,13 @@ const routes: Routes = [
     {
         path: AppUrls.institutes + '/bulk_create',
         component: InstituteBulkCreateComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsAdminGuard],
+        data: {title: 'Create institutes in Bulk'}
     },
     {
         path: AppUrls.institutes,
-        component: InstituteListComponent
+        component: InstituteListComponent,
+        data: {title: 'Institutes'}
     },
     {
         path: AppUrls.institutes + '/:instituteCode',
@@ -50,7 +52,9 @@ const routes: Routes = [
     },
     {
         path: AppUrls.countries,
-        component: CountryListComponent
+        component: CountryListComponent,
+        data: {title: 'Countries'}
+
     },
     {
         path: AppUrls.countries + '/:code',
@@ -58,19 +62,18 @@ const routes: Routes = [
     },
     {
         path: AppUrls.accessions,
-        component: AccessionListComponent
-    },
-    {
-        path: 'accessions2',
-        component: AccessionListComponent
+        component: AccessionListComponent,
+        data: {title: 'Accessions'}
     },
     {
         path: AppUrls.accessions + '/create',
-        component: AccessionCreateComponent
+        component: AccessionCreateComponent,
+        data: {title: 'Create New Accession'}
     },
     {
         path: AppUrls.accessions + '/bulk_create',
-        component: AccessionBulkCreateComponent
+        component: AccessionBulkCreateComponent,
+        data: {title: 'Create Accessions in Bulk'}
     },
     {
         path: AppUrls.accessions + '/:instituteCode/:germplasmNumber',
@@ -78,11 +81,13 @@ const routes: Routes = [
     },
     {
         path: AppUrls.accessionsets,
-        component: AccessionSetListComponent
+        component: AccessionSetListComponent,
+        data: {title: 'AccessionSets'}
     },
     {
         path: AppUrls.accessionsets + '/bulk_create',
-        component: AccessionSetBulkCreateComponent
+        component: AccessionSetBulkCreateComponent,
+        data: {title: 'Create AccessionSets in Bulk'}
     },
     {
         path: AppUrls.accessionsets + '/:accessionsetNumber',
@@ -90,7 +95,8 @@ const routes: Routes = [
     },
     {
         path: AppUrls.taxonomy_stats,
-        component: TaxaStatsPageComponent
+        component: TaxaStatsPageComponent,
+        data: {title: 'Taxonomy stats'}
     },
 
 ];
