@@ -21,9 +21,9 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
     study: Study;
     userCanEdit: boolean;
 
-    showObservationVariables = true;
-    showObservations = true;
-    showAccessions = true;
+    showObservationVariables = false;
+    showObservations = false;
+    showAccessions = false;
 
     @ViewChild(StudyComponent) studyComp;
 

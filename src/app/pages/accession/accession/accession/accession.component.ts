@@ -42,9 +42,9 @@ export class AccessionComponent  implements OnChanges {
     @ViewChildren(PassportComponent) passports;
     @ViewChildren(ObservationImageGalleryComponent) gallery;
 
-    showImages = true;
-    showObservations = true;
-    showStudies = true;
+    showImages = false;
+    showObservations = false;
+    showStudies = false;
 
     config = {
         institute: {
