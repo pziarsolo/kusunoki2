@@ -42,6 +42,10 @@ export class AccessionComponent  implements OnChanges {
     @ViewChildren(PassportComponent) passports;
     @ViewChildren(ObservationImageGalleryComponent) gallery;
 
+    showImages = true;
+    showObservations = true;
+    showStudies = true;
+
     config = {
         institute: {
             is_required: true, is_editable: false, name: 'instituteCode'},

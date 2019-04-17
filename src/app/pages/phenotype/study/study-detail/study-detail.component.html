@@ -38,25 +38,28 @@
         </button>
         <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteStudy()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
 </mat-menu>
-<mat-card *ngIf="study && !editMode">
+<mat-card *ngIf="study && !editMode && (showAccessions || showObservations || showObservationVariables)">
     <mat-card-title>Extra info</mat-card-title>
     <mat-card-content>
         <mat-accordion *ngIf="study && !editMode">
-            <mat-expansion-panel>
+            <mat-expansion-panel *ngIf=showAccessions>
                     <mat-expansion-panel-header><span fxFlex></span><h3>Accessions used in this study</h3><span fxFlex></span></mat-expansion-panel-header>
                     <kusunoki2-accession-table
+                        (searchFinished)="showAccessions= $event > 0 ? true : false"
                         [searchParams]="{study: name}">
                     </kusunoki2-accession-table>
                 </mat-expansion-panel>
-            <mat-expansion-panel>
+            <mat-expansion-panel *ngIf="showObservations">
                 <mat-expansion-panel-header><span fxFlex></span><h3>Observations on this study</h3><span fxFlex></span></mat-expansion-panel-header>
                 <kusunoki2-observation-table
+                    (searchFinished)="showObservations= $event > 0 ? true : false"
                     [searchParams]="{study: name}">
                 </kusunoki2-observation-table>
             </mat-expansion-panel>
-            <mat-expansion-panel>
+            <mat-expansion-panel *ngIf="showObservationVariables">
                     <mat-expansion-panel-header><span fxFlex></span><h3>Trait methologies used on this study</h3><span fxFlex></span></mat-expansion-panel-header>
                     <kusunoki2-observation-variable-table
+                    (searchFinished)="showObservationVariables= $event > 0 ? true : false"
                         [searchParams]="{study: name}">
                     </kusunoki2-observation-variable-table>
                 </mat-expansion-panel>

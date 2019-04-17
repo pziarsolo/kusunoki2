@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { NgxGalleryOptions, NgxGalleryImage, INgxGalleryImage, NgxGalleryComponent } from 'ngx-gallery';
 import { ObservationImageService } from 'src/app/shared/services/observation_image.service';
 import { DeleteDialogComponent } from '../../delete-dialog/delete-dialog.component';
@@ -33,6 +33,9 @@ export class ObservationImageGalleryComponent implements OnInit {
     }
     galleryOptions: NgxGalleryOptions[];
     galleryImages: NgxGalleryImageOwn[];
+
+    @Output() imagesFound = new EventEmitter<boolean>();
+
     @ViewChild('gallery') gallery: NgxGalleryComponent;
     constructor(private service: ObservationImageService,
         private readonly statusService: StatusService,
@@ -43,6 +46,14 @@ export class ObservationImageGalleryComponent implements OnInit {
         searchParams = Object.assign({}, searchParams);
         this.service.list(searchParams)
             .subscribe(response => {
+                let imagesFound;
+                if (response.body.length > 0) {
+                    imagesFound = true;
+                } else {
+                    imagesFound = false;
+                }
+                this.imagesFound.emit(imagesFound);
+
                 this.galleryImages = response.body.map(item => {
                     return {small: item.image_small,
                             medium: item.image_medium,

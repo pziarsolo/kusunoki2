@@ -58,19 +58,19 @@ export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
         } else {
             search_params = Object.assign(search_params, ordering);
         }
-        this.searchService.list(search_params)
+        return this.searchService.list(search_params)
             .pipe(
                 catchError(() => of(new HttpResponse<T[]>())),
                 finalize(() => this.loadingSubject.next(false))
-            )
-            .subscribe(
-                response => {
-                    this.totalCount = Number(response.headers.get('X-Total-Count'));
-                    this.itemsSubject.next(response.body);
-                },
-                error => {
-                    console.log('error');
-                });
+            );
+            // .subscribe(
+            //     response => {
+            //         this.totalCount = Number(response.headers.get('X-Total-Count'));
+            //         this.itemsSubject.next(response.body);
+            //     },
+            //     error => {
+            //         console.log('error');
+            //     });
     }
     sortData(event) {
         const direction = event.direction === 'asc' ? '-' : '+';
@@ -113,6 +113,7 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     extraSearchParams;
     appUrls = AppUrls;
     userToken;
+
     constructor(
         protected currentUserService: CurrentUserService,
         protected serviceLocator: ServiceLocatorService,
@@ -168,8 +169,19 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
         if (this.dataSource) {
             searchParams = Object.assign({}, searchParams);
             this.updatePaginatorState(searchParams);
-            this.dataSource.loadItems(searchParams);
-            this.searchFinished.emit(this.dataSource.totalCount);
+            this.dataSource.loadItems(searchParams)
+                .subscribe(
+                    response => {
+                        this.dataSource.totalCount = Number(response.headers.get('X-Total-Count'));
+                        this.dataSource.itemsSubject.next(response.body);
+                        this.searchFinished.emit(this.dataSource.totalCount);
+                    },
+                    error => {
+                        console.log('error');
+                    });
+            // console.log(some)
+            // this.searchFinished.emit(this.dataSource.totalCount);
+            // console.log(this.dataSource.totalCount)
             // if (this.searchParams !== undefined) {
             //     this.searchParamsChanged.emit(this.searchParams);
             // }
@@ -209,7 +221,6 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     }
     navigateTo(baseUrl, queryParams) {
         queryParams = {...this.searchParams, ...queryParams};
-        console.log(queryParams);
         this.router.navigate([baseUrl], {queryParams: queryParams});
 
     }
