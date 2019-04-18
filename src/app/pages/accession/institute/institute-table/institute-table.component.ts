@@ -20,7 +20,7 @@ class InstituteDataSource extends SearchDataSourceNoRouter<Institute> {
 })
 export class InstituteTableComponent extends TableWithFilterComponent {
     entityType = 'institute';
-    defColumnsToDisplay = ['instituteCode', 'name', 'num_accessions', 'num_accessionsets'];
+    defColumnsToDisplay = ['instituteCode', 'name', 'num_accessions'];
     @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
     extraSearchParams = {};
     appUrls = AppUrls;
@@ -28,5 +28,10 @@ export class InstituteTableComponent extends TableWithFilterComponent {
     createDatasource() {
         this.dataSource = new InstituteDataSource(
             this.service, this.columnsToDisplay, this.extraSearchParams);
+    }
+    configureTable() {
+        if (this.appConfig.useAccessionset) {
+            this.columnsToDisplay = this.columnsToDisplay.concat('num_accessionsets');
+        }
     }
 }

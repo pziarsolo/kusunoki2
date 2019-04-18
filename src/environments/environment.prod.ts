@@ -4,6 +4,7 @@ export const environment = {
     centralColumnSize: '1200px',
     config: {
         defaultDataSource: {'code': 'CRF', kind: 'project'},
-        defaultAccessionSetInstitute: 'ESP004'
+        defaultAccessionSetInstitute: 'ESP004',
+        useAccessionset: true
     }
 };

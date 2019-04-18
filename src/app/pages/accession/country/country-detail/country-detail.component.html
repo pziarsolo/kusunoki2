@@ -21,7 +21,7 @@
         <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column" >
             <mat-card fxFlex='grow'>
                 <kusunoki2-institute-stats-table
-                    [columnsToDisplay]="['code', 'name', 'num_accessions', 'num_accessionsets']"
+                    [columnsToDisplay]="instituteFields"
                     [items]="instituteStats"
                     [initialQueryParams]="{country: (country|async)?.code}">
                 </kusunoki2-institute-stats-table>
@@ -40,7 +40,7 @@
                             </kusunoki2-google-treemap>
                         </ng-template>
                     </mat-tab>
-                    <mat-tab>
+                    <mat-tab *ngIf='appConfig.useAccessionset'>
                         <ng-template mat-tab-label>
                             AccessionSet Stats
                         </ng-template>
@@ -60,6 +60,7 @@
     <mat-expansion-panel expanded='true' *ngIf="country">
         <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
         <kusunoki2-taxon-stats
+            [showAccessionset]='appConfig.useAccessionset'
             [stats]="taxonStats|async"
             [initialQueryParams]="{country: (country|async)?.code}">
         </kusunoki2-taxon-stats>

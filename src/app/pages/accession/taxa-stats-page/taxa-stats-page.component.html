@@ -5,8 +5,8 @@
             <mat-spinner *ngIf='statsCalculating' diameter='30'></mat-spinner>
         </mat-card-title>
         <kusunoki2-taxon-stats
-            [ColumnsToDisplay]="['taxon_name', 'num_accessions', 'num_accessionsets']"
-            [stats]="stats">
+            [stats]="stats"
+            [showAccessionset]="appConfig.useAccessionset">
         </kusunoki2-taxon-stats>
     </mat-card-content>
 </mat-card>

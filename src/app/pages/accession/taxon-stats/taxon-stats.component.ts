@@ -14,9 +14,8 @@ const ALLOWED_RANKS = ['genus', 'species', 'subspecies', 'variety', 'convarietas
 export class TaxonStatsComponent implements OnChanges, AfterViewChecked {
     @Input() stats: any;
     @Input() initialQueryParams: any = {};
-    defColumnsToDisplay = ['taxon_name', 'num_accessions', 'num_accessionsets'];
-    @Input() ColumnsToDisplay?: String[] = this.defColumnsToDisplay;
-
+    @Input() showAccessionset: boolean;
+    columnsToDisplay = ['taxon_name', 'num_accessions']; //, 'num_accessionsets'];
     appUrls = AppUrls;
     rankStats = {};
     rankStatsBar = {};
@@ -34,18 +33,32 @@ export class TaxonStatsComponent implements OnChanges, AfterViewChecked {
         this.router.navigate([baseUrl], {queryParams: queryParams});
     }
     ngOnChanges(changes: SimpleChanges): void {
+        console.log(changes);
+        if ('showAccessionset' in changes && changes['showAccessionset'].currentValue) {
+            console.log('0aaa');
+            this.columnsToDisplay = ['taxon_name', 'num_accessions', 'num_accessionsets']
+        }
         if (changes['stats'] && this.stats) {
             for (const rank of ALLOWED_RANKS) {
                 if (rank in this.stats) {
                     this.ranksInStats.push(rank);
                     const statsByRank = [];
-                    let statsByRankPie: any[][] = [['', 'Num. Accessions', 'Num. Accessionsets']];
+                    let statsByRankPie: any[][];
+                    if (this.showAccessionset) {
+                        statsByRankPie = [['', 'Num. Accessions', 'Num. Accessionsets']];
+                    } else {
+                        statsByRankPie = [['', 'Num. Accessions']];
+                    }
 
                     for (const taxon_name of Object.keys(this.stats[rank])) {
                         const taxa_stat = {
                             'taxon_name': taxon_name,
-                            'num_accessions': this.stats[rank][taxon_name]['num_accessions'],
-                            'num_accessionsets': this.stats[rank][taxon_name]['num_accessionsets']};
+                            'num_accessions': this.stats[rank][taxon_name]['num_accessions']
+                        }
+                        if (this.showAccessionset) {
+                            taxa_stat['num_accessionsets'] = this.stats[rank][taxon_name]['num_accessionsets'];
+                        }
+
                         statsByRank.push(taxa_stat);
                     }
 
@@ -66,11 +79,17 @@ export class TaxonStatsComponent implements OnChanges, AfterViewChecked {
                         sum_accession += item[1];
                         sum_accessionset += item[2];
                     });
-                    statsByRankPie.push(['Other', sum_accession, sum_accessionset]);
+                    if (this.showAccessionset) {
+                        statsByRankPie.push(['Other', sum_accession, sum_accessionset]);
+                    } else {
+                        statsByRankPie.push(['Other', sum_accession]);
+                    }
 
                     this.rankStats[rank] = new MatTableDataSource(sortedStatsByRank);
-                    this.rankStatsBar[rank] = {accession: statsByRankPie.map(item => [item[0], item[1]]),
-                                               accessionset: statsByRankPie.map(item => [item[0], item[2]])};
+                    this.rankStatsBar[rank] = {accession: statsByRankPie.map(item => [item[0], item[1]])}
+                    if (this.showAccessionset) {
+                        this.rankStatsBar[rank].accessionset = statsByRankPie.map(item => [item[0], item[2]]);
+                    }
                 }
             }
         }
@@ -95,10 +114,16 @@ export class TaxonStatsComponent implements OnChanges, AfterViewChecked {
     }
 
     tabChanged(event) {
-        const accessionPieIndex = event.index * 2;
-        const accessionSetPieIndex = accessionPieIndex + 1;
-        const pies = this.pieCharts.toArray();
-        pies[accessionPieIndex].refreshPieChart();
-        pies[accessionSetPieIndex].refreshPieChart();
+        if (this.showAccessionset) {
+            const accessionPieIndex = event.index * 2;
+            const accessionSetPieIndex = accessionPieIndex + 1;
+            const pies = this.pieCharts.toArray();
+            pies[accessionPieIndex].refreshPieChart();
+            pies[accessionSetPieIndex].refreshPieChart();
+        } else {
+            const accessionPieIndex = event.index;
+            const pies = this.pieCharts.toArray();
+            pies[accessionPieIndex].refreshPieChart();
+        }
     }
 }

@@ -4,6 +4,8 @@ import { environment } from '../../../../environments/environment';
 import { Observable} from 'rxjs';
 import { AppUrls } from '../../appUrls';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
+import { AppConfigService } from 'src/app/shared/services/app-config.service';
+import { AppConfig } from 'src/app/shared/entities/app-config.model';
 
 @Component({
     selector: 'kusunoki2-header',
@@ -16,7 +18,7 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     apiDocs = this.apiUrl + 'doc';
     centralColumnSize = environment.centralColumnSize;
     appUrls = AppUrls;
-
+    appConfig: AppConfig;
     @Output() notifyMenuChange = new EventEmitter();
     @Input() sidenavOpened: Boolean;
     @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
@@ -24,7 +26,11 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
 
     userToken;
 
-    constructor(private currentUserService: CurrentUserService) {}
+    constructor(
+        private currentUserService: CurrentUserService,
+        private appConfigService: AppConfigService) {
+            this.appConfig = this.appConfigService.getConfig();
+        }
     ngOnInit(): void {
         this.userToken = this.currentUserService.userToken;
         // this.userSubscription = this.userToken

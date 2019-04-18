@@ -18,7 +18,7 @@ class CountryDataSource extends SearchDataSourceNoRouter<Country> {
 })
 export class CountryTableComponent extends TableWithFilterComponent {
     entityType = 'country';
-    defColumnsToDisplay = ['code', 'name', 'num_accessions', 'num_accessionsets'];
+    defColumnsToDisplay = ['code', 'name', 'num_accessions'];
     @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
     extraSearchParams = {'only_with_accessions': true};
     appUrls = AppUrls;
@@ -26,5 +26,10 @@ export class CountryTableComponent extends TableWithFilterComponent {
     createDatasource() {
         this.dataSource = new CountryDataSource(
             this.service, this.columnsToDisplay, this.extraSearchParams);
+    }
+    configureTable() {
+        if (this.appConfig.useAccessionset) {
+            this.columnsToDisplay = this.columnsToDisplay.concat('num_accessionsets');
+        }
     }
 }

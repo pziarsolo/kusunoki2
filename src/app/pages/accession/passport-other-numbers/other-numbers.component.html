@@ -1,18 +1,15 @@
-<mat-list dense>
-    <mat-list-item style='margin:8px;'*ngFor="let other_number of otherNumbers; let i=index">
-        <kusunoki2-other-number
-            [input_form_data]="other_number"
-            [editMode]="editMode"
-            [componentId]="i"
-            (validationStateEvent)="checkFormValid($event)">
-        </kusunoki2-other-number>
-        <button mat-icon-button *ngIf="editMode" color='warn' (click)="removeInputWidget(i)">
-            <mat-icon>delete</mat-icon>
-        </button>
+<div *ngFor="let other_number of otherNumbers; let i=index">
+    <kusunoki2-other-number
+        [input_form_data]="other_number"
+        [editMode]="editMode"
+        [componentId]="i"
+        (validationStateEvent)="checkFormValid($event)">
+    </kusunoki2-other-number>
+    <button mat-icon-button *ngIf="editMode" color='warn' (click)="removeInputWidget(i)">
+        <mat-icon>delete</mat-icon>
+    </button>
+</div>
 
-    </mat-list-item>
-
-</mat-list>
 <button mat-button *ngIf="editMode" color='accent' (click)="addInputWidget()">
     <mat-icon >add</mat-icon> Add Other Number
 </button>

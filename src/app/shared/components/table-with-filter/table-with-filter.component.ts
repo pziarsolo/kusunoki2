@@ -20,6 +20,8 @@ import { InstituteService } from '../../services/institute.service';
 import { Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { ObservationVariableService } from '../../services/observation_variable.service';
+import { AppConfigService } from '../../services/app-config.service';
+import { AppConfig } from '../../entities/app-config.model';
 
 export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
     private itemsSubject = new BehaviorSubject<any[]>([]);
@@ -113,15 +115,21 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     extraSearchParams;
     appUrls = AppUrls;
     userToken;
+    appConfig: AppConfig;
 
     constructor(
         protected currentUserService: CurrentUserService,
         protected serviceLocator: ServiceLocatorService,
         protected statusService: StatusService,
-        private router: Router) {
+        private router: Router,
+        private appConfigService: AppConfigService) {
+            this.appConfig = this.appConfigService.getConfig();
     }
 
+    configureTable() {}
+
     ngOnInit() {
+        this.configureTable();
         if (this.entityType === 'observation') {
             this.service = this.serviceLocator.injector.get(ObservationService);
         } else if (this.entityType === 'study') {

@@ -9,7 +9,8 @@ export const environment = {
     // apiUrl: 'https://vavilov.comav.upv.es/api/',
     config: {
         defaultDataSource: {'code': 'CRF', kind: 'project'},
-        defaultAccessionSetInstitute: 'ESP004'
+        defaultAccessionSetInstitute: 'ESP004',
+        useAccessionset: true
     }
 };
 

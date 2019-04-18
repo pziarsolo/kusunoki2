@@ -11,6 +11,8 @@ import { InstituteComponent } from '../institute/institute.component';
 import { AppUrls } from 'src/app/pages/appUrls';
 import { map } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
+import { AppConfigService } from 'src/app/shared/services/app-config.service';
+import { AppConfig } from 'src/app/shared/entities/app-config.model';
 
 
 @Component({
@@ -23,11 +25,12 @@ export class InstituteDetailComponent implements OnInit, OnDestroy {
     editMode = false;
     createMode = false;
     userCanEdit: boolean;
-    countryColumnsToDisplay = ['code', 'name', 'num_accessions', 'num_accessionsets'];
+    countryFields = ['code', 'name', 'num_accessions', 'num_accessionsets'];
     instituteFound = true;
     country_stats: Observable<Country[]>;
     taxon_stats: Observable<any>;
     pdcis: Observable<any>;
+    appConfig: AppConfig;
 
     @ViewChild(InstituteComponent) instituteComp;
     pdciCharConfig = {
@@ -43,9 +46,15 @@ export class InstituteDetailComponent implements OnInit, OnDestroy {
                 private instituteService: InstituteService,
                 private currentUserService: CurrentUserService,
                 private router: Router,
-                private titleService: Title) {}
+                private titleService: Title,
+                private appConfigService: AppConfigService) {
+        this.appConfig = this.appConfigService.getConfig();
+    }
 
     ngOnInit() {
+        if (!this.appConfig.useAccessionset) {
+            this.countryFields = ['code', 'name', 'num_accessions'];
+        }
         this.routerSubscription = this.route.params.subscribe(params => {
             if (params.instituteCode === 'create') {
                 this.titleService.setTitle('Create institute');
@@ -53,6 +62,7 @@ export class InstituteDetailComponent implements OnInit, OnDestroy {
                 this.editMode = true;
                 this.instituteCode = undefined;
             } else {
+
                 this.instituteCode = params.instituteCode;
                 this.titleService.setTitle('Institute ' + this.instituteCode);
                 this.createMode = false;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaxonService } from 'src/app/shared/services/taxon.service';
+import { AppConfigService } from 'src/app/shared/services/app-config.service';
+import { AppConfig } from 'src/app/shared/entities/app-config.model';
 
 
 @Component({
@@ -10,7 +12,11 @@ import { TaxonService } from 'src/app/shared/services/taxon.service';
 export class TaxaStatsPageComponent implements OnInit {
     stats = {};
     statsCalculating: boolean;
-    constructor(private taxaStatsService: TaxonService) { }
+    appConfig: AppConfig;
+    constructor(private taxaStatsService: TaxonService,
+        private appConfigService: AppConfigService) {
+            this.appConfig = this.appConfigService.getConfig();
+         }
 
     ngOnInit() {
         this.statsCalculating = true;

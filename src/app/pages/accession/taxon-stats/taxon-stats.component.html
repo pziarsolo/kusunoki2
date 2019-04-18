@@ -25,8 +25,8 @@
                                 </a>
                         </td>
                     </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="ColumnsToDisplay"></tr>
-                    <tr mat-row *matRowDef="let row; columns: ColumnsToDisplay"></tr>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
                 </table>
                 <mat-paginator
                     [length]="rankStats[rank].data.length"
@@ -41,7 +41,7 @@
                     [div_id]='rank +"_div" + "_accession"'
                     [config]="{title: 'Accessions'}">
                 </kusunoki2-google-piechart>
-                <kusunoki2-google-piechart
+                <kusunoki2-google-piechart *ngIf="showAccessionset"
                     [chartData]="rankStatsBar[rank]['accessionset']"
                     [div_id]='rank +"_div" + "_accessionset"'
                     [config]="{title: 'Accessionsets'}">

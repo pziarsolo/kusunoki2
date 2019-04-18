@@ -77,7 +77,7 @@
         <!-- <mat-icon>chevron_right</mat-icon> -->
         <span>Accession</span>
     </a>
-    <a [routerLink]="['/', appUrls.accessionsets]" mat-menu-item>
+    <a [routerLink]="['/', appUrls.accessionsets]" mat-menu-item *ngIf='appConfig.useAccessionset'>
         <!-- <mat-icon>chevron_right</mat-icon> -->
         <span>AccessionSet</span>
     </a>
@@ -141,7 +141,7 @@
 <mat-menu #addBulkMenuPassport="matMenu">
     <button *ngIf="(userToken|async)?.is_staff" mat-menu-item  [routerLink]="['/', appUrls.institutes, 'bulk_create']">Institutes</button>
     <button mat-menu-item  [routerLink]="['/', appUrls.accessions, 'bulk_create']">Accessions</button>
-    <button mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']">Accessionsets</button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']" *ngIf='appConfig.useAccessionset'>Accessionsets</button>
     <!-- <button mat-menu-item [matMenuTriggerFor]="addbulkPhenotypeMenu">Characterization</button> -->
 </mat-menu>
 
