@@ -52,6 +52,8 @@ export class AccessionSetData {
     instituteCode: string;
     accessionsetNumber: string;
     accessions: AccessionIds[];
+    longitudes: Number[];
+    latitudes: Number[];
 
     constructor(object?: AccessionSetData) {
         if (object) {
@@ -64,6 +66,8 @@ export class AccessionSetData {
             this.instituteCode = undefined;
             this.accessionsetNumber =  undefined;
             this.accessions = [];
+            this.latitudes = undefined;
+            this.longitudes = undefined;
         }
     }
     getApiDocument() {

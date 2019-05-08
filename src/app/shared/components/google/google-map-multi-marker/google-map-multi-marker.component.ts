@@ -1,6 +1,8 @@
 /// <reference types="@types/googlemaps" />
 import { Component, OnInit, Input, SimpleChanges, OnChanges, AfterViewChecked } from '@angular/core';
 import { AppUrls } from 'src/app/pages/appUrls';
+import { MapMarker } from 'src/app/shared/entities/mapMarker.model';
+import { Observable } from 'rxjs';
 
 declare var google: any;
 
@@ -13,7 +15,7 @@ export class GoogleMapMultiMarkerComponent implements OnChanges, AfterViewChecke
     @Input() height: String = '500px';
     defConfig = {zoom: 3, center: new google.maps.LatLng(18.78600, 8.977167)};
     @Input() config: object = this.defConfig;
-    @Input() markers;
+    @Input() markers: MapMarker[];
 
     div_id = 'search_map';
     map: google.maps.Map;
@@ -31,33 +33,18 @@ export class GoogleMapMultiMarkerComponent implements OnChanges, AfterViewChecke
     }
     drawMarkers() {
         if (this.markers) {
-            for (const accessionSet of this.markers) {
-                const uid = accessionSet.data.accessionsetNumber;
-                const latitude = accessionSet.data.latitudes[0];
-                const longitude = accessionSet.data.longitudes[0];
-                if (latitude && longitude) {
+            for (const marker of this.markers) {
+                if (marker.latitude && marker.longitude) {
                     const _marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(latitude, longitude),
+                        position: new google.maps.LatLng(marker.latitude, marker.longitude),
                         map: this.map,
-                        title: uid,
-                        url: AppUrls.accessionsets + '/' + uid
+                        title: marker.uid,
+                        url: marker.url
                     });
                     google.maps.event.addListener(_marker, 'click', function() {
                         window.location.href = _marker.url;
                     });
                 }
-                // for (const marker of accessionSet.coords) {
-                //     if (marker.latitude && marker.longitude) {
-                //         const _marker = new google.maps.Marker(
-                //                             {position: new google.maps.LatLng(marker.latitude,
-                //                                                                 marker.longitude),
-                //                             map: this.map,
-                //                             title: uid,
-                //                             url: AppUrls.accessionsets + '/' + uid});
-                //         google.maps.event.addListener(_marker, 'click', function() {
-                //             window.location.href = _marker.url; });
-                //     }
-                // }
             }
         }
     }

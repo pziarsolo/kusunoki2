@@ -513,6 +513,20 @@ export class AccessionData {
         }
         return apiDoc;
     }
+    get latitude() {
+        if (this.passports.length > 0 &&
+            this.passports[0].collectionSite &&
+            this.passports[0].collectionSite.latitude) {
+            return this.passports[0].collectionSite.latitude;
+        }
+    }
+    get longitude() {
+        if (this.passports.length > 0 &&
+            this.passports[0].collectionSite &&
+            this.passports[0].collectionSite.longitude) {
+            return this.passports[0].collectionSite.longitude;
+        }
+    }
 }
 
 export class Accession {

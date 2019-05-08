@@ -33,6 +33,8 @@ import { CountryStatsTableComponent } from './country/country-stats-table/countr
 import { CountryTableComponent } from './country/country-table/country-table.component';
 import { InstituteStatsTableComponent } from './institute/institute-stats-table/institute-stats-table.component';
 import { InstituteTableComponent } from './institute/institute-table/institute-table.component';
+import { AccessionMultiMarkerMapComponent } from './accession/accession-multi-marker-map/accession-multi-marker-map.component';
+import { AccessionsetMultiMarkerMapComponent } from './accessionset/accessionset-multi-marker-map/accessionset-multi-marker-map.component';
 
 const routes: Routes = [
     {
@@ -133,7 +135,9 @@ const routes: Routes = [
         CountryTableComponent,
         InstituteTableComponent,
         AccessionSearchByObservationsFormComponent,
-        AccessionSearchByObservationFormComponent
+        AccessionSearchByObservationFormComponent,
+        AccessionMultiMarkerMapComponent,
+        AccessionsetMultiMarkerMapComponent
     ],
     imports: [
         SharedModule,
