@@ -13,9 +13,8 @@ export class InstituteBulkCreateComponent extends BulkCreateComponent {
     fieldConfiguration = [
         {name: 'INST_CODE', description: ['FAO institute code'], mandatory: true},
         {name: 'FULL_NAME', description: ['Name of the institute'], mandatory: true},
-        {name: 'TYPE', description: ['Type of the institute: Can be Gobernmental, genebank...'],
+        {name: 'TYPE', description: ['Type of the institute: Can be Gobernmental, Genebank, Project...'],
             mandatory: false},
-        {name: 'TYPE', description: ['Type of institution: Governamental, genebank...'], mandatory: false},
         {name: 'STREET_POBE', description: ['Address of the institute'], mandatory: false},
         {name: 'CITY_STATE', description: ['City of the institute'], mandatory: false},
         {name: 'ZIP_CODE', description: ['Zip code of the institute'], mandatory: false},

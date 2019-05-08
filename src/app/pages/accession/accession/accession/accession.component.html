@@ -83,8 +83,8 @@
     </mat-card>
 
     <mat-accordion multi="true">
-        <mat-expansion-panel [expanded]="editMode">
-            <mat-expansion-panel-header><span fxFlex></span><h3>Passport Data</h3><span fxFlex></span></mat-expansion-panel-header>
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header><h2>Passport Data</h2></mat-expansion-panel-header>
             <kusunoki2-passport
                 [passport]="accession.data.passports[0]"
                 [editMode]='editMode'

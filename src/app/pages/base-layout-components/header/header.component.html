@@ -126,23 +126,24 @@
 </mat-menu>
 
 <mat-menu #addmenu="matMenu" >
-
-    <button mat-menu-item [matMenuTriggerFor]="addMenuPassport">Passport</button>
+    <button *ngIf="(userToken|async)?.is_staff" mat-menu-item [matMenuTriggerFor]="addMenuInstitute">Institute</button>
+    <button mat-menu-item [matMenuTriggerFor]="addMenuAccession">Accession</button>
+    <button mat-menu-item [matMenuTriggerFor]="addMenuAccessionSet">AccessionSet</button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuPhenotype">Characterization</button>
 </mat-menu>
 
-<mat-menu #addMenuPassport="matMenu" >
-    <a *ngIf="(userToken|async)?.is_staff" mat-menu-item [routerLink]="['/', appUrls.institutes, 'create']">Institute</a>
-    <a mat-menu-item [routerLink]="['/', appUrls.accessions, 'create']">Accession</a>
-    <button mat-menu-item [matMenuTriggerFor]="addBulkMenuPassport">Bulk Uploads</button>
+<mat-menu #addMenuInstitute="matMenu" >
+    <a  mat-menu-item [routerLink]="['/', appUrls.institutes, 'create']">Add one</a>
+    <a mat-menu-item  [routerLink]="['/', appUrls.institutes, 'bulk_create']">Bulk create...</a>
 </mat-menu>
 
+<mat-menu #addMenuAccession="matMenu" >
+    <a mat-menu-item [routerLink]="['/', appUrls.accessions, 'create']">Add one</a>
+    <button mat-menu-item  [routerLink]="['/', appUrls.accessions, 'bulk_create']">Bulk create...</button>
+</mat-menu>
 
-<mat-menu #addBulkMenuPassport="matMenu">
-    <button *ngIf="(userToken|async)?.is_staff" mat-menu-item  [routerLink]="['/', appUrls.institutes, 'bulk_create']">Institutes</button>
-    <button mat-menu-item  [routerLink]="['/', appUrls.accessions, 'bulk_create']">Accessions</button>
-    <button mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']" *ngIf='appConfig.useAccessionset'>Accessionsets</button>
-    <!-- <button mat-menu-item [matMenuTriggerFor]="addbulkPhenotypeMenu">Characterization</button> -->
+<mat-menu #addMenuAccessionSet="matMenu">
+    <a mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']" *ngIf='appConfig.useAccessionset'>Bulk create...</a>
 </mat-menu>
 
 <mat-menu #addMenuPhenotype="matMenu">
