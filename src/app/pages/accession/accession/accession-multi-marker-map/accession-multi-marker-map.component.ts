@@ -23,7 +23,7 @@ export class AccessionMultiMarkerMapComponent implements OnChanges {
         if ('searchParams' in changes && this.searchParams) {
             const searchParams = Object.assign({}, this.searchParams);
             searchParams['limit'] = 500;
-            // searchParams['fields'] ='germplasmNumber,longitude,latitude';
+            searchParams['fields'] = 'germplasmNumber,instituteCode,longitude,latitude';
             this.markers = this.service.list(searchParams)
                 .pipe(
                     mergeMap((response: HttpResponse<Accession[]>) => response.body),
