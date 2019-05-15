@@ -88,9 +88,10 @@
     <mat-card-content *ngIf='uploadTried && uploadSuccessful === false'>
         <p>Something went wrong</p>
         <mat-list *ngIf="errors">
-            <mat-list-item *ngFor='let error of errors'>
+            <p *ngIf=errors.detail> {{errors.detail}} </p>
+            <!-- <mat-list-item *ngFor='let error of errors'>
                 <mat-icon>clear</mat-icon>{{error.detail}}
-            </mat-list-item>
+            </mat-list-item> -->
         </mat-list>
     </mat-card-content>
 </mat-card>
