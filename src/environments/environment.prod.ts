@@ -1,10 +1,7 @@
+import site_config from './shared_config';
+
 export const environment = {
     production: true,
     apiUrl: 'https://vavilov.comav.upv.es/api/',
-    centralColumnSize: '1200px',
-    config: {
-        defaultDataSource: {'code': 'CRF', kind: 'project'},
-        defaultAccessionSetInstitute: 'ESP004',
-        useAccessionset: true
-    }
+    config: site_config
 };

@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { environment } from '../../../../environments/environment';
+import { AppConfig } from 'src/app/shared/entities/app-config.model';
+import { AppConfigService } from 'src/app/shared/services/app-config.service';
 
 @Component({
   selector: 'kusunoki2-base-layout',
@@ -16,7 +18,12 @@ export class BaseLayoutComponent {
             map(result => result.matches)
         );
     // @ViewChild(MatSidenav) sidenav: MatSidenav;
-    centralColumnSize = environment.centralColumnSize;
+    centralColumnSize: string;
+    appConfig: AppConfig;
 
-    constructor(private breakpointObserver: BreakpointObserver) {}
+    constructor(private breakpointObserver: BreakpointObserver,
+                private appConfigService: AppConfigService) {
+        this.appConfig = this.appConfigService.getConfig();
+        this.centralColumnSize = this.appConfig.centralColumnSize;
+        }
 }

@@ -23,9 +23,9 @@ class ObservationDataSource extends SearchDataSourceNoRouter<Observation> {
 })
 export class ObservationTableComponent extends TableWithFilterComponent {
     entityType = 'observation';
-    defColumnsToDisplay = ['observation_id', 'study', 'observation_unit',
-                           'accession', 'observation_variable', 'value_beauty',
-                           'creation_time'];
+    defColumnsToDisplay = ['study', 'observation_unit',
+                           'accession', 'observation_variable', 'value_beauty'];
+                        //    'observation_id', 'creation_time'];
     @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
     extraSearchParams = {};
     appUrls = AppUrls;

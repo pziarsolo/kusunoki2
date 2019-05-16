@@ -16,7 +16,7 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     showAddMenu: Observable<Boolean>;
     apiUrl = environment.apiUrl;
     apiDocs = this.apiUrl + 'doc';
-    centralColumnSize = environment.centralColumnSize;
+    centralColumnSize: string;
     appUrls = AppUrls;
     appConfig: AppConfig;
     @Output() notifyMenuChange = new EventEmitter();
@@ -30,6 +30,7 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
         private currentUserService: CurrentUserService,
         private appConfigService: AppConfigService) {
             this.appConfig = this.appConfigService.getConfig();
+            this.centralColumnSize = this.appConfig.centralColumnSize;
         }
     ngOnInit(): void {
         this.userToken = this.currentUserService.userToken;
