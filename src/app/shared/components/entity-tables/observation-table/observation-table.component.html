@@ -1,3 +1,4 @@
+<mat-progress-bar mode="indeterminate" *ngIf='dataSource.loadingSubject.value'></mat-progress-bar>
 <div [hidden]='dataSource.totalCount !== 0'>No Observations Found</div>
 <div [hidden]='dataSource.totalCount === 0'>
     <table mat-table [dataSource]='dataSource' matSort

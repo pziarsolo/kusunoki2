@@ -13,7 +13,6 @@
         <mat-card-subtitle>Total: {{table.dataSource.totalCount}} accession sets found</mat-card-subtitle>
         <mat-card-content>
             <kusunoki2-accessionset-table #table
-                [hidden]="!table.dataSource.totalCount"
                 [searchParams]="searchParams"
                 (searchParamsChanged)="searchParamsChanged($event)">
             </kusunoki2-accessionset-table>

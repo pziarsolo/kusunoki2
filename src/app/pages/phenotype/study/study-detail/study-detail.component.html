@@ -39,7 +39,7 @@
         <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteStudy()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
 </mat-menu>
 <mat-card [fxShow]="study && !editMode && (showAccessions || showObservations || showObservationVariables)">
-    <mat-card-title>Extra info</mat-card-title>
+    <mat-card-title>Additional data</mat-card-title>
     <mat-card-content>
         <mat-accordion *ngIf="study && !editMode">
             <mat-expansion-panel [fxShow]=showAccessions>

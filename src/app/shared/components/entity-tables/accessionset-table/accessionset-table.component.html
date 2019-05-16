@@ -1,4 +1,5 @@
-<div [hidden]='dataSource.totalCount !== 0'>No accession set Found</div>
+<mat-progress-bar mode="indeterminate" *ngIf='dataSource.loadingSubject.value'></mat-progress-bar>
+<!-- <div [hidden]='dataSource.totalCount !== 0'>No accession set Found</div> -->
 
 <div [hidden]='dataSource.totalCount === 0'>
     <table mat-table #table [dataSource]='dataSource' style='width:100%;' class='datatable mat-elevation-z2'>
