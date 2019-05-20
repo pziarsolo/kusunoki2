@@ -5,7 +5,7 @@
         <div [cdkDropListDisabled]='!editMode' cdkDropList class="draggable-list" (cdkDropListDropped)="drop($event)">
             <div fxLayout='row'fxLayoutGap="1px" fxLayoutAlign="'start center"
                 class="draggable-box" *ngFor="let category of value; let i = index"
-                cdkDragLockAxis='x' cdkDrag>
+                cdkDragLockAxis='y' cdkDrag>
                 <div fxFlex [hidden]='!editMode || !sortable' class="drag-handle" cdkDragHandle>
                     <mat-icon style="margin:0; padding:0">drag_handle</mat-icon >
                 </div>

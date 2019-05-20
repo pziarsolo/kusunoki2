@@ -3,7 +3,7 @@
     max-width: 100%;
     min-height: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background: white;
     overflow: hidden;
 }
@@ -11,6 +11,7 @@
 .draggable-box {
     margin-right: 3px;
     // margin:30px;
+    margin-bottom:3px;
     padding: 10px 10px;
     border: solid 1px #ccc;
     border-radius: 4px;
