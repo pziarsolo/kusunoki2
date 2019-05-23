@@ -57,11 +57,10 @@
             </mat-card>
         </div>
     </mat-expansion-panel>
-    <mat-expansion-panel expanded='true' *ngIf="country">
+    <mat-expansion-panel expanded='true' *ngIf="country|async">
         <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
         <kusunoki2-taxon-stats
-            [showAccessionset]='appConfig.useAccessionset'
-            [stats]="taxonStats|async"
+            [stats]="taxonStats"
             [initialQueryParams]="{country: (country|async)?.code}">
         </kusunoki2-taxon-stats>
     </mat-expansion-panel>

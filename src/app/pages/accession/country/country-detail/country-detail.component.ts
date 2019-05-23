@@ -8,6 +8,8 @@ import { CountryService } from 'src/app/shared/services/country.service';
 import { Title } from '@angular/platform-browser';
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 import { AppConfig } from 'src/app/shared/entities/app-config.model';
+import { mergeMap, map } from 'rxjs/operators';
+import { isNgTemplate } from '@angular/compiler';
 
 
 @Component({
@@ -38,17 +40,13 @@ export class CountryDetailComponent implements OnInit {
         this.titleService.setTitle('Country ' + this.code);
         this.country = this.countryService.retrieve(this.code,
             {fields: 'code,name'});
-        this.countryService.retrieve(this.code, {'fields': 'stats_by_institute'})
-            .subscribe(
-                (response: Country) => {
-                    this.instituteStats = observableOf(response.stats_by_institute);
-                }
+        this.instituteStats =this.countryService.retrieve(this.code, {'fields': 'stats_by_institute'})
+            .pipe(
+                map((response: Country) => response.stats_by_institute)
             );
-        this.countryService.retrieve(this.code, {'fields': 'stats_by_taxa'})
-            .subscribe(
-                (response: Country) => {
-                    this.taxonStats = observableOf(response.stats_by_taxa);
-            }
-        );
+        this.taxonStats = this.countryService.retrieve(this.code, {'fields': 'stats_by_taxa'})
+            .pipe(
+                map((item: Country) => item.stats_by_taxa)
+            );
     }
 }

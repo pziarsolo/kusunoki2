@@ -87,8 +87,7 @@
     <mat-expansion-panel expanded='true'>
         <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
         <kusunoki2-taxon-stats
-            [showAccessionset]='appConfig.useAccessionset'
-            [stats]="taxon_stats|async"
+            [stats]="taxon_stats"
             [initialQueryParams]="{institute_code: instituteCode}">
         </kusunoki2-taxon-stats>
     </mat-expansion-panel>

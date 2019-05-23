@@ -1,3 +1,4 @@
+<mat-progress-bar mode="indeterminate" *ngIf='gettingStats'></mat-progress-bar>
 <div *ngIf="ranksInStats">
 <mat-tab-group (selectedTabChange)="tabChanged($event)">
     <mat-tab *ngFor="let rank of ranksInStats; index as i">
