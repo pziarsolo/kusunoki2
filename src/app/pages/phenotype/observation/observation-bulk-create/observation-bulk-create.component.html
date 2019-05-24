@@ -87,6 +87,7 @@
 
     <mat-card-content *ngIf='uploadTried && uploadSuccessful === false'>
         <p>Something went wrong</p>
+        <button mat-raised-button (click)="rePaintDialog()">Try Again</button>
         <mat-list *ngIf="errors">
             <p *ngIf=errors.detail> {{errors.detail}} </p>
             <!-- <mat-list-item *ngFor='let error of errors'>

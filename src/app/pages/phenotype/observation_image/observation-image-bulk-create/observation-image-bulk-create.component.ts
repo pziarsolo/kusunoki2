@@ -65,4 +65,8 @@ export class ObservationImageBulkCreateComponent {
                 }
             );
     }
+    rePaintDialog() {
+        this.uploadTried = false;
+        this.uploadSuccessful = false;
+    }
 }

@@ -119,4 +119,8 @@ export class ObservationBulkCreateComponent {
                 }
             );
     }
+    rePaintDialog() {
+        this.uploadTried = false;
+        this.uploadSuccessful = false;
+    }
 }

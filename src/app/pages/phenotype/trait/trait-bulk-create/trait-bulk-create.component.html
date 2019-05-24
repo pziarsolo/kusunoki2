@@ -16,6 +16,7 @@
     </mat-spinner>
     <mat-card-content *ngIf='uploadTried && uploadSuccessful === false'>
         <p>Something went wrong</p>
+        <button mat-raised-button (click)="rePaintDialog()">Try Again</button>
         <mat-list *ngIf="errors">
             <mat-list-item *ngFor='let error of errors'>
                 <mat-icon>clear</mat-icon>{{error}}

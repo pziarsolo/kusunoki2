@@ -86,4 +86,9 @@ export class BulkCreateComponent implements OnInit {
                 }
             );
     }
+
+    rePaintDialog() {
+        this.uploadTried = false;
+        this.uploadSuccessful = false;
+    }
 }
