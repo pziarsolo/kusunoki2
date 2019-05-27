@@ -1,0 +1,13 @@
+<kusunoki2-taxon-stats-by-entity
+    [stats]="stats"
+    [entityType]="'accession'"
+    [initialQueryParams]="initialQueryParams">
+</kusunoki2-taxon-stats-by-entity>
+
+<kusunoki2-taxon-stats-by-entity
+    *ngIf="showAccessionset"
+    [stats]="stats"
+    [entityType]="'accessionset'"
+    [initialQueryParams]="initialQueryParams">
+</kusunoki2-taxon-stats-by-entity>
+

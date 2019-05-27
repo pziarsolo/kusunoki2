@@ -5,10 +5,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { PassportComponent } from './passport/passport.component';
-import { TaxaStatsPageComponent } from './taxa-stats-page/taxa-stats-page.component';
+import { TaxaStatsPageComponent } from './taxon/taxa-stats-page/taxa-stats-page.component';
 import { OtherNumbersComponent } from './passport-other-numbers/other-numbers.component';
 import { OtherNumberComponent } from './passport-other-numbers/other-number.component';
-import { AccessionSearchFormComponent, AccessionSearchByObservationFormComponent, AccessionSearchByObservationsFormComponent } from './accession/accession-search-form/accession-search-form.component';
+import { AccessionSearchFormComponent, AccessionSearchByObservationFormComponent, AccessionSearchByObservationsFormComponent
+} from './accession/accession-search-form/accession-search-form.component';
 import { AccessionListComponent } from './accession/accession-list/accession-list.component';
 import { AccessionDetailComponent } from './accession/accession-detail/accession-detail.component';
 import { AccessionCreateComponent } from './accession/accession-create/accession-create.component';
@@ -28,13 +29,14 @@ import { AccessionSetListComponent } from './accessionset/accessionset-list/acce
 import { AccessionSetDetailComponent } from './accessionset/accessionset-detail/accessionset-detail.component';
 import { AccessionSetComponent } from './accessionset/accessionset/accessionset.component';
 import { AccessionSetAccessionTableComponent } from './accessionset/accessionset-accession-table/accessionset-accession-table.component';
-import { TaxonStatsComponent } from './taxon-stats/taxon-stats.component';
+import { TaxonStatsComponent } from './taxon/taxon-stats/taxon-stats.component';
 import { CountryStatsTableComponent } from './country/country-stats-table/country-stats-table.component';
 import { CountryTableComponent } from './country/country-table/country-table.component';
 import { InstituteStatsTableComponent } from './institute/institute-stats-table/institute-stats-table.component';
 import { InstituteTableComponent } from './institute/institute-table/institute-table.component';
 import { AccessionMultiMarkerMapComponent } from './accession/accession-multi-marker-map/accession-multi-marker-map.component';
 import { AccessionsetMultiMarkerMapComponent } from './accessionset/accessionset-multi-marker-map/accessionset-multi-marker-map.component';
+import { TaxonStatsByEntityComponent } from './taxon/taxon-stats-by-entity/taxon-stats-by-entity.component';
 
 const routes: Routes = [
     {
@@ -137,7 +139,8 @@ const routes: Routes = [
         AccessionSearchByObservationsFormComponent,
         AccessionSearchByObservationFormComponent,
         AccessionMultiMarkerMapComponent,
-        AccessionsetMultiMarkerMapComponent
+        AccessionsetMultiMarkerMapComponent,
+        TaxonStatsByEntityComponent
     ],
     imports: [
         SharedModule,
