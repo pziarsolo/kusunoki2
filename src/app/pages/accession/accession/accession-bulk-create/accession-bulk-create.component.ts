@@ -196,11 +196,8 @@ export class AccessionBulkCreateComponent {
         this.appConfig = this.appConfigService.appConfig;
     }
 
-
     toogle_button() {
-
         this.icon = !this.icon;
-        console.log(this.icon);
     }
 
     onFileAdded() {
@@ -228,7 +225,6 @@ export class AccessionBulkCreateComponent {
                     }
                 },
                 (error) => {
-                    console.log('accession errors', error);
                     this.processing = false;
                     this.uploadSuccessful = false;
                     this.errors = error.error.details;
@@ -236,5 +232,8 @@ export class AccessionBulkCreateComponent {
                 }
             );
     }
-
+    rePaintDialog() {
+        this.uploadTried = false;
+        this.uploadSuccessful = false;
+    }
 }
