@@ -19,7 +19,6 @@ export class JwtService {
                 const decodedToken = jwtHelper.decodeToken(token['access']);
                 const secondsNow = new Date().getTime() / 1000;
                 if (decodedToken.exp < secondsNow) {
-                    console.log('destroy');
                     this.destroyToken();
                 }
             } catch {

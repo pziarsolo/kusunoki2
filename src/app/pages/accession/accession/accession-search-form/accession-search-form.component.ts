@@ -84,7 +84,6 @@ export class AccessionSearchFormComponent implements AfterViewInit {
                 this.searchParams = Object.assign(this.searchParams, filter);
             }
         }
-        console.log(this.searchParams);
         this.searchSubmitted.emit(this.searchParams);
         this.resetForm();
     }

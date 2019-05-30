@@ -137,7 +137,6 @@ export class ObservationVariableComponent implements OnChanges {
     }
     createVariable() {
         const variable = this.getModelFromFormValidData();
-        console.log(variable);
         this.observationVariableService.create(variable)
             .subscribe((newVariable: ObservationVariable) => {
                 this.observationVariable = newVariable;
@@ -171,7 +170,6 @@ export class ObservationVariableComponent implements OnChanges {
             width: '700px',
         });
         dialogRef.afterClosed().subscribe(trait => {
-            console.log(trait);
             if (trait) {
                 this.inlineAutoTraitForm.inputControl.patchValue(trait);
             }
@@ -182,7 +180,6 @@ export class ObservationVariableComponent implements OnChanges {
             width: '700px',
         });
         dialogRef.afterClosed().subscribe(scale => {
-            console.log(scale);
             if (scale) {
                 this.inlineAutoScaleForm.inputControl.patchValue(scale);
             }

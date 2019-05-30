@@ -118,7 +118,6 @@ export class StudyComponent implements OnChanges {
     }
     tooglePublic() {
         this.study.metadata.is_public = !this.study.metadata.is_public;
-        console.log()
         this.studyService.update(this.study.data.name,
                                  this.study.getApiDocument())
             .subscribe(

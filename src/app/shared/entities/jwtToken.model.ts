@@ -73,7 +73,6 @@ export class JWTUser {
     }
 
     get userId() {
-        console.log(this.decodedToken);
         return this.decodedToken['user_id'];
     }
     get username() {

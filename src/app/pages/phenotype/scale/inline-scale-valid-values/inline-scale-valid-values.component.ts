@@ -29,6 +29,5 @@ export class InlineScaleValidValuesComponent  extends InlineEditListComponent {
             this.form.control.markAsUntouched();
 
         }
-        console.log(this.value);
     }
 }
