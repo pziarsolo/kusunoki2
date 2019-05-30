@@ -60,7 +60,7 @@
             <mat-icon>show_chart</mat-icon>
             Add
         </a>
-        <a *ngIf="(userToken|async)?.is_staff" mat-menu-item [matMenuTriggerFor]="adminmenu">
+        <a *ngIf="(userToken|async)?.isAuthenticated" mat-menu-item [matMenuTriggerFor]="adminmenu">
             <mat-icon>settings</mat-icon>
             admin
         </a>
@@ -118,11 +118,14 @@
     </a>
 </mat-menu>
 <mat-menu #adminmenu="matMenu" >
-    <a mat-menu-item  [routerLink]="['/', appUrls.users]">Users</a>
+    <a mat-menu-item [routerLink]="['/', appUrls.tasks]"> Tasks </a>
+    <a mat-menu-item *ngIf="(userToken|async)?.is_staff" [routerLink]="['/', appUrls.users]">Users</a>
 </mat-menu>
 <mat-menu #phenotypingMenu="matMenu" >
     <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.studies]">Studies</a>
     <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.observations]">Observations</a>
+    <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.observation_variables]">Trait methodology</a>
+    <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.scales]">Scales</a>
 </mat-menu>
 
 <mat-menu #addmenu="matMenu" >
@@ -156,5 +159,4 @@
     <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.traits, 'bulk_create']">Traits</button>
     <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observations, 'bulk_create']">Observations</button>
     <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observation_images, 'bulk_create']">Observation images</button>
-
 </mat-menu>

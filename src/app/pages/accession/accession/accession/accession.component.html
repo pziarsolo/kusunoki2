@@ -99,7 +99,7 @@
         </mat-expansion-panel>
         <div *ngIf='!editMode && accession && accession.data.germplasmNumber && accession.data.instituteCode'>
             <mat-expansion-panel [fxShow]='showImages'>
-                <mat-expansion-panel-header><span fxFlex></span><h3>Images</h3><span fxFlex></span></mat-expansion-panel-header>
+                <mat-expansion-panel-header><h3>Images</h3></mat-expansion-panel-header>
                 <div fxFlex></div>
                 <kusunoki2-observation-image-gallery fxFlex
                     (imagesFound)="showImages=$event"
@@ -109,7 +109,7 @@
                 <div fxFlex></div>
             </mat-expansion-panel>
             <mat-expansion-panel [fxShow]="showObservations">
-                <mat-expansion-panel-header><span fxFlex></span><h3>Observations of this accession</h3><span fxFlex></span></mat-expansion-panel-header>
+                <mat-expansion-panel-header><h3>Observations of this accession</h3></mat-expansion-panel-header>
                 <kusunoki2-observation-table
                     (searchFinished)="showObservations= $event > 0 ? true : false"
                     [searchParams]="{'accession_number': accession.data.germplasmNumber,
@@ -117,7 +117,7 @@
                 </kusunoki2-observation-table>
             </mat-expansion-panel>
             <mat-expansion-panel [fxShow]="showStudies">
-                <mat-expansion-panel-header><span fxFlex></span><h3>Studies where accession has been used</h3><span fxFlex></span></mat-expansion-panel-header>
+                <mat-expansion-panel-header><h3>Studies where accession has been used</h3></mat-expansion-panel-header>
                 <kusunoki2-study-table
                     (searchFinished)="showStudies= $event > 0 ? true : false"
                     [searchParams]="{'germplasm_number':  accession.data.germplasmNumber,
