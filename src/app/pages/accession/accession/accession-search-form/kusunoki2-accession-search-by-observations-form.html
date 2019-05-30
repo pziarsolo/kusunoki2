@@ -3,6 +3,6 @@
         [filterExpression]="observation_filter"
         (formChanged)="checkFormValid()">
     </kusunoki2-accession-search-by-observation-form >
-    <button mat-icon-button (click)='deleteFilter(i)'><mat-icon>delete</mat-icon></button>
+    <button type='button' mat-icon-button (click)='deleteFilter(i)'><mat-icon>delete</mat-icon></button>
 </div>
-<button mat-button color='primary' (click)='addFilter()'><mat-icon>add</mat-icon> Filter</button>
+<button type='button' mat-button color='primary' (click)='addFilter()'><mat-icon>add</mat-icon> Filter</button>
