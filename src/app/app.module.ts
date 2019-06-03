@@ -13,7 +13,7 @@ const routes: Routes = [
     // exposed routes
     {
         path: '',
-        loadChildren: './pages/pages.module#PagesModule',
+        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
     }
 ];
 @NgModule({

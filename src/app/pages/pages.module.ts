@@ -23,19 +23,19 @@ const routes: Routes = [
             },
             {
                 path: 'users',
-                loadChildren: './users/users.module#UserModule',
+                loadChildren: () => import('./users/users.module').then(m => m.UserModule),
                 // canActivate: [IsAuthGuard]
                 data: {title: 'Users'}
             },
             {
                 path: 'tasks',
-                loadChildren: './tasks/tasks.module#TaskModule',
+                loadChildren: () => import('./tasks/tasks.module').then(m => m.TaskModule),
                 // canActivate: [IsAuthGuard]
                 data: {title: 'Tasks'}
             },
             {
                 path: AppUrls.phenotypeSubDir,
-                loadChildren: './phenotype/phenotype.module#PhenotypeModule',
+                loadChildren: () => import('./phenotype/phenotype.module').then(m => m.PhenotypeModule),
                 // canActivate: [IsAuthGuard]
             },
             {
@@ -45,7 +45,7 @@ const routes: Routes = [
             },
             {
                 path: '',
-                loadChildren: './accession/accession.module#AccessionModule',
+                loadChildren: () => import('./accession/accession.module').then(m => m.AccessionModule),
                 // canActivate: [IsAuthGuard]
             },
             {
