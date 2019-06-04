@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 
-import { MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 
 import { tap, catchError, finalize } from 'rxjs/operators';
@@ -110,7 +110,7 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     dataSource;
     csvDownloading = false;
     paginatorPageSize = 25;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
     pageSubscription: Subscription;
     extraSearchParams;
     appUrls = AppUrls;

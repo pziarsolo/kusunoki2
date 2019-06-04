@@ -21,7 +21,7 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     appConfig: AppConfig;
     @Output() notifyMenuChange = new EventEmitter();
     @Input() sidenavOpened: Boolean;
-    @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+    @ViewChild(MatMenuTrigger, {static: false}) trigger: MatMenuTrigger;
     menuIcon: string;
 
     userToken;
@@ -29,8 +29,9 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     constructor(
         private currentUserService: CurrentUserService,
         private appConfigService: AppConfigService) {
+
             this.appConfig = this.appConfigService.getConfig();
-            this.centralColumnSize = this.appConfig.centralColumnSize;
+        this.centralColumnSize = this.appConfig.centralColumnSize;
         }
     ngOnInit(): void {
         this.userToken = this.currentUserService.userToken;

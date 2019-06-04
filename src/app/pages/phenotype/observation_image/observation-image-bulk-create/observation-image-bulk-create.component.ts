@@ -12,7 +12,7 @@ import { ObservationImageService } from 'src/app/shared/services/observation_ima
 export class ObservationImageBulkCreateComponent {
     traitsInColumn = false;
     createObservationUnits: boolean;
-    @ViewChild('file') file;
+    @ViewChild('file', {static: false}) file;
     filename: string;
     errors;
     uploadedFile: File;

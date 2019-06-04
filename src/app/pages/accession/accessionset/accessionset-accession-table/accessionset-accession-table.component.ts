@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, Output, OnInit, SimpleChange, SimpleChanges, OnChanges } from '@angular/core';
 
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { Accession } from 'src/app/shared/entities/accession.model';
 
 @Component({

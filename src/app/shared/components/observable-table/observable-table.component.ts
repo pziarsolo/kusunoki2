@@ -1,5 +1,7 @@
 import { Component, Input, ViewChild, OnChanges, AfterViewInit, SimpleChanges } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -15,8 +17,8 @@ export class ObservableTableComponent implements OnChanges, AfterViewInit {
     @Input() initialQueryParams?: any;
 
     dataTable = new MatTableDataSource();
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+    @ViewChild(MatSort, {static: false}) sort: MatSort;
     constructor(private router: Router) {}
 
 

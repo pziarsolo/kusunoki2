@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, ViewChild, AfterViewInit, OnInit, Input, ViewChildren, ɵConsole, OnDestroy } from '@angular/core';
-import { MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -39,11 +39,11 @@ export class AccessionSearchFormComponent implements AfterViewInit {
     suggestedStudies: Observable<Study[]>;
     biologicalStatus = biological_status;
     icon = false;
-    @ViewChild('countryAuto', {read: MatAutocompleteTrigger}) countryTrigger: MatAutocompleteTrigger;
-    @ViewChild('instituteAuto', {read: MatAutocompleteTrigger}) instituteTrigger: MatAutocompleteTrigger;
-    @ViewChild('taxaAuto', {read: MatAutocompleteTrigger}) taxaTrigger: MatAutocompleteTrigger;
-    @ViewChild('studyAuto', {read: MatAutocompleteTrigger}) studyTrigger: MatAutocompleteTrigger;
-    @ViewChild('observation_filters') observation_filters: AccessionSearchByObservationsFormComponent;
+    @ViewChild('countryAuto', {read: MatAutocompleteTrigger, static: false}) countryTrigger: MatAutocompleteTrigger;
+    @ViewChild('instituteAuto', {read: MatAutocompleteTrigger, static: false}) instituteTrigger: MatAutocompleteTrigger;
+    @ViewChild('taxaAuto', {read: MatAutocompleteTrigger, static: false}) taxaTrigger: MatAutocompleteTrigger;
+    @ViewChild('studyAuto', {read: MatAutocompleteTrigger, static: false}) studyTrigger: MatAutocompleteTrigger;
+    @ViewChild('observation_filters', {static: false}) observation_filters: AccessionSearchByObservationsFormComponent;
 
     constructor(private instituteService: InstituteService,
                 private countryService: CountryService,
@@ -124,7 +124,7 @@ export class AccessionSearchFormComponent implements AfterViewInit {
 }
 
 const EXPRESSIONS = {'bigger than': 'gt',
-                     'smaller than': 'lt'}
+                     'smaller than': 'lt'};
 @Component({
     selector: 'kusunoki2-accession-search-by-observation-form',
     templateUrl: './kusunoki2-accession-search-by-observation-form.html',
@@ -137,9 +137,9 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
     suggestedVariables: Observable<ObservationVariable[]>;
     formChangesSubscription: Subscription;
     // selectedVariable: ObservationVariable;
-    @Output() formChanged= new EventEmitter();
-    @ViewChild('variableAuto', {read: MatAutocompleteTrigger}) variableTrigger: MatAutocompleteTrigger;
-    @ViewChild('obsForm') obsForm: NgForm;
+    @Output() formChanged = new EventEmitter();
+    @ViewChild('variableAuto', {read: MatAutocompleteTrigger, static: false}) variableTrigger: MatAutocompleteTrigger;
+    @ViewChild('obsForm', {static: false}) obsForm: NgForm;
 
     constructor(
         private variableService: ObservationVariableService,
@@ -183,7 +183,7 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
     ngAfterViewInit() {
         this.formChangesSubscription = this.obsForm.form.valueChanges.subscribe(x => {
             this.formChanged.emit();
-        })
+        });
         this.variableTrigger.panelClosingActions
             .subscribe(e => {
                 if (!(e && e.source)) {

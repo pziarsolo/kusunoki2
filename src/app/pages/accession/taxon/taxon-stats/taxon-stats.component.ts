@@ -1,6 +1,8 @@
 import { Component, Input, SimpleChanges, OnChanges, ViewChildren, AfterViewChecked, QueryList, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { AppUrls } from '../../../appUrls';
 import { GooglePieChartComponent } from 'src/app/shared/components/google/google-piechart/google-piechart.component';
 import { Observable, Subscription } from 'rxjs';

@@ -19,7 +19,7 @@ export class TraitDetailComponent implements OnInit, OnDestroy {
     userCanEdit: boolean;
     traitFound = true;
 
-    @ViewChild(TraitComponent) traitComponent;
+    @ViewChild(TraitComponent, {static: false}) traitComponent;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,

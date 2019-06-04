@@ -1,5 +1,5 @@
 import { Component, SimpleChanges, OnChanges, ViewChild, AfterViewInit } from '@angular/core';
-import { MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
 import { Subscription , Observable, of} from 'rxjs';
 import { map, startWith, debounceTime, distinctUntilChanged, switchMap, filter } from 'rxjs/operators';
@@ -16,7 +16,7 @@ export class InlineAutoCountryComponent extends InlineEditComponent implements O
     suggestions: Observable<Country[]>;
     subscription: Subscription;
 
-    @ViewChild(MatAutocompleteTrigger) trigger;
+    @ViewChild(MatAutocompleteTrigger, {static: false}) trigger;
 
     constructor(public service: CountryService) {
         super();

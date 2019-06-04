@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnChanges, Output, ViewChild, SimpleChanges, EventEmitter, Input } from '@angular/core';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { Observable, Subscription, of } from 'rxjs';
-import { MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { Scale } from 'src/app/shared/entities/scale.model';
 import { startWith, filter, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { ScaleService } from 'src/app/shared/services/scale.service';
@@ -16,7 +16,7 @@ export class InlineAutoScaleComponent  extends InlineEditComponent implements On
     subscription: Subscription;
     @Input() userCanCreate: boolean;
     @Output() AddNewScaleRequested  = new EventEmitter<any>();
-    @ViewChild(MatAutocompleteTrigger) trigger;
+    @ViewChild(MatAutocompleteTrigger, {static: false}) trigger;
 
     constructor(public service: ScaleService) {
         super();

@@ -5,7 +5,7 @@ import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inlin
 import { AppUrls } from '../../../appUrls';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'kusunoki2-trait',

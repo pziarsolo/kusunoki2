@@ -3,7 +3,7 @@ import { StudyService } from 'src/app/shared/services/study.service';
 import { Study } from 'src/app/shared/entities/study.model';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { AppUrls } from 'src/app/pages/appUrls';
 

@@ -6,7 +6,7 @@ import { InlineEditSelectComponent } from 'src/app/shared/components/inline-edit
 import * as moment from 'moment';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { AccessionSetService } from 'src/app/shared/services/accessionset.service';

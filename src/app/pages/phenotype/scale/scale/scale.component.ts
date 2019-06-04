@@ -10,7 +10,7 @@ import { CurrentUserService } from 'src/app/shared/services/current-user.service
 import { InlineEditSelectComponent } from 'src/app/shared/components/inline-edit-select/inline-edit-select.component';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { InlineScaleValidValuesComponent } from '../inline-scale-valid-values/inline-scale-valid-values.component';
 
 @Component({
@@ -36,8 +36,8 @@ export class ScaleComponent implements OnChanges {
     dataTypeChoices = scaleDataTypes;
 
     @ViewChildren(InlineEditComponent) inlineForms;
-    @ViewChild(InlineEditSelectComponent) inlineSelectForm;
-    @ViewChild(InlineScaleValidValuesComponent) inlineListForm;
+    @ViewChild(InlineEditSelectComponent, {static: false}) inlineSelectForm;
+    @ViewChild(InlineScaleValidValuesComponent, {static: false}) inlineListForm;
 
     config = {
         name: {is_required: true, is_editable: false, name: 'name'},

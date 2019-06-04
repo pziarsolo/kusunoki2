@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation, OnDestroy} from '@angular/core';
 import { Subscription } from 'rxjs';
 import {StatusService} from './status.service';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({

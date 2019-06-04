@@ -4,7 +4,7 @@ import { InstituteService } from 'src/app/shared/services/institute.service';
 import { AppUrls } from 'src/app/pages/appUrls';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
 
 @Component({

@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../../../../shared/entities/user.model';
-import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AppUrls } from '../../../appUrls';
 import { Group } from '../../../../shared/entities/group.model';
@@ -25,8 +28,8 @@ export class UserListComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() initialQueryParams?: any;
 
     dataTable = new MatTableDataSource();
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+    @ViewChild(MatSort, {static: false}) sort: MatSort;
 
     constructor(private userService: UserService,
                 private router: Router,

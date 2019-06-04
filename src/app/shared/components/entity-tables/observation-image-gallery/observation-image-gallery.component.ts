@@ -3,7 +3,7 @@ import { NgxGalleryOptions, NgxGalleryImage, INgxGalleryImage, NgxGalleryCompone
 import { ObservationImageService } from 'src/app/shared/services/observation_image.service';
 import { DeleteDialogComponent } from '../../delete-dialog/delete-dialog.component';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { SafeResourceUrl } from '@angular/platform-browser';
 
 export declare class NgxGalleryImageOwn implements INgxGalleryImage {
@@ -36,7 +36,7 @@ export class ObservationImageGalleryComponent implements OnInit {
 
     @Output() imagesFound = new EventEmitter<boolean>();
 
-    @ViewChild('gallery') gallery: NgxGalleryComponent;
+    @ViewChild('gallery', {static: false}) gallery: NgxGalleryComponent;
     constructor(private service: ObservationImageService,
         private readonly statusService: StatusService,
         public dialog: MatDialog) { }

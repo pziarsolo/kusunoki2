@@ -17,7 +17,7 @@ export class AccessionDetailComponent  implements OnInit, OnDestroy {
     accession: Accession;
     editMode = false;
     routerSubscription: Subscription;
-    @ViewChild('accessionComp') accessionComp: AccessionComponent;
+    @ViewChild('accessionComp', {static: false}) accessionComp: AccessionComponent;
     constructor(
         private route: ActivatedRoute,
         private readonly accessionService: AccessionService,

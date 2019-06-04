@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
-import { MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -29,9 +29,9 @@ import { biological_status } from '../../assets/biologicalStatus';
         suggestedTaxa: Observable<Taxon[]>;
         biologicalStatus = biological_status;
 
-        @ViewChild('countryAuto', {read: MatAutocompleteTrigger}) countryTrigger: MatAutocompleteTrigger;
-        // @ViewChild('instituteAuto', {read: MatAutocompleteTrigger}) instituteTrigger: MatAutocompleteTrigger;
-        @ViewChild('taxaAuto', {read: MatAutocompleteTrigger}) taxaTrigger: MatAutocompleteTrigger;
+        @ViewChild('countryAuto', {read: MatAutocompleteTrigger, static: false}) countryTrigger: MatAutocompleteTrigger;
+        // @ViewChild('instituteAuto', {read: MatAutocompleteTrigger, static: false}) instituteTrigger: MatAutocompleteTrigger;
+        @ViewChild('taxaAuto', {read: MatAutocompleteTrigger, static: false}) taxaTrigger: MatAutocompleteTrigger;
 
         constructor(private instituteService: InstituteService,
                     private countryService: CountryService,

@@ -32,7 +32,7 @@ export class InstituteDetailComponent implements OnInit, OnDestroy {
     pdcis: Observable<any>;
     appConfig: AppConfig;
 
-    @ViewChild(InstituteComponent) instituteComp;
+    @ViewChild(InstituteComponent, {static: false}) instituteComp;
     pdciCharConfig = {
         headers: [['', 'Num. Passports']],
         title: 'Pdci Distribution',

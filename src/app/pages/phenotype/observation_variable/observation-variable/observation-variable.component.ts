@@ -7,7 +7,7 @@ import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inlin
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { AppUrls } from 'src/app/pages/appUrls';
 import { InlineAutoTraitComponent } from '../../trait/inline-auto-trait/inline-auto-trait.component';
 import { TraitCreateDialogComponent } from '../../trait/trait-create-dialog/trait-create-dialog.component';
@@ -34,8 +34,8 @@ export class ObservationVariableComponent implements OnChanges {
     appUrls = AppUrls;
 
     @ViewChildren(InlineEditComponent) inlineForms;
-    @ViewChild(InlineAutoTraitComponent) inlineAutoTraitForm;
-    @ViewChild(InlineAutoScaleComponent) inlineAutoScaleForm;
+    @ViewChild(InlineAutoTraitComponent, {static: false}) inlineAutoTraitForm;
+    @ViewChild(InlineAutoScaleComponent, {static: false}) inlineAutoScaleForm;
 
     config = {
         name: {is_required: true, is_editable: false, name: 'name'},

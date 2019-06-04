@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { Study } from 'src/app/shared/entities/study.model';
 import { StudyService } from 'src/app/shared/services/study.service';
@@ -22,8 +23,8 @@ export class StudyMultiAutocompleteComponent {
     suggested: Observable<Study[]>;
     input;
 
-    @ViewChild('inputElement') inputElement: ElementRef;
-    @ViewChild('auto', {read: MatAutocompleteTrigger}) studyTrigger: MatAutocompleteTrigger;
+    @ViewChild('inputElement', {static: false}) inputElement: ElementRef;
+    @ViewChild('auto', {read: MatAutocompleteTrigger, static: false}) studyTrigger: MatAutocompleteTrigger;
 
     constructor(private service: StudyService) {}
 

@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ObservationSearchParams } from 'src/app/shared/entities/search-params.model';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { Study } from 'src/app/shared/entities/study.model';
 import { StudyService } from 'src/app/shared/services/study.service';
@@ -18,8 +19,8 @@ export class ObservationSearchFormComponent {
     @Output() searchSubmitted = new EventEmitter<any>();
     searchParams: ObservationSearchParams =  {};
 
-    @ViewChild('studiesForm') studiesForm: StudyMultiAutocompleteComponent;
-    @ViewChild('observationVariableForm') observationVariableForm: ObservationVariableMultiAutocompleteComponent;
+    @ViewChild('studiesForm', {static: false}) studiesForm: StudyMultiAutocompleteComponent;
+    @ViewChild('observationVariableForm', {static: false}) observationVariableForm: ObservationVariableMultiAutocompleteComponent;
 
     doSubmit() {
         const studies = this.studiesForm.items;

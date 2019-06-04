@@ -7,6 +7,6 @@ import { AccessionTableComponent } from 'src/app/shared/components/entity-tables
   templateUrl: './accession-list.component.html',
   styleUrls: ['./accession-list.component.scss']
 })
-export class AccessionListComponent extends TableSearchPageComponent{
-    @ViewChild(AccessionTableComponent) table: AccessionTableComponent;
+export class AccessionListComponent extends TableSearchPageComponent {
+    @ViewChild(AccessionTableComponent, {static: false}) table: AccessionTableComponent;
 }

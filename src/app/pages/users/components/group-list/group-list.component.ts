@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { GroupService } from 'src/app/shared/services/group.service';

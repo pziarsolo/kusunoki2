@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { User } from '../../../../shared/entities/user.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserChangePasswordDialogComponent } from '../user-change-password-dialog/user-change-password-dialog.component';
 import { Validators } from '@angular/forms';
@@ -24,8 +24,8 @@ export class UserComponent extends BaseInlinesFormComponent {
     @Input() input_form_data: User;
     @Input() username: string;
 
-    @ViewChild(PasswordFormComponent) passwordForm;
-    @ViewChild(GroupListComponent) groupsComponent;
+    @ViewChild(PasswordFormComponent, {static: false}) passwordForm;
+    @ViewChild(GroupListComponent, {static: false}) groupsComponent;
 
     children_config = {
         username: {name: 'username', is_editable: false, is_required: true},

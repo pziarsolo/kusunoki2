@@ -2,7 +2,7 @@ import { Component, OnInit, OnChanges, AfterViewInit, ViewChild, SimpleChanges, 
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { Observable, Subscription, of } from 'rxjs';
 import { Trait } from 'src/app/shared/entities/trait.model';
-import { MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { TraitService } from 'src/app/shared/services/trait.service';
 import { startWith, filter, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 
@@ -16,7 +16,7 @@ export class InlineAutoTraitComponent  extends InlineEditComponent implements On
     subscription: Subscription;
     @Input() userCanCreate: boolean;
     @Output() AddNewTraitRequested  = new EventEmitter<any>();
-    @ViewChild(MatAutocompleteTrigger) trigger;
+    @ViewChild(MatAutocompleteTrigger, {static: false}) trigger;
 
     constructor(public service: TraitService) {
         super();

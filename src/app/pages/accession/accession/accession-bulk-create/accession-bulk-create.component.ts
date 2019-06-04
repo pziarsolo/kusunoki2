@@ -178,7 +178,7 @@ export class AccessionBulkCreateComponent {
             mandatory: false},
         ];
 
-    @ViewChild('file') file;
+    @ViewChild('file', {static: false}) file;
     appConfig: AppConfig;
     errors: String[];
     uploadedFile: File;
