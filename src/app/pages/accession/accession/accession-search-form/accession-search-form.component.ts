@@ -17,111 +17,10 @@ import { ObservationVariableService } from 'src/app/shared/services/observation_
 import { ObservationVariable } from 'src/app/shared/entities/onservation_variable.model';
 import { ScaleService } from 'src/app/shared/services/scale.service';
 import { Scale } from 'src/app/shared/entities/scale.model';
-import { expressionType } from '@angular/compiler/src/output/output_ast';
 import { NgForm } from '@angular/forms';
 import { Study } from 'src/app/shared/entities/study.model';
 import { StudyService } from 'src/app/shared/services/study.service';
 
-
-@Component({
-    selector: 'kusunoki2-accession-search-form',
-    templateUrl: './accession-search-form.component.html',
-    // styleUrls: ['./accession-search-form.component.scss']
-})
-export class AccessionSearchFormComponent implements AfterViewInit {
-    @Output() searchSubmitted = new EventEmitter<AccessionSearchParams>();
-    searchParams: AccessionSearchParams = {};
-    showcharaCriteria = false;
-    suggestedAccessions: Observable<Accession[]>;
-    suggestedInstitutes: Observable<Institute[]>;
-    suggestedCountries: Observable<Country[]>;
-    suggestedTaxa: Observable<Taxon[]>;
-    suggestedStudies: Observable<Study[]>;
-    biologicalStatus = biological_status;
-    icon = false;
-    @ViewChild('countryAuto', {read: MatAutocompleteTrigger, static: false}) countryTrigger: MatAutocompleteTrigger;
-    @ViewChild('instituteAuto', {read: MatAutocompleteTrigger, static: false}) instituteTrigger: MatAutocompleteTrigger;
-    @ViewChild('taxaAuto', {read: MatAutocompleteTrigger, static: false}) taxaTrigger: MatAutocompleteTrigger;
-    @ViewChild('studyAuto', {read: MatAutocompleteTrigger, static: false}) studyTrigger: MatAutocompleteTrigger;
-    @ViewChild('observation_filters', {static: false}) observation_filters: AccessionSearchByObservationsFormComponent;
-
-    constructor(private instituteService: InstituteService,
-                private countryService: CountryService,
-                private taxaService: TaxonService,
-                private accessionService: AccessionService,
-                private studyService: StudyService) {
-    }
-    toogleButton() {
-        this.icon = !this.icon;
-    }
-    filterNumber(val) {
-        return this.accessionService.list({number_contains: val,
-                                           fields: 'germplasmNumber'})
-            .pipe(map(response => response.body));
-    }
-    filterInstitute(val) {
-        return this.instituteService.list({name__icontains: val,
-                                           fields: 'instituteCode,name'})
-            .pipe(map(response => response.body));
-    }
-    filterCountry(val) {
-        return this.countryService.list({name: val, fields: 'code,name'})
-            .pipe(map(response => response.body));
-    }
-    filterTaxa(name) {
-        return this.taxaService.list({name__icontains: name, fields: 'name'})
-            .pipe(map(response => response.body));
-    }
-    filterStudies(name) {
-        return this.studyService.list({name_icontains: name, fields: 'name'})
-            .pipe(map(response => response.body));
-    }
-    doSubmit() {
-        const observationFilters = this.observation_filters.getFilterExpressions();
-
-        if (observationFilters) {
-            for (const filter of observationFilters) {
-                this.searchParams = Object.assign(this.searchParams, filter);
-            }
-        }
-        this.searchSubmitted.emit(this.searchParams);
-        this.resetForm();
-    }
-    resetForm() {
-        this.searchParams = {};
-        this.observation_filters.resetForm();
-    }
-    ngAfterViewInit() {
-        this.countryTrigger.panelClosingActions
-            .subscribe(e => {
-                if (!(e && e.source)) {
-                    delete this.searchParams.country;
-                    this.countryTrigger.closePanel();
-                }
-            });
-        this.instituteTrigger.panelClosingActions
-            .subscribe(e => {
-                if (!(e && e.source)) {
-                    delete this.searchParams.institute_code;
-                    this.instituteTrigger.closePanel();
-                }
-            });
-        this.taxaTrigger.panelClosingActions
-            .subscribe(e => {
-                if (!(e && e.source)) {
-                    delete this.searchParams.taxon_contains;
-                    this.taxaTrigger.closePanel();
-                }
-            });
-        this.studyTrigger.panelClosingActions
-            .subscribe(e => {
-                if (!(e && e.source)) {
-                    delete this.searchParams.study;
-                    this.taxaTrigger.closePanel();
-                }
-            });
-    }
-}
 
 const EXPRESSIONS = {'bigger than': 'gt',
                      'smaller than': 'lt'};
@@ -253,3 +152,103 @@ export class AccessionSearchByObservationsFormComponent {
     }
 }
 
+
+@Component({
+    selector: 'kusunoki2-accession-search-form',
+    templateUrl: './accession-search-form.component.html',
+    // styleUrls: ['./accession-search-form.component.scss']
+})
+export class AccessionSearchFormComponent implements AfterViewInit {
+    @Output() searchSubmitted = new EventEmitter<AccessionSearchParams>();
+    searchParams: AccessionSearchParams = {};
+    showcharaCriteria = false;
+    suggestedAccessions: Observable<Accession[]>;
+    suggestedInstitutes: Observable<Institute[]>;
+    suggestedCountries: Observable<Country[]>;
+    suggestedTaxa: Observable<Taxon[]>;
+    suggestedStudies: Observable<Study[]>;
+    biologicalStatus = biological_status;
+    icon = false;
+    @ViewChild('countryAuto', {read: MatAutocompleteTrigger, static: false}) countryTrigger: MatAutocompleteTrigger;
+    @ViewChild('instituteAuto', {read: MatAutocompleteTrigger, static: false}) instituteTrigger: MatAutocompleteTrigger;
+    @ViewChild('taxaAuto', {read: MatAutocompleteTrigger, static: false}) taxaTrigger: MatAutocompleteTrigger;
+    @ViewChild('studyAuto', {read: MatAutocompleteTrigger, static: false}) studyTrigger: MatAutocompleteTrigger;
+    @ViewChild('observation_filters', {static: false}) observation_filters: AccessionSearchByObservationsFormComponent;
+
+    constructor(private instituteService: InstituteService,
+                private countryService: CountryService,
+                private taxaService: TaxonService,
+                private accessionService: AccessionService,
+                private studyService: StudyService) {
+    }
+    toogleButton() {
+        this.icon = !this.icon;
+    }
+    filterNumber(val) {
+        return this.accessionService.list({number_contains: val,
+                                           fields: 'germplasmNumber'})
+            .pipe(map(response => response.body));
+    }
+    filterInstitute(val) {
+        return this.instituteService.list({name__icontains: val,
+                                           fields: 'instituteCode,name'})
+            .pipe(map(response => response.body));
+    }
+    filterCountry(val) {
+        return this.countryService.list({name: val, fields: 'code,name'})
+            .pipe(map(response => response.body));
+    }
+    filterTaxa(name) {
+        return this.taxaService.list({name__icontains: name, fields: 'name'})
+            .pipe(map(response => response.body));
+    }
+    filterStudies(name) {
+        return this.studyService.list({name_icontains: name, fields: 'name'})
+            .pipe(map(response => response.body));
+    }
+    doSubmit() {
+        const observationFilters = this.observation_filters.getFilterExpressions();
+
+        if (observationFilters) {
+            for (const filter of observationFilters) {
+                this.searchParams = Object.assign(this.searchParams, filter);
+            }
+        }
+        this.searchSubmitted.emit(this.searchParams);
+        this.resetForm();
+    }
+    resetForm() {
+        this.searchParams = {};
+        this.observation_filters.resetForm();
+    }
+    ngAfterViewInit() {
+        this.countryTrigger.panelClosingActions
+            .subscribe(e => {
+                if (!(e && e.source)) {
+                    delete this.searchParams.country;
+                    this.countryTrigger.closePanel();
+                }
+            });
+        this.instituteTrigger.panelClosingActions
+            .subscribe(e => {
+                if (!(e && e.source)) {
+                    delete this.searchParams.institute_code;
+                    this.instituteTrigger.closePanel();
+                }
+            });
+        this.taxaTrigger.panelClosingActions
+            .subscribe(e => {
+                if (!(e && e.source)) {
+                    delete this.searchParams.taxon_contains;
+                    this.taxaTrigger.closePanel();
+                }
+            });
+        this.studyTrigger.panelClosingActions
+            .subscribe(e => {
+                if (!(e && e.source)) {
+                    delete this.searchParams.study;
+                    this.taxaTrigger.closePanel();
+                }
+            });
+    }
+}

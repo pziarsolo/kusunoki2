@@ -110,7 +110,7 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     dataSource;
     csvDownloading = false;
     paginatorPageSize = 25;
-    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+    @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     pageSubscription: Subscription;
     extraSearchParams;
     appUrls = AppUrls;

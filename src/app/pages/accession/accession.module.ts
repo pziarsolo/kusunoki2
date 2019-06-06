@@ -107,6 +107,8 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
+        AccessionSearchByObservationsFormComponent,
+        AccessionSearchByObservationFormComponent,
         InstituteListComponent,
         InstituteDetailComponent,
         InstituteComponent,
@@ -136,8 +138,6 @@ const routes: Routes = [
         OtherNumbersComponent,
         CountryTableComponent,
         InstituteTableComponent,
-        AccessionSearchByObservationsFormComponent,
-        AccessionSearchByObservationFormComponent,
         AccessionMultiMarkerMapComponent,
         AccessionsetMultiMarkerMapComponent,
         TaxonStatsByEntityComponent
