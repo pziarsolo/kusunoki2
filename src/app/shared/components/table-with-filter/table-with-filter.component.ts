@@ -110,7 +110,7 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
     dataSource;
     csvDownloading = false;
     paginatorPageSize = 25;
-    @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
     pageSubscription: Subscription;
     extraSearchParams;
     appUrls = AppUrls;
@@ -187,18 +187,13 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
                     error => {
                         console.log('error');
                     });
-            // console.log(some)
-            // this.searchFinished.emit(this.dataSource.totalCount);
-            // console.log(this.dataSource.totalCount)
-            // if (this.searchParams !== undefined) {
-            //     this.searchParamsChanged.emit(this.searchParams);
-            // }
-
         }
     }
 
     updatePaginatorState(searchParams) {
-        if (!('offset' in searchParams) && !('limit' in searchParams)) {
+        if (!('offset' in searchParams) && !('limit' in searchParams) &&
+            this.paginator !== undefined) {
+
             const offset = this.paginator.pageIndex * this.paginator.pageSize;
             searchParams['offset'] = 0;
             searchParams['limit'] = this.paginatorPageSize;
