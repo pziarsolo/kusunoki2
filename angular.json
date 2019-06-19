@@ -57,11 +57,15 @@
                 }
               ]
             },
-            "genebank": {
+            "genebankProd": {
                 "fileReplacements": [
                     {
                       "replace": "src/environments/environment.ts",
                       "with": "src/environments/environment.genebank.prod.ts"
+                    },
+                    {
+                        "replace": "src/styles.scss",
+                        "with": "src/assets/styles/style.genebank.scss"
                     }
                   ],
                   "optimization": true,
@@ -81,6 +85,35 @@
                     }
                   ]
 
+            },
+            "genebank": {
+                "fileReplacements": [
+                    {
+                      "replace": "src/environments/environment.ts",
+                      "with": "src/environments/environment.genebank.ts"
+                    },
+                    {
+                        "replace": "src/styles.scss",
+                        "with": "src/assets/styles/style.genebank.scss"
+                    }
+                  ],
+                  "optimization": false,
+                  "outputHashing": "all",
+                  "sourceMap": false,
+                  "extractCss": true,
+                  "namedChunks": false,
+                  "aot": false,
+                  "extractLicenses": true,
+                  "vendorChunk": false,
+                  "buildOptimizer": false,
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "2mb",
+                      "maximumError": "5mb"
+                    }
+                  ]
+
             }
           }
         },
@@ -92,6 +125,12 @@
           "configurations": {
             "production": {
               "browserTarget": "kusunoki2:build:production"
+            },
+            "genebankProd": {
+                "browserTarget": "kusunoki2:build:genebankProd"
+            },
+            "genebank": {
+                "browserTarget": "kusunoki2:build:genebank"
             }
           }
         },
