@@ -1,5 +1,0 @@
-{
-    "python.venvPath": "${workspaceFolder}/pyenv3",
-    "python.pythonPath": "/home/peio/devel/vavilov/pyenv3/bin/python",
-    "python.linting.pylintArgs": ["--load-plugins=pylint_django"]
-}
