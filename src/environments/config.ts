@@ -1,11 +1,11 @@
 
-export const site_config = {
+export const siteConfig = {
     defaultDataSource: {'code': 'CRF', kind: 'project'},
     defaultAccessionSetInstitute: 'ESP004',
     useAccessionset: true,
     centralColumnSize: '1200px',
     version: require('../../package.json').version,
-    useGoogleMaps: true
+    useGoogleMaps: false
 };
 
-export default site_config;
+export default siteConfig;

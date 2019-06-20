@@ -1,13 +1,13 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import site_config from './shared_config';
+import siteConfig from './config';
 
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:8000/api/',
     // apiUrl: 'https://vavilov.comav.upv.es/api/',
-    config: site_config
+    config: siteConfig
 };
 
 /*
