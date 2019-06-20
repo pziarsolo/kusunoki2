@@ -2,18 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
-# Requeriments
+## Requeriments
 
 nodejs >= 8.9 and npm >=5.5.1
 
+## Configuration
+Enter the project directory and type `npm install`:
 
-# Installation
-
-Enter the project directory and type npm install:
     $ npm install
 
-# Configuration
 There are two configuration files that you have to look at:
+
     a) Here you configure the api url
 
     src/environment/environment.prod.ts
