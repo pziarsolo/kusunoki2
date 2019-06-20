@@ -36,6 +36,10 @@ import { ObservationVariableTableComponent
 } from './components/entity-tables/observation-variable-table/observation-variable-table.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { ObservationImageGalleryComponent } from './components/entity-tables/observation-image-gallery/observation-image-gallery.component';
+import { LeafletMapComponent } from './components/leaflet/leaflet-map/leaflet-map.component';
+import { GenericMapComponent } from './components/maps/generic-map/generic-map.component';
+import { GenericMultiMarkerComponent } from './components/maps/generic-multi-marker/generic-multi-marker.component';
+import { LeafletMultiMarkerComponent } from './components/leaflet/leaflet-multi-marker/leaflet-multi-marker.component';
 
 @NgModule({
     declarations: [
@@ -65,6 +69,10 @@ import { ObservationImageGalleryComponent } from './components/entity-tables/obs
         InlineEditListComponent,
         ObservationVariableTableComponent,
         ObservationImageGalleryComponent,
+        LeafletMapComponent,
+        LeafletMultiMarkerComponent,
+        GenericMapComponent,
+        GenericMultiMarkerComponent
 
     ],
     imports: [
@@ -98,7 +106,7 @@ import { ObservationImageGalleryComponent } from './components/entity-tables/obs
         DeleteDialogComponent,
         HomeComponent,
         InlineEditSelectComponent,
-        GoogleMapComponent,
+        // GoogleMapComponent,
         GoogleMapchartComponent,
         GoogleBarchartComponent,
         GoogleTreemapComponent,
@@ -114,6 +122,9 @@ import { ObservationImageGalleryComponent } from './components/entity-tables/obs
         ObservationVariableTableComponent,
         ObservationImageGalleryComponent,
         NgxGalleryModule,
+        // LeafletMapComponent,
+        GenericMapComponent,
+        GenericMultiMarkerComponent
     ]
 })
 export class SharedModule { }

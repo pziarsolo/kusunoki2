@@ -1,0 +1,16 @@
+<kusunoki2-leaflet-multi-marker
+    *ngIf='!appConfig.useGoogleMaps'
+    [width]="width"
+    [height]="height"
+    [config]="config"
+    [markers]="markers">
+</kusunoki2-leaflet-multi-marker>
+
+<kusunoki2-google-map-multi-marker
+    *ngIf='appConfig.useGoogleMaps'
+    [width]="width"
+    [height]="height"
+    [config]="config"
+    [markers]="markers">
+
+</kusunoki2-google-map-multi-marker>

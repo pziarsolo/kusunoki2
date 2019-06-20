@@ -1,9 +1,15 @@
 <div style='margin-bottom:20px;' *ngIf="accession && accession.data.passports[0].collectionSite.latitude && accession.data.passports[0].collectionSite.longitude">
-    <kusunoki2-google-map
+    <!-- <kusunoki2-google-map
         [id]="mapId"
         [latitude]="accession.data.passports[0].collectionSite.latitude"
         [longitude]="accession.data.passports[0].collectionSite.longitude">
-    </kusunoki2-google-map>
+    </kusunoki2-google-map> -->
+    <kusunoki2-generic-map
+        [id]="mapId"
+        [latitude]="accession.data.passports[0].collectionSite.latitude"
+        [longitude]="accession.data.passports[0].collectionSite.longitude">
+
+    </kusunoki2-generic-map>
 </div>
 <div *ngIf='accession'>
     <mat-card >

@@ -1,8 +1,6 @@
 /// <reference types="@types/googlemaps" />
-import { Component, OnInit, Input, SimpleChanges, OnChanges, AfterViewChecked } from '@angular/core';
-import { AppUrls } from 'src/app/pages/appUrls';
+import { Component, Input, SimpleChanges, OnChanges, AfterViewChecked } from '@angular/core';
 import { MapMarker } from 'src/app/shared/entities/mapMarker.model';
-import { Observable } from 'rxjs';
 
 declare var google: any;
 
@@ -13,7 +11,7 @@ declare var google: any;
 export class GoogleMapMultiMarkerComponent implements OnChanges, AfterViewChecked {
     @Input() width: String = '99,9%';
     @Input() height: String = '500px';
-    defConfig = {zoom: 3, center: new google.maps.LatLng(18.78600, 8.977167)};
+    defConfig = {zoom: 3, center: {latitute: 18.78600, longitude: 8.977167}};
     @Input() config: object = this.defConfig;
     @Input() markers: MapMarker[];
 
@@ -27,8 +25,6 @@ export class GoogleMapMultiMarkerComponent implements OnChanges, AfterViewChecke
         if ('markers' in changes) {
             this.map = undefined;
             this.drawMap();
-            // this.drawMarkers();
-            // console.log(changes.markers);
         }
     }
     drawMarkers() {
@@ -51,17 +47,17 @@ export class GoogleMapMultiMarkerComponent implements OnChanges, AfterViewChecke
     drawMap() {
         if (document.getElementById(this.div_id)) {
             if (!this.map) {
+                const conf = {zoom: this.defConfig.zoom,
+                              center:  new google.maps.LatLng(this.defConfig.center.latitute,
+                                                              this.defConfig.center.longitude)};
+
                 this.map = new google.maps.Map(document.getElementById(this.div_id),
-                                                                       this.config);
+                                                                       conf);
                 this.drawMarkers();
             }
         }
     }
     ngAfterViewChecked(): void {
-        this.refreshMap();
-    }
-
-    refreshMap() {
         this.drawMap();
     }
 }

@@ -1,6 +1,6 @@
 export class MapMarker {
     uid: string;
-    latitude: Number;
-    longitude: Number;
+    latitude: number;
+    longitude: number;
     url: string;
 }

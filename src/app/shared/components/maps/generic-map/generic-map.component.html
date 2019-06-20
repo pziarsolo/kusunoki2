@@ -1,0 +1,14 @@
+<kusunoki2-leaflet-map
+    *ngIf='!appConfig.useGoogleMaps'
+    [id]="id"
+    [latitude]="latitude"
+    [longitude]="longitude">
+
+</kusunoki2-leaflet-map>
+
+<kusunoki2-google-map
+    *ngIf='appConfig.useGoogleMaps'
+    [id]="id"
+    [latitude]="latitude"
+    [longitude]="longitude">
+</kusunoki2-google-map>

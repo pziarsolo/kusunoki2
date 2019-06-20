@@ -7,6 +7,7 @@ export class AppConfig {
     public defaultAccessionSetInstitute: string;
     public version: Number;
     public centralColumnSize: string;
+    public useGoogleMaps: boolean;
 
     constructor() {}
 
@@ -16,5 +17,10 @@ export class AppConfig {
         this.useAccessionset = config.useAccessionset;
         this.version = config.version;
         this.centralColumnSize = config.centralColumnSize;
+        if (config.useGoogleMaps !== undefined) {
+            this.useGoogleMaps = config.useGoogleMaps;
+        } else {
+            this.useGoogleMaps = false;
+        }
     }
 }
