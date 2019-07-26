@@ -40,8 +40,8 @@ export class LeafletMultiMarkerComponent implements OnChanges, AfterViewChecked 
         }
     }
     reconfigureLeafletMarkerForBug() {
-        const iconRetinaUrl = 'marker-icon-2x.png';
-        const iconUrl = 'marker-icon.png';
+        const iconRetinaUrl = 'assets/marker-icon-2x.png';
+        const iconUrl = 'assets/marker-icon.png';
         const shadowUrl = 'assets/marker-shadow.png';
         const iconDefault = icon({
             iconRetinaUrl,

@@ -18,7 +18,7 @@ export class ScaleDetailComponent implements OnInit, OnDestroy {
     routerSubscription: Subscription;
     userCanEdit: boolean;
     scaleInDatabase = true;
-    @ViewChild(ScaleComponent, {static: false}) scaleComponent;
+    @ViewChild(ScaleComponent, {static: false}) scale;
 
     constructor(
         private route: ActivatedRoute,
@@ -72,7 +72,7 @@ export class ScaleDetailComponent implements OnInit, OnDestroy {
                 AppUrls.phenotype.scales]);
         } else {
             this.editMode = false;
-            this.scaleComponent.resetForm();
+            this.scale.resetForm();
 
         }
     }

@@ -28,8 +28,8 @@ export class LeafletMapComponent implements  AfterViewChecked {
         this.drawMap(this.id, this.latitude, this.longitude, this.config);
     }
     reconfigureLeafletMarkerForBug() {
-        const iconRetinaUrl = 'marker-icon-2x.png';
-        const iconUrl = 'marker-icon.png';
+        const iconRetinaUrl = 'assets/marker-icon-2x.png';
+        const iconUrl = 'assets/marker-icon.png';
         const shadowUrl = 'assets/marker-shadow.png';
         const iconDefault = icon({
             iconRetinaUrl,

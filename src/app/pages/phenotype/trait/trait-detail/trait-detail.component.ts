@@ -19,7 +19,7 @@ export class TraitDetailComponent implements OnInit, OnDestroy {
     userCanEdit: boolean;
     traitFound = true;
 
-    @ViewChild(TraitComponent, {static: false}) traitComponent;
+    @ViewChild(TraitComponent, {static: false}) trait;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -74,7 +74,7 @@ export class TraitDetailComponent implements OnInit, OnDestroy {
                 AppUrls.phenotype.scales]);
         } else {
             this.editMode = false;
-            this.traitComponent.resetForm();
+            this.trait.resetForm();
 
         }
     }

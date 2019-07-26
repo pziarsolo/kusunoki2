@@ -175,7 +175,7 @@ export class ScaleComponent implements OnChanges {
                         this.statusService.info('Successfully deleted');
                         this.scaleDeleted.emit(true);
                     },
-                    error => this.statusService.error('Could not delete scale')
+                    error => this.statusService.error(`Could not delete scale: ${error.error.detail}`)
                     );
             }
         });

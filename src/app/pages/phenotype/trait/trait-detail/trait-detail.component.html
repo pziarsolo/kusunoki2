@@ -21,13 +21,14 @@
             (traitNotFound)="traitFound=false">
         </kusunoki2-trait>
     </mat-card-content>
-    <mat-card-actions *ngIf='editMode || createMode'>
+
+    <mat-card-actions *ngIf='trait && (editMode || createMode)'>
         <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
         <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!trait.allInputAreValid' mat-raised-button color='accent' (click)="editMode=false;trait.updateTrait()">Update</button>
         <button *ngIf='createMode && editMode' [disabled]='!trait.allInputAreValid' mat-raised-button color='accent' (click)="trait.createTrait()">Create</button>
     </mat-card-actions>
 </mat-card>
 <mat-menu #ActionMenu="matMenu">
-    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
-    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="trait.deleteTrait()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+    <button *ngIf='trait && !editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+    <button *ngIf='trait && !editMode && userCanEdit' mat-menu-item (click)="trait.deleteTrait()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
 </mat-menu>

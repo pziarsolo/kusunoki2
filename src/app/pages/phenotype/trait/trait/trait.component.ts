@@ -114,6 +114,7 @@ export class TraitComponent implements OnChanges {
         }
     }
     deleteTrait() {
+
         const dialogRef = this.dialog.open(DeleteDialogComponent, {
             width: '400px',
             data: {type: 'Trait',
@@ -126,7 +127,10 @@ export class TraitComponent implements OnChanges {
                         this.statusService.info('Trait Deleted');
                         this.traitDeleted.emit();
                         },
-                        error => this.statusService.error('Could not delete observation variable')
+                        error => {
+                            this.statusService.error(`Could not delete observation variable: ${error.error.detail}`);
+                            console.log(error);
+                        }
                     );
             }
         });
