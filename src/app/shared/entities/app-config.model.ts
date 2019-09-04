@@ -8,6 +8,7 @@ export class AppConfig {
     public version: Number;
     public centralColumnSize: string;
     public useGoogleMaps: boolean;
+    public pathToStaticPages: string;
 
     constructor() {}
 
@@ -21,6 +22,11 @@ export class AppConfig {
             this.useGoogleMaps = config.useGoogleMaps;
         } else {
             this.useGoogleMaps = false;
+        }
+        if (config.pathToStaticPages === undefined) {
+            this.pathToStaticPages = '';
+        } else {
+            this.pathToStaticPages = config.pathToStaticPages;
         }
     }
 }

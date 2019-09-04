@@ -6,8 +6,7 @@ import { BaseLayoutComponent } from './base-layout-components/base-layout/base-l
 import { LoginComponent } from './login/components/login/login.component';
 import { LoginModule } from './login/login.module';
 import { AppUrls } from './appUrls';
-import { NotFoundComponent } from '../shared/components/not-found-component';
-import { HomeComponent } from '../shared/components/home-component/home-component';
+import { FlatpagesComponent } from '../shared/components/flatpages/flatpages.component';
 
 const routes: Routes = [
     {
@@ -40,17 +39,18 @@ const routes: Routes = [
             },
             {
                 path: '',
-                component: HomeComponent,
-                data: {title: 'CRF'}
+                component: FlatpagesComponent,
+                data: {path: '/home'}
             },
             {
                 path: '',
                 loadChildren: () => import('./accession/accession.module').then(m => m.AccessionModule),
                 // canActivate: [IsAuthGuard]
             },
+
             {
                 path: '**',
-                component: NotFoundComponent,
+                component: FlatpagesComponent,
                 data: {title: 'Not Found'}
             },
         ]

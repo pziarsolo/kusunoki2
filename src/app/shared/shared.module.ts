@@ -5,14 +5,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialBaseModule } from './MaterialBase.module';
 import { StatusModule } from './StatusModule/status.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NotFoundComponent } from './components/not-found-component';
 import { BaseInlinesFormComponent } from './components/base-inlines-form/base-inlines-form.component';
 import { InlineEditComponent } from './components/inline-edit/inline-edit.component';
 import { PasswordFormComponent } from './components/password-form/password-form.component';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule, NG_VALIDATORS } from '@angular/forms';
-import { HomeComponent } from './components/home-component/home-component';
 import { InlineEditSelectComponent } from './components/inline-edit-select/inline-edit-select.component';
 import { BaseInlinesForm2Component } from './components/base-inlines2-form/base-inlines-form2.component';
 import { ObservableTableComponent } from './components/observable-table/observable-table.component';
@@ -40,16 +38,16 @@ import { LeafletMapComponent } from './components/leaflet/leaflet-map/leaflet-ma
 import { GenericMapComponent } from './components/maps/generic-map/generic-map.component';
 import { GenericMultiMarkerComponent } from './components/maps/generic-multi-marker/generic-multi-marker.component';
 import { LeafletMultiMarkerComponent } from './components/leaflet/leaflet-multi-marker/leaflet-multi-marker.component';
+import { FlatpagesComponent } from './components/flatpages/flatpages.component';
+
 
 @NgModule({
     declarations: [
-        NotFoundComponent,
         BaseInlinesFormComponent,
         BaseInlinesForm2Component,
         InlineEditComponent,
         PasswordFormComponent,
         DeleteDialogComponent,
-        HomeComponent,
         InlineEditSelectComponent,
         GoogleMapComponent,
         GoogleMapchartComponent,
@@ -72,7 +70,8 @@ import { LeafletMultiMarkerComponent } from './components/leaflet/leaflet-multi-
         LeafletMapComponent,
         LeafletMultiMarkerComponent,
         GenericMapComponent,
-        GenericMultiMarkerComponent
+        GenericMultiMarkerComponent,
+        FlatpagesComponent,
 
     ],
     imports: [
@@ -98,13 +97,11 @@ import { LeafletMultiMarkerComponent } from './components/leaflet/leaflet-multi-
         ReactiveFormsModule,
         StatusModule,
         PipesModule,
-        NotFoundComponent,
         BaseInlinesFormComponent,
         BaseInlinesForm2Component,
         InlineEditComponent,
         PasswordFormComponent,
         DeleteDialogComponent,
-        HomeComponent,
         InlineEditSelectComponent,
         // GoogleMapComponent,
         GoogleMapchartComponent,
@@ -124,7 +121,8 @@ import { LeafletMultiMarkerComponent } from './components/leaflet/leaflet-multi-
         NgxGalleryModule,
         // LeafletMapComponent,
         GenericMapComponent,
-        GenericMultiMarkerComponent
+        GenericMultiMarkerComponent,
+        FlatpagesComponent
     ]
 })
 export class SharedModule { }

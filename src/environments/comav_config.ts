@@ -1,5 +1,6 @@
 
 export const siteConfig = {
+    pathToStaticPages: '/comav_genebank',
     defaultDataSource: {'code': 'ESP026', kind: 'genebank'},
     defaultAccessionSetInstitute: 'ESP026',
     useAccessionset: false,

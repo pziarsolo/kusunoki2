@@ -1,5 +1,6 @@
 
 export const siteConfig = {
+    pathToStaticPages: '',
     defaultDataSource: {'code': 'CRF', kind: 'project'},
     defaultAccessionSetInstitute: 'ESP004',
     useAccessionset: true,
