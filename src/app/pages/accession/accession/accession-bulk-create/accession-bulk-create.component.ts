@@ -109,7 +109,7 @@ export class AccessionBulkCreateComponent {
                           '999) Other (Elaborate in REMARKS field)'],
             mandatory: false},
         {name: 'ANCEST',
-            description: ["Information about either pedigree or other description of ancestral information (e.g. parent variety in case of mutant or selection).",
+            description: ["'Information about either pedigree or other description of ancestral information (e.g. parent variety in case of mutant or selection).'",
             "For example a pedigree 'Hanna/7*Atlas//Turk/8*Atlas' or a description 'mutation found in Hanna',",
             "'selection from Irene' or 'cross involving amongst others Hanna and Irene'.', mandatory: true}"],
             mandatory: false},
@@ -227,7 +227,7 @@ export class AccessionBulkCreateComponent {
                 (error) => {
                     this.processing = false;
                     this.uploadSuccessful = false;
-                    this.errors = error.error.details;
+                    this.errors = error.error.detail;
                     this.statusService.error('Check the errors');
                 }
             );

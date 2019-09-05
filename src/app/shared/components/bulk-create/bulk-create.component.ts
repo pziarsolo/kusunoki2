@@ -81,7 +81,7 @@ export class BulkCreateComponent implements OnInit {
                 (errors) => {
                     this.processing = false;
                     this.uploadSuccessful = false;
-                    this.errors = errors.error;
+                    this.errors = errors.error.detail;
                     this.statusService.error('Check the errors');
                 }
             );
