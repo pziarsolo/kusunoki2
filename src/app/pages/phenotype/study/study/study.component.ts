@@ -43,7 +43,7 @@ export class StudyComponent implements OnChanges {
         location: {is_required: false, is_editable: true, name: 'location'},
         contacts: {is_required: false, is_editable: true, name: 'contacts'},
         season: {is_required: false, is_editable: true, name: 'season'},
-        institution: {is_required: false, is_editable: true, name: 'institition'}
+        institution: {is_required: false, is_editable: true, name: 'institution'}
     };
 
     constructor(
@@ -113,6 +113,8 @@ export class StudyComponent implements OnChanges {
             study.data.active = formValidData['active'];
             study.data.contacts = formValidData['contacts'];
             study.data.location = formValidData['location'];
+            study.data.institution = formValidData['institution'];
+            study.data.season = formValidData['season'];
             return study;
         }
     }
