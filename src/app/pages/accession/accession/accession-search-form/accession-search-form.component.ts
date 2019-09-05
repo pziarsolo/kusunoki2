@@ -20,6 +20,7 @@ import { Scale } from 'src/app/shared/entities/scale.model';
 import { NgForm } from '@angular/forms';
 import { Study } from 'src/app/shared/entities/study.model';
 import { StudyService } from 'src/app/shared/services/study.service';
+import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 
 
 const EXPRESSIONS = {'bigger than': 'gt',
@@ -158,7 +159,7 @@ export class AccessionSearchByObservationsFormComponent {
     templateUrl: './accession-search-form.component.html',
     // styleUrls: ['./accession-search-form.component.scss']
 })
-export class AccessionSearchFormComponent implements AfterViewInit {
+export class AccessionSearchFormComponent implements AfterViewInit, OnInit {
     @Output() searchSubmitted = new EventEmitter<AccessionSearchParams>();
     searchParams: AccessionSearchParams = {};
     showcharaCriteria = false;
@@ -169,6 +170,7 @@ export class AccessionSearchFormComponent implements AfterViewInit {
     suggestedStudies: Observable<Study[]>;
     biologicalStatus = biological_status;
     icon = false;
+    userToken;
     @ViewChild('countryAuto', {read: MatAutocompleteTrigger, static: false}) countryTrigger: MatAutocompleteTrigger;
     @ViewChild('instituteAuto', {read: MatAutocompleteTrigger, static: false}) instituteTrigger: MatAutocompleteTrigger;
     @ViewChild('taxaAuto', {read: MatAutocompleteTrigger, static: false}) taxaTrigger: MatAutocompleteTrigger;
@@ -179,7 +181,11 @@ export class AccessionSearchFormComponent implements AfterViewInit {
                 private countryService: CountryService,
                 private taxaService: TaxonService,
                 private accessionService: AccessionService,
-                private studyService: StudyService) {
+                private studyService: StudyService,
+                private currentUserService: CurrentUserService) {
+    }
+    ngOnInit(): void {
+        this.userToken = this.currentUserService.userToken;
     }
     toogleButton() {
         this.icon = !this.icon;

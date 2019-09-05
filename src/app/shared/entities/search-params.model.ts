@@ -18,6 +18,7 @@ export interface AccessionSearchParams extends SearchParams {
     site?: string;
     study?: string;
     observation_filters?: [];
+    is_public?: boolean;
 }
 
 export interface AccessionSetSearchParams extends AccessionSearchParams {
@@ -38,4 +39,5 @@ export interface StudySearchParams {
     contact?: string;
     contact_contains?: string;
     name_or_description?: string;
+    is_public?: boolean;
 }

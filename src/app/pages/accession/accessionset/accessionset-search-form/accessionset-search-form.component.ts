@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ import { CountryService } from 'src/app/shared/services/country.service';
 import { TaxonService } from 'src/app/shared/services/taxon.service';
 import { NumbersService } from 'src/app/shared/services/numbers.service';
 import { biological_status } from '../../assets/biologicalStatus';
+import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { biological_status } from '../../assets/biologicalStatus';
     templateUrl: './accessionset-search-form.component.html',
     styleUrls: ['./accessionset-search-form.component.scss']
   })
-  export class AccessionSetSearchFormComponent implements AfterViewInit {
+  export class AccessionSetSearchFormComponent implements AfterViewInit, OnInit {
         @Output() searchSubmitted = new EventEmitter<AccessionSetSearchParams>();
         searchParams: AccessionSetSearchParams = {};
 
@@ -28,7 +29,7 @@ import { biological_status } from '../../assets/biologicalStatus';
         suggestedCountries: Observable<Country[]>;
         suggestedTaxa: Observable<Taxon[]>;
         biologicalStatus = biological_status;
-
+        userToken;
         @ViewChild('countryAuto', {read: MatAutocompleteTrigger, static: false}) countryTrigger: MatAutocompleteTrigger;
         // @ViewChild('instituteAuto', {read: MatAutocompleteTrigger, static: false}) instituteTrigger: MatAutocompleteTrigger;
         @ViewChild('taxaAuto', {read: MatAutocompleteTrigger, static: false}) taxaTrigger: MatAutocompleteTrigger;
@@ -36,9 +37,12 @@ import { biological_status } from '../../assets/biologicalStatus';
         constructor(private instituteService: InstituteService,
                     private countryService: CountryService,
                     private taxaService: TaxonService,
-                    private numberService: NumbersService) {
+                    private numberService: NumbersService,
+                    private currentUserService: CurrentUserService) {
         }
-
+        ngOnInit(): void {
+            this.userToken = this.currentUserService.userToken;
+        }
         filterNumber(val) {
             return this.numberService.list({number__icontains: val})
                 .pipe(map(response => response));
