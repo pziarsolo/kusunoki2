@@ -144,6 +144,35 @@
                     }
                   ]
 
+            },
+            "tomatoProd": {
+                "fileReplacements": [
+                    {
+                      "replace": "src/environments/environment.ts",
+                      "with": "src/environments/environment.tomato.prod.ts"
+                    },
+                    {
+                        "replace": "src/styles.scss",
+                        "with": "src/assets/styles/style.tomato.scss"
+                    }
+                  ],
+                  "optimization": true,
+                  "outputHashing": "all",
+                  "sourceMap": false,
+                  "extractCss": true,
+                  "namedChunks": false,
+                  "aot": true,
+                  "extractLicenses": true,
+                  "vendorChunk": false,
+                  "buildOptimizer": true,
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "2mb",
+                      "maximumError": "5mb"
+                    }
+                  ]
+
             }
           }
         },
