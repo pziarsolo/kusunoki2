@@ -80,7 +80,7 @@ export class LeafletMultiMarkerComponent implements OnChanges, AfterViewChecked 
                 this.map = L.map(this.div_id).setView([this.config.center.latitude,
                                                        this.config.center.longitude],
                                                       this.config.zoom);
-                L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(this.map);
                 this.drawMarkers();

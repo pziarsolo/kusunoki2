@@ -48,8 +48,8 @@ export class LeafletMapComponent implements  AfterViewChecked {
         if (map_id !== undefined && document.getElementById(map_id)) {
             if (longitude && latitude && this.map === undefined) {
                 this.map = L.map(String(map_id)).setView([latitude, longitude], 8);
-                L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
                 }).addTo(this.map);
                 this.reconfigureLeafletMarkerForBug();
                 this.marker = L.marker([latitude, longitude]).addTo(this.map);
