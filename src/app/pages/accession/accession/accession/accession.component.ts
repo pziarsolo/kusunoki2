@@ -15,6 +15,8 @@ import { conservation_statuses } from '../../assets/conservationStatus';
 import { InlineAutoInstituteComponent } from '../../institute/inline-auto-institute/inline-auto-institute.component';
 import { PassportComponent } from '../../passport/passport.component';
 import { ObservationImageGalleryComponent } from 'src/app/shared/components/entity-tables/observation-image-gallery/observation-image-gallery.component';
+import { AppConfigService } from 'src/app/shared/services/app-config.service';
+import { AppConfig } from 'src/app/shared/entities/app-config.model';
 
 @Component({
     selector: 'kusunoki2-accession',
@@ -28,6 +30,7 @@ export class AccessionComponent  implements OnChanges {
     @Input() onTop = true;
     @Input() mapId;
 
+    appConfig: AppConfig;
     appUrls = AppUrls;
     accessionsets: string[];
     userCanEdit: boolean;
@@ -66,7 +69,9 @@ export class AccessionComponent  implements OnChanges {
         private readonly router: Router,
         private readonly currentUserService: CurrentUserService,
         private readonly accessionsetService: AccessionSetService,
-        public dialog: MatDialog) {
+        public dialog: MatDialog,
+        private appConfigService: AppConfigService) {
+        this.appConfig = this.appConfigService.getConfig();
     }
     makeAllFieldEditable() {
         for (const child of Object.keys(this.config)) {
@@ -76,15 +81,17 @@ export class AccessionComponent  implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         if ('accession' in changes && this.accession && this.accession.data.germplasmNumber) {
             this.evalUserPermissions();
-            this.accessionsetService.list(
-                {accession_number: this.accession.data.germplasmNumber,
-                 accession_institute: this.accession.data.instituteCode})
-                .subscribe(
-                    response => {
-                        this.accessionsets = response.body.map(item => item.data.accessionsetNumber);
-                    },
-                    error => console.log(error)
-                );
+            if (this.appConfig.useAccessionset) {
+                this.accessionsetService.list(
+                    {accession_number: this.accession.data.germplasmNumber,
+                    accession_institute: this.accession.data.instituteCode})
+                    .subscribe(
+                        response => {
+                            this.accessionsets = response.body.map(item => item.data.accessionsetNumber);
+                        },
+                        error => console.log(error)
+                    );
+            }
         } else if ('createMode' in changes && this.createMode) {
             this.makeAllFieldEditable();
         }

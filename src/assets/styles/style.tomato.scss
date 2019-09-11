@@ -6,7 +6,7 @@
 @include mat-core();
 
 $kusunoki-primary: mat-palette($mat-red, 800);
-$kusunoki-accent:  mat-palette($mat-grey, 400);
+$kusunoki-accent:  mat-palette($mat-grey, 700);
 $kusunoki-warn:    mat-palette($mat-deep-orange, 400);
 
 $kusunoki-ligth-theme: mat-light-theme($kusunoki-primary, $kusunoki-accent, $kusunoki-warn);
@@ -67,3 +67,7 @@ mat-card {
 .mat-tab-label.mat-tab-label-active {
     background-color: #d4d4d4;
 }
+
+.WebFooter::before {
+    content: "Tomato ";
+  }

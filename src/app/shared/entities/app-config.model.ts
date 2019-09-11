@@ -9,6 +9,7 @@ export class AppConfig {
     public centralColumnSize: string;
     public useGoogleMaps: boolean;
     public pathToStaticPages: string;
+    public googleMapsApiKey: string;
 
     constructor() {}
 
@@ -18,10 +19,13 @@ export class AppConfig {
         this.useAccessionset = config.useAccessionset;
         this.version = config.version;
         this.centralColumnSize = config.centralColumnSize;
+
         if (config.useGoogleMaps !== undefined) {
             this.useGoogleMaps = config.useGoogleMaps;
+            this.googleMapsApiKey = config.googleMapsApiKey;
         } else {
             this.useGoogleMaps = false;
+            this.googleMapsApiKey = undefined;
         }
         if (config.pathToStaticPages === undefined) {
             this.pathToStaticPages = '';

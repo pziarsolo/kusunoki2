@@ -6,7 +6,8 @@ export const siteConfig = {
     useAccessionset: false,
     centralColumnSize: '1200px',
     version: require('../../package.json').version,
-    useGoogleMaps: true
+    useGoogleMaps: true,
+    googleMapsApiKey: 'AIzaSyBlw76orChFiR4RnGbMoNHMuF7t3g8MUgU'
 };
 
 export default siteConfig;

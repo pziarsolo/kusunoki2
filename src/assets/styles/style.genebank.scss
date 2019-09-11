@@ -78,3 +78,6 @@ mat-card {
 .mat-tab-label.mat-tab-label-active {
     background-color: #d4d4d4;
 }
+.WebFooter::before {
+    content: "Genebank ";
+  }
