@@ -38,22 +38,24 @@ export class AccessionSetComponent implements OnChanges {
     loadData() {
         this.evalUserPermissions();
         const calls = [];
-        this.accessionset.data.accessions.map(item => {
-            calls.push(this.accessionService.retrieve(item.instituteCode, item.germplasmNumber));
-        });
+        if (this.accessionset.data.accessions !== undefined) {
+            this.accessionset.data.accessions.map(item => {
+                calls.push(this.accessionService.retrieve(item.instituteCode, item.germplasmNumber));
+            });
 
-        forkJoin(...calls)
-            .subscribe(
-                (responses: Accession[]) => this.accessions = responses,
-                error => {
-                    let errorMsg;
-                    if (error.status === 404) {
-                        errorMsg = 'Accessions not found or you dont have permissions to see them'
-                    } else {
-                        errorMsg = error.error.detail;
-                    }
-                    this.statusService.error(errorMsg);
-                });
+            forkJoin(calls)
+                .subscribe(
+                    (responses: Accession[]) => this.accessions = responses,
+                    error => {
+                        let errorMsg;
+                        if (error.status === 404) {
+                            errorMsg = 'Accessions not found or you dont have permissions to see them';
+                        } else {
+                            errorMsg = error.error.detail;
+                        }
+                        this.statusService.error(errorMsg);
+                    });
+        }
     }
 
 
