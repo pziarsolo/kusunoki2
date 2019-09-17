@@ -18,7 +18,7 @@ import { TraitService } from '../../services/trait.service';
     styleUrls: ['./bulk-create.component.scss']
 })
 export class BulkCreateComponent implements OnInit {
-    @ViewChild('file', {static: false}) file;
+    @ViewChild('file', { static: false }) file;
     errors;
     uploadedFile: File;
     num_uploaded: Number;
@@ -37,7 +37,7 @@ export class BulkCreateComponent implements OnInit {
     constructor(
         protected serviceLocator: ServiceLocatorService,
         private statusService: StatusService,
-        private router: Router) {}
+        private router: Router) { }
 
 
     toogle_button() {
@@ -81,7 +81,11 @@ export class BulkCreateComponent implements OnInit {
                 (errors) => {
                     this.processing = false;
                     this.uploadSuccessful = false;
-                    this.errors = errors.error.detail;
+                    if (errors.error.length) {
+                        this.errors = errors.error.map(item => item.detail);
+                    } else {
+                        this.errors = errors.error.detail;
+                    }
                     this.statusService.error('Check the errors');
                 }
             );
