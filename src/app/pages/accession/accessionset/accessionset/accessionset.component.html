@@ -1,47 +1,41 @@
 <mat-card *ngIf='accessionset'>
-    <mat-card-title>
-        Accessionset
-        <span class='key' fxflex style='margin-left:5px;'> {{accessionset.data.accessionsetNumber}}</span>
-        <span fxFlex></span>
-        <button *ngIf='userCanEdit' mat-raised-button color='accent' [matMenuTriggerFor]="accessionsetActionMenu">
-            Actions
-        </button>
-    </mat-card-title>
-    <mat-card-content>
-        <kusunoki2-accessionset-accession-table
-            *ngIf="accessions"
-            [accessions]="accessions"
-            (accessionSelected)="selectedTabIndex = $event">
-        </kusunoki2-accessionset-accession-table >
-        <h2>Accessions in this accessionset</h2>
-        <kusunoki2-accession
-            *ngIf='accessions && accessions.length === 1'
-            [accession]="accessions[0]"
-            [mapId]="'map1'">
-        </kusunoki2-accession>
-        <div  *ngIf='accessions && accessions.length > 1'  style='margin:0; padding:0'>
-            <mat-tab-group
-                [selectedIndex]="selectedTabIndex"
-                mat-align-tabs="center">
-                <mat-tab *ngFor="let accession of accessions; let i = index">
-                    <ng-template mat-tab-label *ngIf='accession'>
-                        {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}
-                    </ng-template>
-                    <kusunoki2-accession
-                        *ngIf='accession'
-                        [mapId]="i"
-                        [accession]="accession">
-                    </kusunoki2-accession>
-                </mat-tab>
-            </mat-tab-group>
-        </div>
-    </mat-card-content>
+  <mat-card-title>
+    Accessionset
+    <span class='key' fxflex style='margin-left:5px;'> {{accessionset.data.accessionsetNumber}}</span>
+    <span fxFlex></span>
+    <button *ngIf='userCanEdit' mat-raised-button color='accent' [matMenuTriggerFor]="accessionsetActionMenu">
+      Actions
+    </button>
+  </mat-card-title>
+  <mat-card-content>
+    <kusunoki2-accessionset-accession-table *ngIf="accessions" [accessions]="accessions"
+      (accessionSelected)="selectedTabIndex = $event">
+    </kusunoki2-accessionset-accession-table>
+    <h2>Accessions in this accessionset</h2>
+    <kusunoki2-accession *ngIf='accessions && accessions.length === 1' [accession]="accessions[0]" [mapId]="'map1'">
+    </kusunoki2-accession>
+    <div *ngIf='accessions && accessions.length > 1' style='margin:0; padding:0'>
+      <mat-tab-group [selectedIndex]="selectedTabIndex" mat-align-tabs="center">
+        <mat-tab *ngFor="let accession of accessions; let i = index">
+          <ng-template mat-tab-label *ngIf='accession'>
+            {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}
+          </ng-template>
+          <kusunoki2-accession *ngIf='accession' [mapId]="i" [accession]="accession">
+          </kusunoki2-accession>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-card-content>
 </mat-card>
 
 <mat-menu #accessionsetActionMenu="matMenu">
-    <button *ngIf='userCanEdit' mat-menu-item color='primary' (click)="tooglePublic()">
-        <mat-icon *ngIf='!accessionset.metadata.is_public'>public</mat-icon>
-        <mat-icon *ngIf='accessionset.metadata.is_public' color='warn'>public</mat-icon>
-        Make <span *ngIf='!accessionset.metadata.is_public'>Public</span><span *ngIf='accessionset.metadata.is_public'>Private</span>
-    </button>
+  <button *ngIf='userCanEdit' mat-menu-item color='primary' (click)="tooglePublic()">
+    <mat-icon *ngIf='!accessionset.metadata.is_public'>public</mat-icon>
+    <mat-icon *ngIf='accessionset.metadata.is_public' color='warn'>public</mat-icon>
+    Make <span *ngIf='!accessionset.metadata.is_public'>Public</span><span
+      *ngIf='accessionset.metadata.is_public'>Private</span>
+  </button>
+  <button *ngIf='userCanEdit && appConfig.canRemoveAccessionset' mat-menu-item (click)="deleteAccessionSet()">
+    <mat-icon color='warn'>delete</mat-icon>Delete
+  </button>
 </mat-menu>
