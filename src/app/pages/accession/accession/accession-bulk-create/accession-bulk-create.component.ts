@@ -281,9 +281,15 @@ export class AccessionBulkCreateComponent {
                 (errors) => {
                     this.processing = false;
                     this.uploadSuccessful = false;
-                    console.log('aa', errors);
-                    if (errors.error.length) {
-                        this.errors = errors.error.map(item => item.detail);
+                    if (errors.error.length > 0) {
+                        this.errors = errors.error.map(item => {
+                            if (item.detail !== undefined) {
+
+                                return item.detail;
+                            } else {
+                                return item;
+                            }
+                        });
                     } else {
                         this.errors = errors.error.detail;
                     }
