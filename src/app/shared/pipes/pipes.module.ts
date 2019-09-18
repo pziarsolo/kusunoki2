@@ -1,13 +1,14 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {Minus2SpacePipe} from './minus2space.pipe';
-import {ContainsPipe} from './contains.pipe';
-import {HasOwnPropertyPipe} from './hasownproperty.pipe';
-import {KeysPipe} from './keys.pipe';
-import {ToStringPipe} from './tostring.pipe';
+import { Minus2SpacePipe } from './minus2space.pipe';
+import { ContainsPipe } from './contains.pipe';
+import { HasOwnPropertyPipe } from './hasownproperty.pipe';
+import { KeysPipe } from './keys.pipe';
+import { ToStringPipe } from './tostring.pipe';
 import { CommonModule } from '@angular/common';
 import { MomentsMCPDPipe } from './momentsMCPD.pipe';
 import { ImproveTaskNamePipe } from './improveTaskName.pipe';
+import { ShowDescriptiveConStatus } from './showDesccriptiveConStatus.pipe';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { ImproveTaskNamePipe } from './improveTaskName.pipe';
         KeysPipe,
         ToStringPipe,
         MomentsMCPDPipe,
-        ImproveTaskNamePipe
+        ImproveTaskNamePipe,
+        ShowDescriptiveConStatus
     ],
     exports: [
         ContainsPipe,
@@ -29,7 +31,8 @@ import { ImproveTaskNamePipe } from './improveTaskName.pipe';
         KeysPipe,
         ToStringPipe,
         MomentsMCPDPipe,
-        ImproveTaskNamePipe
+        ImproveTaskNamePipe,
+        ShowDescriptiveConStatus
     ]
 })
 export class PipesModule { }
