@@ -23,8 +23,10 @@ import { StudyService } from 'src/app/shared/services/study.service';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 
 
-const EXPRESSIONS = {'bigger than': 'gt',
-                     'smaller than': 'lt'};
+const EXPRESSIONS = {
+    'bigger than': 'gt',
+    'smaller than': 'lt'
+};
 @Component({
     selector: 'kusunoki2-accession-search-by-observation-form',
     templateUrl: './kusunoki2-accession-search-by-observation-form.html',
@@ -38,12 +40,12 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
     formChangesSubscription: Subscription;
     // selectedVariable: ObservationVariable;
     @Output() formChanged = new EventEmitter();
-    @ViewChild('variableAuto', {read: MatAutocompleteTrigger, static: false}) variableTrigger: MatAutocompleteTrigger;
-    @ViewChild('obsForm', {static: false}) obsForm: NgForm;
+    @ViewChild('variableAuto', { read: MatAutocompleteTrigger, static: false }) variableTrigger: MatAutocompleteTrigger;
+    @ViewChild('obsForm', { static: false }) obsForm: NgForm;
 
     constructor(
         private variableService: ObservationVariableService,
-        private scaleService: ScaleService ) {}
+        private scaleService: ScaleService) { }
 
     ngOnInit() {
 
@@ -54,7 +56,7 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
     }
 
     filterVariables(val) {
-        return this.variableService.list({name__icontains: val})
+        return this.variableService.list({ name_or_desc: val })
             .pipe(map(response => response.body));
     }
     variableSelectedTrigger($event) {
@@ -64,7 +66,7 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
                 if (scale.data_type === 'Numerical') {
                     this.availablelookUpExpressions = ['bigger than', 'smaller than',
                         'equal to'];
-                    this.availableCategories =  undefined;
+                    this.availableCategories = undefined;
                 } else {
                     this.availablelookUpExpressions = undefined;
                     this.availableCategories = scale.valid_values;
@@ -95,7 +97,7 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
     resetForm() {
         this.filterExpression.variable = undefined;
         this.filterExpression.value = undefined;
-        this.availableCategories =  undefined;
+        this.availableCategories = undefined;
         this.availablelookUpExpressions = undefined;
     }
 
@@ -104,7 +106,7 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
         if (this.filterExpression.variable.data.scale.data_type === 'Numerical' && this.filterExpression.lookupExpression !== 'equal to') {
             variableName += '__' + EXPRESSIONS[this.filterExpression.lookupExpression];
         }
-        return {[variableName]: this.filterExpression.value};
+        return { [variableName]: this.filterExpression.value };
     }
 }
 
@@ -138,12 +140,12 @@ export class AccessionSearchByObservationsFormComponent {
 
     addFilter() {
         this.filters = this.filters.concat(
-            {variable: undefined, lookupExpression: undefined, value: undefined});
+            { variable: undefined, lookupExpression: undefined, value: undefined });
     }
     deleteFilter(index) {
         this.filters.splice(index, 1);
         this.checkFormValid();
-        if (this.filters.length  === 0) {
+        if (this.filters.length === 0) {
             this.allInputAreValid = true;
         }
     }
@@ -171,18 +173,18 @@ export class AccessionSearchFormComponent implements AfterViewInit, OnInit {
     biologicalStatus = biological_status;
     icon = false;
     userToken;
-    @ViewChild('countryAuto', {read: MatAutocompleteTrigger, static: false}) countryTrigger: MatAutocompleteTrigger;
-    @ViewChild('instituteAuto', {read: MatAutocompleteTrigger, static: false}) instituteTrigger: MatAutocompleteTrigger;
-    @ViewChild('taxaAuto', {read: MatAutocompleteTrigger, static: false}) taxaTrigger: MatAutocompleteTrigger;
-    @ViewChild('studyAuto', {read: MatAutocompleteTrigger, static: false}) studyTrigger: MatAutocompleteTrigger;
-    @ViewChild('observation_filters', {static: false}) observation_filters: AccessionSearchByObservationsFormComponent;
+    @ViewChild('countryAuto', { read: MatAutocompleteTrigger, static: false }) countryTrigger: MatAutocompleteTrigger;
+    @ViewChild('instituteAuto', { read: MatAutocompleteTrigger, static: false }) instituteTrigger: MatAutocompleteTrigger;
+    @ViewChild('taxaAuto', { read: MatAutocompleteTrigger, static: false }) taxaTrigger: MatAutocompleteTrigger;
+    @ViewChild('studyAuto', { read: MatAutocompleteTrigger, static: false }) studyTrigger: MatAutocompleteTrigger;
+    @ViewChild('observation_filters', { static: false }) observation_filters: AccessionSearchByObservationsFormComponent;
 
     constructor(private instituteService: InstituteService,
-                private countryService: CountryService,
-                private taxaService: TaxonService,
-                private accessionService: AccessionService,
-                private studyService: StudyService,
-                private currentUserService: CurrentUserService) {
+        private countryService: CountryService,
+        private taxaService: TaxonService,
+        private accessionService: AccessionService,
+        private studyService: StudyService,
+        private currentUserService: CurrentUserService) {
     }
     ngOnInit(): void {
         this.userToken = this.currentUserService.userToken;
@@ -191,25 +193,29 @@ export class AccessionSearchFormComponent implements AfterViewInit, OnInit {
         this.icon = !this.icon;
     }
     filterNumber(val) {
-        return this.accessionService.list({number_contains: val,
-                                           fields: 'germplasmNumber'})
+        return this.accessionService.list({
+            number_contains: val,
+            fields: 'germplasmNumber'
+        })
             .pipe(map(response => response.body));
     }
     filterInstitute(val) {
-        return this.instituteService.list({name__icontains: val,
-                                           fields: 'instituteCode,name'})
+        return this.instituteService.list({
+            name__icontains: val,
+            fields: 'instituteCode,name'
+        })
             .pipe(map(response => response.body));
     }
     filterCountry(val) {
-        return this.countryService.list({name: val, fields: 'code,name'})
+        return this.countryService.list({ name: val, fields: 'code,name' })
             .pipe(map(response => response.body));
     }
     filterTaxa(name) {
-        return this.taxaService.list({name__icontains: name, fields: 'name'})
+        return this.taxaService.list({ name__icontains: name, fields: 'name' })
             .pipe(map(response => response.body));
     }
     filterStudies(name) {
-        return this.studyService.list({name_icontains: name, fields: 'name'})
+        return this.studyService.list({ name_icontains: name, fields: 'name' })
             .pipe(map(response => response.body));
     }
     doSubmit() {
