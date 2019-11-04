@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MomentsMCPDPipe } from './momentsMCPD.pipe';
 import { ImproveTaskNamePipe } from './improveTaskName.pipe';
 import { ShowDescriptiveConStatus } from './showDesccriptiveConStatus.pipe';
+import { SafeHtmlPipe } from './safeHtml.pipe';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { ShowDescriptiveConStatus } from './showDesccriptiveConStatus.pipe';
         ToStringPipe,
         MomentsMCPDPipe,
         ImproveTaskNamePipe,
-        ShowDescriptiveConStatus
+        ShowDescriptiveConStatus,
+        SafeHtmlPipe
     ],
     exports: [
         ContainsPipe,
@@ -32,7 +34,8 @@ import { ShowDescriptiveConStatus } from './showDesccriptiveConStatus.pipe';
         ToStringPipe,
         MomentsMCPDPipe,
         ImproveTaskNamePipe,
-        ShowDescriptiveConStatus
+        ShowDescriptiveConStatus,
+        SafeHtmlPipe
     ]
 })
 export class PipesModule { }

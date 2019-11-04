@@ -1,0 +1,74 @@
+// @import "scss/demo/demo7/style.scss";
+// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+
+
+@include mat-core();
+
+$kusunoki-primary: mat-palette($mat-indigo, 500);
+$kusunoki-accent:  mat-palette($mat-teal, 600, A100, A400);
+$kusunoki-warn:    mat-palette($mat-red, 500);
+
+$primary: mat-palette($mat-indigo, 500);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+$warn:    mat-palette($mat-red, 500);
+
+$kusunoki-theme: mat-light-theme($kusunoki-primary, $kusunoki-accent, $kusunoki-warn);
+
+@include angular-material-theme($kusunoki-theme);
+
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+    transform: none !important;
+}
+
+body {
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    margin:0;
+}
+a {
+    color:mat-color($kusunoki-accent);
+    text-decoration-line: none;
+    // padding: 4px 0px;
+    font-style: normal;
+}
+a:hover {
+    text-decoration: underline;
+    // color:mat-color(mat-palette($mat-teal, 900, A300, A700));
+}
+// h1, h2, h3, h4 {
+//     // font-weight: normal;
+// }
+.gmap {
+    border: 1px solid mat-color($kusunoki-accent);
+}
+
+.key {
+    color: mat-color($kusunoki-primary);
+    font-weight: 500;
+}
+mat-card {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.footer {
+    margin-top: 9px;
+}
+.footer_version {
+    font-size: 0.7vw;
+    font-size: 10px;
+}
+.footer_version span {
+    margin:0;
+    padding:0;
+}
+// .button-toolbar {
+//     margin-top:10px;
+//     margin-left: 10px;
+// }
+.mat-tab-label.mat-tab-label-active {
+    background-color: #d4d4d4;
+}
+.WebFooter::before {
+    content: "CRF";
+  }

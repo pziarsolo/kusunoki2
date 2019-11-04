@@ -39,11 +39,43 @@
                         "scripts": []
                     },
                     "configurations": {
-                        "production": {
+                        "crf": {
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.prod.ts"
+                                    "with": "src/environments/environment.crf.ts"
+                                },
+                                {
+                                    "replace": "src/styles.scss",
+                                    "with": "src/assets/styles/style.crf.scss"
+                                }
+                            ],
+                            "optimization": false,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        },
+                        "crfProd": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.crf.prod.ts"
+                                },
+                                {
+                                    "replace": "src/styles.scss",
+                                    "with": "src/assets/styles/style.crf.scss"
                                 }
                             ],
                             "optimization": true,
@@ -211,14 +243,23 @@
                         "browserTarget": "kusunoki2:build"
                     },
                     "configurations": {
-                        "production": {
-                            "browserTarget": "kusunoki2:build:production"
+                        "crf": {
+                            "browserTarget": "kusunoki2:build:crf"
                         },
-                        "genebankProd": {
-                            "browserTarget": "kusunoki2:build:genebankProd"
+                        "crfProd": {
+                            "browserTarget": "kusunoki2:build:crfProd"
                         },
-                        "genebank": {
-                            "browserTarget": "kusunoki2:build:genebank"
+                        "comavProd": {
+                            "browserTarget": "kusunoki2:build:comavProd"
+                        },
+                        "comav": {
+                            "browserTarget": "kusunoki2:build:comav"
+                        },
+                        "bagerimProd": {
+                            "browserTarget": "kusunoki2:build:bagerimProd"
+                        },
+                        "bagerim": {
+                            "browserTarget": "kusunoki2:build:bagerim"
                         }
                     }
                 },

@@ -1,4 +1,4 @@
 <mat-card *ngIf='pageContent'>
     <mat-card-title>{{pageContent.title}}</mat-card-title>
-    <mat-card-content [innerHtml]="pageContent.content"></mat-card-content>
+    <mat-card-content [innerHtml]="pageContent.content|safeHtml"></mat-card-content>
 </mat-card>
