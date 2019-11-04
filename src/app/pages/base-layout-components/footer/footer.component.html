@@ -1,20 +1,11 @@
-<mat-toolbar role='footer'
-             fxLayout='row'
-             fxLayoutAlign="space-between center">
+<mat-toolbar role='footer' fxLayout='row' fxLayoutAlign="space-between center">
     <div fxLayout="row" fxLayoutAlign="center start" fxFlex fxFlex.md="1 1 0%">
         <div fxFlex></div>
-        <div fxFlex="1 1 {{centralColumnSize}}" fxFlex.lt-lg="grow">
-            <span class="WebFooter"></span> <!-- This is used to add a text througth css -->
+        <div fxFlex="1 1 {{centralColumnSize}}" fxFlex.lt-lg="grow" fxLayout='row'>
             <div fxFlex></div>
-            <!-- <img fxFlex height="60px" src='/assets/images/footer_image.jpg'> -->
+            <span class="WebFooter"></span> <!-- This is used to ad d a text througth css -->
             <div fxFlex></div>
-            <div  fxFlex fxLayout='column' class='footer_version' fxLayoutGap="0"
-                fxLayoutAlign='center'>
-                <span>App Version: {{appConfig.version}}</span>
-                <span>Api Version: ApiVersion</span>
-            </div>
         </div>
         <div fxFlex></div>
     </div>
-
 </mat-toolbar>

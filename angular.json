@@ -48,6 +48,10 @@
                                 {
                                     "replace": "src/styles.scss",
                                     "with": "src/assets/styles/style.crf.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_crf.ico"
                                 }
                             ],
                             "optimization": false,
@@ -76,6 +80,10 @@
                                 {
                                     "replace": "src/styles.scss",
                                     "with": "src/assets/styles/style.crf.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_crf.ico"
                                 }
                             ],
                             "optimization": true,
@@ -104,6 +112,10 @@
                                 {
                                     "replace": "src/styles.scss",
                                     "with": "src/assets/styles/style.comav.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_comav.ico"
                                 }
                             ],
                             "optimization": true,
@@ -132,6 +144,10 @@
                                 {
                                     "replace": "src/styles.scss",
                                     "with": "src/assets/styles/style.comav.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_comav.ico"
                                 }
                             ],
                             "optimization": false,
@@ -160,6 +176,10 @@
                                 {
                                     "replace": "src/styles.scss",
                                     "with": "src/assets/styles/style.bagerim.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_imida.ico"
                                 }
                             ],
                             "optimization": true,
@@ -188,6 +208,10 @@
                                 {
                                     "replace": "src/styles.scss",
                                     "with": "src/assets/styles/style.bagerim.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_imida.ico"
                                 }
                             ],
                             "optimization": false,
