@@ -17,8 +17,8 @@
 // $kusunoki-accent:  mat-palette($mat-yellow, A200, A100, A400);
 // $kusunoki-warn:    mat-palette($mat-red, 500);
 
-$kusunoki-primary: mat-palette($mat-light-green, 600);
-$kusunoki-accent:  mat-palette($mat-amber, 700, 500, 300);
+$kusunoki-primary: mat-palette($mat-green, 600);
+$kusunoki-accent:  mat-palette($mat-blue-grey, 700, 500, 300);
 $kusunoki-warn:    mat-palette($mat-red, 500);
 
 $kusunoki-ligth-theme: mat-light-theme($kusunoki-primary, $kusunoki-accent, $kusunoki-warn);
