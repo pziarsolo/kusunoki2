@@ -18,7 +18,7 @@
 // $kusunoki-warn:    mat-palette($mat-red, 500);
 
 $kusunoki-primary: mat-palette($mat-teal, 600);
-$kusunoki-accent:  mat-palette($mat-brown, 700, 500, 300);
+$kusunoki-accent:  mat-palette($mat-blue-grey, 700, 500, 300);
 $kusunoki-warn:    mat-palette($mat-red, 500);
 
 $kusunoki-ligth-theme: mat-light-theme($kusunoki-primary, $kusunoki-accent, $kusunoki-warn);
@@ -79,5 +79,6 @@ mat-card {
     background-color: #d4d4d4;
 }
 .WebFooter::before {
-    content: "Genebank ";
+    content: "Comav's Genebank ";
+    font-size: 12px;
   }

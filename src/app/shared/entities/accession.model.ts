@@ -376,7 +376,7 @@ export class Passport {
         }
     }
     getApiDocument() {
-        const apiData = {'version': this.version};
+        const apiData = { 'version': this.version };
         if (this.germplasmNumber) {
             apiData['germplasmNumber'] = this.germplasmNumber.getApiDocument();
         }
@@ -439,19 +439,30 @@ function parseMCPDate(strdate?: string): Moment {
     let year: string;
     let month: string;
     let day: String;
+    try {
+        year = strdate.substring(0, 4);
+    } catch {
+        return undefined;
+    }
+    try {
+        month = strdate.substring(4, 6);
+    } catch {
+        month = '--';
+    }
+    try {
+        day = strdate.substring(6);
+    } catch {
+        day = '--';
+    }
 
-    year = strdate.substring(0, 4);
-    month = strdate.substring(4, 6);
-    day = strdate.substring(6);
-
-    if (month === '--') {
+    if (month === '--' || month === '00') {
         month = '01';
     }
 
-    if (day === '--') {
+    if (day === '--' || day === '00') {
         day = '01';
     }
-    const a = moment(year + month + day);
+    // const a = moment(year + month + day);
     return moment(year + month + day);
 }
 
@@ -542,7 +553,9 @@ export class Accession {
         }
     }
     getApiDocument() {
-        return {'data': this.data.getApiDocument(),
-                'metadata': this.metadata.getApiDocument()};
+        return {
+            'data': this.data.getApiDocument(),
+            'metadata': this.metadata.getApiDocument()
+        };
     }
 }
