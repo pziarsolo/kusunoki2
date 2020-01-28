@@ -1,11 +1,11 @@
-<mat-card *ngIf='!instituteFound'>Institute not found</mat-card>
+<mat-card *ngIf='!instituteFound' i18n>Institute not found</mat-card>
 <mat-card *ngIf='instituteFound || createMode || editMode'>
     <mat-card-title>Institute <span class='key' fxflex style='margin-left:5px;'> {{instituteCode}}</span>
         <span fxFlex></span>
         <button mat-raised-button color='accent'
                 *ngIf='userCanEdit && !createMode'
                 [matMenuTriggerFor]="instituteActionMenu">
-            Actions
+            <ng-container i18n>Actions</ng-container>
         </button>
     </mat-card-title>
     <mat-card-content>
@@ -22,19 +22,19 @@
         </kusunoki2-institute>
     </mat-card-content>
     <mat-card-actions *ngIf='editMode || createMode'>
-        <button *ngIf='editMode' mat-raised-button color='primary' (click)="editCanceled()">Cancel</button>
-        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!instituteComp.allInputAreValid' mat-raised-button color='accent' (click)="instituteComp.updateInstitute()">Update</button>
-        <button *ngIf='createMode && editMode' [disabled]='!instituteComp.allInputAreValid' mat-raised-button color='accent' (click)="instituteComp.createInstitute()">Create</button>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="editCanceled()" i18n>Cancel</button>
+        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!instituteComp.allInputAreValid' mat-raised-button color='accent' (click)="instituteComp.updateInstitute()" i18n>Update</button>
+        <button *ngIf='createMode && editMode' [disabled]='!instituteComp.allInputAreValid' mat-raised-button color='accent' (click)="instituteComp.createInstitute()" i18n>Create</button>
     </mat-card-actions>
 </mat-card>
 <mat-menu #instituteActionMenu="matMenu">
-    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
-    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteInstitute()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon><ng-container i18n>Edit</ng-container></button>
+    <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteInstitute()"><mat-icon color='warn'>delete</mat-icon><ng-container i18n>Delete</ng-container></button>
 </mat-menu>
 
 <mat-accordion multi=true *ngIf="!editMode && instituteFound">
     <mat-expansion-panel expanded='true'>
-        <mat-expansion-panel-header>Country Stats</mat-expansion-panel-header>
+        <mat-expansion-panel-header i18n>Country Stats</mat-expansion-panel-header>
         <div  fxLayout='row' fxLayoutGap='10px' fxLayout.xs="column">
             <mat-card fxFlex>
                 <kusunoki2-country-stats-table
@@ -47,9 +47,7 @@
             <mat-card fxFlex>
                 <mat-tab-group>
                     <mat-tab>
-                        <ng-template mat-tab-label>
-                            Accession Stats
-                        </ng-template>
+                        <ng-template mat-tab-label><ng-container i18n>Accession Stats</ng-container></ng-template>
                         <ng-template matTabContent>
                             <kusunoki2-google-mapchart
                                 [statsType]="'accessions'"
@@ -59,9 +57,7 @@
                         </ng-template>
                     </mat-tab>
                     <mat-tab *ngIf='appConfig.useAccessionset'>
-                        <ng-template mat-tab-label>
-                            AccessionSet Stats
-                        </ng-template>
+                        <ng-template mat-tab-label><ng-container i18n>AccessionSet Stats</ng-container></ng-template>
                         <ng-template matTabContent>
                             <kusunoki2-google-mapchart
                                 [statsType]="'accessionsets'"
@@ -76,7 +72,7 @@
     </mat-expansion-panel>
 
     <mat-expansion-panel *ngIf='pdcis|async'>
-        <mat-expansion-panel-header>Pdci Distribution</mat-expansion-panel-header>
+        <mat-expansion-panel-header i18n>Pdci Distribution</mat-expansion-panel-header>
             <mat-card fxFlex >
                 <kusunoki2-google-barchart [div_id]="'pdci_div'"
                                         [chartData]="pdcis|async"
@@ -85,7 +81,7 @@
             </mat-card>
         </mat-expansion-panel>
     <mat-expansion-panel expanded='true'>
-        <mat-expansion-panel-header>Taxonmy stats</mat-expansion-panel-header>
+        <mat-expansion-panel-header i18n>Taxonmy stats</mat-expansion-panel-header>
         <kusunoki2-taxon-stats
             [stats]="taxon_stats"
             [initialQueryParams]="{institute_code: instituteCode}">

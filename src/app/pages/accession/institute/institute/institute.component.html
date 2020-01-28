@@ -4,7 +4,7 @@
         <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center"
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex='20%'
-                [label]="'Institute Code'"
+                [label]="'Institute Code'|translate"
                 [value]="institute.instituteCode"
                 [config]="config.instituteCode"
                 [editMode]="editMode"
@@ -17,7 +17,7 @@
                 </span>
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
-                [label]="'Institute name'"
+                [label]="'Institute name'|translate"
                 [value]="institute.name"
                 [config]="config.name"
                 [editMode]="editMode"
@@ -30,7 +30,7 @@
             <kusunoki2-inline-edit
                 fxFlex
                 *ngIf="editMode || institute.address"
-                [label]="'Address'"
+                [label]="'Address'|translate"
                 [value]="institute.address"
                 [config]="config.address"
                 [editMode]="editMode"
@@ -40,7 +40,7 @@
             <kusunoki2-inline-edit
                 fxFlex
                 *ngIf="editMode || institute.city"
-                [label]="'City'"
+                [label]="'City'|translate"
                 [value]="institute.city"
                 [config]="config.city"
                 [editMode]="editMode"
@@ -50,7 +50,7 @@
             <kusunoki2-inline-edit
                 fxFlex
                 *ngIf="editMode || institute.zipcode"
-                [label]="'Zipcode'"
+                [label]="'Zipcode'|translate"
                 [value]="institute.zipcode"
                 [config]="config.zipcode"
                 [editMode]="editMode"
@@ -62,7 +62,7 @@
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
                 *ngIf="editMode || institute.phone"
-                [label]="'Phone'"
+                [label]="'Phone'|translate"
                 [value]="institute.phone"
                 [config]="config.phone"
                 [editMode]="editMode"
@@ -71,7 +71,7 @@
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
                 *ngIf="editMode || institute.email"
-                [label]="'Email'"
+                [label]="'Email'|translate"
                 [value]="institute.email"
                 [config]="config.email"
                 [editMode]="editMode"
@@ -80,7 +80,7 @@
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
                 *ngIf="editMode || institute.url"
-                [label]="'Url'"
+                [label]="'Url'|translate"
                 [value]="institute.url"
                 [config]="config.url"
                 [editMode]="editMode"
@@ -94,7 +94,7 @@
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
             *ngIf="editMode || institute.manager"
-                [label]="'Manager'"
+                [label]="'Manager'|translate"
                 [value]="institute.manager"
                 [config]="config.manager"
                 [editMode]="editMode"

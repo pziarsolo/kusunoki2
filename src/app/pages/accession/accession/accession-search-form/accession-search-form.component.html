@@ -1,10 +1,10 @@
 <mat-card style='margin:8px;'>
-    <mat-card-title color='accent'>Accession Search </mat-card-title>
+    <mat-card-title color='accent' i18n>Accession Search </mat-card-title>
     <mat-card-content>
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
                 <mat-form-field fxFlex>
-                    <mat-label>Institute</mat-label>
+                    <mat-label i18n>Institute</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.institute_code"
                             (ngModelChange) = "suggestedInstitutes = filterInstitute(searchParams.institute_code)"
                             [matAutocomplete]="instituteAuto"
@@ -17,7 +17,7 @@
                     </mat-autocomplete>
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <mat-label>Number</mat-label>
+                    <mat-label i18n>Number</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.number_contains"
                             (ngModelChange) = "suggestedAccessions = filterNumber(searchParams.number_contains)"
                             [matAutocomplete]="number" name="number_contains">
@@ -31,7 +31,7 @@
             </div>
             <div fxLayout='row' fxLayoutGap='5px'>
                 <mat-form-field fxFlex>
-                    <mat-label>Country</mat-label>
+                    <mat-label i18n>Country</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.country"
                             (ngModelChange) = "suggestedCountries = filterCountry(searchParams.country)"
                             [matAutocomplete]="countryAuto"
@@ -43,8 +43,8 @@
                     </mat-autocomplete>
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <mat-label>Location</mat-label>
-                    <mat-hint>State, province, municiality, site...</mat-hint>
+                    <mat-label i18n>Location</mat-label>
+                    <mat-hint i18n>State, province, municiality, site...</mat-hint>
                     <input type="text" matInput [(ngModel)]='searchParams.site' name='site'>
                 </mat-form-field>
             </div>
@@ -62,24 +62,24 @@
                 </mat-form-field>
 
                 <mat-form-field fxFlex >
-                    <mat-label>Biological status</mat-label>
+                    <mat-label i18n>Biological status</mat-label>
                     <mat-select [(ngModel)]="searchParams.biological_status"
                                 name="biological_status">
                         <mat-option value='null'></mat-option>
                         <mat-option *ngFor="let bio_status of biologicalStatus"
                             [value]="bio_status.code">
-                            ({{bio_status.code}}) {{bio_status.name}}
+                            ({{bio_status.code}}) {{bio_status.name|translate}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div fxLayout='row' fxLayoutGap='5px' *ngIf="(userToken|async)?.is_staff">
                 <mat-form-field fxFlex>
-                    <mat-label>Filter by data visivility</mat-label>
+                    <mat-label i18n>Filter by data visivility</mat-label>
                     <mat-select [(value)]=searchParams.is_public>
-                        <mat-option value="">No filter</mat-option>
-                        <mat-option value="true">Only public data</mat-option>
-                        <mat-option value="false">Only private data</mat-option>
+                        <mat-option value="" i18n>No filter</mat-option>
+                        <mat-option value="true" i18n>Only public data</mat-option>
+                        <mat-option value="false" i18n>Only private data</mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -88,12 +88,12 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title fxLayout='row' fxLayoutAlign="start center">
                         <mat-icon>{{icon  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
-                        <span class='key'>Add characterization criteria</span>
+                        <span class='key' i18n>Add characterization criteria</span>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div fxLayout='column' style='margin-left:20px'>
                     <mat-form-field fxFlex>
-                        <mat-label>Study</mat-label>
+                        <mat-label i18n>Study</mat-label>
                         <input type="text" matInput [(ngModel)]="searchParams.study"
                                 (ngModelChange) = "suggestedStudies = filterStudies(searchParams.study)"
                                 [matAutocomplete]="studyAuto"
@@ -104,7 +104,7 @@
                             </mat-option>
                         </mat-autocomplete>
                     </mat-form-field>
-                    <h4>Filter by observation values</h4>
+                    <h4 i18n>Filter by observation values</h4>
                     <kusunoki2-accession-search-by-observations-form #observation_filters>
                     </kusunoki2-accession-search-by-observations-form>
                 </div>
@@ -132,8 +132,8 @@
                     </kusunoki2-accession-search-by-observations-form>
                 </div>
             </div> -->
-            <button mat-raised-button [disabled]="!observation_filters.allInputAreValid" color='accent' type="submit" (click)="doSubmit()" >Search</button>
-            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="resetForm()" >Clear</button>
+            <button mat-raised-button [disabled]="!observation_filters.allInputAreValid" color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>
+            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="resetForm()" i18n>Clear</button>
         </form>
         <!-- <pre>{{searchParams | json}}</pre> -->
     </mat-card-content>

@@ -1,22 +1,22 @@
-<h3>Stats by {{entityType}}</h3>
+<h3 i18n>Stats by {{entityType}}</h3>
 <mat-progress-bar *ngIf="gettingStats" mode="indeterminate"></mat-progress-bar>
 
 <div *ngIf="ranksInStats.length > 0 && rankStats && rankStatsBar">
 
     <mat-tab-group (selectedTabChange)="tabChanged($event)">
         <mat-tab *ngFor="let rank of ranksInStats; index as i">
-            <ng-template mat-tab-label> {{rank |titlecase}}</ng-template>
+            <ng-template mat-tab-label> {{rank |translate| titlecase}}</ng-template>
             <div fxLayout='row' fxLayoutGap='8px' fxLayout.xs='column'>
                 <mat-card fxFlex='50%'>
                     <table style='width:100%;' matSort mat-table [dataSource]='rankStats[rank]'>
                         <ng-container matColumnDef="taxon_name">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Taxon </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Taxon</th>
                             <td mat-cell *matCellDef="let item">{{item.taxon_name}}</td>
                         </ng-container>
                         <ng-container matColumnDef="counts">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                <span *ngIf="entityType === 'accession'">Num. Accessions </span>
-                                <span *ngIf="entityType === 'accessionset'">Num. Accessionsets </span>
+                                <span *ngIf="entityType === 'accession'" i18n>Num. Accessions</span>
+                                <span *ngIf="entityType === 'accessionset'" i18n>Num. Accessionsets</span>
                             </th>
                             <td mat-cell *matCellDef="let item">
                                 <a *ngIf="entityType === 'accession'"

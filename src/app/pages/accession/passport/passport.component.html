@@ -1,15 +1,15 @@
 <div *ngIf='editMode'>
     <div fxLayoutAlign="start center">
-        <span fxFlex='60pt'class='key'>Passport Id</span>
+        <span fxFlex='60pt'class='key' i18n>Passport Id</span>
         <kusunoki2-inline-auto-institute fxFlex style="width:'100%"
-                    [label]="'Institute code'"
+                    [label]="'Institute Code'|translate"
                     [value]="passport.germplasmNumber.instituteCode"
                     [config]="childrenConfig.instituteCode"
                     [editMode]="editMode"
                     (validationStateEvent)="checkFormValid($event)">
         </kusunoki2-inline-auto-institute>
         <kusunoki2-inline-edit fxFlex
-                [label]="'Germplasm number'"
+                [label]="'Germplasm Number'|translate"
                 [value]="passport.germplasmNumber.germplasmNumber"
                 [config]="childrenConfig.germplasmNumber"
                 [editMode]="editMode"
@@ -21,11 +21,11 @@
 <div fxLayout='row' fxLayout.xs='column' fxLayoutGap="20px" >
     <div fxLayout='column' fxLayoutGap="10px" fxFlex='50%'>
         <div *ngIf='editMode || passport.taxonomy.hasData || passport.commonCropName'>
-            <h2>Taxonomy</h2>
+            <h2 i18n>Taxonomy</h2>
             <div fxLayout='column'>
                 <kusunoki2-inline-edit fxFlex='grow'
                     *ngIf="editMode || passport.commonCropName"
-                    [label]="'Crop name'"
+                    [label]="'Crop name'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['commonCropName']"
                     [value]="passport.commonCropName"
@@ -42,7 +42,7 @@
                             fxLayoutAlign.xs='start start'
                             fxFlex>
                         <kusunoki2-inline-edit fxFlex
-                            [label]="rank"
+                            [label]="rank|translate"
                             [editMode]="editMode"
                             [config]="childrenConfig[rank + '_name']"
                             [value]="passport.taxonomy[rank]['name']"
@@ -51,7 +51,7 @@
                         </kusunoki2-inline-edit>
                         <kusunoki2-inline-edit fxFlex
                             *ngIf="editMode||passport.taxonomy[rank].author"
-                            [label]="'Author'"
+                            [label]="'Author'|translate"
                             [editMode]="editMode"
                             [config]="childrenConfig[rank +'_author']"
                             [value]="passport.taxonomy[rank]['author']"
@@ -63,21 +63,21 @@
             </div>
         </div>
         <div *ngIf='editMode || hasAdinitionalData()' >
-            <h2>Additional Descriptors</h2>
+            <h2 i18n>Additional Descriptors</h2>
             <div fxLayout='column' fxLayoutGap="5px">
                 <kusunoki2-inline-edit-select fxFlex='grow'
-                    [label]="'Biological status'"
+                    [label]="'Biological status'|translate"
                     *ngIf="editMode || passport.biologicalStatus"
                     [editMode]="editMode"
                     [config]="childrenConfig['biologicalStatus']"
                     [choices]="biological_statuses"
                     [value]="passport.biologicalStatus"
                     (validationStateEvent)="checkFormValid($event)">
-                    <span class='label'>Biological Status:</span>
+                    <span class='label' i18n>Biological Status:</span>
                 </kusunoki2-inline-edit-select>
                 <kusunoki2-inline-edit fxFlex='grow'
                     *ngIf="editMode || passport.acquisitionDate"
-                    [label]="'Acquisition date'"
+                    [label]="'Acquisition date'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['acquisition_date']"
                     [value]="passport.acquisitionDate"
@@ -85,18 +85,18 @@
                     <!-- <span class='value'>{{input_form_data['acquisition_date']}}</span> -->
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit-select fxFlex='grow'
-                    [label]="'MLS status'"
+                    [label]="'MLS status'|translate"
                     *ngIf="editMode || passport.mlsStatus"
                     [editMode]="editMode"
                     [config]="childrenConfig['mlsStatus']"
                     [choices]="[{'code':'Y', name: 'Yes'}, {code: 'N', name: 'No'}]"
                     [value]="passport.mlsStatus"
                     (validationStateEvent)="checkFormValid($event)">
-                    <span class='label'>MLS Status:</span>
+                    <span class='label' i18n>MLS Status:</span>
                 </kusunoki2-inline-edit-select>
                 <kusunoki2-inline-edit fxFlex='grow'
                     *ngIf="editMode || passport.ancestry"
-                    [label]="'Ancestry (Pedigree)'"
+                    [label]="'Ancestry (Pedigree)'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['ancestry']"
                     [value]="passport.ancestry"
@@ -105,7 +105,7 @@
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit fxFlex='grow'
                     *ngIf="editMode || passport.remarks?.genebank_management"
-                    [label]="'Remarks'"
+                    [label]="'Remarks'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['remarks']"
                     [value]="passport.remarks?.genebank_management"
@@ -113,7 +113,7 @@
                     <span class='value'>{{passport.remarks?.genebank_management}}</span>
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-auto-institute fxFlex
-                        [label]="'Breeding institute'"
+                        [label]="'Breeding institute'|translate"
                         [value]="passport.breedingInstitute"
                         [config]="childrenConfig.breedingInstitute"
                         [editMode]="editMode"
@@ -122,11 +122,11 @@
             </div>
         </div>
         <div *ngIf='editMode || passport.dataSource.hasData'>
-            <h2>Data Source</h2>
+            <h2 i18n>Data Source</h2>
             <div fxLayout='row'>
                 <kusunoki2-inline-edit
                     *ngIf="editMode || passport.dataSource.code"
-                    [label]="'Data source'"
+                    [label]="'Data source'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['dataSourceCode']"
                     [value]="passport.dataSource.code"
@@ -135,7 +135,7 @@
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit
                     *ngIf="editMode || passport.dataSource.kind"
-                    [label]="'Data source kind'"
+                    [label]="'Data source kind'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['dataSourceKind']"
                     [value]="passport.dataSource.kind"
@@ -144,7 +144,7 @@
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit
                     *ngIf="editMode || passport.dataSource.retrievalDate"
-                    [label]="'Retrieval date'"
+                    [label]="'Retrieval date'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['dataSourceRetriavelDate']"
                     [value]="passport.dataSource.retrievalDate"
@@ -156,17 +156,17 @@
             </div>
         </div>
         <div *ngIf="editMode || passport.donor.hasData">
-            <h2>Donor Data</h2>
+            <h2 i18n>Donor Data</h2>
             <div fxLayout='row' fxLayoutGap="10px">
                     <kusunoki2-inline-auto-institute fxFlex
-                        [label]="'Donor institute'"
+                        [label]="'Donor institute'|translate"
                         [value]="passport.donor.instituteCode"
                         [config]="childrenConfig['donorInstitute']"
                         [editMode]="editMode"
                         (validationStateEvent)="checkFormValid($event)">
                     </kusunoki2-inline-auto-institute>
                     <kusunoki2-inline-edit
-                        [label]="'Donor number'"
+                        [label]="'Donor number'|translate"
                         [editMode]="editMode"
                         [config]="childrenConfig['donorNumber']"
                         [value]="passport.donor.germplasmNumber"
@@ -176,7 +176,7 @@
             </div>
         </div>
         <div *ngIf="editMode || passport.otherNumbers.length > 0">
-                <h2>Other Numbers</h2>
+                <h2 i18n>Other Numbers</h2>
                 <kusunoki2-other-numbers
                     [otherNumbers]="passport.otherNumbers"
                     [editMode]="editMode"
@@ -188,12 +188,12 @@
     </div>
     <div fxLayout='column' fxLayoutGap="20px" fxFlex='50%'>
         <div *ngIf='editMode || hasCollectionData()'>
-            <h2>Collecting Data</h2>
+            <h2 i18n>Collecting Data</h2>
             <div fxLayout='column'>
                 <div fxLayout='row' fxLayoutGap="10px" fxFlex>
                     <kusunoki2-inline-auto-institute fxFlex
                         *ngIf="editMode || passport.collectionNumber.instituteCode"
-                        [label]="'Collecting institute'"
+                        [label]="'Collecting institute'|translate"
                         [value]="passport.collectionNumber.instituteCode"
                         [config]="childrenConfig['collectingInstitute']"
                         [editMode]="editMode"
@@ -201,7 +201,7 @@
                     </kusunoki2-inline-auto-institute>
                     <kusunoki2-inline-edit fxFlex
                         *ngIf="editMode || passport.collectionNumber.fieldCollectionNumber"
-                        [label]="'Collection field number'"
+                        [label]="'Collection field number'|translate"
                         [editMode]="editMode"
                         [config]="childrenConfig['collectingFieldNumber']"
                         [value]="passport.collectionNumber.fieldCollectionNumber"
@@ -211,7 +211,7 @@
                 </div>
                 <kusunoki2-inline-edit fxFlex='grow'
                     *ngIf="editMode || passport.germplasmName"
-                    [label]="'Accession name'"
+                    [label]="'Accession name'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['germplasmName']"
                     [value]="passport.germplasmName"
@@ -220,7 +220,7 @@
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit-select fxFlex='grow'
                     *ngIf="editMode || passport.collectionSource"
-                    [label]="'Collection source (Habitat):'"
+                    [label]="'Collection source (Habitat):'|translate"
                     [editMode]="editMode"
                     [choices]="collection_sources"
                     [config]="childrenConfig['collectionSource']"
@@ -228,7 +228,7 @@
                     (validationStateEvent)="checkFormValid($event)">
                 </kusunoki2-inline-edit-select>
                 <kusunoki2-inline-edit
-                    [label]="'Collecting date'"
+                    [label]="'Collecting date'|translate"
                     [editMode]="editMode"
                     [config]="childrenConfig['collection_date']"
                     [value]="passport.collectionDate"
@@ -248,7 +248,7 @@
                     <kusunoki2-inline-edit
                         *ngIf="component_name !== 'country' && (editMode || (passport.collectionSite[component_name]))"
                         fxFlex='grow'
-                        [label]="component_name"
+                        [label]="component_name|translate"
                         [editMode]="editMode"
                         [config]="childrenConfig[component_name]"
                         [(value)]="passport.collectionSite[component_name]"

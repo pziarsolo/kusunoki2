@@ -14,12 +14,12 @@
 <div *ngIf='accession'>
     <mat-card >
         <mat-card-title>
-            Accession <span class='key' fxflex style='margin-left:5px;'> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span>
+            <ng-container i18n>Accession</ng-container> <span class='key' fxflex style='margin-left:5px;'> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span>
             <span fxFlex></span>
             <button mat-raised-button color='accent'
                     *ngIf='userCanEdit && !createMode'
                     [matMenuTriggerFor]="accessionActionMenu">
-                Actions
+                <ng-container i18n>Actions</ng-container>
             </button>
         </mat-card-title>
         <mat-card-content>
@@ -33,7 +33,7 @@
                         style='margin-bottom: 10px'
                         >
                         <kusunoki2-inline-auto-institute fxFlex style="width:100%;"
-                            [label]="'Institute Code'"
+                            [label]="'Institute Code'|translate"
                             [value]="accession.data.instituteCode"
                             [config]="config.institute"
                             [editMode]="editMode"
@@ -41,7 +41,7 @@
                         </kusunoki2-inline-auto-institute>
 
                         <kusunoki2-inline-edit fxFlex style="width:100%;"
-                            [label]="'Germplasm Number'"
+                            [label]="'Germplasm Number'|translate"
                             [value]="accession.data.germplasmNumber"
                             [config]="config.germplasmNumber"
                             [editMode]="editMode"
@@ -56,7 +56,7 @@
                         </kusunoki2-inline-edit>
 
                         <kusunoki2-inline-edit-select fxFlex style="width:100%;"
-                            [label]="'Conservation Status'"
+                            [label]="'Conservation Status'|translate"
                             [value]="accession.data.conservation_status"
                             [editMode]="editMode"
                             [choices]="conservation_statuses"
@@ -65,7 +65,7 @@
                             <span class='value'>{{accession.data.conservation_status}}</span>
                         </kusunoki2-inline-edit-select>
                         <kusunoki2-inline-edit fxFlex style="width:100%;"
-                            [label]="'Availability'"
+                            [label]="'Availability'|translate"
                             [value]="accession.data.is_available"
                             [editMode]="editMode"
                             [config]="config.is_available"
@@ -74,7 +74,7 @@
                     </div>
 
                     <div *ngIf='accessionsets'>
-                        <span style='margin-right: 5px;'>This accession belongs to this accesisionSets:</span>
+                        <span style='margin-right: 5px;' i18n>This accession belongs to this accesisionSets:</span>
                         <span *ngFor="let item of accessionsets; let $last=last">
                             <a [routerLink]="['/', appUrls.accessionsets, item]">{{item}}</a>
                             <span *ngIf="!$last; LastElem" class="list-format">,</span>
@@ -90,7 +90,7 @@
 
     <mat-accordion multi="true">
         <mat-expansion-panel [expanded]="true">
-            <mat-expansion-panel-header><h2>Passport Data</h2></mat-expansion-panel-header>
+            <mat-expansion-panel-header><h2 i18n>Passport Data</h2></mat-expansion-panel-header>
             <kusunoki2-passport
                 [passport]="accession.data.passports[0]"
                 [editMode]='editMode'
@@ -98,14 +98,14 @@
                 (validationStateEvent)=checkFormValid($event)>
             </kusunoki2-passport>
             <mat-action-row *ngIf='editMode || createMode'>
-                <button style='margin-right: 5px' *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
-                <button style='margin-right: 5px' *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="updateAccession()">Update</button>
-                <button style='margin-right: 5px' *ngIf='createMode && editMode' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="createAccession()">Create</button>
+                <button style='margin-right: 5px' *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()" i18n>Cancel</button>
+                <button style='margin-right: 5px' *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="updateAccession()" i18n>Update</button>
+                <button style='margin-right: 5px' *ngIf='createMode && editMode' [disabled]='!allInputAreValid' mat-raised-button color='accent' (click)="createAccession()" i18n>Create</button>
             </mat-action-row>
         </mat-expansion-panel>
         <div *ngIf='!editMode && accession && accession.data.germplasmNumber && accession.data.instituteCode'>
             <mat-expansion-panel [fxShow]='showImages'>
-                <mat-expansion-panel-header><h3>Images</h3></mat-expansion-panel-header>
+                <mat-expansion-panel-header><h3 i18n>Images</h3></mat-expansion-panel-header>
                 <div fxFlex></div>
                 <kusunoki2-observation-image-gallery fxFlex
                     (imagesFound)="showImages=$event"
@@ -115,7 +115,7 @@
                 <div fxFlex></div>
             </mat-expansion-panel>
             <mat-expansion-panel [fxShow]="showObservations">
-                <mat-expansion-panel-header><h3>Observations of this accession</h3></mat-expansion-panel-header>
+                <mat-expansion-panel-header><h3 i18n>Observations of this accession</h3></mat-expansion-panel-header>
                 <kusunoki2-observation-table
                     (searchFinished)="showObservations= $event > 0 ? true : false"
                     [searchParams]="{'accession_number': accession.data.germplasmNumber,
@@ -123,7 +123,7 @@
                 </kusunoki2-observation-table>
             </mat-expansion-panel>
             <mat-expansion-panel [fxShow]="showStudies">
-                <mat-expansion-panel-header><h3>Studies where accession has been used</h3></mat-expansion-panel-header>
+                <mat-expansion-panel-header><h3 i18n>Studies where accession has been used</h3></mat-expansion-panel-header>
                 <kusunoki2-study-table
                     (searchFinished)="showStudies= $event > 0 ? true : false"
                     [searchParams]="{'germplasm_number':  accession.data.germplasmNumber,
@@ -134,11 +134,11 @@
     </mat-accordion>
 </div>
 <mat-menu #accessionActionMenu="matMenu">
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon><ng-container i18n>Edit</ng-container></button>
         <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
             <mat-icon *ngIf='!accession.metadata.is_public'>public</mat-icon>
             <mat-icon *ngIf='accession.metadata.is_public' color='warn'>public</mat-icon>
-            Make <span *ngIf='!accession.metadata.is_public'>Public</span><span *ngIf='accession.metadata.is_public'>Private</span>
+            <ng-container i18n>Make </ng-container><span *ngIf='!accession.metadata.is_public' i18n>Public</span><span *ngIf='accession.metadata.is_public' i18n>Private</span>
         </button>
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteAccession()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteAccession()"><mat-icon color='warn'>delete</mat-icon><ng-container i18n>Delete</ng-container></button>
 </mat-menu>

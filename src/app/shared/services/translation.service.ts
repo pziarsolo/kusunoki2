@@ -19,7 +19,6 @@ export class TranslationService {
 
         this.http.get(urlToLanguageFile)
             .subscribe(response => {
-                console.log(response);
                 this.dictionary = response;
             });
     }

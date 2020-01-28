@@ -7,12 +7,12 @@
         (validationStateEvent)="checkFormValid($event)">
     </kusunoki2-inline-auto-institute>
     <kusunoki2-inline-edit fxFlex
-        [label]="'Germplasm number'"
+        [label]="'Germplasm Number'|translate"
         [editMode]="editMode"
         [config]="childrenConfig['germplasmNumber']"
         [value]="input_form_data['germplasmNumber']"
         (validationStateEvent)="checkFormValid($event)">
-        <span class='label'>Accession Number</span>
+        <span class='label' i18n>Accession Number</span>
         <span class='value'>
             <a [routerLink]="['/', appUrls.accessions,
                               input_form_data.instituteCode,

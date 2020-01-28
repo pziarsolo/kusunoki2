@@ -1,6 +1,6 @@
 <form [formGroup]="form" [hidden]='hideForm()'>
     <mat-form-field style='width: 100%;' >
-        <mat-placeholder> Country </mat-placeholder>
+        <mat-placeholder i18n>Country</mat-placeholder>
         <input matInput type="text" [hidden]="!config.is_editable ||(config.is_editable && !editMode)"
             formControlName="inputControl"
             #input_control [matAutocomplete]="autocomplete"
@@ -23,7 +23,7 @@
             <mat-icon>close</mat-icon>
         </button>
         <mat-error *ngIf="inputControl.errors?.required">
-            This value is required
+            <ng-container i18n>This value is required</ng-container>
         </mat-error>
         <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]='display'>
             <mat-option *ngFor="let country of suggestions |async "
