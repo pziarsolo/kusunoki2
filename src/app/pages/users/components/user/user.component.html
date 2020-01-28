@@ -2,7 +2,7 @@
     <div fxLayout='row' fxLayoutGap='10px'>
         <div fxFlex fxLayout='column' fxLayoutGap='10px' fxLayoutAlign='center' fxLayout.xs="column">
             <kusunoki2-inline-edit fxFlex='grow' *ngFor="let component_name of children_config|keys"
-                                [label]="component_name"
+                                [label]="component_name|translate"
                                 [editMode]="edit_mode"
                                 [config]="children_config[component_name]"
                                 [value]="input_form_data[component_name]"
@@ -30,24 +30,24 @@
     </div>
     <mat-card-actions *ngIf='userCanEdit'>
         <button mat-button *ngIf="!edit_mode && !create_mode" color='primary' (click)="turnToeditMode()">
-            <mat-icon>edit</mat-icon>Modify User
+            <mat-icon>edit</mat-icon><ng-container i18n>Update User</ng-container>
         </button>
         <button mat-button *ngIf="edit_mode" color='primary' (click)="formReset()" >
-            <mat-icon>restore</mat-icon>Cancel
+            <mat-icon>restore</mat-icon><ng-container i18n>Cancel</ng-container>
         </button>
         <button mat-button [disabled]="!form_valid" *ngIf='edit_mode && !create_mode' color='accent' (click)="doUpdate(); groupsComponent.edit_mode=false">
-            <mat-icon>done</mat-icon>Update User
+            <mat-icon>done</mat-icon><ng-container i18n>Update User</ng-container>
         </button>
         <button mat-button [disabled]="!form_valid || !passwordForm.form.valid" *ngIf='create_mode' color='accent' (click)="doCreate(); groupsComponent.edit_mode=false">
-            <mat-icon>done</mat-icon>Create User
+            <mat-icon>done</mat-icon><ng-container i18n>Create User</ng-container>
         </button>
 
         <button mat-button color='warn' *ngIf="!create_mode" (click)=doChangePassword()>
-            <mat-icon>edit</mat-icon>Change Password
+            <mat-icon>edit</mat-icon><ng-container i18n>Change Password</ng-container>
         </button>
         <div fxFlex></div>
         <button mat-button color='warn' *ngIf="userCanRemove && (!create_mode && !edit_mode)" color='warn' (click)=doRemove()>
-            <mat-icon>delete</mat-icon>Remove User
+            <mat-icon>delete</mat-icon><ng-container i18n>Remove User</ng-container>
         </button>
     </mat-card-actions>
 </mat-card>

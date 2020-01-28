@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "bundle-report": "webpack-bundle-analyzer dist/kusunoki2/stats.json"
+    "bundle-report": "webpack-bundle-analyzer dist/kusunoki2/stats.json",
+    "extract-i18n": "ng xi18n kusunoki2 --i18n-format xlf --output-path i18n --i18n-locale en && ng run kusunoki2:xliffmerge",
+    "start-es": "ng serve --configuration=es"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +27,7 @@
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/platform-server": "^8.2.14",
     "@angular/router": "^8.2.14",
+    "@ngx-i18nsupport/tooling": "^8.0.3",
     "@types/google.visualization": "0.0.46",
     "@types/googlemaps": "^3.37.0",
     "acorn": "^6.2.1",
@@ -43,6 +46,7 @@
     "@angular/cli": "^8.3.21",
     "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "^8.2.14",
+    "@ngx-i18nsupport/ngx-i18nsupport": "^1.1.6",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/leaflet": "^1.4.7",

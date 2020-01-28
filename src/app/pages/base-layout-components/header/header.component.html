@@ -9,30 +9,31 @@
                 <mat-icon aria-label="Side nav toggle icon">{{menuIcon}}</mat-icon>
             </button> -->
             <button mat-button [routerLink]="['/']" >
-                <mat-icon>home</mat-icon>
-                <span>Home</span>
+                <mat-icon >home</mat-icon>
+                <ng-container i18n>Home</ng-container>
             </button>
             <button fxShow fxHide.gt-xs mat-button [matMenuTriggerFor]="rootMenu">
                 <mat-icon>search</mat-icon>
-                <span>Menu</span>
+                <ng-container i18n>Menu</ng-container>
             </button>
-            <button mat-button [matMenuTriggerFor]="searchmenu" fxHide fxShow.gt-xs mat-button>
+            <button mat-button [matMenuTriggerFor]="searchmenu" fxHide fxShow.gt-xs>
                 <mat-icon>search</mat-icon>
-                Search
+                <ng-container i18n>Search</ng-container>
             </button>
-            <button mat-button [matMenuTriggerFor]="statsmenu" fxHide fxShow.gt-xs mat-button>
+            <button mat-button [matMenuTriggerFor]="statsmenu" fxHide fxShow.gt-xs>
                 <mat-icon>show_chart</mat-icon>
-                Stats
+                <ng-container i18n>Stats</ng-container>
+
             </button>
             <button *ngIf="(userToken|async)?.isAuthenticated"
                     mat-button [matMenuTriggerFor]="addmenu" fxHide fxShow.gt-xs mat-button>
                 <mat-icon>add</mat-icon>
-                Add
+                <ng-container i18n>Add</ng-container>
             </button>
             <button *ngIf="(userToken|async)?.is_staff"
                     mat-button [matMenuTriggerFor]="adminmenu" fxHide fxShow.gt-xs mat-button>
                 <mat-icon>settings</mat-icon>
-                Admin
+                <ng-container i18n>Admin</ng-container>
             </button>
             <button mat-button [matMenuTriggerFor]="apimenu" fxHide fxShow.gt-xs mat-button>
                 <mat-icon>menu</mat-icon>
@@ -46,23 +47,24 @@
     <mat-menu #rootMenu="matMenu" fxLayout="row" yPosition="above">
         <a mat-menu-item [matMenuTriggerFor]="searchmenu">
             <mat-icon>search</mat-icon>
-            Search
+            <ng-container i18n>Search</ng-container>
         </a>
         <a mat-menu-item [matMenuTriggerFor]="statsmenu">
             <mat-icon>show_chart</mat-icon>
-            Stats
+            <ng-container i18n>Stats</ng-container>
         </a>
         <a mat-menu-item [matMenuTriggerFor]="phenotypingMenu">
             <mat-icon>filter_vintage</mat-icon>
-            Characterization
+            <ng-container i18n>Characterization</ng-container>
+
         </a>
         <a *ngIf="(userToken|async)?.isAuthenticated" mat-menu-item [matMenuTriggerFor]="addmenu">
             <mat-icon>show_chart</mat-icon>
-            Add
+            <ng-container i18n>Add</ng-container>
         </a>
         <a *ngIf="(userToken|async)?.isAuthenticated" mat-menu-item [matMenuTriggerFor]="adminmenu">
             <mat-icon>settings</mat-icon>
-            admin
+            <ng-container i18n>Admin</ng-container>
         </a>
         <a mat-menu-item [matMenuTriggerFor]="apimenu">
             <mat-icon>menu</mat-icon>
@@ -75,32 +77,32 @@
 <mat-menu #searchmenu="matMenu" yPosition="above">
     <a [routerLink]="['/', appUrls.accessions]" mat-menu-item>
         <!-- <mat-icon>chevron_right</mat-icon> -->
-        <span>Accession</span>
+        <ng-container i18n>Accession</ng-container>
     </a>
     <a [routerLink]="['/', appUrls.accessionsets]" mat-menu-item *ngIf='appConfig.useAccessionset'>
         <!-- <mat-icon>chevron_right</mat-icon> -->
-        <span>AccessionSet</span>
+        <ng-container i18n>AccessionSet</ng-container>
     </a>
     <button mat-menu-item [matMenuTriggerFor]="phenotypingMenu">
-        Characterization
+        <ng-container i18n>Characterization</ng-container>
     </button>
 </mat-menu>
 
 <mat-menu #statsmenu="matMenu" yPosition="above">
     <a [routerLink]="['/', appUrls.institutes]" mat-menu-item>
         <!-- <mat-icon>dialpad</mat-icon> -->
-        <span>Institute</span>
+        <ng-container i18n>Institute</ng-container>
     </a>
     <!-- <a [routerLink]="['/', appUrls.data_sources]" mat-menu-item >
         <span>Data Source</span>
     </a> -->
     <a [routerLink]="['/', appUrls.countries]" mat-menu-item>
         <!-- <mat-icon>dialpad</mat-icon> -->
-        <span>Countries</span>
+        <ng-container i18n>Countries</ng-container>
     </a>
     <a [routerLink]="'/' + appUrls.taxonomy_stats" mat-menu-item>
         <!-- <mat-icon>dialpad</mat-icon> -->
-        <span>Taxa</span>
+        <ng-container i18n>Taxa</ng-container>
     </a>
     <!-- <a href='' mat-menu-item>
         <mat-icon>dialpad</mat-icon>
@@ -110,52 +112,52 @@
 <mat-menu #apimenu="matMenu" yPosition="above">
     <a [href]='apiUrl' mat-menu-item  target='_blank'>
         <mat-icon>computer</mat-icon>
-        <span>Browse</span>
+        <span i18n>Browse</span>
     </a>
     <a [href]='apiDocs' mat-menu-item  target='_blank'>
         <mat-icon>school</mat-icon>
-        <span>Docs</span>
+        <span i18n>Docs</span>
     </a>
 </mat-menu>
 <mat-menu #adminmenu="matMenu" >
-    <a mat-menu-item [routerLink]="['/', appUrls.tasks]"> Tasks </a>
-    <a mat-menu-item *ngIf="(userToken|async)?.is_staff" [routerLink]="['/', appUrls.users]">Users</a>
+    <a mat-menu-item [routerLink]="['/', appUrls.tasks]"> <ng-container i18n>Tasks</ng-container> </a>
+    <a mat-menu-item *ngIf="(userToken|async)?.is_staff" [routerLink]="['/', appUrls.users]"><ng-container i18n>Users</ng-container></a>
 </mat-menu>
 <mat-menu #phenotypingMenu="matMenu" >
-    <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.studies]">Studies</a>
-    <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.observations]">Observations</a>
-    <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.observation_variables]">Trait methodology</a>
+    <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.studies]"><ng-container i18n>Studies</ng-container></a>
+    <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.observations]"><ng-container i18n>Observations</ng-container></a>
+    <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.observation_variables]"><ng-container i18n>Trait methodology</ng-container></a>
 </mat-menu>
 
 <mat-menu #addmenu="matMenu" >
-    <button *ngIf="(userToken|async)?.is_staff" mat-menu-item [matMenuTriggerFor]="addMenuInstitute">Institute</button>
-    <button mat-menu-item [matMenuTriggerFor]="addMenuAccession">Accession</button>
-    <button mat-menu-item [matMenuTriggerFor]="addMenuAccessionSet">AccessionSet</button>
-    <button mat-menu-item [matMenuTriggerFor]="addMenuPhenotype">Characterization</button>
+    <button *ngIf="(userToken|async)?.is_staff" mat-menu-item [matMenuTriggerFor]="addMenuInstitute"><ng-container i18n>Institute</ng-container></button>
+    <button mat-menu-item [matMenuTriggerFor]="addMenuAccession"><ng-container i18n>Accession</ng-container></button>
+    <button mat-menu-item [matMenuTriggerFor]="addMenuAccessionSet"><ng-container i18n>AccessionSet</ng-container></button>
+    <button mat-menu-item [matMenuTriggerFor]="addMenuPhenotype"><ng-container i18n>Characterization</ng-container></button>
 </mat-menu>
 
 <mat-menu #addMenuInstitute="matMenu" >
-    <a  mat-menu-item [routerLink]="['/', appUrls.institutes, 'create']">Add one</a>
-    <a mat-menu-item  [routerLink]="['/', appUrls.institutes, 'bulk_create']">Bulk create...</a>
+    <a  mat-menu-item [routerLink]="['/', appUrls.institutes, 'create']"><ng-container i18n>Add one</ng-container></a>
+    <a mat-menu-item  [routerLink]="['/', appUrls.institutes, 'bulk_create']"><ng-container i18n>Bulk create...</ng-container></a>
 </mat-menu>
 
 <mat-menu #addMenuAccession="matMenu" >
-    <a mat-menu-item [routerLink]="['/', appUrls.accessions, 'create']">Add one</a>
-    <button mat-menu-item  [routerLink]="['/', appUrls.accessions, 'bulk_create']">Bulk create...</button>
+    <a mat-menu-item [routerLink]="['/', appUrls.accessions, 'create']"><ng-container i18n>Add one</ng-container></a>
+    <button mat-menu-item  [routerLink]="['/', appUrls.accessions, 'bulk_create']"><ng-container i18n>Bulk create...</ng-container></button>
 </mat-menu>
 
 <mat-menu #addMenuAccessionSet="matMenu">
-    <a mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']" *ngIf='appConfig.useAccessionset'>Bulk create...</a>
+    <a mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']" *ngIf='appConfig.useAccessionset'><ng-container i18n>Bulk create...</ng-container></a>
 </mat-menu>
 
 <mat-menu #addMenuPhenotype="matMenu">
-    <a mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.studies, 'create']">Study</a>
-    <a mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observation_variables, 'create']">Trait methodologies</a>
-    <button mat-menu-item [matMenuTriggerFor]="addBulkMenuPhenotype">Bulk Upoads</button>
+    <a mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.studies, 'create']"><ng-container i18n>Study</ng-container></a>
+    <a mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observation_variables, 'create']"><ng-container i18n>Trait methodologies</ng-container></a>
+    <button mat-menu-item [matMenuTriggerFor]="addBulkMenuPhenotype"><ng-container i18n>Bulk Upoads</ng-container></button>
 </mat-menu>
 <mat-menu #addBulkMenuPhenotype="matMenu">
-    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.studies, 'bulk_create']">Studies</button>
-    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.traits, 'bulk_create']">Traits</button>
-    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observations, 'bulk_create']">Observations</button>
-    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observation_images, 'bulk_create']">Observation images</button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.studies, 'bulk_create']"><ng-container i18n>Studies</ng-container></button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.traits, 'bulk_create']"><ng-container i18n>Traits</ng-container></button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observations, 'bulk_create']"><ng-container i18n>Observations</ng-container></button>
+    <button mat-menu-item  [routerLink]="['/', appUrls.phenotypeSubDir, appUrls.phenotype.observation_images, 'bulk_create']"><ng-container i18n>Observation images</ng-container></button>
 </mat-menu>

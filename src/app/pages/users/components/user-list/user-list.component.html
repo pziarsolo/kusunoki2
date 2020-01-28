@@ -1,24 +1,24 @@
 <mat-card>
-    <mat-card-title>Users</mat-card-title>
+    <mat-card-title i18n>Users</mat-card-title>
     <mat-card-content>
         <table mat-table matSort #table [dataSource]='users' class='datatable mat-elevation-z2'>
             <ng-container matColumnDef="username">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Username </th>
                 <td mat-cell *matCellDef="let users">
                     <a [routerLink]="['/', appUrls.users, users.username]">{{users.username}}</a>
                 </td>
                 </ng-container>
 
             <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Email </th>
                 <td mat-cell *matCellDef="let users"> {{users.email}} </td>
             </ng-container>
             <ng-container matColumnDef="first_name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> First Name </th>
                 <td mat-cell *matCellDef="let users"> {{users.first_name}} </td>
             </ng-container>
             <ng-container matColumnDef="last_name">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Last Name </th>
                     <td mat-cell *matCellDef="let users"> {{users.last_name}} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
@@ -26,13 +26,13 @@
         </table>
         <a *ngIf="currentUserService.currentUserSubject.value.is_staff"
             mat-raised-button style="float:left;margin-top:15px;"
-            [routerLink]="['/', appUrls.users, 'create']" >New User</a>
+            [routerLink]="['/', appUrls.users, 'create']" i18n>New User</a>
 
         <button *ngIf="currentUserService.currentUserSubject.value.is_staff"
             mat-raised-button style="float:left;margin-top:15px;margin-left: 5px"
-            (click)='addGroupDialog()' >New Group</button>
+            (click)='addGroupDialog()' i18n>New Group</button>
 
-        <mat-paginator #paginator
+        <mat-paginator #paginator i18n
                         [length]="dataTable.data.length"
                         [pageIndex]="0"
                         [pageSize]="25"

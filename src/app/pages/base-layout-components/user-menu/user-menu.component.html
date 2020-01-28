@@ -2,7 +2,8 @@
     <a *ngIf='!userToken?.isAuthenticated'
         mat-raised-button
         color='accent'
-        [routerLink]="['/', 'login']">
+        [routerLink]="['/', 'login']"
+        i18n>
         Login
     </a>
 
@@ -11,7 +12,7 @@
     </button>
 
     <mat-menu #usermenu="matMenu" yPosition="above">
-        <button mat-menu-item [routerLink]="['/', appUrls.users, userToken.username]" >Hello, {{(user|async)?.username}} </button>
-        <button mat-menu-item (click)="logout()">Logout </button>
+        <button mat-menu-item [routerLink]="['/', appUrls.users, userToken.username]" i18n>Hello, {{(user|async)?.username}} </button>
+        <button mat-menu-item (click)="logout()" i18n>Logout </button>
     </mat-menu>
 </div>

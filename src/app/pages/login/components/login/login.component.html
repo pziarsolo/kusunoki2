@@ -1,19 +1,19 @@
 <div class='centered'>
     <mat-card>
-        <mat-card-title>Login</mat-card-title>
+        <mat-card-title i18n="login component| header title">Login</mat-card-title>
         <mat-card-content>
             <form [formGroup]="login_form" (ngSubmit)="onLogin()">
                 <span class='key' *ngIf='errorMsg'>{{errorMsg}}</span>
                 <div xfLayout='column' xfLayoutGap='20px' xfLayoutAlign='center center'>
                     <div xfFlex>
                         <mat-form-field color='accent'>
-                            <mat-placeholder>Username</mat-placeholder>
+                            <mat-placeholder i18n>Username</mat-placeholder>
                             <input  matInput type="text" formControlName="username"/>
                         </mat-form-field>
                     </div>
                     <div xfFlex>
                         <mat-form-field color='accent'>
-                            <mat-placeholder>Enter your password</mat-placeholder>
+                            <mat-placeholder i18n>Enter your password</mat-placeholder>
                             <input matInput [type]="hide ? 'password' : 'text'"
                                    formControlName="password"
                                    appearance='warn' />
@@ -23,7 +23,7 @@
                         </mat-form-field>
                     </div>
                     <div xfFlex>
-                        <button mat-raised-button color='accent' type='submit' >Login</button>
+                        <button mat-raised-button color='accent' type='submit' i18n="@@loginButton">Login</button>
                     </div>
 
                 </div>

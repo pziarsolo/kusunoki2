@@ -10,6 +10,7 @@ import { MomentsMCPDPipe } from './momentsMCPD.pipe';
 import { ImproveTaskNamePipe } from './improveTaskName.pipe';
 import { ShowDescriptiveConStatus } from './showDesccriptiveConStatus.pipe';
 import { SafeHtmlPipe } from './safeHtml.pipe';
+import { TranslatePipe } from './translate.pipe';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { SafeHtmlPipe } from './safeHtml.pipe';
         MomentsMCPDPipe,
         ImproveTaskNamePipe,
         ShowDescriptiveConStatus,
-        SafeHtmlPipe
+        SafeHtmlPipe,
+        TranslatePipe
     ],
     exports: [
         ContainsPipe,
@@ -35,7 +37,8 @@ import { SafeHtmlPipe } from './safeHtml.pipe';
         MomentsMCPDPipe,
         ImproveTaskNamePipe,
         ShowDescriptiveConStatus,
-        SafeHtmlPipe
+        SafeHtmlPipe,
+        TranslatePipe
     ]
 })
 export class PipesModule { }

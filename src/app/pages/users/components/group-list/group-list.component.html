@@ -1,5 +1,5 @@
 <mat-card *ngIf="groups|| edit_mode">
-    <mat-card-subtitle>Groups</mat-card-subtitle>
+    <mat-card-subtitle i18n>Groups</mat-card-subtitle>
 
     <mat-list>
         <mat-list-item *ngFor="let group of groups">
@@ -14,7 +14,7 @@
         <mat-list-item *ngIf='edit_mode'>
             <mat-form-field>
                 <mat-select placeholder='Add group...' [(ngModel)]="selectedValue">
-                    <mat-option (click)='createGroup()'>Create new Group...</mat-option>
+                    <mat-option (click)='createGroup()'><ng-container i18n> new Group...</ng-container></mat-option>
                     <mat-option *ngFor='let group of allGroups|async' (click)="selectedValue  = null; addGroupToList(group.name)" value='group.name'>{{group.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
