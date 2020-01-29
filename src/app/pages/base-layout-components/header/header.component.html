@@ -40,6 +40,11 @@
                 API
             </button>
             <span fxFlex='1 1 auto'></span>
+
+            <button mat-button (click)="switchLanguage()" *ngIf="alternativeLanguages">
+                <span *ngIf="language === 'en'">Castellano</span>
+                <span *ngIf="language === 'es'">English</span>
+            </button>
             <kusunoki2-user-menu></kusunoki2-user-menu>
         </div>
         <div fxFlex></div>
@@ -132,7 +137,7 @@
 <mat-menu #addmenu="matMenu" >
     <button *ngIf="(userToken|async)?.is_staff" mat-menu-item [matMenuTriggerFor]="addMenuInstitute"><ng-container i18n>Institute</ng-container></button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuAccession"><ng-container i18n>Accession</ng-container></button>
-    <button mat-menu-item [matMenuTriggerFor]="addMenuAccessionSet"><ng-container i18n>AccessionSet</ng-container></button>
+    <button mat-menu-item [matMenuTriggerFor]="addMenuAccessionSet" *ngIf='appConfig.useAccessionset'><ng-container i18n>AccessionSet</ng-container></button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuPhenotype"><ng-container i18n>Characterization</ng-container></button>
 </mat-menu>
 

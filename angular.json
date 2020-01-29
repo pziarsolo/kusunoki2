@@ -105,7 +105,49 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+                "outputPath": "dist/crf/en",
+                "i18nFile": "src/i18n/messages.en.xlf",
+                "i18nFormat": "xlf",
+                "i18nLocale": "en",
+                "baseHref": "/en/"
+            },
+            "crfProdEs": {
+                "fileReplacements": [
+                    {
+                        "replace": "src/environments/environment.ts",
+                        "with": "src/environments/environment.crf.es.prod.ts"
+                    },
+                    {
+                        "replace": "src/styles.scss",
+                        "with": "src/assets/styles/style.crf.scss"
+                    },
+                    {
+                        "replace": "src/favicon.ico",
+                        "with": "src/assets/images/favicon_crf.ico"
+                    }
+                ],
+                "optimization": true,
+                "outputHashing": "all",
+                "sourceMap": false,
+                "extractCss": true,
+                "namedChunks": false,
+                "aot": true,
+                "extractLicenses": true,
+                "vendorChunk": false,
+                "buildOptimizer": true,
+                "budgets": [
+                    {
+                        "type": "initial",
+                        "maximumWarning": "2mb",
+                        "maximumError": "5mb"
+                    }
+                ],
+                "outputPath": "dist/crf/es",
+                "i18nFile": "src/i18n/messages.es.xlf",
+                "i18nFormat": "xlf",
+                "i18nLocale": "es",
+                "baseHref": "/es/"
             },
             "comavProd": {
               "fileReplacements": [

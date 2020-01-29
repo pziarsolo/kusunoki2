@@ -4,6 +4,7 @@ export const siteConfig = {
     defaultDataSource: { 'code': 'ESP133', kind: 'Governamental' },
     defaultAccessionSetInstitute: 'ESP133',
     useAccessionset: false,
+    languages: ['en'],
     centralColumnSize: '1200px',
     version: require('../../package.json').version,
     useGoogleMaps: false,

@@ -11,6 +11,7 @@ export class AppConfig {
   public pathToStaticPages: string;
   public googleMapsApiKey: string;
   public canRemoveAccessionset: boolean;
+  public languages: string[];
 
   constructor() { }
 
@@ -20,6 +21,7 @@ export class AppConfig {
     this.useAccessionset = config.useAccessionset;
     this.version = config.version;
     this.centralColumnSize = config.centralColumnSize;
+    this.languages = config.languages;
 
     if (config.useGoogleMaps !== undefined) {
       this.useGoogleMaps = config.useGoogleMaps;

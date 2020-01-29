@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 export class TranslationSet {
     public languange: String;
@@ -10,12 +11,11 @@ export class TranslationSet {
   providedIn: 'root'
 })
 export class TranslationService {
-    public languages = ['es', 'en'];
-    public language = 'es';
+    public language = environment.language;
     private dictionary = {};
 
-    loadTranslation(languaje) {
-        const urlToLanguageFile = `assets/translations/${languaje}.json`;
+    loadTranslation(language) {
+        const urlToLanguageFile = `assets/translations/${language}.json`;
 
         this.http.get(urlToLanguageFile)
             .subscribe(response => {
@@ -23,7 +23,11 @@ export class TranslationService {
             });
     }
     constructor(private http: HttpClient) {
-        this.loadTranslation(this.language);
+        if (this.language === 'en') {
+            this.dictionary = {};
+        } else {
+            this.loadTranslation(this.language);
+        }
      }
 
     translate(key: string): string {

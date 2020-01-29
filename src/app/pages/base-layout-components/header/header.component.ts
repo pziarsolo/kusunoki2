@@ -6,6 +6,7 @@ import { AppUrls } from '../../appUrls';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 import { AppConfig } from 'src/app/shared/entities/app-config.model';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'kusunoki2-header',
@@ -23,31 +24,38 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     @Input() sidenavOpened: Boolean;
     @ViewChild(MatMenuTrigger, {static: false}) trigger: MatMenuTrigger;
     menuIcon: string;
-
+    language = environment.language;
+    alternativeLanguages: String[];
     userToken;
 
     constructor(
         private currentUserService: CurrentUserService,
-        private appConfigService: AppConfigService) {
+        private appConfigService: AppConfigService,
+        private router: Router) {
 
             this.appConfig = this.appConfigService.getConfig();
         this.centralColumnSize = this.appConfig.centralColumnSize;
         }
     ngOnInit(): void {
         this.userToken = this.currentUserService.userToken;
-        // this.userSubscription = this.userToken
-        //     .subscribe(user => {
-        //         if ((this.appConfig.showAccessionHeader || this.appConfig.showAccessionSetHeader ||
-        //             this.appConfig.showPassportHeader) &&  user.isAuthenticated) {
-        //             this.showAddMenu = of(true);
-        //         } else {
-        //             this.showAddMenu = of(false);
-        //         }
-        //     });
-    }
 
+        const languages = Object.assign([], this.appConfig.languages);
+        const index = languages.indexOf(this.language);
+        if (index !== -1) {
+            languages.splice(index, 1);
+        }
+        if (languages.length > 0) {
+            this.alternativeLanguages = languages;
+        }
+
+    }
     toggleSidenav() {
         this.notifyMenuChange.emit();
+    }
+    switchLanguage() {
+        console.log(this.alternativeLanguages);
+        const url = this.router.url;
+        window.open(`/${ this.alternativeLanguages[0]}${url}`, '_self');
     }
 
     ngOnChanges(changes: SimpleChanges) {
