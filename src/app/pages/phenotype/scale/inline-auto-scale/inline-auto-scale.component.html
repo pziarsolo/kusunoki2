@@ -1,6 +1,6 @@
 <form [formGroup]="form" [hidden]='hideForm()'>
     <mat-form-field style='width: 100%;' >
-        <mat-placeholder> Scale </mat-placeholder>
+        <mat-placeholder i18n>Scale</mat-placeholder>
         <input matInput type="text" [hidden]="!config.is_editable ||(config.is_editable && !editMode)"
             formControlName="inputControl"
             #input_control [matAutocomplete]="autocomplete"
@@ -18,11 +18,12 @@
             <mat-icon>close</mat-icon>
         </button>
         <mat-error *ngIf="inputControl.errors?.required">
-            This value is required
+            <ng-container i18n>This value is required</ng-container>
+
         </mat-error>
         <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]='display'>
             <mat-option *ngIf="userCanCreate"
-                        (click)='AddNewScaleRequested.emit()'>Add new Scale... or keep typing for search</mat-option>
+                        (click)='AddNewScaleRequested.emit()' i18n>Add new Scale... or keep typing for search</mat-option>
             <mat-option *ngFor="let scale of suggestions |async "
                         [value]="scale">
                 <strong>{{ scale.name}}</strong> <span style='margin-left: 5px'>({{scale.description}})</span>

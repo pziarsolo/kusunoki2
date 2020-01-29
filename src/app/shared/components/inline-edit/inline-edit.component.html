@@ -12,16 +12,16 @@
                         <mat-icon>close</mat-icon>
                     </button>
                     <mat-error *ngIf="inputControl.errors?.min">
-                        Minimum value allowed: {{inputControl.errors.min.min}}
+                        <ng-container i18n>Minimum value allowed: {{inputControl.errors.min.min}}</ng-container>
                     </mat-error>
                     <mat-error *ngIf="inputControl.errors?.max">
-                        Maximun value allowed: <strong>{{inputControl.errors.max.max}}</strong>
+                        <ng-container i18n>Maximun value allowed: <strong>{{inputControl.errors.max.max}}</strong></ng-container>
                     </mat-error>
                     <mat-error *ngIf="inputControl.errors?.required">
-                        This value is required
+                        <ng-container i18n>This value is required</ng-container>
                     </mat-error>
                     <mat-error *ngIf="inputControl.errors?.is_not_number">
-                        Value must be a number
+                        <ng-container i18n>Value must be a number</ng-container>
                     </mat-error>
                 </mat-form-field>
             </ng-container>
@@ -32,8 +32,8 @@
                             <mat-label>{{label}}</mat-label>
                             <input matInput [type]='config.text_input_type' [hidden]='true'
                                 formControlName="inputControl" [required]='config.is_required && editMode'>
-                            <span *ngIf='inputControl.value'>{{config.widget.conf.true}}</span>
-                            <span *ngIf='!inputControl.value'>{{config.widget.conf.false}}</span>
+                            <span *ngIf='inputControl.value'>{{config.widget.conf.true|translate}}</span>
+                            <span *ngIf='!inputControl.value'>{{config.widget.conf.false|translate}}</span>
 
                         </mat-form-field>
 
@@ -45,8 +45,8 @@
                             color = 'accent'
                             id="config.name"
                             name="config.name">
-                            <span *ngIf='inputControl.value'>{{config.widget.conf.true}}</span>
-                            <span *ngIf='!inputControl.value'>{{config.widget.conf.false}}</span>
+                            <span *ngIf='inputControl.value'>{{config.widget.conf.true|translate}}</span>
+                            <span *ngIf='!inputControl.value'>{{config.widget.conf.false|translate}}</span>
                         </mat-slide-toggle>
                     </ng-container>
                 </div>

@@ -5,8 +5,8 @@
 
 <div [hidden]='!searchDone'>
     <mat-card>
-        <mat-card-title>Observations</mat-card-title>
-        <mat-card-subtitle>Total: {{table.dataSource.totalCount}} observations found</mat-card-subtitle>
+        <mat-card-title i18n>Observations</mat-card-title>
+        <mat-card-subtitle i18n>Total: {{table.dataSource.totalCount}} observations found</mat-card-subtitle>
         <mat-card-content>
             <kusunoki2-observation-table [searchParams]='searchParams' #table
                 (searchParamsChanged)="searchParamsChanged($event)">

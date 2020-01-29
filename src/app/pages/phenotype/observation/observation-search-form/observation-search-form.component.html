@@ -1,5 +1,5 @@
 <mat-card style='margin:8px;'>
-    <mat-card-title color='accent'>Observation Search </mat-card-title>
+    <mat-card-title color='accent' i18n>Observation Search </mat-card-title>
     <mat-card-content>
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='column' fxLayoutGap="5px" fxLayoutAlign="start start"
@@ -17,8 +17,8 @@
 
 
 
-            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" >Search</button>
-            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="formReset()" >Clear</button>
+            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>
+            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="formReset()" i18n>Clear</button>
         </form>
     </mat-card-content>
 </mat-card>

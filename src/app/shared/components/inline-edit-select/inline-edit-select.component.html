@@ -1,13 +1,11 @@
 <form [formGroup]="form" [hidden]='hideForm()'>
     <mat-form-field style='width: 100%;'>
-        <mat-label>
-            {{label}}
-        </mat-label>
+        <mat-label>{{label}}</mat-label>
         <mat-select [formControl]="inputControl"
                     name="config.name">
             <mat-option value='null'></mat-option>
             <mat-option *ngFor="let item of choices" [value]="item">
-               <span *ngIf='config.showCode'> ({{item.code}})</span> {{item.name}}
+               <span *ngIf='config.showCode'> ({{item.code}})</span> {{item.name|translate}}
             </mat-option>
         </mat-select>
     </mat-form-field>

@@ -1,17 +1,17 @@
 <mat-card style='margin:8px;'>
-    <mat-card-title color='accent'>Study Search </mat-card-title>
+    <mat-card-title color='accent' i18n>Study Search </mat-card-title>
     <mat-card-content>
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
                 <mat-form-field fxFlex>
-                    <mat-label>Name or description</mat-label>
+                    <mat-label i18n>Name or description</mat-label>
                     <input type="text"
                         matInput
                         [(ngModel)]="searchParams.name_or_description"
                         name="name_or_Desc">
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <mat-label>Location</mat-label>
+                    <mat-label i18n>Location</mat-label>
                     <input type="text"
                         matInput
                         [(ngModel)]="searchParams.location_contains"
@@ -20,7 +20,7 @@
             </div>
             <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
                 <mat-form-field fxFlex>
-                    <mat-label>Responsable</mat-label>
+                    <mat-label i18n>Responsable</mat-label>
                     <input type="text"
                         matInput
                         [(ngModel)]="searchParams.contact_contains"
@@ -29,17 +29,17 @@
             </div>
             <div fxLayout='row' fxLayoutGap='5px' *ngIf="(userToken|async)?.is_staff">
                 <mat-form-field fxFlex>
-                    <mat-label>Filter by data visivility</mat-label>
+                    <mat-label i18n>Filter by data visivility</mat-label>
                     <mat-select [(value)]=searchParams.is_public>
-                        <mat-option value="">No filter</mat-option>
-                        <mat-option value="true">Only public data</mat-option>
-                        <mat-option value="false">Only private data</mat-option>
+                        <mat-option value="" i18n>No filter</mat-option>
+                        <mat-option value="true" i18n>Only public data</mat-option>
+                        <mat-option value="false" i18n>Only private data</mat-option>
                     </mat-select>
                 </mat-form-field>
 
             </div>
-            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" >Search</button>
-            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams={}" >Clear</button>
+            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>
+            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams={}" i18n>Clear</button>
         </form>
     </mat-card-content>
 </mat-card>

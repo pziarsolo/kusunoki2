@@ -1,6 +1,6 @@
 <form [formGroup]="form" [hidden]='hideForm()'>
     <mat-form-field style='width: 100%;' >
-        <mat-placeholder> Trait </mat-placeholder>
+        <mat-placeholder i18n> Trait </mat-placeholder>
         <input matInput type="text" [hidden]="!config.is_editable ||(config.is_editable && !editMode)"
             formControlName="inputControl"
             #input_control [matAutocomplete]="autocomplete"
@@ -23,11 +23,11 @@
             <mat-icon>close</mat-icon>
         </button>
         <mat-error *ngIf="inputControl.errors?.required">
-            This value is required
+            <ng-container i18n>This value is required</ng-container>
         </mat-error>
         <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]='display'>
             <mat-option *ngIf="userCanCreate"
-                        (click)='AddNewTraitRequested.emit()'>Add new Trait... or keep typing for search</mat-option>
+                        (click)='AddNewTraitRequested.emit()' i18n>Add new Trait... or keep typing for search</mat-option>
             <mat-option *ngFor="let trait of suggestions |async "
                         [value]="trait">
                 <strong>{{ trait.name}}</strong> <span style='margin-left: 5px' *ngIf="trait.ontology_id">({{trait.ontology_id}})</span><br>

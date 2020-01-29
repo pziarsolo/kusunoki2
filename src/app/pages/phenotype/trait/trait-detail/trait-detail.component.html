@@ -1,14 +1,12 @@
-<mat-card *ngIf='!traitFound'>
-    Trait {{name}} not found
-</mat-card>
+<mat-card *ngIf='!traitFound' i18n>Trait {{name}} not found</mat-card>
 <mat-card *ngIf='traitFound'>
     <mat-card-title>
-        Trait <span class='key' style='margin-left:5px'> {{name}}</span>
+        <ng-container i18n>Trait <span class='key' style='margin-left:5px'> {{name}}</span></ng-container>
         <span fxFlex></span>
         <button mat-raised-button color='accent'
                 *ngIf='userCanEdit && !createMode'
                 [matMenuTriggerFor]="ActionMenu">
-            Actions
+            <ng-container i18n>Actions</ng-container>
         </button>
     </mat-card-title>
     <mat-card-content>
@@ -23,12 +21,12 @@
     </mat-card-content>
 
     <mat-card-actions *ngIf='trait && (editMode || createMode)'>
-        <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()">Cancel</button>
-        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!trait.allInputAreValid' mat-raised-button color='accent' (click)="editMode=false;trait.updateTrait()">Update</button>
-        <button *ngIf='createMode && editMode' [disabled]='!trait.allInputAreValid' mat-raised-button color='accent' (click)="trait.createTrait()">Create</button>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="cancelChange()" i18n>Cancel</button>
+        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!trait.allInputAreValid' mat-raised-button color='accent' (click)="editMode=false;trait.updateTrait()" i18n>Update</button>
+        <button *ngIf='createMode && editMode' [disabled]='!trait.allInputAreValid' mat-raised-button color='accent' (click)="trait.createTrait()" i18n>Create</button>
     </mat-card-actions>
 </mat-card>
 <mat-menu #ActionMenu="matMenu">
-    <button *ngIf='trait && !editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
-    <button *ngIf='trait && !editMode && userCanEdit' mat-menu-item (click)="trait.deleteTrait()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+    <button *ngIf='trait && !editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon><ng-container i18n>Edit</ng-container> </button>
+    <button *ngIf='trait && !editMode && userCanEdit' mat-menu-item (click)="trait.deleteTrait()"><mat-icon color='warn'>delete</mat-icon><ng-container i18n>Delete</ng-container></button>
 </mat-menu>

@@ -1,14 +1,12 @@
-<mat-card *ngIf='!studyFound'>
-    Study {{name}} Not found
-</mat-card>
+<mat-card *ngIf='!studyFound' i18n>Study {{name}} Not found</mat-card>
 <mat-card *ngIf='studyFound || createMode || editMode'>
     <mat-card-title>
-        Study <span class='key' fxflex style='margin-left:5px;'> {{name}}</span>
+        <ng-container i18n>Study <span class='key' fxflex style='margin-left:5px;'> {{name}}</span></ng-container>
         <span fxFlex></span>
         <button mat-raised-button color='accent'
                 *ngIf='userCanEdit && !createMode'
                 [matMenuTriggerFor]="studyActionMenu">
-            Actions
+            <ng-container i18n>Actions</ng-container>
         </button>
     </mat-card-title>
     <mat-card-content>
@@ -24,40 +22,40 @@
         </kusunoki2-study>
     </mat-card-content>
     <mat-card-actions *ngIf='editMode || createMode'>
-        <button *ngIf='editMode' mat-raised-button color='primary' (click)="editCanceled()">Cancel</button>
-        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!studyComp.allInputAreValid' mat-raised-button color='accent' (click)="studyComp.updateStudy()">Update</button>
-        <button *ngIf='createMode && editMode' [disabled]='!studyComp.allInputAreValid' mat-raised-button color='accent' (click)="studyComp.createStudy()">Create</button>
+        <button *ngIf='editMode' mat-raised-button color='primary' (click)="editCanceled()" i18n>Cancel</button>
+        <button *ngIf='(editMode && !createMode) && userCanEdit' [disabled]='!studyComp.allInputAreValid' mat-raised-button color='accent' (click)="studyComp.updateStudy()" i18n>Update</button>
+        <button *ngIf='createMode && editMode' [disabled]='!studyComp.allInputAreValid' mat-raised-button color='accent' (click)="studyComp.createStudy()" i18n>Create</button>
     </mat-card-actions>
 </mat-card>
 <mat-menu #studyActionMenu="matMenu">
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon>Edit</button>
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon><ng-container i18n>Edit</ng-container></button>
         <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
             <mat-icon *ngIf='!study.metadata.is_public'>public</mat-icon>
             <mat-icon *ngIf='study.metadata.is_public' color='warn'>public</mat-icon>
-            Make <span *ngIf='!study.metadata.is_public'>Public</span><span *ngIf='study.metadata.is_public'>Private</span>
+            <ng-container i18n>Make</ng-container><span *ngIf='!study.metadata.is_public' i18n>Public</span><span *ngIf='study.metadata.is_public' i18n>Private</span>
         </button>
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteStudy()"><mat-icon color='warn'>delete</mat-icon>Delete</button>
+        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="deleteStudy()"><mat-icon color='warn'>delete</mat-icon><ng-container i18n>Delete</ng-container></button>
 </mat-menu>
 <mat-card [fxShow]="study && !editMode && (showAccessions || showObservations || showObservationVariables)">
-    <mat-card-title>Additional data</mat-card-title>
+    <mat-card-title i18n>Additional data</mat-card-title>
     <mat-card-content>
         <mat-accordion *ngIf="study && !editMode">
             <mat-expansion-panel [fxShow]=showAccessions>
-                    <mat-expansion-panel-header><span fxFlex></span><h3>Accessions used in this study</h3><span fxFlex></span></mat-expansion-panel-header>
+                    <mat-expansion-panel-header><span fxFlex></span><h3 i18n>Accessions used in this study</h3><span fxFlex></span></mat-expansion-panel-header>
                     <kusunoki2-accession-table
                         (searchFinished)="showAccessions= $event > 0 ? true : false"
                         [searchParams]="{study: name}">
                     </kusunoki2-accession-table>
                 </mat-expansion-panel>
             <mat-expansion-panel [fxShow]="showObservations">
-                <mat-expansion-panel-header><span fxFlex></span><h3>Observations on this study</h3><span fxFlex></span></mat-expansion-panel-header>
+                <mat-expansion-panel-header><span fxFlex></span><h3 i18n>Observations on this study</h3><span fxFlex></span></mat-expansion-panel-header>
                 <kusunoki2-observation-table
                     (searchFinished)="showObservations= $event > 0 ? true : false"
                     [searchParams]="{study: name}">
                 </kusunoki2-observation-table>
             </mat-expansion-panel>
             <mat-expansion-panel [fxShow]="showObservationVariables">
-                    <mat-expansion-panel-header><span fxFlex></span><h3>Trait methologies used on this study</h3><span fxFlex></span></mat-expansion-panel-header>
+                    <mat-expansion-panel-header><span fxFlex></span><h3 i18n>Trait methologies used on this study</h3><span fxFlex></span></mat-expansion-panel-header>
                     <kusunoki2-observation-variable-table
                         (searchFinished)="showObservationVariables= $event > 0 ? true : false"
                         [searchParams]="{study: name}">

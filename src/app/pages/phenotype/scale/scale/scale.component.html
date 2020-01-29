@@ -2,7 +2,7 @@
     <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
         style="width:100%;">
         <kusunoki2-inline-edit fxFlex
-            [label]="'Scale name'"
+            [label]="'Scale name'|translate"
             [value]="scale.name"
             [config]="config.name"
             [editMode]="editMode"
@@ -12,7 +12,7 @@
             <span class='value' *ngIf="!scale.name">"" </span>
         </kusunoki2-inline-edit>
         <kusunoki2-inline-edit-select fxFlex #dataType
-            [label]="'Scale Data type'"
+            [label]="'Scale Data type'|translate"
             [value]="scale.data_type"
             [choices]="dataTypeChoices"
             [config]="config.data_type"
@@ -21,7 +21,7 @@
         </kusunoki2-inline-edit-select>
     </div>
     <kusunoki2-inline-edit fxFlex
-        [label]="'Scale Description'"
+        [label]="'Scale Description'|translate"
         [value]="scale.description"
         [config]="config.description"
         [editMode]="editMode"
@@ -34,7 +34,7 @@
         fxlayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
         style="width:100%;">
         <kusunoki2-inline-edit fxFlex #decimalPlaces
-            [label]="'Scale decimal places'"
+            [label]="'Scale decimal places'|translate"
             [value]="scale.decimal_places"
             [config]="config.decimal_places"
             [editMode]="editMode"
@@ -43,7 +43,7 @@
             <span class='value' *ngIf="scale.decimal_places === undefined">"" </span>
         </kusunoki2-inline-edit>
         <kusunoki2-inline-edit fxFlex
-            [label]="'Scale min'"
+            [label]="'Scale min'|translate"
             [value]="scale.min"
             [config]="config.min"
             [editMode]="editMode"
@@ -52,7 +52,7 @@
             <span class='value' *ngIf="scale.min === undefined">"" </span>
         </kusunoki2-inline-edit>
         <kusunoki2-inline-edit fxFlex
-            [label]="'Scale max'"
+            [label]="'Scale max'|translate"
             [value]="scale.max"
             [config]="config.max"
             [editMode]="editMode"
@@ -63,7 +63,7 @@
     </div>
     <div *ngIf="dataType.value && dataType.value.code && dataType.value.code !== 'Numerical'">
         <kusunoki2-inline-scale-valid-values
-            [label]="'Valid Values'"
+            [label]="'Valid Values'|translate"
             [value]="scale.valid_values"
             [config]="config.valid_values"
             [sortable]="dataType.value && dataType.value.code === 'Ordinal'"

@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add Scale</h2>
+<h2 mat-dialog-title i18n>Add Scale</h2>
 <mat-dialog-content>
     <kusunoki2-scale #scale
         name="undefined"
@@ -8,10 +8,9 @@
     </kusunoki2-scale>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button mat-dialog-close i18n>Cancel</button>
   <button mat-raised-button mat-dialog-close
     color='primary'
     [disabled]="!scale.allInputAreValid"
-    (click)="scale.createScale()">Create
-</button>
+    (click)="scale.createScale()" i18n>Create</button>
 </mat-dialog-actions>

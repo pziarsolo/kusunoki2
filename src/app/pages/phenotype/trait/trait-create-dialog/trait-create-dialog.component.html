@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add Trait</h2>
+<h2 mat-dialog-title i18n>Add Trait</h2>
 <mat-dialog-content>
     <kusunoki2-trait #trait
         name="undefined"
@@ -8,10 +8,9 @@
     </kusunoki2-trait>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button mat-dialog-close i18n>Cancel</button>
     <button mat-raised-button mat-dialog-close
         color='primary'
         [disabled]='!trait.allInputAreValid'
-        (click)="trait.createTrait()">Create
-    </button>
+        (click)="trait.createTrait()" i18n>Create</button>
 </mat-dialog-actions>

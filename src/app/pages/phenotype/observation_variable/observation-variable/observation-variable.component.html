@@ -2,7 +2,7 @@
     <div fxLayout="column">
         <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center">
             <kusunoki2-inline-edit fxFlex
-                [label]="'Name'"
+                [label]="'Name'|translate"
                 [value]="observationVariable.data.name"
                 [config]="config.name"
                 [editMode]="editMode"
@@ -16,7 +16,7 @@
                 </span>
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
-                [label]="'Measurament method'"
+                [label]="'Measurament method'|translate"
                 [value]="observationVariable.data.method"
                 [config]="config.method"
                 [editMode]="editMode"
@@ -25,7 +25,7 @@
             </kusunoki2-inline-edit>
         </div>
         <kusunoki2-inline-edit fxFlex
-            [label]="'Description'"
+            [label]="'Description'|translate"
             [value]="observationVariable.data.description"
             [config]="config.description"
             [editMode]="editMode"
@@ -36,7 +36,7 @@
         <kusunoki2-inline-auto-trait fxFlex
             *ngIf="editMode || createMode"
             (AddNewTraitRequested)="addNewTrait()"
-            [label]="'Trait'"
+            [label]="'Trait'|translate"
             [value]="observationVariable.data.trait"
             [config]="config.trait"
             [editMode]="editMode"
@@ -47,7 +47,7 @@
         <kusunoki2-inline-auto-scale fxFlex
             (AddNewScaleRequested)="addNewScale()"
             *ngIf="editMode || createMode"
-            [label]="'Scale'"
+            [label]="'Scale'|translate"
             [value]="observationVariable.data.scale"
             [config]="config.scale"
             [editMode]="editMode"
@@ -59,7 +59,7 @@
 
     <mat-accordion *ngIf="!(editMode || createMode)">
         <mat-expansion-panel>
-            <mat-expansion-panel-header>Trait</mat-expansion-panel-header>
+            <mat-expansion-panel-header i18n>Trait</mat-expansion-panel-header>
             <kusunoki2-trait
                 [name]="observationVariable.data.trait"
                 [editMode]=false
@@ -68,7 +68,7 @@
 
         </mat-expansion-panel>
         <mat-expansion-panel>
-            <mat-expansion-panel-header>Scale</mat-expansion-panel-header>
+            <mat-expansion-panel-header i18n>Scale</mat-expansion-panel-header>
             <kusunoki2-scale
                 [name]="observationVariable.data.scale"
                 [editMode]=false

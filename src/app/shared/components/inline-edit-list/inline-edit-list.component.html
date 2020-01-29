@@ -17,10 +17,10 @@
         </div>
         <div *ngIf='editMode' fxLayout='row' fxLayoutGap="3px" fxLayoutAlign="start center">
             <mat-form-field>
-                <mat-label>Add new Item...</mat-label>
+                <mat-label i1n>Add new Item...</mat-label>
                 <input matInput [(ngModel)]='itemToAdd'>
             </mat-form-field>
-            <button style='height: 40px'mat-raised-button color='accent' (click)='addItem(itemToAdd)'>Add... </button>
+            <button style='height: 40px'mat-raised-button color='accent' (click)='addItem(itemToAdd)' i18n>Add... </button>
         </div>
     </div>
 </div>

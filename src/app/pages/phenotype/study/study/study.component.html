@@ -3,7 +3,7 @@
         <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
-                [label]="'Study name'"
+                [label]="'Study name'|translate"
                 [value]="study.data.name"
                 [config]="config.name"
                 [editMode]="editMode"
@@ -28,7 +28,7 @@
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex='grow'
                 *ngIf="editMode || study.data.description"
-                [label]="'Study description'"
+                [label]="'Study description'|translate"
                 [value]="study.data.description"
                 [config]="config.description"
                 [editMode]="editMode"
@@ -37,7 +37,7 @@
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
                 *ngIf="editMode || study.data.start_date"
-                [label]="'Start date'"
+                [label]="'Start date'|translate"
                 [editMode]="editMode"
                 [config]="config.start_date"
                 [value]="study.data.start_date"
@@ -46,7 +46,7 @@
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
                 *ngIf="editMode || study.data.end_date"
-                [label]="'End date'"
+                [label]="'End date'|translate"
                 [editMode]="editMode"
                 [config]="config.end_date"
                 [value]="study.data.end_date"
@@ -58,7 +58,7 @@
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
                 *ngIf="editMode || study.data.location"
-                [label]="'Location'"
+                [label]="'Location'|translate"
                 [value]="study.data.location"
                 [config]="config.location"
                 [editMode]="editMode"
@@ -67,7 +67,7 @@
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
                 *ngIf="editMode || study.data.contacts"
-                [label]="'Contacts'"
+                [label]="'Contacts'|translate"
                 [value]="study.data.contacts"
                 [config]="config.contacts"
                 [editMode]="editMode"
@@ -79,7 +79,7 @@
             style="width:100%;">
             <kusunoki2-inline-edit fxFlex
                 *ngIf="editMode || study.data.institution"
-                [label]="'Institution'"
+                [label]="'Institution'|translate"
                 [value]="study.data.institution"
                 [config]="config.institution"
                 [editMode]="editMode"
@@ -88,7 +88,7 @@
             </kusunoki2-inline-edit>
             <kusunoki2-inline-edit fxFlex
             *ngIf="editMode || study.data.season"
-                [label]="'Season'"
+                [label]="'Season'|translate"
                 [value]="study.data.season"
                 [config]="config.season"
                 [editMode]="editMode"

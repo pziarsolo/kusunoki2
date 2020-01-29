@@ -1,7 +1,7 @@
 <mat-card>
-    <mat-card-title>Trait methodologies</mat-card-title>
+    <mat-card-title i1n>Trait methodologies</mat-card-title>
     <mat-card-content>
-        <div [hidden]="table.dataSource.totalCount"> Not found</div>
+        <div [hidden]="table.dataSource.totalCount" i18n>Not found</div>
         <kusunoki2-observation-variable-table #table
             [hidden]="!table.dataSource.totalCount"
             [searchParams]="{}"

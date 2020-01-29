@@ -2,7 +2,7 @@
     <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
         style="width:100%;">
         <kusunoki2-inline-edit fxFlex
-            [label]="'Trait name'"
+            [label]="'Trait name'|translate"
             [value]="trait.name"
             [config]="config.name"
             [editMode]="editMode"
@@ -13,7 +13,7 @@
         </kusunoki2-inline-edit>
     </div>
     <kusunoki2-inline-edit fxFlex
-        [label]="'Trait Description'"
+        [label]="'Trait Description'|translate"
         [value]="trait.description"
         [config]="config.description"
         [editMode]="editMode"
@@ -24,7 +24,7 @@
     <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center"
         style="width:100%;">
         <kusunoki2-inline-edit fxFlex
-            [label]="'Ontology'"
+            [label]="'Ontology'|translate"
             [value]="trait.ontology"
             [config]="config.ontology"
             [editMode]="editMode"
@@ -33,7 +33,7 @@
             <span class='value' *ngIf="!trait.ontology">"" </span>
         </kusunoki2-inline-edit>
         <kusunoki2-inline-edit fxFlex
-            [label]="'Ontology ID'"
+            [label]="'Ontology ID'|translate"
             [value]="trait.ontology_id"
             [config]="config.ontology_id"
             [editMode]="editMode"
