@@ -139,7 +139,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="2c7dc726e93bcf3ca2f316bbebe96fa1e5288ba0" datatype="html">
-        <source>Browse</source><target state="final">Navegar</target>
+        <source>Browse</source><target state="final">Explorar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
           <context context-type="linenumber">115</context>

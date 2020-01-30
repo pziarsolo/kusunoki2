@@ -32,7 +32,7 @@ export class FlatpagesComponent implements OnInit {
             (pageData: PageData) => {
                 this.pageContent = {
                     title: pageData.title, content: pageData.content.join('')
-                }
+                };
             },
             (error) => {
                 if (error.status === 404) {
