@@ -24,6 +24,7 @@ export class ObservationVariableMultiAutocompleteComponent {
     items: string[] = [];
     suggested: Observable<ObservationVariable[]>;
     input;
+    placeholder = 'Trait methodologies to search for...';
 
     @ViewChild('inputElement', {static: false}) inputElement: ElementRef;
     @ViewChild('auto', {read: MatAutocompleteTrigger, static: false}) studyTrigger: MatAutocompleteTrigger;

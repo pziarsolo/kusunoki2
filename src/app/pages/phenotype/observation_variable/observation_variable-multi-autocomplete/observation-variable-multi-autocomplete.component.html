@@ -11,7 +11,7 @@
         (ngModelChange) = "suggested = filter(input)"
         #inputElement
         [matAutocomplete]="auto"
-        placeholder="Trait methodologies to search for..."
+        placeholder="{{placeholder|translate}}"
         [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         [matChipInputAddOnBlur]="addOnBlur"
