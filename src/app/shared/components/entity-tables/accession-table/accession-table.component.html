@@ -45,7 +45,8 @@
 
     </table>
     <div fxLayout='row' fxLayoutAlign="start center" style='margin-top:3px;'>
-        <button mat-button [matMenuTriggerFor]="actionsMenu" i18n>Actions</button>
+        <button mat-button (click)="downloadCsv()" i18n>Download in CSV</button>
+        <button *ngIf="(userToken|async).is_staff" mat-button [matMenuTriggerFor]="actionsMenu" i18n>Actions</button>
         <mat-spinner style='margin-left: 3px;' diameter='30' *ngIf='csvDownloading'></mat-spinner>
         <span fxFlex></span>
         <mat-paginator  #paginator
@@ -58,8 +59,7 @@
 </div>
 
 <mat-menu #actionsMenu="matMenu">
-    <button mat-menu-item (click)="downloadCsv()" i18n>Download in CSV</button>
-    <button *ngIf="(userToken|async).is_staff" mat-menu-item (click)="togglePublic(true)" i18n>Make Public</button>
-    <button *ngIf="(userToken|async).is_staff" mat-menu-item (click)="togglePublic(false)" i18n>Make Private</button>
+    <button mat-menu-item (click)="togglePublic(true)" i18n>Make Public</button>
+    <button mat-menu-item (click)="togglePublic(false)" i18n>Make Private</button>
         <!-- <button *ngIf="(userToken|async).is_staff" mat-menu-item (click)="makeItemsPublic()">Make All public</button> -->
 </mat-menu>

@@ -53,7 +53,6 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
         this.notifyMenuChange.emit();
     }
     switchLanguage() {
-        console.log(this.alternativeLanguages);
         const url = this.router.url;
         window.open(`/${ this.alternativeLanguages[0]}${url}`, '_self');
     }

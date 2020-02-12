@@ -42,7 +42,8 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
     @Output() formChanged = new EventEmitter();
     @ViewChild('variableAuto', { read: MatAutocompleteTrigger, static: false }) variableTrigger: MatAutocompleteTrigger;
     @ViewChild('obsForm', { static: false }) obsForm: NgForm;
-
+    categoriesLabel = 'Categories';
+    LookupExpression = 'LookupExpression';
     constructor(
         private variableService: ObservationVariableService,
         private scaleService: ScaleService) { }

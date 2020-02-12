@@ -33,60 +33,33 @@
       <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
         <source>Search</source><target state="final">Buscar</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">21</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">50</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/observation/observation-search-form/observation-search-form.component.html</context><context context-type="linenumber">20</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context><context context-type="linenumber">41</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">135</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">73</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">21</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">55</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/observation/observation-search-form/observation-search-form.component.html</context><context context-type="linenumber">20</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context><context context-type="linenumber">41</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">135</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">73</context></context-group></trans-unit>
       <trans-unit id="299f97b8ee9c62d45f2cc01961aa1e5101d6d05a" datatype="html">
         <source>Stats</source><target state="final">Estadísticas</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">54</context>
-        </context-group>
-      </trans-unit>
+
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">25</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">59</context></context-group></trans-unit>
       <trans-unit id="f6755cff4957d5c3c89bafce5651f1b6fa2b1fd9" datatype="html">
         <source>Add</source><target state="final">Añadir</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
-      </trans-unit>
+
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">31</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">68</context></context-group></trans-unit>
       <trans-unit id="408cb6073e60c5d966296a3207fc596adca75e01" datatype="html">
         <source>Admin</source><target state="final">Admin</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">67</context>
-        </context-group>
-      </trans-unit>
+
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">36</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">72</context></context-group></trans-unit>
       <trans-unit id="79b8b63a092fe5baeee0a8f73aaea6eeff3ef128" datatype="html">
         <source>Characterization</source><target state="final">Caracterización</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">58</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">87</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">136</context>
-        </context-group>
-      </trans-unit>
+
+
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">63</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">92</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">141</context></context-group></trans-unit>
       <trans-unit id="9b4e878fb854656ca1a762c1931ee78d7d1bcd12" datatype="html">
         <source>Accession</source><target state="final">Entrada</target>
 
 
-      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context><context context-type="linenumber">18</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">80</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">134</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession/accession.component.html</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="b39a46f0d409b2c30ec88fb1d013450909b60d08" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context><context context-type="linenumber">18</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">85</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">139</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession/accession.component.html</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="b39a46f0d409b2c30ec88fb1d013450909b60d08" datatype="html">
         <source>Observation variable</source><target state="final">Variable observacional</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
@@ -113,128 +86,83 @@
       </trans-unit>
       <trans-unit id="1619355d2d20e04f0bfd1ba67658d1bed2878cff" datatype="html">
         <source>AccessionSet</source><target state="final">Conjunto de entradas</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">84</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">135</context>
-        </context-group>
-      </trans-unit>
+
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">89</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">140</context></context-group></trans-unit>
       <trans-unit id="e39d1bcfce9dc54d2b81298739efa59260ca0c40" datatype="html">
-        <source>Institute</source><target state="final">Instituto</target>
+        <source>Institute</source><target state="final">Institución</target>
 
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/inline-auto-institute/inline-auto-institute.component.html</context><context context-type="linenumber">4</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context><context context-type="linenumber">6</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">94</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">133</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">7</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-accession-table/accessionset-accession-table.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/inline-auto-institute/inline-auto-institute.component.html</context><context context-type="linenumber">4</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context><context context-type="linenumber">6</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">99</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">138</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">7</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-accession-table/accessionset-accession-table.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit>
       <trans-unit id="aee7d0de4e30405c1289745e4264e622b613632a" datatype="html">
         <source>Countries</source><target state="final">Paises</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">101</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-list/country-list.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">106</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-list/country-list.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit>
       <trans-unit id="c3e69112c5f3acd38dfc0ff6811629f759eabfcf" datatype="html">
         <source>Taxa</source><target state="final">Taxa</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">105</context>
-        </context-group>
-      </trans-unit>
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">110</context></context-group></trans-unit>
       <trans-unit id="2c7dc726e93bcf3ca2f316bbebe96fa1e5288ba0" datatype="html">
         <source>Browse</source><target state="final">Explorar</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">115</context>
-        </context-group>
-      </trans-unit>
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">120</context></context-group></trans-unit>
       <trans-unit id="a7ecfd7757d04b019beaa2d7208c728387bfc7e8" datatype="html">
         <source>Docs</source><target state="final">Docs</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">119</context>
-        </context-group>
-      </trans-unit>
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">124</context></context-group></trans-unit>
       <trans-unit id="586a5fd72602b5b14ec0c55f84814de47bb21e3a" datatype="html">
         <source>Tasks</source><target state="final">Tareas</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">123</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/tasks/task-list/task-list.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">128</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/tasks/task-list/task-list.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit>
       <trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
         <source>Users</source><target state="final">Usuarios</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">124</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/users/components/user-list/user-list.component.html</context><context context-type="linenumber">2</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">129</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/users/components/user-list/user-list.component.html</context><context context-type="linenumber">2</context></context-group></trans-unit>
       <trans-unit id="688a79ef64dbfb3ec92c3a8a3584daf6e1279dcb" datatype="html">
         <source>Studies</source><target state="final">Estudios</target>
 
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">127</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">159</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-list/study-list.component.html</context><context context-type="linenumber">8</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">132</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">164</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-list/study-list.component.html</context><context context-type="linenumber">8</context></context-group></trans-unit>
       <trans-unit id="4b8c7b2a240e413c2c1eb4a69abf371ac5c5742e" datatype="html">
         <source>Observations</source><target state="final">Observaciones</target>
 
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">128</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">161</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/observation/observation-list/observation-list.component.html</context><context context-type="linenumber">8</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">133</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">166</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/observation/observation-list/observation-list.component.html</context><context context-type="linenumber">8</context></context-group></trans-unit>
       <trans-unit id="7b2cd0bd5c22b447efcf11210eed5eccb5d61d16" datatype="html">
-        <source>Trait methodology</source><target state="final">Trait methodology</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">129</context>
-        </context-group>
-      </trans-unit>
+        <source>Trait methodology</source><target state="final">Metodología de caracterización</target>
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">134</context></context-group></trans-unit>
       <trans-unit id="09d0a860cff9e1bc28bbc042f7590e8b204bce61" datatype="html">
         <source>Add one</source><target state="final">Añadir uno</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">140</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">145</context>
-        </context-group>
-      </trans-unit>
+
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">145</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">150</context></context-group></trans-unit>
       <trans-unit id="628f08d8853a494ac5db0cfba2f4fc366c959aa2" datatype="html">
         <source>Bulk create...</source><target state="final">Añadir por lotes...</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">141</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">146</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">150</context>
-        </context-group>
-      </trans-unit>
+
+
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">146</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">151</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">155</context></context-group></trans-unit>
       <trans-unit id="f2699e1960eeeee62bbb3783730e95cf3a65bd5e" datatype="html">
         <source>Study</source><target state="final">Estudio</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">154</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">96</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">159</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">96</context></context-group></trans-unit>
       <trans-unit id="91a9a888df3913766162def1500fee830c74951f" datatype="html">
-        <source>Trait methodologies</source><target state="new">Trait methodologies</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">155</context>
-        </context-group>
-      </trans-unit>
+        <source>Trait methodologies</source><target state="final">Metodología de caracterización</target>
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">160</context></context-group></trans-unit>
       <trans-unit id="6cccfd92d1e28c8bc9578df17928c9e273bc520d" datatype="html">
         <source>Bulk Upoads</source><target state="final">Añadir por lotes</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">156</context>
-        </context-group>
-      </trans-unit>
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">161</context></context-group></trans-unit>
       <trans-unit id="b2ee405ef74f9a576d3489a3b68bbad5c88e0e2e" datatype="html">
         <source>Traits</source><target state="final">Carácteres</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">160</context>
-        </context-group>
-      </trans-unit>
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">165</context></context-group></trans-unit>
       <trans-unit id="f3e2bd60e66b70798f2c1501eaa5ed72e5afdb3e" datatype="html">
         <source>Observation images</source><target state="final">Imagenes de observaciones</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
-          <context context-type="linenumber">162</context>
-        </context-group>
-      </trans-unit>
+
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">167</context></context-group></trans-unit>
       <trans-unit id="e6a53c9dea1faad6e56346bb34480787c9bece06" datatype="html">
         <source>Login</source><target state="final">Acceso</target>
         <context-group purpose="location">
@@ -276,7 +204,7 @@
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit><trans-unit id="loginButton" datatype="html">
-        <source>Login</source><target state="new">Login</target>
+        <source>Login</source><target state="final">Acceder</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/components/login/login.component.html</context>
           <context context-type="linenumber">26</context>
@@ -516,13 +444,13 @@
         <target state="final">Estudio <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/> <x id="INTERPOLATION" equiv-text="{{name}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="6d1b4b4fcd16b0e7f753e6708bb8b41e904322c8" datatype="html">
-        <source>Accession Search </source><target state="final">Busqueda de entradas </target>
+        <source>Accession Search </source><target state="final">Búsqueda de entradas </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit><trans-unit id="fbcb0d75afbe6aec04269381598a737f4bd19db7" datatype="html">
-        <source>Number</source><target state="final">Còdigos</target>
+        <source>Number</source><target state="final">Còdigos de indentificación</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">20</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">7</context></context-group></trans-unit><trans-unit id="a43f25a9ac40e8e2441ff0be7a36b8e5d15534df" datatype="html">
         <source>Country</source><target state="final">País</target>
@@ -540,7 +468,7 @@
         <source>Genus</source><target state="final">Género</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context><context context-type="linenumber">35</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accessionset-table/accessionset-table.component.html</context><context context-type="linenumber">23</context></context-group></trans-unit><trans-unit id="ed31c09fd77c36238c13d83635f3fe5294c733d2" datatype="html">
-        <source>Location</source><target state="final">Lugares</target>
+        <source>Location</source><target state="final">Lugar de recolección</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context><context context-type="linenumber">14</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">46</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">32</context></context-group></trans-unit><trans-unit id="e3bed412a7e38a2b4e5b57f83cf035e6679035b0" datatype="html">
         <source>Responsable</source><target state="final">Responsable</target>
@@ -549,10 +477,10 @@
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit><trans-unit id="4a6d19cfb0e83bfcaec2d3a0a1840df02f8e2e1f" datatype="html">
-        <source>State, province, municiality, site...</source><target state="final">Estado, provincia, municipio, sitio...</target>
+        <source>State, province, municiality, site...</source><target state="final">Estado, provincia, municipio, localidad, etc.</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">47</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">33</context></context-group></trans-unit><trans-unit id="a6fa5ede2fed98ed089bf2fc04ccc6b83e7ce5d4" datatype="html">
-        <source>Biological status</source><target state="final">Biological status</target>
+        <source>Biological status</source><target state="final">Tipo de material biológico</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">65</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="74fa6f58b235fc30311a0613da839b85bcd01768" datatype="html">
         <source>Filter by data visivility</source><target state="final">Filtrar por visibilidad de los datos</target>
@@ -567,20 +495,20 @@
         <source>Only private data</source><target state="final">Solo datos privados</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context><context context-type="linenumber">36</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">82</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="cbefd9c2d3d74be079238090cb84f518f90f5b5a" datatype="html">
-        <source> Trait </source><target state="final"> Caracter </target>
+        <source> Trait </source><target state="final"> Carácter </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/trait/inline-auto-trait/inline-auto-trait.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit><trans-unit id="e000e7c618a8693f775c96beca226698cb9f36bc" datatype="html">
         <source>Add new Trait... or keep typing for search</source>
-        <target state="final">Añade un nuevo caracter... o continua tecleando para buscar</target>
+        <target state="final">Añade un nuevo carácter... o continua tecleando para buscar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/trait/inline-auto-trait/inline-auto-trait.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit><trans-unit id="32615ed64106a56603eab24c421a647e596cc577" datatype="html">
-        <source>Add Trait</source><target state="final">Añade caracter</target>
+        <source>Add Trait</source><target state="final">Añade carácter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/trait/trait-create-dialog/trait-create-dialog.component.html</context>
           <context context-type="linenumber">1</context>
@@ -603,25 +531,25 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit><trans-unit id="9dfb8d86ce2a71f78569b013d308eed67993aed5" datatype="html">
-        <source>Trait</source><target state="final">Caracter</target>
+        <source>Trait</source><target state="final">Carácter</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/observation-variable-table/observation-variable-table.component.html</context><context context-type="linenumber">27</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/observation_variable/observation-variable/observation-variable.component.html</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="9e63e0f9df28c39af9f40c098d38d009c3490b6b" datatype="html">
         <source>Trait methodologies (ObservationVariable)</source>
-        <target state="new">Trait methodologies (ObservationVariable)</target>
+        <target state="final">Metodología de caracterización (ObservationVariable)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/observation_variable/observation-variable-detail/observation-variable-detail.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit><trans-unit id="b550fd96d178e7d0e7f24264cefcc3b6e968db39" datatype="html">
         <source>Trait <x id="INTERPOLATION" equiv-text="{{name}}"/> not found</source>
-        <target state="final">Caracter <x id="INTERPOLATION" equiv-text="{{name}}"/> no encontrado</target>
+        <target state="final">Carácter <x id="INTERPOLATION" equiv-text="{{name}}"/> no encontrado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/trait/trait-detail/trait-detail.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit><trans-unit id="bbfe2b3c29ed6f1986f6793d179d01392fb6a787" datatype="html">
         <source>Trait <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/> <x id="INTERPOLATION" equiv-text="{{name}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></source>
-        <target state="final">Caracter <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/> <x id="INTERPOLATION" equiv-text="{{name}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
+        <target state="final">Carácter <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/> <x id="INTERPOLATION" equiv-text="{{name}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/trait/trait-detail/trait-detail.component.html</context>
           <context context-type="linenumber">4</context>
@@ -644,13 +572,13 @@
         <source>Add... </source><target state="final">Añade... </target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/shared/components/inline-edit-list/inline-edit-list.component.html</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/scale/inline-scale-valid-values/inline-scale-valid-values.component.html</context><context context-type="linenumber">32</context></context-group></trans-unit><trans-unit id="50237b7cd34cef4f8479db9ebf23e53cac167fb6" datatype="html">
-        <source>No Trait methodologies Found</source><target state="new">No Trait methodologies Found</target>
+        <source>No Trait methodologies Found</source><target state="final">No se han encontrado metodologías de medición</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-variable-table/observation-variable-table.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit><trans-unit id="1635b77544c230feb1207a34d5b57603bd7e69bd" datatype="html">
-        <source>Measurament method</source><target state="final">Método de medir</target>
+        <source>Measurament method</source><target state="final">Método de medición</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-variable-table/observation-variable-table.component.html</context>
           <context context-type="linenumber">22</context>
@@ -675,9 +603,27 @@
           <context context-type="sourcefile">app/pages/phenotype/observation_variable/observation-variable-list/observation-variable-list.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
+      </trans-unit><trans-unit id="605b1421b5bd371b6e41ad5198526b8119c2601c" datatype="html">
+        <source>Trait Methodology</source><target state="final">Metodología de caracterización</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/kusunoki2-accession-search-by-observation-form.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit><trans-unit id="a4bc171a63a585a5222e815e8785b77ce30f3da9" datatype="html">
+        <source> Value </source><target state="final"> valor </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/kusunoki2-accession-search-by-observation-form.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit><trans-unit id="a6e45b957e53a4651ea28d2bc3feb78c771f5092" datatype="html">
+        <source>Add Filter</source><target state="final">Añadir filtro</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/kusunoki2-accession-search-by-observations-form.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
       </trans-unit><trans-unit id="38d562c50a73ecad84f24dcfab0f5a8d749d90b0" datatype="html">
         <source>Add characterization criteria</source>
-        <target state="final">Añadir nuevo criterio de busqueda por caracteres </target>
+        <target state="final">Añadir nuevo criterio de busqueda por carácter </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
           <context context-type="linenumber">91</context>
@@ -692,13 +638,13 @@
         <source>Clear</source><target state="final">Reiniciar buscador</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/observation/observation-search-form/observation-search-form.component.html</context><context context-type="linenumber">21</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context><context context-type="linenumber">42</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">136</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">74</context></context-group></trans-unit><trans-unit id="a0ebe7278b2afa1d8c9717e43c6d977792d3756a" datatype="html">
-        <source>Study Search </source><target state="final">Busqueda de estudios </target>
+        <source>Study Search </source><target state="final">Búsqueda de estudios </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit><trans-unit id="17186c1d77a35fe763f73878dfc3f9cbc984ecc5" datatype="html">
-        <source>Name or description</source><target state="final">Nombre o descripcion</target>
+        <source>Name or description</source><target state="final">Nombre o descripción</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context>
           <context context-type="linenumber">7</context>
@@ -732,21 +678,21 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit><trans-unit id="30f696a3b202299f1379603fd3b894459fd9275e" datatype="html">
-        <source>Num. Accessions</source><target state="final">Num. Entradas</target>
+        <source>Num. Accessions</source><target state="final">Núm. Entradas</target>
 
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-table/institute-table.component.html</context><context context-type="linenumber">22</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-table/country-table.component.html</context><context context-type="linenumber">16</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-stats-table/country-stats-table.component.html</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-stats-table/institute-stats-table.component.html</context><context context-type="linenumber">19</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context><context context-type="linenumber">18</context></context-group></trans-unit><trans-unit id="37aec7642e5e8502c515bdecba1d243d571c8aa5" datatype="html">
-        <source>Num. Accessionsets</source><target state="final">Num. conjunto de entradas</target>
+        <source>Num. Accessionsets</source><target state="final">Núm. Conjunto de entradas</target>
 
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-table/institute-table.component.html</context><context context-type="linenumber">30</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-table/country-table.component.html</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-stats-table/country-stats-table.component.html</context><context context-type="linenumber">20</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-stats-table/institute-stats-table.component.html</context><context context-type="linenumber">27</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context><context context-type="linenumber">19</context></context-group></trans-unit><trans-unit id="bd4926e3a1b15c54c36b7cea0c5083fc1470b517" datatype="html">
-        <source>Institutes</source><target state="final">Institutos</target>
+        <source>Institutes</source><target state="final">Instituciones</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/institute/institute-list/institute-list.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit><trans-unit id="fb7c5adc5bf48e67fe8d7c18f338a69aff42baa5" datatype="html">
-        <source>Institute not found</source><target state="final">Instituto no encontrado</target>
+        <source>Institute not found</source><target state="final">Institución no encontrada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context>
           <context context-type="linenumber">1</context>
@@ -758,16 +704,16 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit><trans-unit id="3b1ed2a915a4987520a274c93dfabfff0bd15573" datatype="html">
-        <source>Stats by institute</source><target state="final">Estadísticas por instituto</target>
+        <source>Stats by institute</source><target state="final">Estadísticas por institución</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit><trans-unit id="afb2f9e654a57b63f2732d3fe88526b0182f9429" datatype="html">
-        <source>Accession Stats</source><target state="final">Estadísticas de entradas</target>
+        <source>Accession Stats</source><target state="final">Estadísticas por entradas</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context><context context-type="linenumber">50</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context><context context-type="linenumber">32</context></context-group></trans-unit><trans-unit id="c422117d1e388044f1b591605e543a9a62e8f90c" datatype="html">
-        <source>AccessionSet Stats</source><target state="final">Estadísticas cojunto de entradas</target>
+        <source>AccessionSet Stats</source><target state="final">Estadísticas por cojunto de entradas</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context><context context-type="linenumber">60</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context><context context-type="linenumber">43</context></context-group></trans-unit><trans-unit id="8b774dcc249b9f73960b496a593e5280c2bb432d" datatype="html">
         <source>Pdci Distribution</source><target state="final">Distribución de Pdcis</target>
@@ -776,7 +722,7 @@
           <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit><trans-unit id="c8a3d19c1c6d6cfd1b675b489af41d4d43cba19e" datatype="html">
-        <source>Taxonmy stats</source><target state="final">Estadísticas taxonomía</target>
+        <source>Taxonmy stats</source><target state="final">Taxa</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context><context context-type="linenumber">84</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context><context context-type="linenumber">59</context></context-group></trans-unit><trans-unit id="83918d33552f727ffab17fa2c8780fbe56c7d3d6" datatype="html">
         <source>Accessions</source><target state="final">Entradas</target>
@@ -822,7 +768,7 @@
           <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit><trans-unit id="2ffaf6a5e32255083721e63d250e2fb693bc73a3" datatype="html">
-        <source>MLS Status:</source><target state="final">MLS Status:</target>
+        <source>MLS Status:</source><target state="final">Inclusión en Sistema Multilateral TIRFAA:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/passport/passport.component.html</context>
           <context context-type="linenumber">95</context>
@@ -854,10 +800,10 @@
       </trans-unit><trans-unit id="030b4423b92167200e39519599f9b863b4f7c62c" datatype="html">
         <source>Actions</source><target state="final">Acciones</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context><context context-type="linenumber">48</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/observation_variable/observation-variable-detail/observation-variable-detail.component.html</context><context context-type="linenumber">8</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/trait/trait-detail/trait-detail.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/scale/scale-detail/scale-detail.component.html</context><context context-type="linenumber">12</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context><context context-type="linenumber">8</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession/accession.component.html</context><context context-type="linenumber">22</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset/accessionset.component.html</context><context context-type="linenumber">7</context></context-group></trans-unit><trans-unit id="8f847e59914d4f9a4af1b6f36fbbb43bb5730c15" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context><context context-type="linenumber">49</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/observation_variable/observation-variable-detail/observation-variable-detail.component.html</context><context context-type="linenumber">8</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/trait/trait-detail/trait-detail.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/scale/scale-detail/scale-detail.component.html</context><context context-type="linenumber">12</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context><context context-type="linenumber">8</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession/accession.component.html</context><context context-type="linenumber">22</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset/accessionset.component.html</context><context context-type="linenumber">7</context></context-group></trans-unit><trans-unit id="8f847e59914d4f9a4af1b6f36fbbb43bb5730c15" datatype="html">
         <source>Download in CSV</source><target state="final">Descargar en formato Csv</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context><context context-type="linenumber">58</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/study-table/study-table.component.html</context><context context-type="linenumber">46</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context><context context-type="linenumber">61</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accessionset-table/accessionset-table.component.html</context><context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="e3a2ec45e1d7270611f14099899681190ac29407" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context><context context-type="linenumber">58</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/study-table/study-table.component.html</context><context context-type="linenumber">46</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context><context context-type="linenumber">48</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accessionset-table/accessionset-table.component.html</context><context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="e3a2ec45e1d7270611f14099899681190ac29407" datatype="html">
         <source>No studies Found</source><target state="final">No se han encontrado estudios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/study-table/study-table.component.html</context>
@@ -874,7 +820,7 @@
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit><trans-unit id="77bbe324b08f6636fb50f673cea05313b86fb692" datatype="html">
-        <source>Start date</source><target state="final">Fecha comienzo</target>
+        <source>Start date</source><target state="final">Fecha inicio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/study-table/study-table.component.html</context>
           <context context-type="linenumber">22</context>
@@ -892,7 +838,7 @@
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit><trans-unit id="9b475bb63675494482effde989c7f1f18c232620" datatype="html">
-        <source>Contacts</source><target state="final">Contactos</target>
+        <source>Contacts</source><target state="final">Responsables</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/study-table/study-table.component.html</context>
           <context context-type="linenumber">37</context>
@@ -904,7 +850,7 @@
         <source>Make Private</source><target state="final">Hacerlos privado</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context><context context-type="linenumber">63</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/entity-tables/accessionset-table/accessionset-table.component.html</context><context context-type="linenumber">50</context></context-group></trans-unit><trans-unit id="4d376adff1a11df0eeaf2eb5079c14ff30e0c48d" datatype="html">
-        <source>Accessionset Number</source><target state="final">Código de conjunto de entrada</target>
+        <source>Accessionset Number</source><target state="final">Código de conjunto de entradas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/accessionset-table/accessionset-table.component.html</context>
           <context context-type="linenumber">7</context>
@@ -974,7 +920,7 @@
         <source>Observations on this study</source><target state="final">Observaciones hechas en este estudio</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="b9e3224409fc6aea2dce80f8ea516d40b22bcdbe" datatype="html">
-        <source>Trait methologies used on this study</source><target state="final">Trait methologies used on this study</target>
+        <source>Trait methologies used on this study</source><target state="final">Metodologías de caracterización no encontradas</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="fd6618ac5f0bd123c7466a0fc5d661c3a54d756d" datatype="html">
         <source>Total: <x id="INTERPOLATION" equiv-text="{{table.dataSource.totalCount}}"/> observations found</source>
@@ -997,7 +943,7 @@
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit><trans-unit id="df78f1e902c462151532d872c9291e9fb85dd792" datatype="html">
-        <source>Observation Search </source><target state="final">Busqueda de observaciones </target>
+        <source>Observation Search </source><target state="final">Búsqueda de observaciones </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/observation/observation-search-form/observation-search-form.component.html</context>
           <context context-type="linenumber">2</context>
@@ -1009,13 +955,13 @@
           <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit><trans-unit id="749d8dc7a197bad498537ea011c3e98bba422636" datatype="html">
-        <source>AccessionSet Search</source><target state="final">Busqueda de conjunto de entradas</target>
+        <source>AccessionSet Search</source><target state="final">Búsqueda de conjunto de entradas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit><trans-unit id="d5fdb9a0603dcc46f097656306195f34fdc6ed36" datatype="html">
-        <source>Taxon</source><target state="final">Taxon</target>
+        <source>Taxon</source><target state="final">Nombre científico</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">39</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="2ac18c3559f2ca574cf69514b2696bb6d2130a39" datatype="html">
         <source>Accessionsets</source><target state="final">Conjunto de entradas</target>
@@ -1061,14 +1007,14 @@
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit><trans-unit id="a353b481dbd8059eae496581e8867365d90bab8c" datatype="html">
-        <source>Taxa Stats</source><target state="final">Estadisticas de taxonomía</target>
+        <source>Taxa Stats</source><target state="final">Estadísticas por taxonomía</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/taxon/taxa-stats-page/taxa-stats-page.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
-      </trans-unit><trans-unit id="419ba9239f5c7a12a5bb6b75be8c71af5e13c77e" datatype="html">
-        <source>Stats by <x id="INTERPOLATION" equiv-text="{{entityType}}"/></source>
-        <target state="final">Estadisticas por <x id="INTERPOLATION" equiv-text="{{entityType}}"/></target>
+      </trans-unit><trans-unit id="00c2671aec82db43114b0e013824cccfde5cc6ea" datatype="html">
+        <source>Stats by <x id="INTERPOLATION" equiv-text="{{entityType|translate}}"/></source>
+        <target state="final">Estadísticas por <x id="INTERPOLATION" equiv-text="{{entityType|translate}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context>
           <context context-type="linenumber">1</context>

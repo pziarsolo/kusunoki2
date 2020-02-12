@@ -1,7 +1,7 @@
 <form #obsForm='ngForm'>
     <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
         <mat-form-field fxFlex="33%">
-            <mat-label>Trait Methodology</mat-label>
+            <mat-label i18n>Trait Methodology</mat-label>
             <input type="text" matInput [(ngModel)]="filterExpression.variable"
                 (ngModelChange) = "suggestedVariables = filterVariables(filterExpression.variable)"
                 [matAutocomplete]="variableAuto"
@@ -17,18 +17,18 @@
             </mat-autocomplete>
         </mat-form-field>
         <mat-form-field fxFlex="33%" *ngIf="availablelookUpExpressions && filterExpression.variable">
-            <mat-select placeholder="LookupExpression"
+            <mat-select placeholder="{{LookupExpression|translate}}"
                 [(ngModel)]='filterExpression.lookupExpression'
                 name='lookupExpression'>
                 <mat-option *ngFor="let expr of availablelookUpExpressions" [value]='expr'>{{expr}}</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field fxFlex="33%" *ngIf="availablelookUpExpressions && filterExpression.variable">
-            <mat-label> Value </mat-label>
+            <mat-label i18n> Value </mat-label>
             <input matInput [(ngModel)]="filterExpression.value" name="value" required>
         </mat-form-field>
         <mat-form-field fxFlex="33%" *ngIf="availableCategories && filterExpression.variable">
-            <mat-select name='categrories' placeholder="Categories" required [(ngModel)]='filterExpression.value'>
+            <mat-select name='categrories' placeholder="{{categoriesLabel|translate}}" required [(ngModel)]='filterExpression.value'>
                 <mat-option *ngFor="let expr of availableCategories" [value]='expr.value'>{{expr.description}}</mat-option>
             </mat-select>
         </mat-form-field>
