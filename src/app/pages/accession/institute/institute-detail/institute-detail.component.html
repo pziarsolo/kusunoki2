@@ -1,6 +1,6 @@
 <mat-card *ngIf='!instituteFound' i18n>Institute not found</mat-card>
 <mat-card *ngIf='instituteFound || createMode || editMode'>
-    <mat-card-title>Institute <span class='key' fxflex style='margin-left:5px;'> {{instituteCode}}</span>
+    <mat-card-title><ng-container i18n>Institute</ng-container><span class='key' fxflex style='margin-left:5px;'> {{instituteCode}}</span>
         <span fxFlex></span>
         <button mat-raised-button color='accent'
                 *ngIf='userCanEdit && !createMode'

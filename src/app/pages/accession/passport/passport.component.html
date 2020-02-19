@@ -42,7 +42,7 @@
                             fxLayoutAlign.xs='start start'
                             fxFlex>
                         <kusunoki2-inline-edit fxFlex
-                            [label]="rank|translate"
+                            [label]="rank|translate|titlecase"
                             [editMode]="editMode"
                             [config]="childrenConfig[rank + '_name']"
                             [value]="passport.taxonomy[rank]['name']"
@@ -60,6 +60,20 @@
                         </kusunoki2-inline-edit>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div *ngIf="editMode || passport.donor.hasData">
+            <h2 i18n>Donor Data</h2>
+            <div fxLayout='row' fxLayoutGap="10px">
+                <kusunoki2-inline-auto-institute fxFlex [label]="'Donor institute'|translate"
+                    [value]="passport.donor.instituteCode" [config]="childrenConfig['donorInstitute']" [editMode]="editMode"
+                    (validationStateEvent)="checkFormValid($event)">
+                </kusunoki2-inline-auto-institute>
+                <kusunoki2-inline-edit [label]="'Donor number'|translate" [editMode]="editMode"
+                    [config]="childrenConfig['donorNumber']" [value]="passport.donor.germplasmNumber"
+                    (validationStateEvent)="checkFormValid($event)">
+                    <span class='value'>{{passport.donor.germplasmNumber}}</span>
+                </kusunoki2-inline-edit>
             </div>
         </div>
         <div *ngIf='editMode || hasAdinitionalData()' >
@@ -114,20 +128,6 @@
                     [label]="'Remarks'|translate" [editMode]="editMode" [config]="childrenConfig['remarks']"
                     [value]="passport.remarks?.genebank_management" (validationStateEvent)="checkFormValid($event)">
                     <span class='value'>{{passport.remarks?.genebank_management}}</span>
-                </kusunoki2-inline-edit>
-            </div>
-        </div>
-        <div *ngIf="editMode || passport.donor.hasData">
-            <h2 i18n>Donor Data</h2>
-            <div fxLayout='row' fxLayoutGap="10px">
-                <kusunoki2-inline-auto-institute fxFlex [label]="'Donor institute'|translate"
-                    [value]="passport.donor.instituteCode" [config]="childrenConfig['donorInstitute']" [editMode]="editMode"
-                    (validationStateEvent)="checkFormValid($event)">
-                </kusunoki2-inline-auto-institute>
-                <kusunoki2-inline-edit [label]="'Donor number'|translate" [editMode]="editMode"
-                    [config]="childrenConfig['donorNumber']" [value]="passport.donor.germplasmNumber"
-                    (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{passport.donor.germplasmNumber}}</span>
                 </kusunoki2-inline-edit>
             </div>
         </div>
@@ -239,7 +239,7 @@
                     <kusunoki2-inline-edit
                         *ngIf="component_name !== 'country' && (editMode || (passport.collectionSite[component_name]))"
                         fxFlex='grow'
-                        [label]="component_name|translate"
+                        [label]="component_name|translate|titlecase"
                         [editMode]="editMode"
                         [config]="childrenConfig[component_name]"
                         [(value)]="passport.collectionSite[component_name]"
