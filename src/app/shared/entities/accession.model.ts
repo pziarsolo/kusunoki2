@@ -175,9 +175,9 @@ export class GeoLocation {
     state: string;
     province: string;
     municipality: string;
+    site: string;
     island: string;
     other: string;
-    site: string;
     latitude: number;
     longitude: number;
     altitude: number;
@@ -191,9 +191,9 @@ export class GeoLocation {
             this.state = object.state;
             this.province = object.province;
             this.municipality = object.municipality;
+            this.site = object.site;
             this.island = object.island;
             this.other = object.other;
-            this.site = object.site;
             this.latitude = object.latitude;
             this.longitude = object.longitude;
             this.altitude = object.altitude;
@@ -205,9 +205,9 @@ export class GeoLocation {
             this.state = undefined;
             this.province = undefined;
             this.municipality = undefined;
+            this.site = undefined;
             this.island = undefined;
             this.other = undefined;
-            this.site = undefined;
             this.latitude = undefined;
             this.longitude = undefined;
             this.altitude = undefined;
@@ -237,14 +237,14 @@ export class GeoLocation {
         if (this.municipality) {
             apiDoc['municipality'] = this.municipality;
         }
+        if (this.site) {
+            apiDoc['site'] = this.site;
+        }
         if (this.island) {
             apiDoc['island'] = this.island;
         }
         if (this.other) {
             apiDoc['other'] = this.other;
-        }
-        if (this.site) {
-            apiDoc['site'] = this.site;
         }
         if (this.latitude) {
             apiDoc['latitude'] = this.latitude;
@@ -478,6 +478,7 @@ export class AccessionData {
     conservation_status: string;
     countries: string[];
     genera: string[];
+    species: string[];
     passports: Passport[];
 
     constructor(object?: AccessionData) {
@@ -488,6 +489,7 @@ export class AccessionData {
             this.conservation_status = object.conservation_status;
             this.countries = object.countries;
             this.genera = object.genera;
+            this.species = object.species;
             this.passports = object.passports.map(item => new Passport(item));
         } else {
             this.instituteCode = undefined;
@@ -496,6 +498,7 @@ export class AccessionData {
             this.conservation_status = undefined;
             this.countries = undefined;
             this.genera = undefined;
+            this.species = undefined;
             this.passports = [];
         }
     }
@@ -518,6 +521,9 @@ export class AccessionData {
         }
         if (this.genera) {
             apiDoc['genera'] = this.genera;
+        }
+        if (this.species) {
+            apiDoc['species'] = this.species;
         }
         if (this.passports) {
             apiDoc['passports'] = this.passports.map(item => item.getApiDocument());

@@ -42,6 +42,7 @@ export class InstituteComponent implements OnChanges {
     city: { is_required: false, is_editable: true, name: 'city' },
     url: { is_required: false, is_editable: true, name: 'url' },
     manager: { is_required: false, is_editable: true, name: 'manager' },
+    collections: { is_required: false, is_editable: true, name: 'collections' },
   };
 
   constructor(
@@ -113,6 +114,7 @@ export class InstituteComponent implements OnChanges {
       institute.phone = formValidData['phone'];
       institute.url = formValidData['url'];
       institute.manager = formValidData['manager'];
+      institute.collections = formValidData['collections'];
       return institute;
     }
   }

@@ -9,6 +9,7 @@ export class Institute {
     city: string;
     url: string;
     manager: string;
+    collections: string;
     stats_by_taxa?: any;
     stats_by_country?: any;
     num_passports?: number;
@@ -28,6 +29,7 @@ export class Institute {
             this.city = object.city;
             this.url = object.url;
             this.manager = object.manager;
+            this.collections = object.collections;
         } else {
             this.instituteCode = undefined;
             this.name = undefined;
@@ -39,6 +41,7 @@ export class Institute {
             this.city = undefined;
             this.url = undefined;
             this.manager = undefined;
+            this.collections = undefined;
         }
     }
     getApiDocument() {
@@ -72,6 +75,9 @@ export class Institute {
         }
         if (this.manager) {
             apiDoc['manager'] = this.manager;
+        }
+        if (this.collections) {
+            apiDoc['collections'] = this.collections;
         }
         return apiDoc;
     }

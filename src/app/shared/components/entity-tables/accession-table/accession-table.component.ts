@@ -13,7 +13,7 @@ class AccessionDataSource extends SearchDataSourceNoRouter<Accession> {}
 })
 export class AccessionTableComponent extends TableWithFilterComponent {
     entityType = 'accession';
-    defColumnsToDisplay = ['instituteCode', 'germplasmNumber', 'countries', 'genera'];
+    defColumnsToDisplay = ['instituteCode', 'germplasmNumber', 'countries', 'species'];
     @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
     extraSearchParams = {};
     appUrls = AppUrls;

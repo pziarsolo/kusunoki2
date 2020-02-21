@@ -31,10 +31,18 @@
                     {{country}}</a>
             </td>
         </ng-container>
-        <ng-container matColumnDef="genera">
-            <th mat-header-cell *matHeaderCellDef i18n>Genus</th>
+        // <ng-container matColumnDef="genera">
+        //     <th mat-header-cell *matHeaderCellDef i18n>Genus</th>
+        //     <td mat-cell *matCellDef="let accessions">
+        //         <span *ngFor="let genus of accessions.data.genera; let isLast=last">
+        //             {{genus}}{{isLast ? '' : ' / '}}
+        //         </span>
+        //     </td>
+        // </ng-container>
+        <ng-container matColumnDef="species">
+            <th mat-header-cell *matHeaderCellDef i18n>Specie</th>
             <td mat-cell *matCellDef="let accessions">
-                <span *ngFor="let genus of accessions.data.genera; let isLast=last">
+                <span *ngFor="let genus of accessions.data.species; let isLast=last">
                     {{genus}}{{isLast ? '' : ' / '}}
                 </span>
             </td>

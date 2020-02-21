@@ -1,6 +1,6 @@
 <div *ngIf='editMode'>
+    <p i18n>Passport identifier, usually same as accession number</p>
     <div fxLayoutAlign="start center">
-        <span fxFlex='60pt'class='key' i18n>Passport Id</span>
         <kusunoki2-inline-auto-institute fxFlex style="width:'100%"
                     [label]="'Institute Code'|translate"
                     [value]="passport.germplasmNumber.instituteCode"

@@ -19,11 +19,11 @@
                     {{country}}</a>
             </td>
         </ng-container>
-        <ng-container matColumnDef="genera">
-            <th mat-header-cell *matHeaderCellDef i18n>Genus</th>
+        <ng-container matColumnDef="species">
+            <th mat-header-cell *matHeaderCellDef i18n>Species</th>
             <td mat-cell *matCellDef="let accessionsets">
-                <span *ngFor="let genus of accessionsets.data.genera; let isLast=last">
-                    {{genus}}{{isLast ? '' : ' / '}}
+                <span *ngFor="let specie of accessionsets.data.species; let isLast=last">
+                    {{specie}}{{isLast ? '' : ' / '}}
                 </span>
 
             </td>
