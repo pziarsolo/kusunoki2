@@ -43,3 +43,5 @@ testem.log
 Thumbs.db
 src/assets/images/*.jpg
 package-lock.json
+build_comav.sh
+build_crf.sh

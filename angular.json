@@ -149,11 +149,11 @@
                 "i18nLocale": "es",
                 "baseHref": "/es/"
             },
-            "comavProd": {
+            "comavProdEs": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.comav.prod.ts"
+                  "with": "src/environments/environment.comav.es.prod.ts"
                 },
                 {
                   "replace": "src/styles.scss",
@@ -179,7 +179,49 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "outputPath": "dist/comav/es",
+              "i18nFile": "src/i18n/messages.es.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "es",
+              "baseHref": "/es/"
+            },
+            "comavProdEn": {
+                "fileReplacements": [
+                    {
+                        "replace": "src/environments/environment.ts",
+                        "with": "src/environments/environment.comav.en.prod.ts"
+                    },
+                    {
+                        "replace": "src/styles.scss",
+                        "with": "src/assets/styles/style.comav.scss"
+                    },
+                    {
+                        "replace": "src/favicon.ico",
+                        "with": "src/assets/images/favicon_comav.ico"
+                    }
+                ],
+                "optimization": true,
+                "outputHashing": "all",
+                "sourceMap": false,
+                "extractCss": true,
+                "namedChunks": false,
+                "aot": true,
+                "extractLicenses": true,
+                "vendorChunk": false,
+                "buildOptimizer": true,
+                "budgets": [
+                    {
+                        "type": "initial",
+                        "maximumWarning": "2mb",
+                        "maximumError": "5mb"
+                    }
+                ],
+                "outputPath": "dist/comav/en",
+                "i18nFile": "src/i18n/messages.en.xlf",
+                "i18nFormat": "xlf",
+                "i18nLocale": "en",
+                "baseHref": "/en/"
             },
             "comav": {
               "fileReplacements": [

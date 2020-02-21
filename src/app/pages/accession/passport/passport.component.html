@@ -244,12 +244,8 @@
                         [config]="childrenConfig[component_name]"
                         [(value)]="passport.collectionSite[component_name]"
                         (validationStateEvent)="checkFormValid($event)">
-                        <span class='value' *ngIf="component_name === 'latitude' || component_name === 'longitude'">
-                            {{passport.collectionSite[component_name] | number: '1.1-5'}}
-                        </span>
-                        <span *ngIf="component_name !== 'latitude' && component_name !== 'longitude'" class='value'>
-                            {{passport.collectionSite[component_name]}}
-                        </span>
+                        <span class='value'>{{passport.collectionSite[component_name] }}</span>
+
                     </kusunoki2-inline-edit>
                 </div>
             </div>
