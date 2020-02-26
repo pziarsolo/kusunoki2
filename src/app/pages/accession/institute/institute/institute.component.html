@@ -101,7 +101,7 @@
                 (validationStateEvent)="checkFormValid($event)">
                 <span class='value'>{{institute.manager}}</span>
             </kusunoki2-inline-edit>
-            <kusunoki2-inline-edit fxFlex *ngIf="editMode || institute.collections" [label]="'Collections'|translate"
+            <kusunoki2-inline-edit fxFlex *ngIf="editMode || institute.collections" [label]="'Collection'|translate"
                 [value]="institute.collections" [config]="config.collections" [editMode]="editMode"
                 (validationStateEvent)="checkFormValid($event)">
                 <span class='value'>{{institute.collections}}</span>

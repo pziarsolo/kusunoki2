@@ -239,7 +239,7 @@
                     <kusunoki2-inline-edit
                         *ngIf="component_name !== 'country' && (editMode || (passport.collectionSite[component_name]))"
                         fxFlex='grow'
-                        [label]="component_name|translate|titlecase"
+                        [label]="component_name|translate"
                         [editMode]="editMode"
                         [config]="childrenConfig[component_name]"
                         [(value)]="passport.collectionSite[component_name]"
