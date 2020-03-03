@@ -8,6 +8,6 @@ import { InstituteTableComponent } from '../institute-table/institute-table.comp
   templateUrl: './institute-list.component.html',
   styleUrls: ['./institute-list.component.scss']
 })
-export class InstituteListComponent extends TableSearchPageComponent{
+export class InstituteListComponent extends TableSearchPageComponent {
     @ViewChild(InstituteTableComponent, {static: false}) table: InstituteTableComponent;
 }
