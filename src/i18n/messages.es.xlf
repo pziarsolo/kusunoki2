@@ -917,7 +917,7 @@
         <source>Observations on this study</source><target state="final">Observaciones hechas en este estudio</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="b9e3224409fc6aea2dce80f8ea516d40b22bcdbe" datatype="html">
-        <source>Trait methologies used on this study</source><target state="final">Metodologías de caracterización no encontradas</target>
+        <source>Trait methologies used on this study</source><target state="final">Variables de estudio usadas en este estudio</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="fd6618ac5f0bd123c7466a0fc5d661c3a54d756d" datatype="html">
         <source>Total: <x id="INTERPOLATION" equiv-text="{{table.dataSource.totalCount}}"/> observations found</source>
