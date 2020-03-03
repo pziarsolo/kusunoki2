@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
 import { StudySearchParams } from 'src/app/shared/entities/search-params.model';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
-import { Taxon } from 'src/app/shared/entities/accession.model';
+import { Taxon } from 'src/app/shared/entities/taxon.model';
 import { Observable } from 'rxjs';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { TaxonService } from 'src/app/shared/services/taxon.service';
@@ -28,11 +28,8 @@ export class StudySearchFormComponent implements OnInit, AfterViewInit {
         this.userToken = this.currentUserService.userToken;
     }
     filterTaxa(name) {
-        return this.taxaService.list(
-            {name__icontains: name, fields: 'name', accession_in_study: true}
-        ).pipe(
-            map(response => response.body)
-        );
+        return this.taxaService.list({name__icontains: name, fields: 'name', accession_in_study: true})
+            .pipe(map(response => response.body));
     }
     doSubmit() {
         this.searchSubmitted.emit(this.searchParams);
@@ -42,7 +39,7 @@ export class StudySearchFormComponent implements OnInit, AfterViewInit {
         this.taxaTrigger.panelClosingActions
             .subscribe(e => {
                 if (!(e && e.source)) {
-                    delete this.searchParams.taxon_contains;
+                    delete this.searchParams.taxon;
                     this.taxaTrigger.closePanel();
                 }
             });
