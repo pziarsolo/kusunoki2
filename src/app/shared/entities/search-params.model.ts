@@ -40,4 +40,5 @@ export interface StudySearchParams {
     contact_contains?: string;
     name_or_description?: string;
     is_public?: boolean;
+    taxon?: string;
 }
