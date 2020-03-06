@@ -43,8 +43,8 @@
                             formControlName='inputControl'
                             [checked]="inputControl"
                             color = 'accent'
-                            id="config.name"
-                            name="config.name">
+                            [id]="config.name"
+                            [name]="config.name">
                             <span *ngIf='inputControl.value'>{{config.widget.conf.true|translate}}</span>
                             <span *ngIf='!inputControl.value'>{{config.widget.conf.false|translate}}</span>
                         </mat-slide-toggle>

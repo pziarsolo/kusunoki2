@@ -476,6 +476,7 @@ export class AccessionData {
     germplasmNumber: string;
     is_available: boolean;
     conservation_status: string;
+    in_nuclear_collection: boolean;
     countries: string[];
     genera: string[];
     species: string[];
@@ -487,6 +488,7 @@ export class AccessionData {
             this.germplasmNumber = object.germplasmNumber;
             this.is_available = object.is_available;
             this.conservation_status = object.conservation_status;
+            this.in_nuclear_collection = object.in_nuclear_collection;
             this.countries = object.countries;
             this.genera = object.genera;
             this.species = object.species;
@@ -496,6 +498,7 @@ export class AccessionData {
             this.germplasmNumber = undefined;
             this.is_available = undefined;
             this.conservation_status = undefined;
+            this.in_nuclear_collection = undefined;
             this.countries = undefined;
             this.genera = undefined;
             this.species = undefined;
@@ -515,6 +518,9 @@ export class AccessionData {
         }
         if (this.conservation_status) {
             apiDoc['conservation_status'] = this.conservation_status;
+        }
+        if (this.in_nuclear_collection !== undefined) {
+            apiDoc['in_nuclear_collection'] = this.in_nuclear_collection;
         }
         if (this.countries) {
             apiDoc['countries'] = this.countries;

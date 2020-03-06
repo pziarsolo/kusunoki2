@@ -71,6 +71,16 @@ export class AccessionComponent implements OnChanges {
                 }
             }
         },
+        in_nuclear_collection: {
+            name: 'inNuclearCollection', is_editable: true,
+            widget: {
+                type: 'switch',
+                conf: {
+                    'true': 'Belongs to a nuclear collection',
+                    'false': 'Does not belong to a nuclear collection'
+                }
+            }
+        },
     };
 
     constructor(
@@ -170,6 +180,7 @@ export class AccessionComponent implements OnChanges {
             accession.data.instituteCode = formValidData['instituteCode'];
             accession.data.conservation_status = formValidData['conservationStatus'];
             accession.data.is_available = formValidData['isAvailable'];
+            accession.data.in_nuclear_collection = formValidData['inNuclearCollection'];
             const passport = new Passport();
             for (const key of Object.keys(formValidData['passport'])) {
 
@@ -298,7 +309,6 @@ export class AccessionComponent implements OnChanges {
 
     updateAccession() {
         const accession = this.getModelFromFormValidData();
-
         accession.metadata.is_public = this.accession.metadata.is_public;
         accession.metadata.group = this.accession.metadata.group;
         this.editMode = false;

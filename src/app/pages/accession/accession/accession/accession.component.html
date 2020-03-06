@@ -64,6 +64,8 @@
                             (validationStateEvent)="checkFormValid($event)">
                             <span class='value'>{{accession.data.conservation_status}}</span>
                         </kusunoki2-inline-edit-select>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs='column' fxLayoutGap="2px" fxLayoutAlign="start start" style='margin-bottom: 10px'>
                         <kusunoki2-inline-edit fxFlex style="width:100%;"
                             [label]="'Availability'|translate"
                             [value]="accession.data.is_available"
@@ -71,9 +73,17 @@
                             [config]="config.is_available"
                             (validationStateEvent)="checkFormValid($event)">
                         </kusunoki2-inline-edit>
+                        <kusunoki2-inline-edit fxFlex style="width:100%;"
+                            [label]="'Belongs to a nuclear collection'|translate"
+                            [value]="accession.data.in_nuclear_collection"
+                            [editMode]="editMode"
+                            [config]="config.in_nuclear_collection"
+                            (validationStateEvent)="checkFormValid($event)">
+                        </kusunoki2-inline-edit>
                     </div>
 
-                    <div *ngIf='accessionsets'>
+                    <div *ngIf="accessionsets?.length > 0 && !editMode">
+                    <!-- <div *ngIf="accessionsets.length > 0 && !editMode"> -->
                         <span style='margin-right: 5px;' i18n>This accession belongs to this accesisionSets:</span>
                         <span *ngFor="let item of accessionsets; let $last=last">
                             <a [routerLink]="['/', appUrls.accessionsets, item]">{{item}}</a>
