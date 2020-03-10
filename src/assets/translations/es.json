@@ -136,5 +136,6 @@
     "Description": "Descripción",
     "Scale": "Escala",
     "Belongs to a nuclear collection": "Pertenece a una colleción nuclear",
-    "Does not belong to a nuclear collection": "No pertenece a una colleción nuclear"
+    "Does not belong to a nuclear collection": "No pertenece a una colleción nuclear",
+    "Germplasm storage type": "Tipo de almacenamiento"
 }

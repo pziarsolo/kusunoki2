@@ -132,6 +132,12 @@ export class PassportComponent extends BaseInlinesForm2Component implements Afte
             name: 'dataSourceRetriavelDate',
             widget: {type: 'datePicker'}
         },
+        germplasmStorageType: {
+            name: 'germplasmStorageType'
+        },
+        locationOfSavedDuplicates: {
+            name: 'locationOfSavedDuplicates'
+        }
 
     };
     @ViewChild(OtherNumbersComponent, {static: false}) OtherNumbers;

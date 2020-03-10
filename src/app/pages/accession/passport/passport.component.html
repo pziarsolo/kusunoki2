@@ -117,6 +117,16 @@
                     (validationStateEvent)="checkFormValid($event)">
                     <span class='value'>{{passport.ancestry}}</span>
                 </kusunoki2-inline-edit>
+                <kusunoki2-inline-edit fxFlex='grow' *ngIf="editMode || passport.germplasmStorageType" [label]="'Germplasm storage type'|translate"
+                    [editMode]="editMode" [config]="childrenConfig['germplasmStorageType']" [value]="passport.germplasmStorageType"
+                    (validationStateEvent)="checkFormValid($event)">
+                    <span class='value'>{{passport.germplasmStorageType}}</span>
+                </kusunoki2-inline-edit>
+                <kusunoki2-inline-edit fxFlex='grow' *ngIf="editMode || passport.locationOfSavedDuplicates"
+                    [label]="'Location of saved duplicates'|translate" [editMode]="editMode" [config]="childrenConfig['locationOfSavedDuplicates']"
+                    [value]="passport.locationOfSavedDuplicates" (validationStateEvent)="checkFormValid($event)">
+                    <span class='value'>{{passport.locationOfSavedDuplicates}}</span>
+                </kusunoki2-inline-edit>
                 <kusunoki2-inline-auto-institute fxFlex
                         [label]="'Breeding institute'|translate"
                         [value]="passport.breedingInstitute"

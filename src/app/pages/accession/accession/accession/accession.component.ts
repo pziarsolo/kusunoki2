@@ -287,6 +287,10 @@ export class AccessionComponent implements OnChanges {
                     passport.germplasmName = value;
                 } else if (key === 'commonCropName') {
                     passport.commonCropName = value;
+                } else if (key === 'germplasmStorageType') {
+                    passport.germplasmStorageType = value;
+                } else if (key === 'locationOfSavedDuplicates') {
+                    passport.locationOfSavedDuplicates = value;
                 }
             }
             accession.data.passports.push(passport);

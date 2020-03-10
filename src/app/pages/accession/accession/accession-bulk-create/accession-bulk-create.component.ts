@@ -299,6 +299,6 @@ export class AccessionBulkCreateComponent {
     }
     rePaintDialog() {
         this.uploadTried = false;
-        this.uploadSuccessful = false;
+        this.uploadSuccessful = undefined;
     }
 }

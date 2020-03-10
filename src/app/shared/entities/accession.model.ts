@@ -329,8 +329,11 @@ export class Passport {
     remarks: any;
     mlsStatus: string;
     breedingInstitute: string;
+    germplasmStorageType: string;
+    locationOfSavedDuplicates: string;
 
     constructor(object?) {
+        console.log(object);
         if (object) {
             this.version = object.version;
             this.taxonomy = new Taxonomy(object.taxonomy);
@@ -354,6 +357,12 @@ export class Passport {
             this.remarks = object.remarks;
             this.mlsStatus = object.mlsStatus;
             this.breedingInstitute = object.breedingInstitute;
+            this.germplasmStorageType = object.germplasmStorageType;
+            if (object.locationOfSavedDuplicates !== undefined) {
+                this.locationOfSavedDuplicates = object.locationOfSavedDuplicates.join(';');
+            } else {
+                this.locationOfSavedDuplicates = undefined;
+            }
         } else {
             this.version = '1.0';
             this.taxonomy = new Taxonomy();
@@ -373,6 +382,8 @@ export class Passport {
             this.remarks = undefined;
             this.mlsStatus = undefined;
             this.breedingInstitute = undefined;
+            this.germplasmStorageType = undefined;
+            this.locationOfSavedDuplicates = undefined;
         }
     }
     getApiDocument() {
@@ -427,6 +438,12 @@ export class Passport {
         }
         if (this.breedingInstitute) {
             apiData['breedingInstitute'] = this.breedingInstitute;
+        }
+        if (this.germplasmStorageType) {
+            apiData['germplasmStorageType'] = this.germplasmStorageType;
+        }
+        if (this.locationOfSavedDuplicates) {
+            apiData['locationOfSavedDuplicates'] = this.locationOfSavedDuplicates.split(';');
         }
         return apiData;
     }
