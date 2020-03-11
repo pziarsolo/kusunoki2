@@ -22,7 +22,7 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     appConfig: AppConfig;
     @Output() notifyMenuChange = new EventEmitter();
     @Input() sidenavOpened: Boolean;
-    @ViewChild(MatMenuTrigger, {static: false}) trigger: MatMenuTrigger;
+    @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
     menuIcon: string;
     language = environment.language;
     alternativeLanguages: String[];

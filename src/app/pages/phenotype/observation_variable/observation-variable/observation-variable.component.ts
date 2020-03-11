@@ -34,8 +34,8 @@ export class ObservationVariableComponent implements OnChanges {
     appUrls = AppUrls;
 
     @ViewChildren(InlineEditComponent) inlineForms;
-    @ViewChild(InlineAutoTraitComponent, {static: false}) inlineAutoTraitForm;
-    @ViewChild(InlineAutoScaleComponent, {static: false}) inlineAutoScaleForm;
+    @ViewChild(InlineAutoTraitComponent) inlineAutoTraitForm;
+    @ViewChild(InlineAutoScaleComponent) inlineAutoScaleForm;
 
     config = {
         name: {is_required: true, is_editable: false, name: 'name'},

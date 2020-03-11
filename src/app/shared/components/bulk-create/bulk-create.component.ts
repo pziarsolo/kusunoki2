@@ -18,7 +18,7 @@ import { TraitService } from '../../services/trait.service';
     styleUrls: ['./bulk-create.component.scss']
 })
 export class BulkCreateComponent implements OnInit {
-    @ViewChild('file', { static: false }) file;
+    @ViewChild('file') file;
     errors;
     uploadedFile: File;
     num_uploaded: Number;

@@ -17,7 +17,7 @@ export class InlineAutoInstituteComponent extends InlineEditComponent implements
     suggestions: Observable<Institute[]>;
     subscription: Subscription;
 
-    @ViewChild(MatAutocompleteTrigger, {static: false}) trigger;
+    @ViewChild(MatAutocompleteTrigger) trigger;
 
     constructor(public service: InstituteService) {
         super();

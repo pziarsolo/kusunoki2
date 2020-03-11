@@ -28,8 +28,8 @@ export class UserListComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() initialQueryParams?: any;
 
     dataTable = new MatTableDataSource();
-    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-    @ViewChild(MatSort, {static: false}) sort: MatSort;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
 
     constructor(private userService: UserService,
                 private router: Router,

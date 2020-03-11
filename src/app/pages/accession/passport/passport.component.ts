@@ -140,7 +140,7 @@ export class PassportComponent extends BaseInlinesForm2Component implements Afte
         }
 
     };
-    @ViewChild(OtherNumbersComponent, {static: false}) OtherNumbers;
+    @ViewChild(OtherNumbersComponent) OtherNumbers;
 
     ngAfterViewChecked() {
         super.ngAfterViewChecked();

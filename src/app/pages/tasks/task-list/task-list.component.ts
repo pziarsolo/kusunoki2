@@ -9,5 +9,5 @@ import { TaskTableComponent } from '../task-table/task-table.component';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent extends TableSearchPageComponent {
-    @ViewChild(TaskTableComponent, {static: false}) table: TaskTableComponent;
+    @ViewChild(TaskTableComponent) table: TaskTableComponent;
 }

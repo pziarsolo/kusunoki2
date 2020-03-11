@@ -16,7 +16,7 @@ export class InlineAutoCountryComponent extends InlineEditComponent implements O
     suggestions: Observable<Country[]>;
     subscription: Subscription;
 
-    @ViewChild(MatAutocompleteTrigger, {static: false}) trigger;
+    @ViewChild(MatAutocompleteTrigger) trigger;
 
     constructor(public service: CountryService) {
         super();

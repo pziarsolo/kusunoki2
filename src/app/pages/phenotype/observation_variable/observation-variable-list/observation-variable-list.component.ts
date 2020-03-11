@@ -9,5 +9,5 @@ import { ObservationVariableTableComponent
   styleUrls: ['./observation-variable-list.component.scss']
 })
 export class ObservationVariableListComponent extends TableSearchPageComponent {
-    @ViewChild(ObservationVariableTableComponent, {static: false}) table: ObservationVariableTableComponent;
+    @ViewChild(ObservationVariableTableComponent) table: ObservationVariableTableComponent;
 }

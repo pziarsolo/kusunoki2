@@ -13,8 +13,8 @@ import { ObservationService } from 'src/app/shared/services/observation.service'
 export class ObservationBulkCreateComponent {
     traitsInColumn = false;
     createObservationUnits: boolean;
-    @ViewChild('file', {static: false}) file;
-    @ViewChild('file2', {static: false}) file2;
+    @ViewChild('file') file;
+    @ViewChild('file2') file2;
     filename: string;
     filename2: string;
     errors;

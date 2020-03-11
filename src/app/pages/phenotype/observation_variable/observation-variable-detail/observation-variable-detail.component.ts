@@ -18,7 +18,7 @@ export class ObservationVariableDetailComponent implements OnInit, OnDestroy {
     routerSubscription: Subscription;
 
     userCanEdit: boolean;
-    @ViewChild(ObservationVariableComponent, {static: false}) variableComponent;
+    @ViewChild(ObservationVariableComponent) variableComponent;
 
     constructor(private route: ActivatedRoute,
         private router: Router,

@@ -6,11 +6,9 @@
 <div [hidden]="!searchDone">
     <mat-card>
         <mat-card-title i18n>Studies</mat-card-title>
-        <mat-card-subtitle i18n>Total: {{table.dataSource.totalCount}} studies found</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="table?.dataSource" i18n>Total: {{table.dataSource.totalCount}} studies found</mat-card-subtitle>
         <mat-card-content>
-            <div [hidden]="table.dataSource.totalCount" i18n> Not found</div>
             <kusunoki2-study-table #table
-                [hidden]="!table.dataSource.totalCount"
                 [searchParams]="searchParams"
                 (searchParamsChanged)="searchParamsChanged($event)">
             </kusunoki2-study-table>

@@ -32,7 +32,7 @@ import { GoogleMapMultiMarkerComponent } from './components/google/google-map-mu
 import { InlineEditListComponent } from './components/inline-edit-list/inline-edit-list.component';
 import { ObservationVariableTableComponent
 } from './components/entity-tables/observation-variable-table/observation-variable-table.component';
-import { NgxGalleryModule } from 'ngx-gallery';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { ObservationImageGalleryComponent } from './components/entity-tables/observation-image-gallery/observation-image-gallery.component';
 import { LeafletMapComponent } from './components/leaflet/leaflet-map/leaflet-map.component';
 import { GenericMapComponent } from './components/maps/generic-map/generic-map.component';

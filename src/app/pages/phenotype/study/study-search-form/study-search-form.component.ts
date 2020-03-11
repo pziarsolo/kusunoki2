@@ -18,7 +18,7 @@ export class StudySearchFormComponent implements OnInit, AfterViewInit {
     userToken;
     suggestedTaxa: Observable<Taxon[]>;
 
-    @ViewChild('taxaAuto', { read: MatAutocompleteTrigger, static: false }) taxaTrigger: MatAutocompleteTrigger;
+    @ViewChild('taxaAuto', { read: MatAutocompleteTrigger }) taxaTrigger: MatAutocompleteTrigger;
 
     constructor(
         private currentUserService: CurrentUserService,

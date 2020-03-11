@@ -19,8 +19,8 @@ export class ObservationSearchFormComponent {
     @Output() searchSubmitted = new EventEmitter<any>();
     searchParams: ObservationSearchParams =  {};
 
-    @ViewChild('studiesForm', {static: false}) studiesForm: StudyMultiAutocompleteComponent;
-    @ViewChild('observationVariableForm', {static: false}) observationVariableForm: ObservationVariableMultiAutocompleteComponent;
+    @ViewChild('studiesForm') studiesForm: StudyMultiAutocompleteComponent;
+    @ViewChild('observationVariableForm') observationVariableForm: ObservationVariableMultiAutocompleteComponent;
 
     doSubmit() {
         const studies = this.studiesForm.items;

@@ -16,7 +16,7 @@ export class InlineAutoScaleComponent  extends InlineEditComponent implements On
     subscription: Subscription;
     @Input() userCanCreate: boolean;
     @Output() AddNewScaleRequested  = new EventEmitter<any>();
-    @ViewChild(MatAutocompleteTrigger, {static: false}) trigger;
+    @ViewChild(MatAutocompleteTrigger) trigger;
 
     constructor(public service: ScaleService) {
         super();

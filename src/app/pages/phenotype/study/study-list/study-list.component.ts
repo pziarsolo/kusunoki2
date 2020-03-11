@@ -8,5 +8,5 @@ import { StudyTableComponent } from 'src/app/shared/components/entity-tables/stu
   styleUrls: ['./study-list.component.scss']
 })
 export class StudyListComponent extends TableSearchPageComponent {
-    @ViewChild(StudyTableComponent, {static: false}) table: StudyTableComponent;
+    @ViewChild(StudyTableComponent) table: StudyTableComponent;
 }

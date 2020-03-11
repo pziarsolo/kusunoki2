@@ -9,5 +9,5 @@ import { InstituteTableComponent } from '../institute-table/institute-table.comp
   styleUrls: ['./institute-list.component.scss']
 })
 export class InstituteListComponent extends TableSearchPageComponent {
-    @ViewChild(InstituteTableComponent, {static: false}) table: InstituteTableComponent;
+    @ViewChild(InstituteTableComponent) table: InstituteTableComponent;
 }

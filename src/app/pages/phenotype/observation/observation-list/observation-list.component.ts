@@ -10,5 +10,5 @@ import { TableSearchPageComponent } from 'src/app/shared/components/table-search
     styleUrls: ['./observation-list.component.scss']
 })
 export class ObservationListComponent extends TableSearchPageComponent {
-    @ViewChild(ObservationTableComponent, {static: false}) table: ObservationTableComponent;
+    @ViewChild(ObservationTableComponent) table: ObservationTableComponent;
 }

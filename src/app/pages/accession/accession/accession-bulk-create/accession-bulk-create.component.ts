@@ -232,7 +232,7 @@ export class AccessionBulkCreateComponent {
         },
     ];
 
-    @ViewChild('file', { static: false }) file;
+    @ViewChild('file') file;
     appConfig: AppConfig;
     errors: String[];
     uploadedFile: File;

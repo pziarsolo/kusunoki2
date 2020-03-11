@@ -9,7 +9,7 @@ import { ScaleCategories } from 'src/app/shared/entities/scale.model';
   styleUrls: ['./inline-scale-valid-values.component.scss']
 })
 export class InlineScaleValidValuesComponent  extends InlineEditListComponent {
-    @ViewChild('form', {static: false}) form;
+    @ViewChild('form') form;
 
     setInitialValue() {
         this.initialValue = this.value.slice();

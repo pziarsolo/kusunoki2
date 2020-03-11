@@ -16,7 +16,7 @@ export class InlineAutoTraitComponent  extends InlineEditComponent implements On
     subscription: Subscription;
     @Input() userCanCreate: boolean;
     @Output() AddNewTraitRequested  = new EventEmitter<any>();
-    @ViewChild(MatAutocompleteTrigger, {static: false}) trigger;
+    @ViewChild(MatAutocompleteTrigger) trigger;
 
     constructor(public service: TraitService) {
         super();

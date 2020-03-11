@@ -25,7 +25,7 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
     showObservations = false;
     showAccessions = false;
 
-    @ViewChild(StudyComponent, {static: false}) studyComp;
+    @ViewChild(StudyComponent) studyComp;
 
     constructor(private route: ActivatedRoute,
         private currentUserService: CurrentUserService,

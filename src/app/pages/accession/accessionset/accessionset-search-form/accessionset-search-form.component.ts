@@ -30,9 +30,9 @@ import { CurrentUserService } from 'src/app/shared/services/current-user.service
         suggestedTaxa: Observable<Taxon[]>;
         biologicalStatus = biological_status;
         userToken;
-        @ViewChild('countryAuto', {read: MatAutocompleteTrigger, static: false}) countryTrigger: MatAutocompleteTrigger;
+        @ViewChild('countryAuto', { read: MatAutocompleteTrigger }) countryTrigger: MatAutocompleteTrigger;
         // @ViewChild('instituteAuto', {read: MatAutocompleteTrigger, static: false}) instituteTrigger: MatAutocompleteTrigger;
-        @ViewChild('taxaAuto', {read: MatAutocompleteTrigger, static: false}) taxaTrigger: MatAutocompleteTrigger;
+        @ViewChild('taxaAuto', { read: MatAutocompleteTrigger }) taxaTrigger: MatAutocompleteTrigger;
 
         constructor(private instituteService: InstituteService,
                     private countryService: CountryService,

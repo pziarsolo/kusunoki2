@@ -4,19 +4,29 @@
   "newProjectRoot": "projects",
   "projects": {
     "kusunoki2": {
+      "i18n": {
+        "locales": {
+          "es": {
+            "translation": "src/locales/messages.es.xlf",
+            "baseHref": ""
+          },
+          "en": "src/i18n/messages.en.xlf"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "kusunoki2",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/kusunoki2",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -68,11 +78,14 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
               "outputPath": "dist/kusunoki2-es",
               "i18nFile": "src/i18n/messages.es.xlf",
-              "i18nFormat": "xlf",
               "i18nLocale": "es"
             },
             "crfProd": {
@@ -90,6 +103,9 @@
                   "with": "src/assets/images/favicon_crf.ico"
                 }
               ],
+            "localize": [
+              "en"
+            ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -104,14 +120,13 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
-                "outputPath": "dist/crf/en",
-                "i18nFile": "src/i18n/messages.en.xlf",
-                "i18nFormat": "xlf",
-                "i18nLocale": "en",
-                "baseHref": "/en/"
-            },
+                "outputPath": "dist/crf"},
             "crfProdEs": {
                 "fileReplacements": [
                     {
@@ -127,6 +142,9 @@
                         "with": "src/assets/images/favicon_crf.ico"
                     }
                 ],
+            "localize": [
+              "es"
+            ],
                 "optimization": true,
                 "outputHashing": "all",
                 "sourceMap": false,
@@ -141,14 +159,13 @@
                         "type": "initial",
                         "maximumWarning": "2mb",
                         "maximumError": "5mb"
-                    }
+                    },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
                 ],
-                "outputPath": "dist/crf/es",
-                "i18nFile": "src/i18n/messages.es.xlf",
-                "i18nFormat": "xlf",
-                "i18nLocale": "es",
-                "baseHref": "/es/"
-            },
+                "outputPath": "dist/crf"},
             "comavProdEs": {
               "fileReplacements": [
                 {
@@ -164,6 +181,9 @@
                   "with": "src/assets/images/favicon_comav.ico"
                 }
               ],
+            "localize": [
+              "es"
+            ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -178,14 +198,13 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
-              "outputPath": "dist/comav/es",
-              "i18nFile": "src/i18n/messages.es.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "es",
-              "baseHref": "/es/"
-            },
+              "outputPath": "dist/comav"},
             "comavProdEn": {
                 "fileReplacements": [
                     {
@@ -201,6 +220,9 @@
                         "with": "src/assets/images/favicon_comav.ico"
                     }
                 ],
+            "localize": [
+              "en"
+            ],
                 "optimization": true,
                 "outputHashing": "all",
                 "sourceMap": false,
@@ -215,14 +237,13 @@
                         "type": "initial",
                         "maximumWarning": "2mb",
                         "maximumError": "5mb"
-                    }
+                    },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
                 ],
-                "outputPath": "dist/comav/en",
-                "i18nFile": "src/i18n/messages.en.xlf",
-                "i18nFormat": "xlf",
-                "i18nLocale": "en",
-                "baseHref": "/en/"
-            },
+                "outputPath": "dist/comav"},
             "comav": {
               "fileReplacements": [
                 {
@@ -252,6 +273,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             },
@@ -284,6 +309,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             },
@@ -316,6 +345,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             },
@@ -344,14 +377,23 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             },
             "es": {
               "aot": true,
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "outputPath": "dist/kusunoki2-es",
               "i18nFile": "src/locales/messages.es.xlf",
-              "i18nFormat": "xlf",
               "i18nLocale": "es"
             }
           }

@@ -8,5 +8,5 @@ import { CountryTableComponent } from '../country-table/country-table.component'
     styleUrls: ['./country-list.component.scss']
 })
 export class CountryListComponent extends TableSearchPageComponent {
-    @ViewChild(CountryTableComponent, {static: false}) table: CountryTableComponent;
+    @ViewChild(CountryTableComponent) table: CountryTableComponent;
 }

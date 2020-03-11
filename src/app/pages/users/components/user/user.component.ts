@@ -24,8 +24,8 @@ export class UserComponent extends BaseInlinesFormComponent {
     @Input() input_form_data: User;
     @Input() username: string;
 
-    @ViewChild(PasswordFormComponent, {static: false}) passwordForm;
-    @ViewChild(GroupListComponent, {static: false}) groupsComponent;
+    @ViewChild(PasswordFormComponent) passwordForm;
+    @ViewChild(GroupListComponent) groupsComponent;
 
     children_config = {
         username: {name: 'username', is_editable: false, is_required: true},

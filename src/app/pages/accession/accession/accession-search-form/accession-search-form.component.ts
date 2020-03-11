@@ -40,8 +40,8 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
     formChangesSubscription: Subscription;
     // selectedVariable: ObservationVariable;
     @Output() formChanged = new EventEmitter();
-    @ViewChild('variableAuto', { read: MatAutocompleteTrigger, static: false }) variableTrigger: MatAutocompleteTrigger;
-    @ViewChild('obsForm', { static: false }) obsForm: NgForm;
+    @ViewChild('variableAuto', { read: MatAutocompleteTrigger }) variableTrigger: MatAutocompleteTrigger;
+    @ViewChild('obsForm') obsForm: NgForm;
     categoriesLabel = 'Categories';
     LookupExpression = 'LookupExpression';
     constructor(
@@ -174,11 +174,11 @@ export class AccessionSearchFormComponent implements AfterViewInit, OnInit {
     biologicalStatus = biological_status;
     icon = false;
     userToken;
-    @ViewChild('countryAuto', { read: MatAutocompleteTrigger, static: false }) countryTrigger: MatAutocompleteTrigger;
-    @ViewChild('instituteAuto', { read: MatAutocompleteTrigger, static: false }) instituteTrigger: MatAutocompleteTrigger;
-    @ViewChild('taxaAuto', { read: MatAutocompleteTrigger, static: false }) taxaTrigger: MatAutocompleteTrigger;
-    @ViewChild('studyAuto', { read: MatAutocompleteTrigger, static: false }) studyTrigger: MatAutocompleteTrigger;
-    @ViewChild('observation_filters', { static: false }) observation_filters: AccessionSearchByObservationsFormComponent;
+    @ViewChild('countryAuto', { read: MatAutocompleteTrigger }) countryTrigger: MatAutocompleteTrigger;
+    @ViewChild('instituteAuto', { read: MatAutocompleteTrigger }) instituteTrigger: MatAutocompleteTrigger;
+    @ViewChild('taxaAuto', { read: MatAutocompleteTrigger }) taxaTrigger: MatAutocompleteTrigger;
+    @ViewChild('studyAuto', { read: MatAutocompleteTrigger }) studyTrigger: MatAutocompleteTrigger;
+    @ViewChild('observation_filters') observation_filters: AccessionSearchByObservationsFormComponent;
 
     constructor(private instituteService: InstituteService,
         private countryService: CountryService,

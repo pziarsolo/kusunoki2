@@ -36,8 +36,8 @@ export class ScaleComponent implements OnChanges {
     dataTypeChoices = scaleDataTypes;
 
     @ViewChildren(InlineEditComponent) inlineForms;
-    @ViewChild(InlineEditSelectComponent, {static: false}) inlineSelectForm;
-    @ViewChild(InlineScaleValidValuesComponent, {static: false}) inlineListForm;
+    @ViewChild(InlineEditSelectComponent) inlineSelectForm;
+    @ViewChild(InlineScaleValidValuesComponent) inlineListForm;
 
     config = {
         name: {is_required: true, is_editable: false, name: 'name'},

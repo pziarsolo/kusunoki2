@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
-import { NgxGalleryOptions, NgxGalleryImage, INgxGalleryImage, NgxGalleryComponent } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage, INgxGalleryImage, NgxGalleryComponent } from '@kolkov/ngx-gallery';
 import { ObservationImageService } from 'src/app/shared/services/observation_image.service';
 import { DeleteDialogComponent } from '../../delete-dialog/delete-dialog.component';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
@@ -36,7 +36,7 @@ export class ObservationImageGalleryComponent implements OnInit {
 
     @Output() imagesFound = new EventEmitter<boolean>();
 
-    @ViewChild('gallery', {static: false}) gallery: NgxGalleryComponent;
+    @ViewChild('gallery') gallery: NgxGalleryComponent;
     constructor(private service: ObservationImageService,
         private readonly statusService: StatusService,
         public dialog: MatDialog) { }
