@@ -12,7 +12,6 @@
     </kusunoki2-generic-map>
 </div>
 <div *ngIf='accession'>
-    {{accession|json}}
     <mat-card >
         <mat-card-title>
             <ng-container i18n>Accession</ng-container> <span class='key' fxflex style='margin-left:5px;'> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span>
