@@ -13,7 +13,7 @@ export class FlatPageService {
     constructor(private http: HttpClient,
                 private appConfigService: AppConfigService) {
         this.appConfig = this.appConfigService.getConfig();
-        this.language = environment.language;
+        this.language = this.appConfig.currentLanguage;
     }
 
     get(path) {

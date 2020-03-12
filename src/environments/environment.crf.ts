@@ -4,7 +4,6 @@
 import siteConfig from './crf_config';
 
 export const environment = {
-    language: 'es',
     production: false,
     apiUrl: 'http://localhost:8000/api/',
     // apiUrl: 'https://vavilov.comav.upv.es/api/',

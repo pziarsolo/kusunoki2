@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, LOCALE_ID } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { AppConfig } from '../entities/app-config.model';
 
@@ -8,9 +8,10 @@ import { AppConfig } from '../entities/app-config.model';
 export class AppConfigService {
     appConfig: AppConfig;
 
-    constructor() {
+    constructor(@Inject(LOCALE_ID) protected localeId: string) {
         this.appConfig = new AppConfig();
         this.appConfig.loadConfig(environment.config);
+        this.appConfig.currentLanguage = localeId;
     }
 
     getConfig() {

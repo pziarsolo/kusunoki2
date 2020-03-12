@@ -12,6 +12,7 @@ export class AppConfig {
   public googleMapsApiKey: string;
   public canRemoveAccessionset: boolean;
   public languages: string[];
+  public currentLanguage: string;
 
   constructor() { }
 

@@ -24,23 +24,22 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     @Input() sidenavOpened: Boolean;
     @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
     menuIcon: string;
-    language = environment.language;
     alternativeLanguages: String[];
     userToken;
+
 
     constructor(
         private currentUserService: CurrentUserService,
         private appConfigService: AppConfigService,
         private router: Router) {
-
             this.appConfig = this.appConfigService.getConfig();
-        this.centralColumnSize = this.appConfig.centralColumnSize;
+            this.centralColumnSize = this.appConfig.centralColumnSize;
         }
     ngOnInit(): void {
         this.userToken = this.currentUserService.userToken;
 
         const languages = Object.assign([], this.appConfig.languages);
-        const index = languages.indexOf(this.language);
+        const index = languages.indexOf(this.appConfig.currentLanguage);
         if (index !== -1) {
             languages.splice(index, 1);
         }

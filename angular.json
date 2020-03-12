@@ -1,512 +1,428 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "kusunoki2": {
-      "i18n": {
-        "locales": {
-          "es": {
-            "translation": "src/locales/messages.es.xlf",
-            "baseHref": ""
-          },
-          "en": "src/i18n/messages.en.xlf"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "projectType": "application",
-      "prefix": "kusunoki2",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "aot": true,
-            "outputPath": "dist/kusunoki2",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*",
-                "input": "./node_modules/leaflet/dist/images/",
-                "output": "./assets/"
-              }
-            ],
-            "styles": [
-              "src/styles.scss",
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "./node_modules/leaflet/dist/leaflet.css"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "crf": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.crf.ts"
-                },
-                {
-                  "replace": "src/styles.scss",
-                  "with": "src/assets/styles/style.crf.scss"
-                },
-                {
-                  "replace": "src/favicon.ico",
-                  "with": "src/assets/images/favicon_crf.ico"
-                }
-              ],
-              "optimization": false,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
-              "outputPath": "dist/kusunoki2-es",
-              "i18nFile": "src/i18n/messages.es.xlf",
-              "i18nLocale": "es"
-            },
-            "crfProd": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.crf.prod.ts"
-                },
-                {
-                  "replace": "src/styles.scss",
-                  "with": "src/assets/styles/style.crf.scss"
-                },
-                {
-                  "replace": "src/favicon.ico",
-                  "with": "src/assets/images/favicon_crf.ico"
-                }
-              ],
-            "localize": [
-              "en"
-            ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
-                "outputPath": "dist/crf"},
-            "crfProdEs": {
-                "fileReplacements": [
-                    {
-                        "replace": "src/environments/environment.ts",
-                        "with": "src/environments/environment.crf.es.prod.ts"
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "kusunoki2": {
+            "i18n": {
+                "locales": {
+                    "es": {
+                        "translation": "src/locales/messages.es.xlf",
+                        "baseHref": "/es/"
                     },
-                    {
-                        "replace": "src/styles.scss",
-                        "with": "src/assets/styles/style.crf.scss"
-                    },
-                    {
-                        "replace": "src/favicon.ico",
-                        "with": "src/assets/images/favicon_crf.ico"
+                    "en": {
+                        "translation": "src/locales/messages.en.xlf",
+                        "baseHref": "/en/"
                     }
-                ],
-            "localize": [
-              "es"
-            ],
-                "optimization": true,
-                "outputHashing": "all",
-                "sourceMap": false,
-                "extractCss": true,
-                "namedChunks": false,
-                "aot": true,
-                "extractLicenses": true,
-                "vendorChunk": false,
-                "buildOptimizer": true,
-                "budgets": [
-                    {
-                        "type": "initial",
-                        "maximumWarning": "2mb",
-                        "maximumError": "5mb"
-                    },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
                 }
-                ],
-                "outputPath": "dist/crf"},
-            "comavProdEs": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.comav.es.prod.ts"
-                },
-                {
-                  "replace": "src/styles.scss",
-                  "with": "src/assets/styles/style.comav.scss"
-                },
-                {
-                  "replace": "src/favicon.ico",
-                  "with": "src/assets/images/favicon_comav.ico"
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "projectType": "application",
+            "prefix": "kusunoki2",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
                 }
-              ],
-            "localize": [
-              "es"
-            ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
-              "outputPath": "dist/comav"},
-            "comavProdEn": {
-                "fileReplacements": [
-                    {
-                        "replace": "src/environments/environment.ts",
-                        "with": "src/environments/environment.comav.en.prod.ts"
+            },
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                    "aot": true,
+                    "outputPath": "dist/kusunoki2",
+                    "index": "src/index.html",
+                    "main": "src/main.ts",
+                    "polyfills": "src/polyfills.ts",
+                    "tsConfig": "src/tsconfig.app.json",
+                    "assets": [
+                        "src/favicon.ico",
+                        "src/assets",
+                        {
+                            "glob": "**/*",
+                            "input": "./node_modules/leaflet/dist/images/",
+                            "output": "./assets/"
+                        }
+                    ],
+                    "styles": [
+                        "src/styles.scss",
+                        "./node_modules/font-awesome/css/font-awesome.css",
+                        "./node_modules/leaflet/dist/leaflet.css"
+                    ],
+                    "scripts": []
                     },
-                    {
-                        "replace": "src/styles.scss",
-                        "with": "src/assets/styles/style.comav.scss"
-                    },
-                    {
-                        "replace": "src/favicon.ico",
-                        "with": "src/assets/images/favicon_comav.ico"
+                    "configurations": {
+                        "crf": {
+                            "fileReplacements": [
+                                {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.crf.ts"
+                                },
+                                {
+                                "replace": "src/styles.scss",
+                                "with": "src/assets/styles/style.crf.scss"
+                                },
+                                {
+                                "replace": "src/favicon.ico",
+                                "with": "src/assets/images/favicon_crf.ico"
+                                }
+                            ],
+                            "optimization": false,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
+                            "outputPath": "dist/kusunoki2",
+
+                            "localize": [
+                                "es"
+                            ]
+                        },
+                        "crfProd": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.crf.prod.ts"
+                                },
+                                {
+                                    "replace": "src/styles.scss",
+                                    "with": "src/assets/styles/style.crf.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_crf.ico"
+                                }
+                            ],
+                            "localize": [
+                                "en",
+                                "es"
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
+                            "outputPath": "dist/crf"
+                        },
+                        "comavProd": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.comav.es.prod.ts"
+                                },
+                                {
+                                    "replace": "src/styles.scss",
+                                    "with": "src/assets/styles/style.comav.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_comav.ico"
+                                }
+                            ],
+                            "localize": [
+                                "es",
+                                "en"
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
+                            "outputPath": "dist/comav"
+                        },
+                        "comav": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.comav.ts"
+                                },
+                                {
+                                    "replace": "src/styles.scss",
+                                    "with": "src/assets/styles/style.comav.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_comav.ico"
+                                }
+                            ],
+                            "optimization": false,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ]
+                        },
+                        "bagerimProd": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.bagerim.prod.ts"
+                                },
+                                {
+                                    "replace": "src/styles.scss",
+                                    "with": "src/assets/styles/style.bagerim.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_imida.ico"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ]
+                        },
+                        "bagerim": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.bagerim.ts"
+                                },
+                                {
+                                    "replace": "src/styles.scss",
+                                    "with": "src/assets/styles/style.bagerim.scss"
+                                },
+                                {
+                                    "replace": "src/favicon.ico",
+                                    "with": "src/assets/images/favicon_imida.ico"
+                                }
+                            ],
+                            "optimization": false,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ]
+                        },
+                        "tomatoProd": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.tomato.prod.ts"
+                                },
+                                {
+                                    "replace": "src/styles.scss",
+                                    "with": "src/assets/styles/style.tomato.scss"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ]
+                        }
                     }
-                ],
-            "localize": [
-              "en"
-            ],
-                "optimization": true,
-                "outputHashing": "all",
-                "sourceMap": false,
-                "extractCss": true,
-                "namedChunks": false,
-                "aot": true,
-                "extractLicenses": true,
-                "vendorChunk": false,
-                "buildOptimizer": true,
-                "budgets": [
-                    {
-                        "type": "initial",
-                        "maximumWarning": "2mb",
-                        "maximumError": "5mb"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "kusunoki2:build"
                     },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                    "configurations": {
+                        "crf": {
+                            "browserTarget": "kusunoki2:build:crf"
+                        },
+                        "crfProd": {
+                            "browserTarget": "kusunoki2:build:crfProd"
+                        },
+                        "comavProd": {
+                            "browserTarget": "kusunoki2:build:comavProd"
+                        },
+                        "comav": {
+                            "browserTarget": "kusunoki2:build:comav"
+                        },
+                        "bagerimProd": {
+                            "browserTarget": "kusunoki2:build:bagerimProd"
+                        },
+                        "bagerim": {
+                            "browserTarget": "kusunoki2:build:bagerim"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "kusunoki2:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "src/styles.scss"
+                        ],
+                        "scripts": [],
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "xliffmerge": {
+                    "builder": "@ngx-i18nsupport/tooling:xliffmerge",
+                    "options": {
+                        "xliffmergeOptions": {
+                            "i18nFormat": "xlf",
+                            "srcDir": "src/locales",
+                            "genDir": "src/locales",
+                            "defaultLanguage": "en",
+                            "languages": [
+                                "en",
+                                "es"
+                            ]
+                        }
+                    }
                 }
-                ],
-                "outputPath": "dist/comav"},
-            "comav": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.comav.ts"
-                },
-                {
-                  "replace": "src/styles.scss",
-                  "with": "src/assets/styles/style.comav.scss"
-                },
-                {
-                  "replace": "src/favicon.ico",
-                  "with": "src/assets/images/favicon_comav.ico"
-                }
-              ],
-              "optimization": false,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ]
-            },
-            "bagerimProd": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.bagerim.prod.ts"
-                },
-                {
-                  "replace": "src/styles.scss",
-                  "with": "src/assets/styles/style.bagerim.scss"
-                },
-                {
-                  "replace": "src/favicon.ico",
-                  "with": "src/assets/images/favicon_imida.ico"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ]
-            },
-            "bagerim": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.bagerim.ts"
-                },
-                {
-                  "replace": "src/styles.scss",
-                  "with": "src/assets/styles/style.bagerim.scss"
-                },
-                {
-                  "replace": "src/favicon.ico",
-                  "with": "src/assets/images/favicon_imida.ico"
-                }
-              ],
-              "optimization": false,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ]
-            },
-            "tomatoProd": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.tomato.prod.ts"
-                },
-                {
-                  "replace": "src/styles.scss",
-                  "with": "src/assets/styles/style.tomato.scss"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ]
-            },
-            "es": {
-              "aot": true,
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
-              "outputPath": "dist/kusunoki2-es",
-              "i18nFile": "src/locales/messages.es.xlf",
-              "i18nLocale": "es"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "kusunoki2:build"
-          },
-          "configurations": {
-            "crf": {
-              "browserTarget": "kusunoki2:build:crf"
-            },
-            "crfProd": {
-              "browserTarget": "kusunoki2:build:crfProd"
-            },
-            "comavProd": {
-              "browserTarget": "kusunoki2:build:comavProd"
-            },
-            "comav": {
-              "browserTarget": "kusunoki2:build:comav"
-            },
-            "bagerimProd": {
-              "browserTarget": "kusunoki2:build:bagerimProd"
-            },
-            "bagerim": {
-              "browserTarget": "kusunoki2:build:bagerim"
-            },
-            "es": {
-              "browserTarget": "kusunoki2:build:es"
+        "kusunoki2-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "prefix": "",
+            "architect": {
+                "e2e": {
+                "builder": "@angular-devkit/build-angular:protractor",
+                "options": {
+                    "protractorConfig": "e2e/protractor.conf.js",
+                    "devServerTarget": "kusunoki2:serve"
+                },
+                "configurations": {
+                    "production": {
+                    "devServerTarget": "kusunoki2:serve:production"
+                    }
+                }
+                },
+                "lint": {
+                "builder": "@angular-devkit/build-angular:tslint",
+                "options": {
+                    "tsConfig": "e2e/tsconfig.e2e.json",
+                    "exclude": [
+                    "**/node_modules/**"
+                    ]
+                }
+                }
             }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "kusunoki2:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "xliffmerge": {
-          "builder": "@ngx-i18nsupport/tooling:xliffmerge",
-          "options": {
-            "xliffmergeOptions": {
-              "i18nFormat": "xlf",
-              "srcDir": "src/i18n",
-              "genDir": "src/i18n",
-              "defaultLanguage": "en",
-              "languages": [
-                "en",
-                "es"
-              ]
-            }
-          }
         }
-      }
     },
-    "kusunoki2-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "kusunoki2:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "kusunoki2:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    }
-  },
-  "defaultProject": "kusunoki2"
+    "defaultProject": "kusunoki2"
 }

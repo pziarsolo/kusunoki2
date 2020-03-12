@@ -18,13 +18,14 @@ import { AppConfig } from 'src/app/shared/entities/app-config.model';
 export class AccessionMultiMarkerMapComponent implements OnInit, OnChanges {
     @Input() searchParams;
     markers: Observable<MapMarker[]>;
-    language = environment.language;
+    language: string;
     alternativeLanguages: string[];
     appConfig: AppConfig;
 
     constructor(private service: AccessionService,
                 private appConfigService: AppConfigService) {
-        this.appConfig = this.appConfigService.getConfig()
+        this.appConfig = this.appConfigService.getConfig();
+        this.language = this.appConfig.currentLanguage;
     }
 
     ngOnInit(): void {

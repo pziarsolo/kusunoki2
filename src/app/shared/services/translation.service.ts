@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { AppConfigService } from './app-config.service';
+import { AppConfig } from '../entities/app-config.model';
 
 export class TranslationSet {
     public languange: String;
@@ -11,9 +12,8 @@ export class TranslationSet {
   providedIn: 'root'
 })
 export class TranslationService {
-    public language = environment.language;
     private dictionary = {};
-
+    private appConfig: AppConfig;
     loadTranslation(language) {
         const urlToLanguageFile = `assets/translations/${language}.json`;
 
@@ -22,11 +22,15 @@ export class TranslationService {
                 this.dictionary = response;
             });
     }
-    constructor(private http: HttpClient) {
-        if (this.language === 'en') {
+    constructor(
+        private http: HttpClient,
+        private appConfigService: AppConfigService) {
+        this.appConfig = this.appConfigService.getConfig();
+        const language = this.appConfig.currentLanguage;
+        if (language === 'en') {
             this.dictionary = {};
         } else {
-            this.loadTranslation(this.language);
+            this.loadTranslation(language);
         }
      }
 

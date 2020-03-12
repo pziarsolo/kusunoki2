@@ -42,8 +42,9 @@
             <span fxFlex='1 1 auto'></span>
 
             <button mat-button (click)="switchLanguage()" *ngIf="alternativeLanguages">
-                <span *ngIf="language === 'en'">Castellano</span>
-                <span *ngIf="language === 'es'">English</span>
+
+                <span *ngIf="alternativeLanguages[0] === 'es'">Castellano</span>
+                <span *ngIf="alternativeLanguages[0] === 'en'">English</span>
             </button>
             <kusunoki2-user-menu></kusunoki2-user-menu>
         </div>
