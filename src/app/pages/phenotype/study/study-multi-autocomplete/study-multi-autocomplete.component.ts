@@ -25,7 +25,7 @@ export class StudyMultiAutocompleteComponent {
     placeholder = 'Studies to search for...';
 
     @ViewChild('inputElement') inputElement: ElementRef;
-    @ViewChild('auto', { read: MatAutocompleteTrigger }) studyTrigger: MatAutocompleteTrigger;
+    @ViewChild('inputElement', { read: MatAutocompleteTrigger }) studyTrigger: MatAutocompleteTrigger;
 
     constructor(private service: StudyService) {}
 

@@ -21,7 +21,8 @@
                     <input type="text" matInput [(ngModel)]="searchParams.country"
                             (ngModelChange) = "suggestedCountries = filterCountry(searchParams.country)"
                             [matAutocomplete]="countryAuto"
-                            #countryAuto  name="country">
+                            #countryInput
+                            name="country">
                     <mat-autocomplete #countryAuto="matAutocomplete">
                         <mat-option *ngFor="let country of suggestedCountries|async " [value]="country.code">
                             {{ country.name }}
@@ -39,7 +40,9 @@
                     <mat-label i18n>Taxon</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.taxon_contains"
                             (ngModelChange) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
-                            [matAutocomplete]="taxaAuto" name='taxon_contains' #taxaAuto>
+                            [matAutocomplete]="taxaAuto"
+                            name='taxon_contains'
+                            #taxaInput>
                     <mat-autocomplete #taxaAuto="matAutocomplete">
                         <mat-option *ngFor="let taxon of suggestedTaxa |async " [value]="taxon.name">
                             {{ taxon.name }}

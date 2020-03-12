@@ -40,7 +40,7 @@ export class AccessionSearchByObservationFormComponent implements OnInit, OnDest
     formChangesSubscription: Subscription;
     // selectedVariable: ObservationVariable;
     @Output() formChanged = new EventEmitter();
-    @ViewChild('variableAuto', { read: MatAutocompleteTrigger }) variableTrigger: MatAutocompleteTrigger;
+    @ViewChild('variableInput', { read: MatAutocompleteTrigger }) variableTrigger: MatAutocompleteTrigger;
     @ViewChild('obsForm') obsForm: NgForm;
     categoriesLabel = 'Categories';
     LookupExpression = 'LookupExpression';
@@ -162,7 +162,7 @@ export class AccessionSearchByObservationsFormComponent {
     templateUrl: './accession-search-form.component.html',
     // styleUrls: ['./accession-search-form.component.scss']
 })
-export class AccessionSearchFormComponent implements AfterViewInit, OnInit {
+export class AccessionSearchFormComponent implements OnInit, AfterViewInit {
     @Output() searchSubmitted = new EventEmitter<AccessionSearchParams>();
     searchParams: AccessionSearchParams = {};
     showcharaCriteria = false;
@@ -174,10 +174,10 @@ export class AccessionSearchFormComponent implements AfterViewInit, OnInit {
     biologicalStatus = biological_status;
     icon = false;
     userToken;
-    @ViewChild('countryAuto', { read: MatAutocompleteTrigger }) countryTrigger: MatAutocompleteTrigger;
-    @ViewChild('instituteAuto', { read: MatAutocompleteTrigger }) instituteTrigger: MatAutocompleteTrigger;
-    @ViewChild('taxaAuto', { read: MatAutocompleteTrigger }) taxaTrigger: MatAutocompleteTrigger;
-    @ViewChild('studyAuto', { read: MatAutocompleteTrigger }) studyTrigger: MatAutocompleteTrigger;
+    @ViewChild('countryInput', { read: MatAutocompleteTrigger }) countryTrigger: MatAutocompleteTrigger;
+    @ViewChild('instituteInput', { read: MatAutocompleteTrigger }) instituteTrigger: MatAutocompleteTrigger;
+    @ViewChild('taxaInput', { read: MatAutocompleteTrigger }) taxaTrigger: MatAutocompleteTrigger;
+    @ViewChild('studyInput', { read: MatAutocompleteTrigger }) studyTrigger: MatAutocompleteTrigger;
     @ViewChild('observation_filters') observation_filters: AccessionSearchByObservationsFormComponent;
 
     constructor(private instituteService: InstituteService,

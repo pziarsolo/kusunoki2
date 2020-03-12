@@ -31,7 +31,7 @@
                     <input type="text" matInput [(ngModel)]="searchParams.taxon"
                         (ngModelChange)="suggestedTaxa = filterTaxa(searchParams.taxon)"
                         [matAutocomplete]="taxaAuto"
-                        name='taxon' #taxaAuto>
+                        name='taxon' #taxaInput>
                     <mat-autocomplete #taxaAuto="matAutocomplete">
                         <mat-option *ngFor="let taxon of suggestedTaxa |async " [value]="taxon.name">
                             {{ taxon.name }}

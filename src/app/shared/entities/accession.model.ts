@@ -333,7 +333,6 @@ export class Passport {
     locationOfSavedDuplicates: string;
 
     constructor(object?) {
-        console.log(object);
         if (object) {
             this.version = object.version;
             this.taxonomy = new Taxonomy(object.taxonomy);

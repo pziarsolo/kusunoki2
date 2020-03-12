@@ -8,7 +8,7 @@
                     <input type="text" matInput [(ngModel)]="searchParams.institute_code"
                             (ngModelChange) = "suggestedInstitutes = filterInstitute(searchParams.institute_code)"
                             [matAutocomplete]="instituteAuto"
-                            #instituteAuto
+                            #instituteInput
                             name="institute">
                     <mat-autocomplete #instituteAuto="matAutocomplete">
                         <mat-option *ngFor="let institute of suggestedInstitutes|async " [value]="institute.instituteCode">
@@ -35,7 +35,7 @@
                     <input type="text" matInput [(ngModel)]="searchParams.country"
                             (ngModelChange) = "suggestedCountries = filterCountry(searchParams.country)"
                             [matAutocomplete]="countryAuto"
-                            #countryAuto  name="country">
+                            #countryInput  name="country">
                     <mat-autocomplete #countryAuto="matAutocomplete">
                         <mat-option *ngFor="let country of suggestedCountries|async " [value]="country.code">
                             {{ country.name }}
@@ -53,7 +53,8 @@
                     <mat-label i18n>Taxon</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.taxon_contains"
                             (ngModelChange) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
-                            [matAutocomplete]="taxaAuto" name='taxon_contains' #taxaAuto>
+                            [matAutocomplete]="taxaAuto" name='taxon_contains'
+                            #taxaInput>
                     <mat-autocomplete #taxaAuto="matAutocomplete">
                         <mat-option *ngFor="let taxon of suggestedTaxa |async " [value]="taxon.name">
                             {{ taxon.name }}
@@ -97,7 +98,7 @@
                         <input type="text" matInput [(ngModel)]="searchParams.study"
                                 (ngModelChange) = "suggestedStudies = filterStudies(searchParams.study)"
                                 [matAutocomplete]="studyAuto"
-                                #studyAuto  name="study">
+                                #studyInput  name="study">
                         <mat-autocomplete #studyAuto="matAutocomplete">
                             <mat-option *ngFor="let study of suggestedStudies|async " [value]="study.data.name">
                                 {{ study.data.name }}
@@ -109,29 +110,7 @@
                     </kusunoki2-accession-search-by-observations-form>
                 </div>
             </mat-expansion-panel>
-            <!-- <div fxLayout='column' style='margin-bottom:10px;'>
-                <button mat-raised-button color='primary'
-                    *ngIf="!showcharaCriteria" style='width: 17em'
-                    (click)="showcharaCriteria=true">Add characterization criteria</button>
-                <div fxLayout='column' [style.display]="showcharaCriteria?'inherit':'none'" style='margin-left:20px'>
-                    <h3>Characterization criteria</h3>
-                    <mat-form-field fxFlex>
-                        <mat-label>Study</mat-label>
-                        <input type="text" matInput [(ngModel)]="searchParams.study"
-                                (ngModelChange) = "suggestedStudies = filterStudies(searchParams.study)"
-                                [matAutocomplete]="studyAuto"
-                                #studyAuto  name="study">
-                        <mat-autocomplete #studyAuto="matAutocomplete">
-                            <mat-option *ngFor="let study of suggestedStudies|async " [value]="study.data.name">
-                                {{ study.data.name }}
-                            </mat-option>
-                        </mat-autocomplete>
-                    </mat-form-field>
-                    <h4>Observations</h4>
-                    <kusunoki2-accession-search-by-observations-form #observation_filters>
-                    </kusunoki2-accession-search-by-observations-form>
-                </div>
-            </div> -->
+
             <button mat-raised-button [disabled]="!observation_filters.allInputAreValid" color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>
             <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="resetForm()" i18n>Clear</button>
         </form>
