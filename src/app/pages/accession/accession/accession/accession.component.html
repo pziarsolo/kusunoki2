@@ -1,14 +1,8 @@
 <div style='margin-bottom:20px;' *ngIf="accession && accession.data.passports[0].collectionSite.latitude && accession.data.passports[0].collectionSite.longitude">
-    <!-- <kusunoki2-google-map
-        [id]="mapId"
-        [latitude]="accession.data.passports[0].collectionSite.latitude"
-        [longitude]="accession.data.passports[0].collectionSite.longitude">
-    </kusunoki2-google-map> -->
     <kusunoki2-generic-map
         [id]="mapId"
         [latitude]="accession.data.passports[0].collectionSite.latitude"
         [longitude]="accession.data.passports[0].collectionSite.longitude">
-
     </kusunoki2-generic-map>
 </div>
 <div *ngIf='accession'>
@@ -114,15 +108,16 @@
             </mat-action-row>
         </mat-expansion-panel>
         <div *ngIf='!editMode && accession && accession.data.germplasmNumber && accession.data.instituteCode'>
-            <mat-expansion-panel [fxShow]='showImages'>
+            <mat-expansion-panel [hidden]='!showImages'>
                 <mat-expansion-panel-header><h3 i18n>Images</h3></mat-expansion-panel-header>
-                <div fxFlex></div>
-                <kusunoki2-observation-image-gallery fxFlex
-                    (imagesFound)="showImages=$event"
-                    [searchParams]="{accession_number: accession.data.germplasmNumber,
-                                    accession_institute: accession.data.instituteCode}">
-                </kusunoki2-observation-image-gallery>
-                <div fxFlex></div>
+                <div style='height: 400px; width:600px'>
+                    <kusunoki2-observation-image-gallery
+                        (imagesFound)="showImages=$event"
+                        [searchParams]="{accession_number: accession.data.germplasmNumber,
+                                        accession_institute: accession.data.instituteCode}">
+                    </kusunoki2-observation-image-gallery>
+                </div>
+
             </mat-expansion-panel>
             <mat-expansion-panel [fxShow]="showObservations">
                 <mat-expansion-panel-header><h3 i18n>Observations of this accession</h3></mat-expansion-panel-header>
