@@ -108,7 +108,7 @@
             </mat-action-row>
         </mat-expansion-panel>
         <div *ngIf='!editMode && accession && accession.data.germplasmNumber && accession.data.instituteCode'>
-            <mat-expansion-panel [hidden]='!showImages'>
+            <mat-expansion-panel [fxShow]='showImages'>
                 <mat-expansion-panel-header><h3 i18n>Images</h3></mat-expansion-panel-header>
                 <div style='height: 400px; width:600px'>
                     <kusunoki2-observation-image-gallery
