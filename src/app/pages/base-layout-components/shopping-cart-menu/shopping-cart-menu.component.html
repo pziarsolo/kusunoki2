@@ -1,6 +1,7 @@
 <button
     *ngIf='appConfig.useShoppingCart'
-    style='margin-right:5px;'
+    [disabled]="(accessions|async).length === 0"
+    style='margin-right:10px;'
     mat-mini-fab color='primary'
     aria-label='Shopping cart'
     [matBadge]="(accessions|async).length"
@@ -11,7 +12,7 @@
 <mat-menu #cartMenu="matMenu" yPosition="below" class='shopping-cart'>
     <div style="width: 280px">
         <mat-list>
-            <mat-list-item><h3 class='key' i18n>Shopping cart</h3><mat-divider [inset]="true"></mat-divider></mat-list-item>
+            <mat-list-item><h3 class='key' i18n>Accessions to request</h3><mat-divider [inset]="true"></mat-divider></mat-list-item>
             <mat-list-item *ngFor='let accession of accessions|async' >
                 <a [routerLink]="['/', appUrls.accessions, accession['instituteCode'], accession['germplasmNumber']]">
                     {{accession['instituteCode']}}:{{accession['germplasmNumber']}}</a>
