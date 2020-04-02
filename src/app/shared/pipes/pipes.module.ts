@@ -26,7 +26,7 @@ import { TranslatePipe } from './translate.pipe';
         ImproveTaskNamePipe,
         ShowDescriptiveConStatus,
         SafeHtmlPipe,
-        TranslatePipe
+        TranslatePipe,
     ],
     exports: [
         ContainsPipe,
@@ -38,7 +38,7 @@ import { TranslatePipe } from './translate.pipe';
         ImproveTaskNamePipe,
         ShowDescriptiveConStatus,
         SafeHtmlPipe,
-        TranslatePipe
+        TranslatePipe,
     ]
 })
 export class PipesModule { }

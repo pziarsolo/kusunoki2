@@ -9,7 +9,8 @@ export const siteConfig = {
     version: require('../../package.json').version,
     useGoogleMaps: false,
     googleMapsApiKey: undefined,
-    canRemoveAccessionset: true
+    canRemoveAccessionset: true,
+    useShoppingCart: true,
 };
 
 export default siteConfig;

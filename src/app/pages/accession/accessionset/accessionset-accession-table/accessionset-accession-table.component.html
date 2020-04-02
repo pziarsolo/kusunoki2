@@ -24,8 +24,18 @@
     <ng-container matColumnDef="is_available">
         <th mat-header-cell *matHeaderCellDef i18n>Is available</th>
         <td mat-cell *matCellDef="let accessions">
-            <mat-icon color='primary' *ngIf=accessions.data.is_available>done</mat-icon>
-            <mat-icon *ngIf=!accessions.data.is_available>close</mat-icon>
+            <span color='primary' *ngIf=accessions.data.is_available>Yes</span>
+            <span color='primary' *ngIf=!accessions.data.is_available>No</span>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="add_to_cart">
+        <th mat-header-cell *matHeaderCellDef i18n></th>
+        <td mat-cell *matCellDef="let accessions">
+            <button mat-raised-button
+                *ngIf="appConfig.useShoppingCart &&  accessions.data.conservation_status === 'is_active' && accessions.data.is_available === true"
+                [disabled]="!shoppingCartService.accessionInCart(accessions)"
+                color="accent" style="margin-right: 5px;" (click)="shoppingCartService.addAccession(accessions)" i18n>Add to cart<mat-icon>add_shopping_cart</mat-icon>
+            </button>
         </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>

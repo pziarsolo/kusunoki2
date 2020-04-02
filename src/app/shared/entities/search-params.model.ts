@@ -19,6 +19,8 @@ export interface AccessionSearchParams extends SearchParams {
     study?: string;
     observation_filters?: [];
     is_public?: boolean;
+    seed_available?: number;
+    in_nuclear_collection?: number;
 }
 
 export interface AccessionSetSearchParams extends AccessionSearchParams {

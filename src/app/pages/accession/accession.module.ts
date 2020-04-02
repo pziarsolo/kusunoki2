@@ -146,6 +146,12 @@ const routes: Routes = [
         SharedModule,
         FormsModule,
         RouterModule.forChild(routes),
+    ],
+    exports: [
+        InlineAutoCountryComponent
     ]
+
+
+
 })
 export class AccessionModule { }

@@ -8,6 +8,8 @@ import { LoginModule } from './login/login.module';
 import { AppUrls } from './appUrls';
 import { FlatpagesComponent } from '../shared/components/flatpages/flatpages.component';
 
+
+
 const routes: Routes = [
     {
         path: '',
@@ -31,6 +33,12 @@ const routes: Routes = [
                 loadChildren: () => import('./tasks/tasks.module').then(m => m.TaskModule),
                 // canActivate: [IsAuthGuard]
                 data: {title: 'Tasks'}
+            },
+            {
+                path: 'seed_petitions',
+                loadChildren: () => import('./seed-petitions/seed-petitions.module').then(m => m.SeedPetitionModule),
+                // canActivate: [IsAuthGuard]
+                data: { title: 'Seed Petitions' }
             },
             {
                 path: AppUrls.phenotypeSubDir,

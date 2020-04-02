@@ -14,6 +14,9 @@
                     <mat-error *ngIf="inputControl.errors?.min">
                         <ng-container i18n>Minimum value allowed: {{inputControl.errors.min.min}}</ng-container>
                     </mat-error>
+                    <mat-error *ngIf="inputControl.errors?.email">
+                        <ng-container i18n>Email malformed</ng-container>
+                    </mat-error>
                     <mat-error *ngIf="inputControl.errors?.max">
                         <ng-container i18n>Maximun value allowed: <strong>{{inputControl.errors.max.max}}</strong></ng-container>
                     </mat-error>
@@ -22,6 +25,26 @@
                     </mat-error>
                     <mat-error *ngIf="inputControl.errors?.is_not_number">
                         <ng-container i18n>Value must be a number</ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </ng-container>
+            <ng-container *ngSwitchCase="'text_area'">
+                <mat-form-field style='width: 100%;'>
+                    <mat-label>{{label}}</mat-label>
+                    <textarea matInput type='text'
+                        [rows] = "config.widget.rows"
+                        [hidden]='hideInput()' formControlName="inputControl"
+                        [required]='config.is_required && editMode'>
+                    </textarea>
+                    <span [hidden]='!hideInput()' >
+                        <ng-content select=".textareavalue"></ng-content>
+                    </span>
+                    <button mat-button *ngIf="config.is_editable && inputControl.value && editMode" matSuffix mat-icon-button
+                        aria-label="Clear" (click)="clearForm()">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="inputControl.errors?.required">
+                        <ng-container i18n>This value is required</ng-container>
                     </mat-error>
                 </mat-form-field>
             </ng-container>

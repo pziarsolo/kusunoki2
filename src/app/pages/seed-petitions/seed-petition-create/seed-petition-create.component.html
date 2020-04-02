@@ -1,0 +1,9 @@
+<div *ngIf="appConfig.useShoppingCart && petition">
+    <kusunoki2-seed-petition
+        [editMode]="editMode"
+        [petition]="petition">
+    </kusunoki2-seed-petition>
+</div>
+<mat-card *ngIf=!appConfig.useShoppingCart>
+    <h1 i18n> Can not make seed petitions in this site</h1>
+</mat-card>

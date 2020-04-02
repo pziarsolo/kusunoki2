@@ -1,0 +1,36 @@
+<button
+    *ngIf='appConfig.useShoppingCart'
+    style='margin-right:5px;'
+    mat-mini-fab color='primary'
+    aria-label='Shopping cart'
+    [matBadge]="(accessions|async).length"
+    [matBadgeHidden]="!(accessions|async).length"
+    [matMenuTriggerFor]="cartMenu">
+    <mat-icon>shopping_cart</mat-icon>
+</button>
+<mat-menu #cartMenu="matMenu" yPosition="below" class='shopping-cart'>
+    <div style="width: 280px">
+        <mat-list>
+            <mat-list-item><h3 class='key' i18n>Shopping cart</h3><mat-divider [inset]="true"></mat-divider></mat-list-item>
+            <mat-list-item *ngFor='let accession of accessions|async' >
+                <a [routerLink]="['/', appUrls.accessions, accession['instituteCode'], accession['germplasmNumber']]">
+                    {{accession['instituteCode']}}:{{accession['germplasmNumber']}}</a>
+                <span fxFlex='1 1 auto'></span>
+                <button mat-icon-button color="primary"
+                    (click)='shoppingCartService.removeAccessionFromCart(accession)'>
+                    <mat-icon>remove_circle</mat-icon>
+                </button>
+                <mat-divider [inset]="true"></mat-divider>
+            </mat-list-item>
+
+            <mat-list-item fxLayout=row fxLayoutGap='5px' *ngIf="(accessions|async).length > 0">
+                <button mat-raised-button color="primary" style="margin-right: 10px;"
+                    [routerLink]="['/', appUrls.seed_petitions, 'create']" i18n>Do Petition</button>
+                <span fxFlex='1 1 auto'></span>
+                <button mat-raised-button color="warning"
+                    (click)='shoppingCartService.removeAllFromCart()' i18n>Remove All</button>
+            </mat-list-item>
+
+        </mat-list>
+    </div>
+</mat-menu>

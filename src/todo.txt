@@ -1,0 +1,24 @@
+New Module Shopping card:
+    How it would work. In list view or in detailed view, we must add a add to card button.
+    It will add an accession t othe cart. You can remove accessions from the card.
+    The card has a request button, thet redirects you to request page.
+    You have to fill the form in order to make a request. The request is an API call to /seed_request.
+
+    It will send necessary mails to each Institution responsable.
+
+
+    Data saved on localeStorage
+    Service:
+        add accession
+        remove accession
+        remove all accessions
+        num accessions on card
+    Components:
+        Request page, with the list of accessions and sender info
+        Some kind of list/Menu when hoover the shopping car button
+
+
+    Service SeedRequest:
+        It makes the send requests, lists all requests, removes, ...
+
+

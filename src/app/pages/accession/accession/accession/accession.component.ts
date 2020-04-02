@@ -3,7 +3,6 @@ import { Accession, Passport, AccessionId } from 'src/app/shared/entities/access
 import { AccessionService } from 'src/app/shared/services/accession.service';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { InlineEditSelectComponent } from 'src/app/shared/components/inline-edit-select/inline-edit-select.component';
-import * as moment from 'moment';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,12 +13,13 @@ import { AppUrls } from 'src/app/pages/appUrls';
 import { conservation_statuses } from '../../assets/conservationStatus';
 import { InlineAutoInstituteComponent } from '../../institute/inline-auto-institute/inline-auto-institute.component';
 import { PassportComponent } from '../../passport/passport.component';
-import {
-    ObservationImageGalleryComponent
-} from 'src/app/shared/components/entity-tables/observation-image-gallery/observation-image-gallery.component';
+import { ObservationImageGalleryComponent
+    } from 'src/app/shared/components/entity-tables/observation-image-gallery/observation-image-gallery.component';
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 import { AppConfig } from 'src/app/shared/entities/app-config.model';
+import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 
+import * as moment from 'moment';
 @Component({
     selector: 'kusunoki2-accession',
     templateUrl: './accession.component.html',
@@ -89,6 +89,7 @@ export class AccessionComponent implements OnChanges {
         private readonly router: Router,
         private readonly currentUserService: CurrentUserService,
         private readonly accessionsetService: AccessionSetService,
+        public readonly shoppingCartService: ShoppingCartService,
         public dialog: MatDialog,
         private appConfigService: AppConfigService) {
         this.appConfig = this.appConfigService.getConfig();

@@ -62,6 +62,13 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+            <mat-checkbox style='margin-right: 10px;' [(ngModel)]="searchParams.seed_available" name="seed_available">Only with
+                seeds available to request</mat-checkbox>
+
+            <mat-checkbox [(ngModel)]="searchParams.in_nuclear_collection" name="in_nuclear_collection">Only accessions in nuclear
+                collection
+            </mat-checkbox>
+
             <div fxLayout='row' fxLayoutGap='5px' *ngIf="(userToken|async)?.is_staff">
                 <mat-form-field fxFlex>
                     <mat-label i18n>Filter by data visivility</mat-label>
@@ -74,7 +81,7 @@
 
             </div>
             <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>
-            <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams = {}" i18n>Clear</button>
+            <!-- <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams = {}" i18n>Clear</button> -->
         </form>
         <!-- <pre>{{searchParams | json}}</pre> -->
     </mat-card-content>

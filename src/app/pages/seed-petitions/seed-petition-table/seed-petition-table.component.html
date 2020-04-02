@@ -1,0 +1,44 @@
+<mat-progress-bar mode="indeterminate" *ngIf='dataSource.loadingSubject.value'></mat-progress-bar>
+<table mat-table [dataSource]='dataSource' matSort class='datatable mat-elevation-z2'>
+
+    <ng-container matColumnDef="petition_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Petition ID</th>
+        <td mat-cell *matCellDef="let petition">
+            <a [routerLink]="['/', appUrls.seed_petitions, petition.data.petition_id]"> {{petition.data.petition_id}}</a></td>
+
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Petitioner's name</th>
+        <td mat-cell *matCellDef="let petition"> {{petition.data.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Petitioner type</th>
+        <td mat-cell *matCellDef="let petition">{{petition.data.type}}</td>
+
+    </ng-container>
+    <ng-container matColumnDef="petition_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Petition date</th>
+        <td mat-cell *matCellDef="let petition">{{petition.data.petition_date}}</td>
+
+    </ng-container>
+    <ng-container matColumnDef="accessions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Num.Accessions</th>
+        <td mat-cell *matCellDef="let petition">{{petition.data.accessions.length}}</td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Delete </th>
+        <td mat-cell *matCellDef="let petition">
+            <button mat-icon-button (click)='deleteSeedPetition(petition.data.petition_id)'>
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay2"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay2"></tr>
+
+</table>
+<mat-paginator [length]="dataSource.totalCount" [pageIndex]="0" [pageSize]="paginatorPageSize"
+    [pageSizeOptions]="[10, 25, 50, 100]">
+</mat-paginator>

@@ -20,4 +20,5 @@ export const ApiUrls = {
     traits: environment.apiUrl + 'traits/',
     observationVariables: environment.apiUrl + 'observation_variables/',
     observation_images: environment.apiUrl + 'observation_images/',
+    seed_petitions: environment.apiUrl + 'seed_petitions/',
 };

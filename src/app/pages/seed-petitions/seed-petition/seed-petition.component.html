@@ -1,0 +1,128 @@
+<mat-card *ngIf="petition">
+    <mat-card *ngIf="createdOK" style='margin-bottom: 30px;'>
+        <p>Your petition has been sent. You will receive an email with the petition.</p>
+        <p>The petition id is: {{petition.data.petition_id}}</p>
+    </mat-card>
+    <mat-card-title>
+        <ng-container i18n>Seed Petition</ng-container>
+        <span fxFlex></span>
+        <button mat-raised-button color='accent'
+            *ngIf='!editMode && userToken.is_staff'
+            (click)="deletePetition()">
+            <ng-container i18n>Delete</ng-container>
+        </button>
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout='column'>
+            <kusunoki2-inline-edit [value]="petition.data.petition_id"
+                *ngIf='!editMode'
+                [label]="'Petition Id'|translate"
+                [config]="config.name" [editMode]="false"
+                (validationStateEvent)="checkFormValid($event)">
+                <span class='value'>{{petition.data.petition_id}}</span>
+                </kusunoki2-inline-edit>
+            <div fxLayout='row' fxLayoutGap="5px" fxFlex>
+                <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Name'|translate"
+                    [value]="petition.data.name" [config]="config.name" [editMode]="editMode"
+                    (validationStateEvent)="checkFormValid($event)">
+                    <span class='value'>{{petition.data.name}}</span>
+                </kusunoki2-inline-edit>
+                <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Email'|translate"
+                    [value]="petition.data.email" [config]="config.email" [editMode]="editMode"
+                    (validationStateEvent)="checkFormValid($event)">
+                    <span class='value'>{{petition.data.email}}</span>
+                </kusunoki2-inline-edit>
+            </div>
+            <div fxLayout='row' fxLayoutGap="5px" fxFlex>
+                <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Type petitioner'|translate"
+                    [value]="petition.data.type" [config]="config.type" [editMode]="editMode"
+                    (validationStateEvent)="checkFormValid($event)">
+                    <span class='value'>{{petition.data.type}}</span>
+                </kusunoki2-inline-edit>
+                <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Institution'|translate"
+                    [value]="petition.data.institution" [config]="config.institution" [editMode]="editMode"
+                    (validationStateEvent)="checkFormValid($event)">
+                    <span class='value'>{{petition.data.institution}}</span>
+                </kusunoki2-inline-edit>
+            </div>
+            <mat-card>
+                <mat-card-subtitle><span class='key' i18n>Address</span></mat-card-subtitle>
+                <mat-card-content>
+                    <div fxLayout='column'>
+                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Address'|translate"
+                            [value]="petition.data.address" [config]="config.address" [editMode]="editMode"
+                            (validationStateEvent)="checkFormValid($event)">
+                            <span class='value'>{{petition.data.address}}</span>
+                        </kusunoki2-inline-edit>
+                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'City'|translate"
+                            [value]="petition.data.city" [config]="config.city" [editMode]="editMode"
+                            (validationStateEvent)="checkFormValid($event)">
+                            <span class='value'>{{petition.data.city}}</span>
+                        </kusunoki2-inline-edit>
+                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Postal code'|translate"
+                            [value]="petition.data.postal_code" [config]="config.postal_code" [editMode]="editMode"
+                            (validationStateEvent)="checkFormValid($event)">
+                            <span class='value'>{{petition.data.postal_code}}</span>
+                        </kusunoki2-inline-edit>
+                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Region'|translate"
+                            [value]="petition.data.region" [config]="config.region" [editMode]="editMode"
+                            (validationStateEvent)="checkFormValid($event)">
+                            <span class='value'>{{petition.data.region}}</span>
+                        </kusunoki2-inline-edit>
+                        <kusunoki2-inline-auto-country fxFlex='grow' [editMode]="editMode" [config]="config.country"
+                            [value]="petition.data.country" (validationStateEvent)="checkFormValid($event)">
+                        </kusunoki2-inline-auto-country>
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card>
+                <mat-card-subtitle><span class='key' i18n>Information about the petition</span></mat-card-subtitle>
+                <mat-card-content>
+                    <div fxLayout='row' fxLayoutGap="5px" fxFlex>
+                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Aim'|translate"
+                            [value]="petition.data.aim" [config]="config.aim" [editMode]="editMode"
+                            (validationStateEvent)="checkFormValid($event)">
+                            <div *ngIf="petition.data.aim" class='textareavalue'>
+                                <p *ngFor="let paragraph of petition.data.aim.split('\n')">{{paragraph}}</p>
+                            </div>
+                        </kusunoki2-inline-edit>
+
+                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Comments'|translate"
+                            [value]="petition.data.comments" [config]="config.comments" [editMode]="editMode"
+                            (validationStateEvent)="checkFormValid($event)">
+                            <div *ngIf="petition.data.comments" class='textareavalue'>
+                                <p *ngFor="let paragraph of petition.data.comments.split('\n')">{{paragraph}}</p>
+                            </div>
+                        </kusunoki2-inline-edit>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card >
+                <mat-card-subtitle><span class='key' i18n>Requested accessions</span></mat-card-subtitle>
+                <mat-card-content>
+                    <mat-list>
+                        <mat-list-item *ngFor="let accession of requestedAccessions|async">
+                            <button *ngIf="editMode" mat-icon-button
+                                (click)="shoppingCartService.removeAccessionFromCart(accession)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            <a [routerLink]="['/', appUrls.accessions, accession['instituteCode'], accession['germplasmNumber']]">
+                                {{accession['instituteCode']}}:{{accession['germplasmNumber']}}
+                            </a>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="editMode">
+        <button mat-raised-button color='accent'
+        [disabled]='!allInputAreValid || (requestedAccessions|async).length === 0'
+        (click)=createPetition() i18n>Make Petition</button>
+        <button mat-raised-button color='accent'
+            (click)=resetForm() i18n>Reset form</button>
+    </mat-card-actions>
+</mat-card>

@@ -46,6 +46,7 @@
                 <span *ngIf="alternativeLanguages[0] === 'es'">Castellano</span>
                 <span *ngIf="alternativeLanguages[0] === 'en'">English</span>
             </button>
+            <kusunoki2-shopping-cart-menu></kusunoki2-shopping-cart-menu>
             <kusunoki2-user-menu></kusunoki2-user-menu>
         </div>
         <div fxFlex></div>
@@ -128,6 +129,7 @@
 <mat-menu #adminmenu="matMenu" >
     <a mat-menu-item [routerLink]="['/', appUrls.tasks]"> <ng-container i18n>Tasks</ng-container> </a>
     <a mat-menu-item *ngIf="(userToken|async)?.is_staff" [routerLink]="['/', appUrls.users]"><ng-container i18n>Users</ng-container></a>
+    <a mat-menu-item *ngIf="(userToken|async)?.is_staff" [routerLink]="['/', appUrls.seed_petitions]"><ng-container i18n>Seed petitions</ng-container></a>
 </mat-menu>
 <mat-menu #phenotypingMenu="matMenu" >
     <a mat-menu-item  [routerLink]="['/', 'characterization', appUrls.phenotype.studies]"><ng-container i18n>Studies</ng-container></a>

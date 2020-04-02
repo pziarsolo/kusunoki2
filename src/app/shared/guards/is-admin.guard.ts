@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { CurrentUserService } from '../services/current-user.service';
 import { StatusService } from '../StatusModule/status.service';
+import { AppUrls } from 'src/app/pages/appUrls';
 
 @Injectable({
     providedIn: 'root',
@@ -21,7 +22,11 @@ export class IsAdminGuard implements CanActivate {
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
             if (!this.userIsAllowed) {
                 this.status_service.warn('Not Allowed to see this page');
-                this.router.navigate(['/']);
+                this.router.navigate(['/', AppUrls.login], {
+                    queryParams: {
+                        returnUrl: state.url
+                    }
+                });
                 return false;
             } else {
                 return true;

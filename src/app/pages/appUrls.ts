@@ -8,6 +8,7 @@ export const AppUrls = {
     taxonomy_stats: 'stats/taxonomy',
     users: 'users',
     tasks: 'tasks',
+    seed_petitions: 'seed_petitions',
     phenotypeSubDir: 'characterization',
     phenotype: {
         studies: 'studies',

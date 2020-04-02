@@ -10,6 +10,15 @@
         <mat-card-title>
             <ng-container i18n>Accession</ng-container> <span class='key' fxflex style='margin-left:5px;'> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span>
             <span fxFlex></span>
+            <button mat-raised-button
+                *ngIf="appConfig.useShoppingCart && !userCanEdit && accession.data.conservation_status === 'is_active' && accession.data.is_available === true"
+                [disabled]="!shoppingCartService.accessionInCart(accession)"
+                color="accent"
+                style="margin-right: 5px;"
+                (click)="shoppingCartService.addAccession(accession)" i18n>
+                Add to cart
+                <mat-icon>add_shopping_cart</mat-icon>
+            </button>
             <button mat-raised-button color='accent'
                     *ngIf='userCanEdit && !createMode'
                     [matMenuTriggerFor]="accessionActionMenu">
@@ -139,6 +148,11 @@
     </mat-accordion>
 </div>
 <mat-menu #accessionActionMenu="matMenu">
+        <button mat-menu-item *ngIf="!editMode && userCanEdit && appConfig.useShoppingCart && accession.data.conservation_status === 'is_active' && accession.data.is_available === true"
+            [disabled] ="!shoppingCartService.accessionInCart(accession)"
+            (click)="shoppingCartService.addAccession(accession)" i18n>
+            <mat-icon color='accent'>add_shopping_cart</mat-icon>Add to cart
+        </button>
         <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon><ng-container i18n>Edit</ng-container></button>
         <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
             <mat-icon *ngIf='!accession.metadata.is_public'>public</mat-icon>

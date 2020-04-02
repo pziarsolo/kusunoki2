@@ -29,6 +29,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatCardModule} from '@angular/material/card';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
     exports : [
         MatIconModule,
@@ -58,7 +60,10 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         MatProgressBarModule,
         DragDropModule,
         ScrollingModule,
-        MatChipsModule
+        MatChipsModule,
+        MatBadgeModule,
+        MatCheckboxModule
+
     ]
 })
 export class MaterialBaseModule { }

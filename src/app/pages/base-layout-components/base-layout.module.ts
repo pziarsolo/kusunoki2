@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 // import { StatusModule } from '../../shared/status/status.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UserMenuComponent } from './user-menu/user-menu.component';
+import { ShoppingCartMenuComponent } from './shopping-cart-menu/shopping-cart-menu.component';
 
 @NgModule({
   imports: [
@@ -17,13 +18,15 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
       BaseLayoutComponent,
       HeaderComponent,
       FooterComponent,
-      UserMenuComponent
+      UserMenuComponent,
+      ShoppingCartMenuComponent
   ],
   exports: [
       BaseLayoutComponent,
       HeaderComponent,
       FooterComponent,
-      UserMenuComponent
+      UserMenuComponent,
+      ShoppingCartMenuComponent
   ]
 })
 export class BaseLayoutModule { }

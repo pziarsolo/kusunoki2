@@ -137,5 +137,11 @@
     "Scale": "Escala",
     "Belongs to a nuclear collection": "Pertenece a una colleción nuclear",
     "Does not belong to a nuclear collection": "No pertenece a una colleción nuclear",
-    "Germplasm storage type": "Tipo de almacenamiento"
+    "Germplasm storage type": "Tipo de almacenamiento",
+    "Postal code": "Código postal",
+    "Region": "Provincia",
+    "Comments": "Comentarios",
+    "Aim": "Objetivo de la petición",
+    "Type petitioner": "Tipo de peticionario (Empresa, Centro de Investigación,Banco de Germoplasma, ...)",
+    "Location of saved duplicates": "Localización de duplicados de seguridad"
 }
