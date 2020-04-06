@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, Input } from '@angular/core';
+import { Component, OnInit, ViewChildren, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SeedPetitionService } from 'src/app/shared/services/seed-petition.service';
@@ -13,7 +13,6 @@ import * as moment from 'moment';
 import { Validators } from '@angular/forms';
 import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 import { Observable, of } from 'rxjs';
-import { async } from '@angular/core/testing';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
@@ -31,15 +30,16 @@ export class SeedPetitionComponent implements OnInit  {
     appUrls = AppUrls;
     userToken;
     requestedAccessions: Observable<object[]>;
-    createdOK = false;
 
     @Input() petition: SeedPetition;
     @Input() editMode = false;
+    @Output() createdPetitions = new EventEmitter<SeedPetition[]>();
 
     @ViewChildren(InlineEditComponent) inlineForms;
     @ViewChildren(InlineAutoCountryComponent) inlineAutoCountries;
 
     config = {
+        petition_uid: { is_required: true, is_editable: true, name: 'petition_uid' },
         name: { is_required: true, is_editable: true, name: 'name' },
         type: { is_required: true, is_editable: true, name: 'type' },
         institution: { is_required: true, is_editable: true, name: 'institution' },
@@ -111,7 +111,6 @@ export class SeedPetitionComponent implements OnInit  {
     }
     getModelFromFormValidData() {
         const formValidData = this.getFormValidData();
-        console.log(formValidData);
         if (formValidData) {
             const petition = new SeedPetition();
             petition.data.name = formValidData['name'];
@@ -140,11 +139,10 @@ export class SeedPetitionComponent implements OnInit  {
         if (petition) {
             this.seedPetitionService.create(petition.getApiDocument())
                 .subscribe(
-                    (createdPetition: SeedPetition) => {
+                    (createdPetitions: SeedPetition[]) => {
                         this.editMode = false;
-                        this.createdOK = true;
-                        this.petition = createdPetition;
-                        this.requestedAccessions = of(this.petition.data.accessions);
+                        this.createdPetitions.emit(createdPetitions);
+                        this.petition = undefined;
                         this.shoppingCartService.removeAllFromCart();
                         this.statusService.info('Petition sucessfully created');
                     },
@@ -159,12 +157,12 @@ export class SeedPetitionComponent implements OnInit  {
             width: '400px',
             data: {
                 type: 'Seed Petition',
-                description: `Seed Petition: ${this.petition.data.petition_id}`
+                description: `Seed Petition: ${this.petition.data.petition_uid}`
             }
         });
         dialogRef.afterClosed().subscribe(doDelete => {
             if (doDelete) {
-                this.seedPetitionService.delete(this.petition.data.petition_id)
+                this.seedPetitionService.delete(this.petition.data.petition_uid)
                     .subscribe(
                         response => {
                             this.statusService.info('Petition sucessfully deleted');

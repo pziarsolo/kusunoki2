@@ -3,7 +3,7 @@ import { Moment } from 'moment';
 import * as moment from 'moment';
 
 export class SeedPetitionData {
-    petition_id?: number;
+    petition_uid?: string;
     name: string;
     type: string;
     institution: string;
@@ -20,8 +20,8 @@ export class SeedPetitionData {
 
     constructor(object?: SeedPetitionData) {
         if (object) {
-            if (object.petition_id) {
-                this.petition_id = object.petition_id;
+            if (object.petition_uid) {
+                this.petition_uid = object.petition_uid;
             }
             this.name = object.name;
             this.type = object.type;
@@ -38,7 +38,7 @@ export class SeedPetitionData {
             this.accessions = object.accessions;
 
         } else {
-            this.petition_id = undefined;
+            this.petition_uid = undefined;
             this.name = undefined;
             this.type = undefined;
             this.institution = undefined;
@@ -57,8 +57,8 @@ export class SeedPetitionData {
 
     getApiDocument() {
         const apiDoc = {};
-        if (this.petition_id) {
-            apiDoc['petition_id'] = this.petition_id;
+        if (this.petition_uid) {
+            apiDoc['petition_uid'] = this.petition_uid;
         }
         if (this.name) {
             apiDoc['name'] = this.name;

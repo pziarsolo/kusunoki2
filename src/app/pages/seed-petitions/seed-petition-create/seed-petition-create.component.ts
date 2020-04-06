@@ -11,6 +11,8 @@ import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { AppUrls } from 'src/app/pages/appUrls';
 import * as moment from 'moment';
 import { EmailValidator, Validators } from '@angular/forms';
+import { SeedPetitionComponent } from '../seed-petition/seed-petition.component';
+import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 
 
 @Component({
@@ -24,8 +26,11 @@ export class SeedPetitionCreateComponent implements OnInit {
     inputsValidStatuses = {};
     petition: SeedPetition;
     editMode: boolean;
+    createdPetitions: SeedPetition[];
 
-    constructor(private appConfigService: AppConfigService) {
+    constructor(
+        public shoppingCartService: ShoppingCartService,
+        private appConfigService: AppConfigService) {
         this.appConfig = this.appConfigService.getConfig();
     }
 
@@ -33,6 +38,4 @@ export class SeedPetitionCreateComponent implements OnInit {
         this.petition = new SeedPetition();
         this.editMode = true;
     }
-
-
 }

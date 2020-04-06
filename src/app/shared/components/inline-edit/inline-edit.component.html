@@ -68,8 +68,10 @@
                             color = 'accent'
                             [id]="config.name"
                             [name]="config.name">
-                            <span *ngIf='inputControl.value'>{{config.widget.conf.true|translate}}</span>
-                            <span *ngIf='!inputControl.value'>{{config.widget.conf.false|translate}}</span>
+                            <span *ngIf='inputControl.value && config.widget.conf.true_long'>{{config.widget.conf.true_long|translate}}</span>
+                            <span *ngIf='inputControl.value && !config.widget.conf.true_long'>{{config.widget.conf.true|translate}}</span>
+                            <span *ngIf='!inputControl.value && config.widget.conf.false_long'>{{config.widget.conf.false_long|translate}}</span>
+                            <span *ngIf='!inputControl.value && !config.widget.conf.false_long'>{{config.widget.conf.false|translate}}</span>
                         </mat-slide-toggle>
                     </ng-container>
                 </div>

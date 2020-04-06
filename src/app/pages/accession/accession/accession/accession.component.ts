@@ -76,8 +76,10 @@ export class AccessionComponent implements OnChanges {
             widget: {
                 type: 'switch',
                 conf: {
-                    'true': 'Belongs to a nuclear collection',
-                    'false': 'Does not belong to a nuclear collection'
+                    'true_long': 'Belongs to a nuclear collection',
+                    'false_long': 'Does not belong to a nuclear collection',
+                    'true': 'Yes',
+                    'false': 'No'
                 }
             }
         },

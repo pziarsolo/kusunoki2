@@ -15,7 +15,7 @@ import { Title } from '@angular/platform-browser';
 export class SeedPetitionDetailComponent implements OnInit {
     appConfig: AppConfig;
     petition: SeedPetition;
-    petition_id;
+    petition_uid: string;
     routerSubscription: Subscription;
     editMode = false;
 
@@ -28,9 +28,9 @@ export class SeedPetitionDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.routerSubscription = this.route.params.subscribe(params => {
-            this.petition_id = params.petition_id;
-            this.titleService.setTitle('Petition Id ' + this.petition_id);
-            this.seedPetitionService.retrieve(this.petition_id)
+            this.petition_uid = params.petition_uid;
+            this.titleService.setTitle('Petition Uid ' + this.petition_uid);
+            this.seedPetitionService.retrieve(this.petition_uid)
                 .subscribe((petition: SeedPetition) => {
                     this.petition = petition;
 

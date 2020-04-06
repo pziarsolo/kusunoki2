@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpEvent, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
 import { ApiUrls } from './apiUrls';
 import { paramsToHttpParams } from './utils';
-import { Study } from '../entities/study.model';
-import { Task } from '../entities/task.model';
 import { SeedPetition } from '../entities/seed_petition.model';
 
 
@@ -18,14 +16,13 @@ export class SeedPetitionService {
 
     constructor(private http: HttpClient) {}
 
-    private composeDetailUrl(petitionId): string {
-        petitionId = String(petitionId);
-        return `${this.endPoint}${petitionId}/`;
+    private composeDetailUrl(petitionUid): string {
+        return `${this.endPoint}${petitionUid}/`;
     }
 
-    retrieve(petitionId: number, searchParams?): Observable<SeedPetition> {
+    retrieve(petitionUid: string, searchParams?): Observable<SeedPetition> {
         const getParams = paramsToHttpParams(searchParams);
-        const detailUrl = this.composeDetailUrl(petitionId);
+        const detailUrl = this.composeDetailUrl(petitionUid);
         return this.http.get<SeedPetition>(detailUrl, {params: getParams});
     }
 
@@ -35,12 +32,12 @@ export class SeedPetitionService {
             {params: getParams, observe: 'response'});
     }
 
-    create(seedPetition): Observable<SeedPetition> {
-        return this.http.post<SeedPetition>(this.endPoint, seedPetition);
+    create(seedPetition): Observable<SeedPetition[]> {
+        return this.http.post<SeedPetition[]>(this.endPoint, seedPetition);
     }
 
-    delete(petitionId: number): Observable<any> {
-        const detailUrl = this.composeDetailUrl(petitionId);
+    delete(petitionUid: string): Observable<any> {
+        const detailUrl = this.composeDetailUrl(petitionUid);
         return this.http.delete(detailUrl);
     }
 

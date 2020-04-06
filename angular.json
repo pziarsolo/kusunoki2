@@ -90,7 +90,7 @@
                             "outputPath": "dist/kusunoki2",
 
                             "localize": [
-                                "es"
+                                "en"
                             ]
                         },
                         "crfProd": {

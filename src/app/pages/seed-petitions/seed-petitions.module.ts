@@ -21,7 +21,7 @@ const routes: Routes = [
         component: SeedPetitionCreateComponent
     },
     {
-        path: ':petition_id',
+        path: ':petition_uid',
         component: SeedPetitionDetailComponent,
         canActivate: [IsAdminGuard]
     },

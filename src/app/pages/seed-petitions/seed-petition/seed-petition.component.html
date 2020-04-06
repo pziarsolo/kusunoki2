@@ -1,10 +1,6 @@
 <mat-card *ngIf="petition">
-    <mat-card *ngIf="createdOK" style='margin-bottom: 30px;'>
-        <p>Your petition has been sent. You will receive an email with the petition.</p>
-        <p>The petition id is: {{petition.data.petition_id}}</p>
-    </mat-card>
     <mat-card-title>
-        <ng-container i18n>Seed Petition</ng-container>
+        <ng-container i18n>Seed request</ng-container>
         <span fxFlex></span>
         <button mat-raised-button color='accent'
             *ngIf='!editMode && userToken.is_staff'
@@ -14,13 +10,13 @@
     </mat-card-title>
     <mat-card-content>
         <div fxLayout='column'>
-            <kusunoki2-inline-edit [value]="petition.data.petition_id"
+            <kusunoki2-inline-edit [value]="petition.data.petition_uid"
                 *ngIf='!editMode'
-                [label]="'Petition Id'|translate"
-                [config]="config.name" [editMode]="false"
+                [label]="'Request Uid'|translate"
+                [config]="config.petition_uid" [editMode]="false"
                 (validationStateEvent)="checkFormValid($event)">
-                <span class='value'>{{petition.data.petition_id}}</span>
-                </kusunoki2-inline-edit>
+                <span class='value'>{{petition.data.petition_uid}}</span>
+            </kusunoki2-inline-edit>
             <div fxLayout='row' fxLayoutGap="5px" fxFlex>
                 <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Name'|translate"
                     [value]="petition.data.name" [config]="config.name" [editMode]="editMode"
@@ -54,7 +50,7 @@
                             (validationStateEvent)="checkFormValid($event)">
                             <span class='value'>{{petition.data.address}}</span>
                         </kusunoki2-inline-edit>
-                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'City'|translate"
+                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'City/municipality'|translate"
                             [value]="petition.data.city" [config]="config.city" [editMode]="editMode"
                             (validationStateEvent)="checkFormValid($event)">
                             <span class='value'>{{petition.data.city}}</span>
@@ -64,7 +60,7 @@
                             (validationStateEvent)="checkFormValid($event)">
                             <span class='value'>{{petition.data.postal_code}}</span>
                         </kusunoki2-inline-edit>
-                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Region'|translate"
+                        <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Province'|translate"
                             [value]="petition.data.region" [config]="config.region" [editMode]="editMode"
                             (validationStateEvent)="checkFormValid($event)">
                             <span class='value'>{{petition.data.region}}</span>
@@ -77,7 +73,7 @@
                 </mat-card-content>
             </mat-card>
             <mat-card>
-                <mat-card-subtitle><span class='key' i18n>Information about the petition</span></mat-card-subtitle>
+                <mat-card-subtitle><span class='key' i18n>Information about the request</span></mat-card-subtitle>
                 <mat-card-content>
                     <div fxLayout='row' fxLayoutGap="5px" fxFlex>
                         <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Aim'|translate"
@@ -120,9 +116,8 @@
 
     <mat-card-actions *ngIf="editMode">
         <button mat-raised-button color='accent'
-        [disabled]='!allInputAreValid || (requestedAccessions|async).length === 0'
-        (click)=createPetition() i18n>Make Petition</button>
-        <button mat-raised-button color='accent'
-            (click)=resetForm() i18n>Reset form</button>
+            [disabled]='!allInputAreValid || (requestedAccessions|async).length === 0'
+            (click)=createPetition() i18n>Submit request</button>
+        <button mat-raised-button color='accent' (click)=resetForm() i18n>Reset form</button>
     </mat-card-actions>
 </mat-card>
