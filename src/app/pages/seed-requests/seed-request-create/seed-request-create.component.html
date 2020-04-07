@@ -1,0 +1,36 @@
+<div *ngIf="appConfig.useShoppingCart">
+    <div *ngIf="request && editMode && !createdRequests" >
+        <mat-card *ngIf='(shoppingCartService.accessions|async).length === 0'>
+            <p>In orther to make a request, you must add some accessions to the shopping cart</p>
+        </mat-card>
+        <kusunoki2-seed-request *ngIf='(shoppingCartService.accessions|async).length > 0'
+            [editMode]="editMode"
+            [request]="request"
+            (createdRequests)="createdRequests=$event">
+        </kusunoki2-seed-request>
+    </div>
+    <div *ngIf="createdRequests !== undefined && createdRequests.length > 0">
+        <mat-card>
+            <p i18n>You have created {{createdRequests.length}} seed requests:</p>
+            <mat-list>
+                <mat-list-item *ngFor='let request of createdRequests'> {{request.data.request_uid}}</mat-list-item>
+            </mat-list>
+        </mat-card>
+        <mat-tab-group>
+            <mat-tab *ngFor='let request of createdRequests'>
+                <ng-template mat-tab-label>
+                    Request {{request.data.request_uid}}
+                </ng-template>
+                <kusunoki2-seed-request
+                    [editMode]="false"
+                    [request]="request">
+                </kusunoki2-seed-request>
+            </mat-tab>
+        </mat-tab-group>
+
+
+    </div>
+</div>
+<mat-card *ngIf=!appConfig.useShoppingCart>
+    <h1 i18n> Can not make seed requests in this site</h1>
+</mat-card>

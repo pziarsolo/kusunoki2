@@ -22,7 +22,7 @@ import { TaskService } from '../../services/task.service';
 import { ObservationVariableService } from '../../services/observation_variable.service';
 import { AppConfigService } from '../../services/app-config.service';
 import { AppConfig } from '../../entities/app-config.model';
-import { SeedPetitionService } from '../../services/seed-petition.service';
+import { SeedRequestService } from '../../../pages/seed-requests/services/seed-request.service';
 
 export abstract class SearchDataSourceNoRouter<T> implements DataSource<T> {
     private itemsSubject = new BehaviorSubject<any[]>([]);
@@ -145,8 +145,8 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
             this.service = this.serviceLocator.injector.get(InstituteService);
         } else if (this.entityType === 'task') {
             this.service = this.serviceLocator.injector.get(TaskService);
-        } else if (this.entityType === 'seed_petition') {
-            this.service = this.serviceLocator.injector.get(SeedPetitionService);
+        } else if (this.entityType === 'seed_request') {
+            this.service = this.serviceLocator.injector.get(SeedRequestService);
         } else if (this.entityType === 'observation_variable') {
             this.service = this.serviceLocator.injector.get(ObservationVariableService);
 

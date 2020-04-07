@@ -26,7 +26,7 @@
 
             <mat-list-item fxLayout=row fxLayoutGap='5px' *ngIf="(accessions|async).length > 0">
                 <button mat-raised-button color="primary" style="margin-right: 10px;"
-                    [routerLink]="['/', appUrls.seed_petitions, 'create']" i18n>Submit request</button>
+                    [routerLink]="['/', appUrls.seed_requests, 'create']" i18n>Submit request</button>
                 <span fxFlex='1 1 auto'></span>
                 <button mat-raised-button color="warning"
                     (click)='shoppingCartService.removeAllFromCart()' i18n>Empty cart</button>

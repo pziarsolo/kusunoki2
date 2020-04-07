@@ -1,0 +1,9 @@
+<div *ngIf="appConfig.useShoppingCart && request">
+    <kusunoki2-seed-request
+        [editMode]="editMode"
+        [request]="request">
+    </kusunoki2-seed-request>
+</div>
+<mat-card *ngIf=!appConfig.useShoppingCart>
+    <h1 i18n> Can not make seed request in this site</h1>
+</mat-card>

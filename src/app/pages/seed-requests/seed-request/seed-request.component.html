@@ -1,44 +1,44 @@
-<mat-card *ngIf="petition">
+<mat-card *ngIf="request">
     <mat-card-title>
         <ng-container i18n>Seed request</ng-container>
         <span fxFlex></span>
         <button mat-raised-button color='accent'
             *ngIf='!editMode && userToken.is_staff'
-            (click)="deletePetition()">
+            (click)="deleteRequest()">
             <ng-container i18n>Delete</ng-container>
         </button>
     </mat-card-title>
     <mat-card-content>
         <div fxLayout='column'>
-            <kusunoki2-inline-edit [value]="petition.data.petition_uid"
+            <kusunoki2-inline-edit [value]="request.data.request_uid"
                 *ngIf='!editMode'
                 [label]="'Request Uid'|translate"
-                [config]="config.petition_uid" [editMode]="false"
+                [config]="config.request_uid" [editMode]="false"
                 (validationStateEvent)="checkFormValid($event)">
-                <span class='value'>{{petition.data.petition_uid}}</span>
+                <span class='value'>{{request.data.request_uid}}</span>
             </kusunoki2-inline-edit>
             <div fxLayout='row' fxLayoutGap="5px" fxFlex>
                 <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Name'|translate"
-                    [value]="petition.data.name" [config]="config.name" [editMode]="editMode"
+                    [value]="request.data.name" [config]="config.name" [editMode]="editMode"
                     (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{petition.data.name}}</span>
+                    <span class='value'>{{request.data.name}}</span>
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Email'|translate"
-                    [value]="petition.data.email" [config]="config.email" [editMode]="editMode"
+                    [value]="request.data.email" [config]="config.email" [editMode]="editMode"
                     (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{petition.data.email}}</span>
+                    <span class='value'>{{request.data.email}}</span>
                 </kusunoki2-inline-edit>
             </div>
             <div fxLayout='row' fxLayoutGap="5px" fxFlex>
                 <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Type petitioner'|translate"
-                    [value]="petition.data.type" [config]="config.type" [editMode]="editMode"
+                    [value]="request.data.type" [config]="config.type" [editMode]="editMode"
                     (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{petition.data.type}}</span>
+                    <span class='value'>{{request.data.type}}</span>
                 </kusunoki2-inline-edit>
                 <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Institution'|translate"
-                    [value]="petition.data.institution" [config]="config.institution" [editMode]="editMode"
+                    [value]="request.data.institution" [config]="config.institution" [editMode]="editMode"
                     (validationStateEvent)="checkFormValid($event)">
-                    <span class='value'>{{petition.data.institution}}</span>
+                    <span class='value'>{{request.data.institution}}</span>
                 </kusunoki2-inline-edit>
             </div>
             <mat-card>
@@ -46,27 +46,27 @@
                 <mat-card-content>
                     <div fxLayout='column'>
                         <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Address'|translate"
-                            [value]="petition.data.address" [config]="config.address" [editMode]="editMode"
+                            [value]="request.data.address" [config]="config.address" [editMode]="editMode"
                             (validationStateEvent)="checkFormValid($event)">
-                            <span class='value'>{{petition.data.address}}</span>
+                            <span class='value'>{{request.data.address}}</span>
                         </kusunoki2-inline-edit>
                         <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'City/municipality'|translate"
-                            [value]="petition.data.city" [config]="config.city" [editMode]="editMode"
+                            [value]="request.data.city" [config]="config.city" [editMode]="editMode"
                             (validationStateEvent)="checkFormValid($event)">
-                            <span class='value'>{{petition.data.city}}</span>
+                            <span class='value'>{{request.data.city}}</span>
                         </kusunoki2-inline-edit>
                         <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Postal code'|translate"
-                            [value]="petition.data.postal_code" [config]="config.postal_code" [editMode]="editMode"
+                            [value]="request.data.postal_code" [config]="config.postal_code" [editMode]="editMode"
                             (validationStateEvent)="checkFormValid($event)">
-                            <span class='value'>{{petition.data.postal_code}}</span>
+                            <span class='value'>{{request.data.postal_code}}</span>
                         </kusunoki2-inline-edit>
                         <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Province'|translate"
-                            [value]="petition.data.region" [config]="config.region" [editMode]="editMode"
+                            [value]="request.data.region" [config]="config.region" [editMode]="editMode"
                             (validationStateEvent)="checkFormValid($event)">
-                            <span class='value'>{{petition.data.region}}</span>
+                            <span class='value'>{{request.data.region}}</span>
                         </kusunoki2-inline-edit>
                         <kusunoki2-inline-auto-country fxFlex='grow' [editMode]="editMode" [config]="config.country"
-                            [value]="petition.data.country" (validationStateEvent)="checkFormValid($event)">
+                            [value]="request.data.country" (validationStateEvent)="checkFormValid($event)">
                         </kusunoki2-inline-auto-country>
 
                     </div>
@@ -77,18 +77,18 @@
                 <mat-card-content>
                     <div fxLayout='row' fxLayoutGap="5px" fxFlex>
                         <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Aim'|translate"
-                            [value]="petition.data.aim" [config]="config.aim" [editMode]="editMode"
+                            [value]="request.data.aim" [config]="config.aim" [editMode]="editMode"
                             (validationStateEvent)="checkFormValid($event)">
-                            <div *ngIf="petition.data.aim" class='textareavalue'>
-                                <p *ngFor="let paragraph of petition.data.aim.split('\n')">{{paragraph}}</p>
+                            <div *ngIf="request.data.aim" class='textareavalue'>
+                                <p *ngFor="let paragraph of request.data.aim.split('\n')">{{paragraph}}</p>
                             </div>
                         </kusunoki2-inline-edit>
 
                         <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Comments'|translate"
-                            [value]="petition.data.comments" [config]="config.comments" [editMode]="editMode"
+                            [value]="request.data.comments" [config]="config.comments" [editMode]="editMode"
                             (validationStateEvent)="checkFormValid($event)">
-                            <div *ngIf="petition.data.comments" class='textareavalue'>
-                                <p *ngFor="let paragraph of petition.data.comments.split('\n')">{{paragraph}}</p>
+                            <div *ngIf="request.data.comments" class='textareavalue'>
+                                <p *ngFor="let paragraph of request.data.comments.split('\n')">{{paragraph}}</p>
                             </div>
                         </kusunoki2-inline-edit>
                     </div>
@@ -117,7 +117,7 @@
     <mat-card-actions *ngIf="editMode">
         <button mat-raised-button color='accent'
             [disabled]='!allInputAreValid || (requestedAccessions|async).length === 0'
-            (click)=createPetition() i18n>Submit request</button>
+            (click)=createRequest() i18n>Submit request</button>
         <button mat-raised-button color='accent' (click)=resetForm() i18n>Reset form</button>
     </mat-card-actions>
 </mat-card>

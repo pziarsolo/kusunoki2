@@ -1,9 +1,9 @@
-import { Metadata } from './metadata.model';
+import { Metadata } from '../../../shared/entities/metadata.model';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 
-export class SeedPetitionData {
-    petition_uid?: string;
+export class SeedRequestData {
+    request_uid?: string;
     name: string;
     type: string;
     institution: string;
@@ -13,15 +13,15 @@ export class SeedPetitionData {
     region: string;
     country: string;
     email: string;
-    petition_date: Moment;
+    request_date: Moment;
     aim: string;
     comments?: string;
     accessions: object[];
 
-    constructor(object?: SeedPetitionData) {
+    constructor(object?: SeedRequestData) {
         if (object) {
-            if (object.petition_uid) {
-                this.petition_uid = object.petition_uid;
+            if (object.request_uid) {
+                this.request_uid = object.request_uid;
             }
             this.name = object.name;
             this.type = object.type;
@@ -32,13 +32,13 @@ export class SeedPetitionData {
             this.region = object.region;
             this.country = object.country;
             this.email = object.email;
-            this.petition_date = moment(object.petition_date, 'YYYY/MM/DD');
+            this.request_date = moment(object.request_date, 'YYYY/MM/DD');
             this.aim = object.aim;
             this.comments = object.comments;
             this.accessions = object.accessions;
 
         } else {
-            this.petition_uid = undefined;
+            this.request_uid = undefined;
             this.name = undefined;
             this.type = undefined;
             this.institution = undefined;
@@ -48,7 +48,7 @@ export class SeedPetitionData {
             this.region = undefined;
             this.country = undefined;
             this.email = undefined;
-            this.petition_date = undefined;
+            this.request_date = undefined;
             this.aim = undefined;
             this.comments = undefined;
             this.accessions = [];
@@ -57,8 +57,8 @@ export class SeedPetitionData {
 
     getApiDocument() {
         const apiDoc = {};
-        if (this.petition_uid) {
-            apiDoc['petition_uid'] = this.petition_uid;
+        if (this.request_uid) {
+            apiDoc['request_uid'] = this.request_uid;
         }
         if (this.name) {
             apiDoc['name'] = this.name;
@@ -87,8 +87,8 @@ export class SeedPetitionData {
         if (this.email) {
             apiDoc['email'] = this.email;
         }
-        if (this.petition_date) {
-            apiDoc['petition_date'] = this.petition_date.format('YYYY/MM/DD');
+        if (this.request_date) {
+            apiDoc['request_date'] = this.request_date.format('YYYY/MM/DD');
         }
         if (this.aim) {
             apiDoc['aim'] = this.aim;
@@ -104,15 +104,15 @@ export class SeedPetitionData {
 }
 
 
-export class SeedPetition {
-    data: SeedPetitionData;
+export class SeedRequest {
+    data: SeedRequestData;
     metadata: Metadata;
-    constructor(object?: SeedPetition) {
+    constructor(object?: SeedRequest) {
         if (object) {
-            this.data = new SeedPetitionData(object.data);
+            this.data = new SeedRequestData(object.data);
             this.metadata = new Metadata(object.metadata);
         } else {
-            this.data = new SeedPetitionData();
+            this.data = new SeedRequestData();
             this.metadata = new Metadata();
         }
     }

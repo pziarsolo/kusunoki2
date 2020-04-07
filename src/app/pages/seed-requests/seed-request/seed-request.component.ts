@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChildren, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SeedPetitionService } from 'src/app/shared/services/seed-petition.service';
+import { SeedRequestService } from 'src/app/pages/seed-requests/services/seed-request.service';
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 import { AppConfig } from 'src/app/shared/entities/app-config.model';
-import { SeedPetition } from 'src/app/shared/entities/seed_petition.model';
+import { SeedRequest } from 'src/app/pages/seed-requests/entities/seed_request.model';
 import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inline-edit.component';
 import { InlineAutoCountryComponent } from '../../accession/country/inline-auto-country/inline-auto-country.component';
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
@@ -19,11 +19,11 @@ import { CurrentUserService } from 'src/app/shared/services/current-user.service
 
 
 @Component({
-  selector: 'kusunoki2-seed-petition',
-  templateUrl: './seed-petition.component.html',
-  styleUrls: ['./seed-petition.component.scss']
+  selector: 'kusunoki2-seed-request',
+  templateUrl: './seed-request.component.html',
+  styleUrls: ['./seed-request.component.scss']
 })
-export class SeedPetitionComponent implements OnInit  {
+export class SeedRequestComponent implements OnInit  {
     appConfig: AppConfig;
     allInputAreValid: boolean;
     inputsValidStatuses = {};
@@ -31,15 +31,15 @@ export class SeedPetitionComponent implements OnInit  {
     userToken;
     requestedAccessions: Observable<object[]>;
 
-    @Input() petition: SeedPetition;
+    @Input() request: SeedRequest;
     @Input() editMode = false;
-    @Output() createdPetitions = new EventEmitter<SeedPetition[]>();
+    @Output() createdRequests = new EventEmitter<SeedRequest[]>();
 
     @ViewChildren(InlineEditComponent) inlineForms;
     @ViewChildren(InlineAutoCountryComponent) inlineAutoCountries;
 
     config = {
-        petition_uid: { is_required: true, is_editable: true, name: 'petition_uid' },
+        request_uid: { is_required: true, is_editable: true, name: 'request_uid' },
         name: { is_required: true, is_editable: true, name: 'name' },
         type: { is_required: true, is_editable: true, name: 'type' },
         institution: { is_required: true, is_editable: true, name: 'institution' },
@@ -63,7 +63,7 @@ export class SeedPetitionComponent implements OnInit  {
         },
     };
 
-    constructor(private seedPetitionService: SeedPetitionService,
+    constructor(private seedRequestService: SeedRequestService,
         public shoppingCartService: ShoppingCartService,
         private appConfigService: AppConfigService,
         private readonly statusService: StatusService,
@@ -78,7 +78,7 @@ export class SeedPetitionComponent implements OnInit  {
         if (this.editMode) {
             this.requestedAccessions = this.shoppingCartService.accessions;
         } else {
-            this.requestedAccessions = of(this.petition.data.accessions);
+            this.requestedAccessions = of(this.request.data.accessions);
         }
         this.userToken = this.currentUserService.currentUserSubject.value;
 
@@ -112,21 +112,21 @@ export class SeedPetitionComponent implements OnInit  {
     getModelFromFormValidData() {
         const formValidData = this.getFormValidData();
         if (formValidData) {
-            const petition = new SeedPetition();
-            petition.data.name = formValidData['name'];
-            petition.data.type = formValidData['type'];
-            petition.data.institution = formValidData['institution'];
-            petition.data.address = formValidData['address'];
-            petition.data.city = formValidData['city'];
-            petition.data.postal_code = formValidData['postal_code'];
-            petition.data.region = formValidData['region'];
-            petition.data.country = formValidData['country'];
-            petition.data.email = formValidData['email'];
-            petition.data.aim = formValidData['aim'];
-            petition.data.comments = formValidData['comments'];
-            petition.data.petition_date = moment();
-            petition.data.accessions = formValidData['accessions'];
-            return petition;
+            const request = new SeedRequest();
+            request.data.name = formValidData['name'];
+            request.data.type = formValidData['type'];
+            request.data.institution = formValidData['institution'];
+            request.data.address = formValidData['address'];
+            request.data.city = formValidData['city'];
+            request.data.postal_code = formValidData['postal_code'];
+            request.data.region = formValidData['region'];
+            request.data.country = formValidData['country'];
+            request.data.email = formValidData['email'];
+            request.data.aim = formValidData['aim'];
+            request.data.comments = formValidData['comments'];
+            request.data.request_date = moment();
+            request.data.accessions = formValidData['accessions'];
+            return request;
         }
 
     }
@@ -134,39 +134,39 @@ export class SeedPetitionComponent implements OnInit  {
         this.inlineForms.map(inlineForm => inlineForm.resetForm());
         this.inlineAutoCountries.map(inlineForm => inlineForm.resetForm());
     }
-    createPetition() {
-        const petition = this.getModelFromFormValidData();
-        if (petition) {
-            this.seedPetitionService.create(petition.getApiDocument())
+    createRequest() {
+        const request = this.getModelFromFormValidData();
+        if (request) {
+            this.seedRequestService.create(request.getApiDocument())
                 .subscribe(
-                    (createdPetitions: SeedPetition[]) => {
+                    (createdRequests: SeedRequest[]) => {
                         this.editMode = false;
-                        this.createdPetitions.emit(createdPetitions);
-                        this.petition = undefined;
+                        this.createdRequests.emit(createdRequests);
+                        this.request = undefined;
                         this.shoppingCartService.removeAllFromCart();
-                        this.statusService.info('Petition sucessfully created');
+                        this.statusService.info('Request sucessfully created');
                     },
                     (error) => console.log(error)
                 );
         } else {
-            this.statusService.error('Seep petition data is not valid');
+            this.statusService.error('Seep request data is not valid');
         }
     }
-    deletePetition() {
+    deleteRequest() {
         const dialogRef = this.dialog.open(DeleteDialogComponent, {
             width: '400px',
             data: {
-                type: 'Seed Petition',
-                description: `Seed Petition: ${this.petition.data.petition_uid}`
+                type: 'Seed Request',
+                description: `Seed Request: ${this.request.data.request_uid}`
             }
         });
         dialogRef.afterClosed().subscribe(doDelete => {
             if (doDelete) {
-                this.seedPetitionService.delete(this.petition.data.petition_uid)
+                this.seedRequestService.delete(this.request.data.request_uid)
                     .subscribe(
                         response => {
-                            this.statusService.info('Petition sucessfully deleted');
-                            this.router.navigate([AppUrls.seed_petitions]);
+                            this.statusService.info('Request sucessfully deleted');
+                            this.router.navigate([AppUrls.seed_requests]);
                         },
                         error => this.statusService.error(error.error.detail)
                     );

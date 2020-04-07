@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 import { AppConfig } from 'src/app/shared/entities/app-config.model';
-import { SeedPetition } from 'src/app/shared/entities/seed_petition.model';
-import { SeedPetitionService } from 'src/app/shared/services/seed-petition.service';
+import { SeedRequest } from 'src/app/pages/seed-requests/entities/seed_request.model';
+import { SeedRequestService } from 'src/app/pages/seed-requests/services/seed-request.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'kusunoki2-seed-petition-detail',
-  templateUrl: './seed-petition-detail.component.html',
-  styleUrls: ['./seed-petition-detail.component.scss']
+  templateUrl: './seed-request-detail.component.html',
+  styleUrls: ['./seed-request-detail.component.scss']
 })
-export class SeedPetitionDetailComponent implements OnInit {
+export class SeedRequestDetailComponent implements OnInit {
     appConfig: AppConfig;
-    petition: SeedPetition;
-    petition_uid: string;
+    request: SeedRequest;
+    request_uid: string;
     routerSubscription: Subscription;
     editMode = false;
 
     constructor(private appConfigService: AppConfigService,
-        private seedPetitionService: SeedPetitionService,
+        private seedRequestService: SeedRequestService,
         private route: ActivatedRoute,
         private titleService: Title) {
         this.appConfig = this.appConfigService.getConfig();
@@ -28,11 +28,11 @@ export class SeedPetitionDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.routerSubscription = this.route.params.subscribe(params => {
-            this.petition_uid = params.petition_uid;
-            this.titleService.setTitle('Petition Uid ' + this.petition_uid);
-            this.seedPetitionService.retrieve(this.petition_uid)
-                .subscribe((petition: SeedPetition) => {
-                    this.petition = petition;
+            this.request_uid = params.request_uid;
+            this.titleService.setTitle('Request ' + this.request_uid);
+            this.seedRequestService.retrieve(this.request_uid)
+                .subscribe((request: SeedRequest) => {
+                    this.request = request;
 
                 });
         });

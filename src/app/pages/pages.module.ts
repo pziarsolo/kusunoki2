@@ -23,22 +23,22 @@ const routes: Routes = [
                 data: {title: 'Login'}
             },
             {
-                path: 'users',
+                path: AppUrls.users,
                 loadChildren: () => import('./users/users.module').then(m => m.UserModule),
                 // canActivate: [IsAuthGuard]
                 data: {title: 'Users'}
             },
             {
-                path: 'tasks',
+                path: AppUrls.tasks,
                 loadChildren: () => import('./tasks/tasks.module').then(m => m.TaskModule),
                 // canActivate: [IsAuthGuard]
                 data: {title: 'Tasks'}
             },
             {
-                path: 'seed_petitions',
-                loadChildren: () => import('./seed-petitions/seed-petitions.module').then(m => m.SeedPetitionModule),
+                path: AppUrls.seed_requests,
+                loadChildren: () => import('./seed-requests/seed-requests.module').then(m => m.SeedRequestModule),
                 // canActivate: [IsAuthGuard]
-                data: { title: 'Seed Petitions' }
+                data: { title: 'Seed Requests' }
             },
             {
                 path: AppUrls.phenotypeSubDir,
