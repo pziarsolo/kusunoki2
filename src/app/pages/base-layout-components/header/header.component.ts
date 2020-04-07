@@ -24,7 +24,7 @@ export class HeaderComponent  implements OnInit, OnChanges, OnDestroy {
     @Input() sidenavOpened: Boolean;
     @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
     menuIcon: string;
-    alternativeLanguages: String[];
+    alternativeLanguages: string[];
     userToken;
 
 
