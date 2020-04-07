@@ -1,7 +1,7 @@
 <div *ngIf="appConfig.useShoppingCart">
     <div *ngIf="request && editMode && !createdRequests" >
         <mat-card *ngIf='(shoppingCartService.accessions|async).length === 0'>
-            <p>In orther to make a request, you must add some accessions to the shopping cart</p>
+            <p>In order to make a request, you must add some accessions to the shopping cart</p>
         </mat-card>
         <kusunoki2-seed-request *ngIf='(shoppingCartService.accessions|async).length > 0'
             [editMode]="editMode"

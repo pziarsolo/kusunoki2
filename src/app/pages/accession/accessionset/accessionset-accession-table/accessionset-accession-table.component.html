@@ -24,8 +24,8 @@
     <ng-container matColumnDef="is_available">
         <th mat-header-cell *matHeaderCellDef i18n>Is available</th>
         <td mat-cell *matCellDef="let accessions">
-            <span color='primary' *ngIf=accessions.data.is_available>Yes</span>
-            <span color='primary' *ngIf=!accessions.data.is_available>No</span>
+            <span color='primary' *ngIf=accessions.data.is_available i18n>Yes</span>
+            <span color='primary' *ngIf=!accessions.data.is_available i18n>No</span>
         </td>
     </ng-container>
     <ng-container matColumnDef="add_to_cart">

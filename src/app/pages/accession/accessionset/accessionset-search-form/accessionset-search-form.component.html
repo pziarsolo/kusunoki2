@@ -62,13 +62,13 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <mat-checkbox style='margin-right: 10px;' [(ngModel)]="searchParams.seed_available" name="seed_available">Only with
-                seeds available to request</mat-checkbox>
+            <div style='margin-top:10px;margin-bottom:10px;'>
+                <mat-checkbox style='margin-right: 10px;' [(ngModel)]="searchParams.seed_available"
+                    name="seed_available" i18n>Only accessionsets available to request</mat-checkbox>
 
-            <mat-checkbox [(ngModel)]="searchParams.in_nuclear_collection" name="in_nuclear_collection">Only accessions in nuclear
-                collection
-            </mat-checkbox>
-
+                <mat-checkbox [(ngModel)]="searchParams.in_nuclear_collection"
+                name="in_nuclear_collection" i18n>Only accessionsets within a nuclear collection</mat-checkbox>
+            </div>
             <div fxLayout='row' fxLayoutGap='5px' *ngIf="(userToken|async)?.is_staff">
                 <mat-form-field fxFlex>
                     <mat-label i18n>Filter by data visivility</mat-label>
