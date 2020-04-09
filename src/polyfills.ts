@@ -65,4 +65,3 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-window['_rollupMoment__default'] = null;
