@@ -10,6 +10,7 @@ import { SeedRequestDetailComponent } from './seed-request-detail/seed-request-d
 import { IsAdminGuard } from 'src/app/shared/guards/is-admin.guard';
 import { SeedRequestTableComponent } from './seed-request-table/seed-request-table.component';
 import { SeedRequestComponent } from './seed-request/seed-request.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
     {
@@ -36,6 +37,7 @@ const routes: Routes = [
         SeedRequestTableComponent,
         SeedRequestComponent],
     imports: [
+        ReactiveFormsModule,
         SharedModule,
         AccessionModule,
         RouterModule.forChild(routes),

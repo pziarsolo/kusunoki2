@@ -142,7 +142,7 @@
     "Region": "Provincia",
     "Comments": "Comentarios",
     "Aim": "Objetivo de la petición",
-    "Type petitioner": "Tipo de solicitante (Empresa, Centro de investigación, Banco de germoplasma, etc)",
+    "Type petitioner (Company, Farmer, Research institute, Germplasm Bank, etc)": "Tipo de solicitante (Empresa, Agricultor, Centro de investigación, Banco de germoplasma, etc)",
     "Location of saved duplicates": "Localización de duplicados de seguridad",
     "City/municipality": "Ciudad/municipio",
     "Province": "Provincia"

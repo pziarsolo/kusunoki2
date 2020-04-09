@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-
+import { HttpClient, HttpResponse, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ApiUrls } from '../../../shared/services/apiUrls';
@@ -13,7 +12,9 @@ import { SeedRequest } from '../entities/seed_request.model';
 })
 export class SeedRequestService {
     endPoint = ApiUrls.seed_requests;
-
+    private httpOptions: {
+        headers: HttpHeaders
+    };
     constructor(private http: HttpClient) {}
 
     private composeDetailUrl(requestUid): string {
@@ -32,8 +33,17 @@ export class SeedRequestService {
             {params: getParams, observe: 'response'});
     }
 
-    create(seedRequest): Observable<SeedRequest[]> {
-        return this.http.post<SeedRequest[]>(this.endPoint, seedRequest);
+    create(seedRequest, reCaptchaToken?: string): Observable<SeedRequest[]> {
+        if (reCaptchaToken !== undefined) {
+            this.httpOptions = {
+                headers: new HttpHeaders({'reCaptchaToken': reCaptchaToken})
+            };
+        } else {
+            this.httpOptions = null;
+        }
+
+        return this.http.post<SeedRequest[]>(this.endPoint, seedRequest,
+                                             this.httpOptions);
     }
 
     delete(requestUid: string): Observable<any> {

@@ -30,7 +30,7 @@
                 </kusunoki2-inline-edit>
             </div>
             <div fxLayout='row' fxLayoutGap="5px" fxFlex>
-                <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Type petitioner'|translate"
+                <kusunoki2-inline-edit fxFlex style="width:100%;" [label]="'Type petitioner (Company, Farmer, Research institute, Germplasm Bank, etc)'|translate"
                     [value]="request.data.type" [config]="config.type" [editMode]="editMode"
                     (validationStateEvent)="checkFormValid($event)">
                     <span class='value'>{{request.data.type}}</span>
@@ -110,13 +110,18 @@
                     </mat-list>
                 </mat-card-content>
             </mat-card>
+            <div *ngIf='editMode && appConfig.reCaptchaKey'
+                kusunoki2GoogleReCaptcha2Directive
+                [key]="appConfig.reCaptchaKey"
+                (validationStateEvent)="checkFormValid($event)"
+                style="width: 300px; height:74px;"
+                [lang]="currentLanguage">
+            </div>
         </div>
-
     </mat-card-content>
-
     <mat-card-actions *ngIf="editMode">
         <button mat-raised-button color='accent'
-            [disabled]='!allInputAreValid || (requestedAccessions|async).length === 0'
+            [disabled]='!allInputAreValid || (requestedAccessions|async)?.length === 0'
             (click)=createRequest() i18n>Submit request</button>
         <button mat-raised-button color='accent' (click)=resetForm() i18n>Reset form</button>
     </mat-card-actions>

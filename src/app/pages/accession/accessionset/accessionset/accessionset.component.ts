@@ -45,7 +45,9 @@ export class AccessionSetComponent implements OnChanges {
 
             forkJoin(calls)
                 .subscribe(
-                    (responses: Accession[]) => this.accessions = responses,
+                    (accessions: Accession[]) => {
+                        this.accessions = this.sortAccessionsByavailability(accessions);
+                    },
                     error => {
                         let errorMsg;
                         if (error.status === 404) {
@@ -57,7 +59,18 @@ export class AccessionSetComponent implements OnChanges {
                     });
         }
     }
-
+    private sortAccessionsByavailability(accessions: Accession[]): Accession[] {
+        const sortedAccessions = [];
+        const noAvailable = [];
+        for (const accession of accessions) {
+            if (accession.data.conservation_status === 'is_active' && accession.data.is_available === true) {
+                sortedAccessions.push(accession);
+            } else {
+                noAvailable.push(accession);
+            }
+        }
+        return sortedAccessions.concat(noAvailable);
+    }
 
     ngOnChanges(changes: SimpleChanges): void {
         if ('accessionset' in changes && this.accessionset !== undefined) {
@@ -113,6 +126,7 @@ export class AccessionSetComponent implements OnChanges {
             }
         });
     }
+
     // formReset() {
     //     this.edit_mode = false;
     //     this.model = new AccessionSet(Object.assign({}, this.pristine_model));

@@ -14,6 +14,7 @@ export class AppConfig {
     public languages: string[];
     public currentLanguage: string;
     public useShoppingCart: boolean;
+    public reCaptchaKey: string;
 
     constructor() { }
 
@@ -24,6 +25,7 @@ export class AppConfig {
         this.version = config.version;
         this.centralColumnSize = config.centralColumnSize;
         this.languages = config.languages;
+        this.reCaptchaKey = config.reCaptchaKey;
 
         if (config.useGoogleMaps !== undefined) {
             this.useGoogleMaps = config.useGoogleMaps;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChildren, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SeedRequestService } from 'src/app/pages/seed-requests/services/seed-request.service';
@@ -16,12 +16,14 @@ import { Observable, of } from 'rxjs';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
+import { GoogleReCaptcha2Directive } from 'src/app/shared/directives/google-re-captcha2.directive';
+import { HttpEvent } from '@angular/common/http';
 
 
 @Component({
-  selector: 'kusunoki2-seed-request',
-  templateUrl: './seed-request.component.html',
-  styleUrls: ['./seed-request.component.scss']
+    selector: 'kusunoki2-seed-request',
+    templateUrl: './seed-request.component.html',
+    styleUrls: ['./seed-request.component.scss']
 })
 export class SeedRequestComponent implements OnInit  {
     appConfig: AppConfig;
@@ -30,13 +32,14 @@ export class SeedRequestComponent implements OnInit  {
     appUrls = AppUrls;
     userToken;
     requestedAccessions: Observable<object[]>;
-
+    currentLanguage: string;
     @Input() request: SeedRequest;
     @Input() editMode = false;
     @Output() createdRequests = new EventEmitter<SeedRequest[]>();
 
     @ViewChildren(InlineEditComponent) inlineForms;
     @ViewChildren(InlineAutoCountryComponent) inlineAutoCountries;
+    @ViewChild(GoogleReCaptcha2Directive) reCatpchaDir;
 
     config = {
         request_uid: { is_required: true, is_editable: true, name: 'request_uid' },
@@ -72,6 +75,7 @@ export class SeedRequestComponent implements OnInit  {
         private currentUserService: CurrentUserService) {
 
         this.appConfig = this.appConfigService.getConfig();
+        this.currentLanguage = this.appConfig.currentLanguage;
     }
 
     ngOnInit(): void {
@@ -137,7 +141,8 @@ export class SeedRequestComponent implements OnInit  {
     createRequest() {
         const request = this.getModelFromFormValidData();
         if (request) {
-            this.seedRequestService.create(request.getApiDocument())
+            const reCaptchaToken = this.reCatpchaDir.getValueIfFormValid();
+            this.seedRequestService.create(request.getApiDocument(), reCaptchaToken)
                 .subscribe(
                     (createdRequests: SeedRequest[]) => {
                         this.editMode = false;
@@ -149,7 +154,7 @@ export class SeedRequestComponent implements OnInit  {
                     (error) => console.log(error)
                 );
         } else {
-            this.statusService.error('Seep request data is not valid');
+            this.statusService.error('Seed request data is not valid');
         }
     }
     deleteRequest() {

@@ -80,10 +80,9 @@ export class InlineEditComponent implements OnInit, OnDestroy {
     }
     ngOnInit() {
         this.setInitialValue();
-
         this.setConfigDefaultValues();
         this.inputControl = new FormControl(this.value,
-                                             this.config.validators);
+                                            this.config.validators);
         this.form = new FormGroup({});
         this.form.addControl('inputControl', this.inputControl);
         this.validationStateEvent.emit({[this.config.name]: this.inputControl.valid});
