@@ -11,7 +11,7 @@
             <ng-container i18n>Accession</ng-container> <span class='key' fxflex style='margin-left:5px;'> {{accession.data.instituteCode}}:{{accession.data.germplasmNumber}}</span>
             <span fxFlex></span>
             <button mat-raised-button
-                *ngIf="appConfig.useShoppingCart && !userCanEdit && accession.data.conservation_status === 'is_active' && accession.data.is_available === true"
+                *ngIf="appConfig.useShoppingCart && !userCanEdit && (accession.data.conservation_status === 'is_active' || accession.data.conservation_status === 'is_active_and_base') && accession.data.is_available === true"
                 [disabled]="!shoppingCartService.accessionInCart(accession)"
                 color="accent"
                 style="margin-right: 5px;"
@@ -148,7 +148,7 @@
     </mat-accordion>
 </div>
 <mat-menu #accessionActionMenu="matMenu">
-        <button mat-menu-item *ngIf="!editMode && userCanEdit && appConfig.useShoppingCart && accession.data.conservation_status === 'is_active' && accession.data.is_available === true"
+        <button mat-menu-item *ngIf="!editMode && userCanEdit && appConfig.useShoppingCart && (accession.data.conservation_status === 'is_active' || accession.data.conservation_status === 'is_active_and_base') && accession.data.is_available === true"
             [disabled] ="!shoppingCartService.accessionInCart(accession)"
             (click)="shoppingCartService.addAccession(accession)" i18n>
             <mat-icon color='accent'>add_shopping_cart</mat-icon>Add to cart
