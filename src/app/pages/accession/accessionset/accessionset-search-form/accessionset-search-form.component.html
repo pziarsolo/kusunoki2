@@ -1,10 +1,10 @@
 <mat-card style='margin:8px;'>
-    <mat-card-title color='accent' i18n>AccessionSet Search</mat-card-title>
+    <mat-card-title color='accent' i18n>Accession set Search</mat-card-title>
     <mat-card-content>
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
                 <mat-form-field style='width:100%;'>
-                    <mat-label i18n="@@accessionsetsearchform">Number</mat-label>
+                    <mat-label i18n="@@accessionsetsearchform">Identification codes (Accesion set number, Accession number or Collecting number)</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.number_contains"
                             (ngModelChange) = "suggestedNumbers = filterNumber(searchParams.number_contains)"
                             [matAutocomplete]="number" name="number_contains">
@@ -30,14 +30,14 @@
                     </mat-autocomplete>
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <mat-label i18n>Location</mat-label>
-                    <mat-hint i18n>State, province, municiality, site...</mat-hint>
+                    <mat-label i18n>Location of collecting site</mat-label>
+                    <mat-hint i18n>State, province, municiality, site, etc.</mat-hint>
                     <input type="text" matInput [(ngModel)]='searchParams.site' name='site'>
                 </mat-form-field>
             </div>
             <div fxLayout='row' fxLayoutGap='5px'>
                 <mat-form-field fxFlex >
-                    <mat-label i18n>Taxon</mat-label>
+                    <mat-label i18n>Scientific name</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.taxon_contains"
                             (ngModelChange) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
                             [matAutocomplete]="taxaAuto"

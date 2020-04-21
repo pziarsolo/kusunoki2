@@ -40,7 +40,7 @@
         //     </td>
         // </ng-container>
         <ng-container matColumnDef="species">
-            <th mat-header-cell *matHeaderCellDef i18n>Specie</th>
+            <th mat-header-cell *matHeaderCellDef i18n>Species</th>
             <td mat-cell *matCellDef="let accessions">
                 <span *ngFor="let genus of accessions.data.species; let isLast=last">
                     {{genus}}{{isLast ? '' : ' / '}}

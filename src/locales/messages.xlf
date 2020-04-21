@@ -439,11 +439,15 @@
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c1e0e9fd18f31137c78d65a4915bcdc4d0728404" datatype="html">
-        <source>Specie</source>
+      <trans-unit id="ec2b122ed8617f51ed128267a65711e40e56b5bc" datatype="html">
+        <source>Species</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/accession-table/accession-table.component.html</context>
           <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/entity-tables/accessionset-table/accessionset-table.component.html</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="030b4423b92167200e39519599f9b863b4f7c62c" datatype="html">
@@ -508,13 +512,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/accessionset-table/accessionset-table.component.html</context>
           <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ec2b122ed8617f51ed128267a65711e40e56b5bc" datatype="html">
-        <source>Species</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/components/entity-tables/accessionset-table/accessionset-table.component.html</context>
-          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1934641764cf59391eb48673bbfc38343edf97b4" datatype="html">
@@ -657,8 +654,8 @@
           <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1619355d2d20e04f0bfd1ba67658d1bed2878cff" datatype="html">
-        <source>AccessionSet</source>
+      <trans-unit id="dc2624aced6b8943f0690f37d3236fe34473957d" datatype="html">
+        <source>Accession set</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
           <context context-type="linenumber">91</context>
@@ -666,6 +663,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
           <context context-type="linenumber">143</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/accessionset/accessionset/accessionset.component.html</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bd4926e3a1b15c54c36b7cea0c5083fc1470b517" datatype="html">
@@ -902,14 +903,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="accessionsearchform" datatype="html">
-        <source>Number</source>
+        <source>Accession number, Collecting number or Accession name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ed31c09fd77c36238c13d83635f3fe5294c733d2" datatype="html">
-        <source>Location</source>
+      <trans-unit id="59da994d963dbc9963124cc1256a1b795bada8c1" datatype="html">
+        <source>Location of collecting site</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
           <context context-type="linenumber">46</context>
@@ -919,19 +920,15 @@
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4a6d19cfb0e83bfcaec2d3a0a1840df02f8e2e1f" datatype="html">
-        <source>State, province, municiality, site...</source>
+      <trans-unit id="c86ed7ea3cc516c815ade343647fe825af7ebd77" datatype="html">
+        <source>State, province, municipality, site, etc.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
           <context context-type="linenumber">47</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="d5fdb9a0603dcc46f097656306195f34fdc6ed36" datatype="html">
-        <source>Taxon</source>
+      <trans-unit id="76dbf07777585018036ced145f1b7f9619cf51be" datatype="html">
+        <source>Scientific name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
           <context context-type="linenumber">53</context>
@@ -939,10 +936,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
           <context context-type="linenumber">40</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context>
-          <context context-type="linenumber">13</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context>
@@ -1063,7 +1056,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/seed-requests/seed-request/seed-request.component.html</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9199e3567946b5d4c46035cf56fcc397c0ddf39c" datatype="html">
@@ -1435,7 +1428,7 @@
         <source>Reset form</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/seed-requests/seed-request/seed-request.component.html</context>
-          <context context-type="linenumber">127</context>
+          <context context-type="linenumber">126</context>
         </context-group>
       </trans-unit>
       <trans-unit id="30f696a3b202299f1379603fd3b894459fd9275e" datatype="html">
@@ -1478,10 +1471,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/institute/institute-stats-table/institute-stats-table.component.html</context>
           <context context-type="linenumber">27</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context>
-          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fb7c5adc5bf48e67fe8d7c18f338a69aff42baa5" datatype="html">
@@ -1655,8 +1644,8 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="98454aab748dc7bdc4b1252b2dd8d66889e0ac5f" datatype="html">
-        <source>Add Other Number</source>
+      <trans-unit id="bb143e2be07411056b23c47890ae33662f0becb2" datatype="html">
+        <source>Add a new related accession</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/passport-other-numbers/other-numbers.component.html</context>
           <context context-type="linenumber">14</context>
@@ -1676,15 +1665,15 @@
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="409c80a2b1e471c7a2aea053f34ba40931535b7e" datatype="html">
-        <source>Donor Data</source>
+      <trans-unit id="9f6a6aa66d1e2322390f7b0ba0ef14a9db1d016f" datatype="html">
+        <source>Donor data</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/passport/passport.component.html</context>
           <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e761a2c9b134697189fe573981262f284d10428f" datatype="html">
-        <source>Additional Descriptors</source>
+      <trans-unit id="d599794d4e569b0b7eb4b738be21607a2bde6e62" datatype="html">
+        <source>Additional descriptors</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/passport/passport.component.html</context>
           <context context-type="linenumber">80</context>
@@ -1704,25 +1693,25 @@
           <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1b6bc6d5daaa6ec75d201690bb6f782f30bf98a0" datatype="html">
-        <source>Data Source</source>
+      <trans-unit id="d68cd9c4b3c82e919c112eda7c4ba1a3f2b1e986" datatype="html">
+        <source>Data source</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/passport/passport.component.html</context>
-          <context context-type="linenumber">145</context>
+          <context context-type="linenumber">146</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0582194a0cbb1a9f23a695bb093fc8b12d8498cb" datatype="html">
-        <source>Other Numbers</source>
+      <trans-unit id="dd118b063f672485a6dd5a4e7dc289c61a722702" datatype="html">
+        <source>Other Accessions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/passport/passport.component.html</context>
-          <context context-type="linenumber">180</context>
+          <context context-type="linenumber">181</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="eecba938b86f572c6c52dc64463ee8f98a2bcb09" datatype="html">
-        <source>Collecting Data</source>
+      <trans-unit id="6885104884f992556b482af5acc4d7658f83c9e2" datatype="html">
+        <source>Collecting data</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/passport/passport.component.html</context>
-          <context context-type="linenumber">192</context>
+          <context context-type="linenumber">193</context>
         </context-group>
       </trans-unit>
       <trans-unit id="46746815f231e58ecf1bdaffbda0c6e53fec443d" datatype="html">
@@ -1735,15 +1724,15 @@
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2bae9116912f3309d5f624b6f459d6e38b3843eb" datatype="html">
-        <source>This accession belongs to this accesisionSets:</source>
+      <trans-unit id="f8b9b2b5c77dcfef7a262068a9d70409be425909" datatype="html">
+        <source>This accession belongs to this accesision sets:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession/accession.component.html</context>
           <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cbdfbfd0bc9768f6681c7aa903ec18eb88550d05" datatype="html">
-        <source>Passport Data</source>
+      <trans-unit id="527796f0d94603db97159192507ff7efcce3342c" datatype="html">
+        <source>Passport data</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession/accession.component.html</context>
           <context context-type="linenumber">106</context>
@@ -1816,18 +1805,25 @@
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="749d8dc7a197bad498537ea011c3e98bba422636" datatype="html">
-        <source>AccessionSet Search</source>
+      <trans-unit id="ccae9c43648cfacd264ad1853956193bbafbed95" datatype="html">
+        <source>Accession set Search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="accessionsetsearchform" datatype="html">
-        <source>Number</source>
+        <source>Identification codes (Accesion set number, Accession number or Collecting number)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
           <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6c3978e6d442c12779f669096672515aa6ccd143" datatype="html">
+        <source>State, province, municiality, site, etc.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dadce702e1291373f97ea39aa9afe9a7810aee71" datatype="html">
@@ -1844,8 +1840,8 @@
           <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2ac18c3559f2ca574cf69514b2696bb6d2130a39" datatype="html">
-        <source>Accessionsets</source>
+      <trans-unit id="c8d9303f3795e36887bc2c880eb9b4a9f020c524" datatype="html">
+        <source>Accession sets</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-list/accessionset-list.component.html</context>
           <context context-type="linenumber">8</context>
@@ -1858,15 +1854,8 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="954280416156a13f72398c900898a839d1d941a4" datatype="html">
-        <source>Accessionset</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/accessionset/accessionset/accessionset.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="e55fe236f92d68ea97724473dd361ba24ceaa731" datatype="html">
-        <source>Accessions in this accessionset</source>
+      <trans-unit id="24d3e718e69b5ba4ce965fc7955ecdaed01d7934" datatype="html">
+        <source>Accessions in this accession set</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset/accessionset.component.html</context>
           <context context-type="linenumber">14</context>
@@ -1931,6 +1920,20 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context>
           <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d5fdb9a0603dcc46f097656306195f34fdc6ed36" datatype="html">
+        <source>Taxon</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c427f8b5cd19224a5f3106c2fa1f5606d653a73b" datatype="html">
+        <source>Num. Accession sets</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1b72e3eaaef5d802a88bc1e89383346b440c92a4" datatype="html">
@@ -2011,7 +2014,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="location_on_studysearch" datatype="html">
-        <source>Location</source>
+        <source>Location of characterization site</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context>
           <context context-type="linenumber">14</context>

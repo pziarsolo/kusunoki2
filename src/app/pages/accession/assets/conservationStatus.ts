@@ -3,6 +3,6 @@ export const conservation_statuses = [
     {'code': 'is_base', 'name': 'Is part of base collection'},
     {'code': 'is_active_and_base', 'name': 'Is part of active and base collection' },
     {'code': 'is_secondary', 'name': 'Is part of a secondary collection' },
-    {'code': 'is_archive', 'name': 'we have germplasm but not enougth'},
-    {'code': 'is_historic', 'name': 'we only have documentation'}
+    { 'code': 'is_archive', 'name': 'Archival'},
+    { 'code': 'is_historic', 'name': 'No germplasm, only passport data'}
 ];

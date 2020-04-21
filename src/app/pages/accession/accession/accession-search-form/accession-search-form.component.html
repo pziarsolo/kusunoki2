@@ -17,7 +17,7 @@
                     </mat-autocomplete>
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <mat-label i18n="@@accessionsearchform">Number</mat-label>
+                    <mat-label i18n="@@accessionsearchform">Accession number, Collecting number or Accession name</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.number_contains"
                             (ngModelChange) = "suggestedAccessions = filterNumber(searchParams.number_contains)"
                             [matAutocomplete]="number" name="number_contains">
@@ -43,14 +43,14 @@
                     </mat-autocomplete>
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <mat-label i18n>Location</mat-label>
-                    <mat-hint i18n>State, province, municiality, site...</mat-hint>
+                    <mat-label i18n>Location of collecting site</mat-label>
+                    <mat-hint i18n>State, province, municipality, site, etc.</mat-hint>
                     <input type="text" matInput [(ngModel)]='searchParams.site' name='site'>
                 </mat-form-field>
             </div>
             <div fxLayout='row' fxLayoutGap='5px'>
                 <mat-form-field fxFlex >
-                    <mat-label i18n>Taxon</mat-label>
+                    <mat-label i18n>Scientific name</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.taxon_contains"
                             (ngModelChange) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
                             [matAutocomplete]="taxaAuto" name='taxon_contains'

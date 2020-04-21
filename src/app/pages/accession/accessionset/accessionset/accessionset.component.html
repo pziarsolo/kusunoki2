@@ -1,6 +1,6 @@
 <mat-card *ngIf='accessionset'>
   <mat-card-title>
-    <ng-container i18n>Accessionset</ng-container>
+    <ng-container i18n>Accession set</ng-container>
     <span class='key' fxflex style='margin-left:5px;'> {{accessionset.data.accessionsetNumber}}</span>
     <span fxFlex></span>
     <button *ngIf='userCanEdit' mat-raised-button color='accent' [matMenuTriggerFor]="accessionsetActionMenu">
@@ -11,7 +11,7 @@
     <kusunoki2-accessionset-accession-table *ngIf="accessions" [accessions]="accessions"
       (accessionSelected)="selectedTabIndex = $event">
     </kusunoki2-accessionset-accession-table>
-    <h2 i18n>Accessions in this accessionset</h2>
+    <h2 i18n>Accessions in this accession set</h2>
     <kusunoki2-accession *ngIf='accessions && accessions.length === 1' [accession]="accessions[0]" [mapId]="'map1'">
     </kusunoki2-accession>
     <div *ngIf='accessions && accessions.length > 1' style='margin:0; padding:0'>

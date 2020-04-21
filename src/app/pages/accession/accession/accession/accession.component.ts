@@ -67,7 +67,7 @@ export class AccessionComponent implements OnChanges {
                 type: 'switch',
                 conf: {
                     'true': 'Is available',
-                    'false': 'Is Not Available'
+                    'false': 'Is not available'
                 }
             }
         },
@@ -76,8 +76,8 @@ export class AccessionComponent implements OnChanges {
             widget: {
                 type: 'switch',
                 conf: {
-                    'true_long': 'Belongs to a nuclear collection',
-                    'false_long': 'Does not belong to a nuclear collection',
+                    'true_long': 'Belongs to a core collection',
+                    'false_long': 'Does not belong to a core collection',
                     'true': 'Yes',
                     'false': 'No'
                 }

@@ -36,7 +36,7 @@
                         style='margin-bottom: 10px'
                         >
                         <kusunoki2-inline-auto-institute fxFlex style="width:100%;"
-                            [label]="'Institute Code'|translate"
+                            [label]="'Institution code'|translate"
                             [value]="accession.data.instituteCode"
                             [config]="config.institute"
                             [editMode]="editMode"
@@ -44,7 +44,7 @@
                         </kusunoki2-inline-auto-institute>
 
                         <kusunoki2-inline-edit fxFlex style="width:100%;"
-                            [label]="'Germplasm Number'|translate"
+                            [label]="'Accession number'|translate"
                             [value]="accession.data.germplasmNumber"
                             [config]="config.germplasmNumber"
                             [editMode]="editMode"
@@ -59,7 +59,7 @@
                         </kusunoki2-inline-edit>
 
                         <kusunoki2-inline-edit-select fxFlex style="width:100%;"
-                            [label]="'Conservation Status'|translate"
+                            [label]="'Conservation status'|translate"
                             [value]="accession.data.conservation_status"
                             [editMode]="editMode"
                             [choices]="conservation_statuses"
@@ -77,7 +77,7 @@
                             (validationStateEvent)="checkFormValid($event)">
                         </kusunoki2-inline-edit>
                         <kusunoki2-inline-edit fxFlex style="width:100%;"
-                            [label]="'Belongs to a nuclear collection'|translate"
+                            [label]="'Belongs to a core collection'|translate"
                             [value]="accession.data.in_nuclear_collection"
                             [editMode]="editMode"
                             [config]="config.in_nuclear_collection"
@@ -87,7 +87,7 @@
 
                     <div *ngIf="accessionsets?.length > 0 && !editMode">
                     <!-- <div *ngIf="accessionsets.length > 0 && !editMode"> -->
-                        <span style='margin-right: 5px;' i18n>This accession belongs to this accesisionSets:</span>
+                        <span style='margin-right: 5px;' i18n>This accession belongs to this accesision sets:</span>
                         <span *ngFor="let item of accessionsets; let $last=last">
                             <a [routerLink]="['/', appUrls.accessionsets, item]">{{item}}</a>
                             <span *ngIf="!$last; LastElem" class="list-format">,</span>
@@ -103,7 +103,7 @@
 
     <mat-accordion multi="true">
         <mat-expansion-panel [expanded]="true">
-            <mat-expansion-panel-header><h2 i18n>Passport Data</h2></mat-expansion-panel-header>
+            <mat-expansion-panel-header><h2 i18n>Passport data</h2></mat-expansion-panel-header>
             <kusunoki2-passport
                 [passport]="accession.data.passports[0]"
                 [editMode]='editMode'
