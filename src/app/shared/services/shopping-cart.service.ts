@@ -1,20 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { access } from 'fs';
-import { AccessionSearchByObservationsFormComponent } from 'src/app/pages/accession/accession/accession-search-form/accession-search-form.component';
 import { Accession } from '../entities/accession.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShoppingCartService {
+export class ShoppingCartService implements OnDestroy{
     accessions = new BehaviorSubject([]);
+
     private cardId = 'AccessionsForPetition';
 
     constructor() {
+        this.start();
         this.accessions.next(this.getAccessionsFromStorage());
     }
+    private start(): void {
+        window.addEventListener('storage', this.storageEventListener.bind(this));
+        // window.onstorage(this.storageEventListener.bind(this));
+    }
 
+    private storageEventListener(event: StorageEvent) {
+        if (event.storageArea === localStorage) {
+            this.accessions.next(this.getAccessionsFromStorage());
+        }
+    }
+
+    private stop(): void {
+        window.removeEventListener('storage', this.storageEventListener.bind(this));
+        this.accessions.complete();
+    }
+
+    ngOnDestroy() {
+        this.stop();
+    }
     private getAccessionsFromStorage() {
         const stringifyArray = localStorage.getItem(this.cardId);
         let accessionArray: object[];
@@ -65,6 +83,7 @@ export class ShoppingCartService {
         const accessions = this.getAccessionsFromStorage();
         return Boolean(indexOf(accession, accessions));
     }
+
 }
 
 function indexOf(obj, list: object[]): number {

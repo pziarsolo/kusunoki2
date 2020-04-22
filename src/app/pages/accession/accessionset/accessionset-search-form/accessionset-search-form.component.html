@@ -4,7 +4,7 @@
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
                 <mat-form-field style='width:100%;'>
-                    <mat-label i18n="@@accessionsetsearchform">Identification codes (Accesion set number, Accession number or Collecting number)</mat-label>
+                    <mat-label i18n="@@accessionsetsearchform">Accesion set number, Accession number or Collecting number</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.number_contains"
                             (ngModelChange) = "suggestedNumbers = filterNumber(searchParams.number_contains)"
                             [matAutocomplete]="number" name="number_contains">

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 import { AppConfig } from 'src/app/shared/entities/app-config.model';
 import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
@@ -10,7 +10,7 @@ import { AppUrls } from '../../appUrls';
     templateUrl: './shopping-cart-menu.component.html',
     styleUrls: ['./shopping-cart-menu.component.scss']
 })
-export class ShoppingCartMenuComponent implements OnInit {
+export class ShoppingCartMenuComponent {
     appConfig: AppConfig;
     accessions: Observable<string[]>;
     appUrls = AppUrls;
@@ -19,8 +19,4 @@ export class ShoppingCartMenuComponent implements OnInit {
         this.appConfig = this.appConfigService.getConfig();
         this.accessions = this.shoppingCartService.accessions;
     }
-
-    ngOnInit(): void {
-    }
-
 }

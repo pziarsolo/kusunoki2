@@ -5,6 +5,8 @@ import { Validators } from '@angular/forms';
 import { biological_status } from '../assets/biologicalStatus';
 import { collection_sources } from '../assets/collectionSources';
 import { OtherNumbersComponent } from '../passport-other-numbers/other-numbers.component';
+import { AppConfigService } from 'src/app/shared/services/app-config.service';
+import { AppConfig } from 'src/app/shared/entities/app-config.model';
 
 @Component({
   selector: 'kusunoki2-passport',
@@ -15,6 +17,7 @@ export class PassportComponent extends BaseInlinesForm2Component implements Afte
     @Input() passport: Passport;
     @Input() editMode: boolean;
     @Input() componentId: string;
+    appConfig: AppConfig;
     ranks = ['family', 'genus', 'species', 'subspecies', 'variety',
              'convarietas', 'group', 'forma'];
     collection_sources = collection_sources;
@@ -141,7 +144,10 @@ export class PassportComponent extends BaseInlinesForm2Component implements Afte
 
     };
     @ViewChild(OtherNumbersComponent) OtherNumbers;
-
+    constructor(private appConfigService: AppConfigService) {
+        super();
+        this.appConfig = this.appConfigService.getConfig();
+    }
     ngAfterViewChecked() {
         super.ngAfterViewChecked();
         this.childrenComponents.push(this.OtherNumbers);

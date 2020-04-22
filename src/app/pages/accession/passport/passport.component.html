@@ -1,5 +1,5 @@
 <div *ngIf='editMode'>
-    <p i18n>Passport identifier, usually same as accession number</p>
+    <p i18n *ngIf="!appConfig.useAccessionset">Passport identifier, usually same as accession number</p>
     <div fxLayoutAlign="start center">
         <kusunoki2-inline-auto-institute fxFlex style="width:'100%"
                     [label]="'Institution code'|translate"
@@ -203,7 +203,7 @@
                     </kusunoki2-inline-auto-institute>
                     <kusunoki2-inline-edit fxFlex
                         *ngIf="editMode || passport.collectionNumber.fieldCollectionNumber"
-                        [label]="'Collection field number'|translate"
+                        [label]="'Collection number'|translate"
                         [editMode]="editMode"
                         [config]="childrenConfig['collectingFieldNumber']"
                         [value]="passport.collectionNumber.fieldCollectionNumber"

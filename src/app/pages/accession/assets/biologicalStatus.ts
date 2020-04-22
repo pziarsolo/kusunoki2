@@ -14,7 +14,7 @@ export const biological_status = [
     {code: 415, name: 'Segregating population'},
     {code: 416, name: 'Clonal selection'},
     {code: 420, name: 'Genetic stock'},
-    {code: 421, name: 'Mutant (e.g. induced/insertion mutants, tilling populations'},
+    {code: 421, name: 'Mutant (e.g. induced/insertion mutants, tilling populations)'},
     {code: 422, name: 'Cytogenetic stocks (e.g. chromosome addition/substitution)'},
     {code: 423, name: 'Other genetic stocks (e.g. mapping populations)'},
     {code: 500, name: 'Advanced or improved cultivar (conventional breeding methods)'},
