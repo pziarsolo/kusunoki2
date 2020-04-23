@@ -203,7 +203,7 @@
                     </kusunoki2-inline-auto-institute>
                     <kusunoki2-inline-edit fxFlex
                         *ngIf="editMode || passport.collectionNumber.fieldCollectionNumber"
-                        [label]="'Collection number'|translate"
+                        [label]="'Collecting number'|translate"
                         [editMode]="editMode"
                         [config]="childrenConfig['collectingFieldNumber']"
                         [value]="passport.collectionNumber.fieldCollectionNumber"
@@ -246,11 +246,11 @@
                     (validationStateEvent)="checkFormValid($event)">
                 </kusunoki2-inline-auto-country>
                 <div *ngFor="let component_name of passport.collectionSite|keys"
-                    style='width:100%;'>
+                    style='width:100%;' >
                     <kusunoki2-inline-edit
                         *ngIf="component_name !== 'country' && (editMode || (passport.collectionSite[component_name]))"
                         fxFlex='grow'
-                        [label]="component_name|translate|titlecase"
+                        [label]="childrenConfig[component_name].label|translate|titlecase"
                         [editMode]="editMode"
                         [config]="childrenConfig[component_name]"
                         [(value)]="passport.collectionSite[component_name]"

@@ -22,7 +22,7 @@ export class StudyMultiAutocompleteComponent {
     items: string[] = [];
     suggested: Observable<Study[]>;
     input;
-    placeholder = 'Studies names';
+    placeholder = 'Study names';
 
     @ViewChild('inputElement') inputElement: ElementRef;
     @ViewChild('inputElement', { read: MatAutocompleteTrigger }) studyTrigger: MatAutocompleteTrigger;

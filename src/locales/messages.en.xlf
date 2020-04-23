@@ -514,11 +514,8 @@
         </context-group>
       </trans-unit><trans-unit id="c86ed7ea3cc516c815ade343647fe825af7ebd77" datatype="html">
         <source>State, province, municipality, site, etc.</source><target state="final">State, province, municipality, site, etc.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
-          <context context-type="linenumber">47</context>
-        </context-group>
-      </trans-unit><trans-unit id="76dbf07777585018036ced145f1b7f9619cf51be" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context><context context-type="linenumber">47</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context><context context-type="linenumber">34</context></context-group></trans-unit><trans-unit id="76dbf07777585018036ced145f1b7f9619cf51be" datatype="html">
         <source>Scientific name</source><target state="final">Scientific name</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
@@ -718,7 +715,7 @@
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit><trans-unit id="location_on_studysearch" datatype="html">
-        <source>Location of characterization site</source><target state="final">Location of characterization site</target>
+        <source>Characterization site</source><target state="final">Characterization site</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/study/study-search-form/study-search-form.component.html</context>
           <context context-type="linenumber">14</context>
@@ -755,11 +752,7 @@
         <source>Num. Accessions</source><target state="final">Num. Accessions</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-table/institute-table.component.html</context><context context-type="linenumber">22</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-table/country-table.component.html</context><context context-type="linenumber">16</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-stats-table/country-stats-table.component.html</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-stats-table/institute-stats-table.component.html</context><context context-type="linenumber">19</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context><context context-type="linenumber">18</context></context-group></trans-unit><trans-unit id="37aec7642e5e8502c515bdecba1d243d571c8aa5" datatype="html">
-        <source>Num. Accessionsets</source><target state="final">Num. Accessionsets</target>
-        
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-table/institute-table.component.html</context><context context-type="linenumber">30</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-table/country-table.component.html</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-stats-table/country-stats-table.component.html</context><context context-type="linenumber">20</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-stats-table/institute-stats-table.component.html</context><context context-type="linenumber">27</context></context-group></trans-unit><trans-unit id="bd4926e3a1b15c54c36b7cea0c5083fc1470b517" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-table/institute-table.component.html</context><context context-type="linenumber">22</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-table/country-table.component.html</context><context context-type="linenumber">16</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-stats-table/country-stats-table.component.html</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-stats-table/institute-stats-table.component.html</context><context context-type="linenumber">19</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context><context context-type="linenumber">18</context></context-group></trans-unit><trans-unit id="bd4926e3a1b15c54c36b7cea0c5083fc1470b517" datatype="html">
         <source>Institutes</source><target state="final">Institutes</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">101</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-list/institute-list.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="fb7c5adc5bf48e67fe8d7c18f338a69aff42baa5" datatype="html">
@@ -783,10 +776,17 @@
       </trans-unit><trans-unit id="afb2f9e654a57b63f2732d3fe88526b0182f9429" datatype="html">
         <source>Accession Stats</source><target state="final">Accession Stats</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context><context context-type="linenumber">50</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context><context context-type="linenumber">32</context></context-group></trans-unit><trans-unit id="c422117d1e388044f1b591605e543a9a62e8f90c" datatype="html">
-        <source>AccessionSet Stats</source><target state="final">AccessionSet Stats</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context><context context-type="linenumber">60</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context><context context-type="linenumber">43</context></context-group></trans-unit><trans-unit id="8b774dcc249b9f73960b496a593e5280c2bb432d" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context><context context-type="linenumber">50</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context><context context-type="linenumber">32</context></context-group></trans-unit><trans-unit id="69dc711e4ddac4ad892ba8a31ec0a54f1bf608e9" datatype="html">
+        <source>Accession Set Stats</source><target state="final">Accession Set Stats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit><trans-unit id="8b774dcc249b9f73960b496a593e5280c2bb432d" datatype="html">
         <source>Pdci Distribution</source><target state="final">Pdci Distribution</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/institute/institute-detail/institute-detail.component.html</context>
@@ -1074,16 +1074,10 @@
           <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit><trans-unit id="accessionsetsearchform" datatype="html">
-        <source>Identification codes (Accesion set number, Accession number or Collecting number)</source><target state="final">Identification codes (Accesion set number, Accession number or Collecting number)</target>
+        <source>Accesion set number, Accession number or Collecting number</source><target state="final">Accesion set number, Accession number or Collecting number</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
           <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit><trans-unit id="6c3978e6d442c12779f669096672515aa6ccd143" datatype="html">
-        <source>State, province, municiality, site, etc.</source><target state="final">State, province, municiality, site, etc.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
-          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit><trans-unit id="dadce702e1291373f97ea39aa9afe9a7810aee71" datatype="html">
         <source>Only accessionsets available to request</source><target state="final">Only accessionsets available to request</target>
@@ -1102,11 +1096,8 @@
         
       <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="c427f8b5cd19224a5f3106c2fa1f5606d653a73b" datatype="html">
         <source>Num. Accession sets</source><target state="final">Num. Accession sets</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit><trans-unit id="c0dfc20e97715e73a5dbc8baba56fb0618b8bd7c" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-table/institute-table.component.html</context><context context-type="linenumber">30</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-table/country-table.component.html</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/country/country-stats-table/country-stats-table.component.html</context><context context-type="linenumber">20</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/institute/institute-stats-table/institute-stats-table.component.html</context><context context-type="linenumber">27</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context><context context-type="linenumber">19</context></context-group></trans-unit><trans-unit id="c0dfc20e97715e73a5dbc8baba56fb0618b8bd7c" datatype="html">
         <source>Total: <x id="INTERPOLATION" equiv-text="{{table.dataSource.totalCount}}"/> accession sets found</source><target state="final">Total: <x id="INTERPOLATION" equiv-text="{{table.dataSource.totalCount}}"/> accession sets found</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-list/accessionset-list.component.html</context>
@@ -1162,8 +1153,8 @@
           <context context-type="sourcefile">app/pages/accession/taxon/taxa-stats-page/taxa-stats-page.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
-      </trans-unit><trans-unit id="00c2671aec82db43114b0e013824cccfde5cc6ea" datatype="html">
-        <source>Stats by <x id="INTERPOLATION" equiv-text="{{entityType|translate}}"/></source><target state="final">Stats by <x id="INTERPOLATION" equiv-text="{{entityType|translate}}"/></target>
+      </trans-unit><trans-unit id="4e42b183e053ad725a36e019ed2be746e0582d64" datatype="html">
+        <source>Stats by <x id="INTERPOLATION" equiv-text="{{entity_in_title|translate}}"/></source><target state="final">Stats by <x id="INTERPOLATION" equiv-text="{{entity_in_title|translate}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/taxon/taxon-stats-by-entity/taxon-stats-by-entity.component.html</context>
           <context context-type="linenumber">1</context>

@@ -57,11 +57,14 @@ export class PassportComponent extends BaseInlinesForm2Component implements Afte
         island: {name: 'island'},
         other: {name: 'other'},
         site: {name: 'site'},
-        coordUncertainty: {name: 'coordUncertainty'},
-        georeferencingMethod: {name: 'georeferencingMethod'},
-        coordenatesSpatialReference: {name: 'coordenatesSpatialReference'},
+        coordUncertainty: {name: 'coordUncertainty',
+            label: 'Coordinates uncertainty'},
+        georeferencingMethod: {name: 'georeferencingMethod',
+            label: 'Georeferencing method'},
+        coordenatesSpatialReference: {name: 'coordenatesSpatialReference',
+            label: 'Coordinates spatial reference'},
         latitude: {
-            name: 'latitute',
+            name: 'latitude',
             type: Number,
             validators: [Validators.min(-90),
                          Validators.max(90)]

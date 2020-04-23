@@ -20,7 +20,7 @@
             </a>
     </ng-container>
     <ng-container matColumnDef="num_accessionsets">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Num. Accessionsets</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Num. Accession sets</th>
         <td  mat-cell *matCellDef="let country">
             <a mat-button (click)="navigateTo(appUrls.accessionsets, {country: country.code})">
                 {{country.num_accessionsets}}

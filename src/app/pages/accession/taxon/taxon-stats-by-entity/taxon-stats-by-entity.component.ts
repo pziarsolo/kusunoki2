@@ -25,7 +25,7 @@ export class TaxonStatsByEntityComponent implements OnInit,  AfterViewChecked {
     @Input() entityType;
     @Input() initialQueryParams: any = {};
     first = true;
-
+    entity_in_title: string;
     appUrls = AppUrls;
     columnsToDisplay = ['taxon_name', 'counts'];
     gettingStats: boolean;
@@ -52,6 +52,10 @@ export class TaxonStatsByEntityComponent implements OnInit,  AfterViewChecked {
                 this.ranksInStats = _stats.used_ranks;
             }
         );
+        this.entity_in_title = this.entityType;
+        if (this.entityType === 'accessionset') {
+            this.entity_in_title = 'accession set';
+        }
     }
     processStats(stats, type) {
         const rankStats = {};

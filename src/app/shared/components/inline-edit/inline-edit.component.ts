@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { SubscriptionLike as ISubscription } from 'rxjs';
@@ -173,6 +173,9 @@ export class InlineEditComponent implements OnInit, OnDestroy {
         }
         if (this.config.widget.type === 'datePicker') {
             this.config.type = Date;
+        }
+        if (this.config.label === undefined) {
+            this.config.label = this.config.name;
         }
     }
 
