@@ -1,10 +1,5 @@
 /// <reference types="@types/googlemaps" />
-import { Component, OnInit, Input, SimpleChanges, OnChanges,
-         AfterViewInit, AfterViewChecked, ElementRef, Output,
-         EventEmitter,
-         ɵConsole
-} from '@angular/core';
-import { timeout } from 'rxjs/operators';
+import { Component, Input, SimpleChanges, OnChanges, AfterViewChecked, Output, EventEmitter} from '@angular/core';
 
 declare var google: any;
 

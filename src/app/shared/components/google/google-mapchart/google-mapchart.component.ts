@@ -1,6 +1,5 @@
 /// <reference types="@types/google.visualization" />
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
 
 declare var google: any;
 

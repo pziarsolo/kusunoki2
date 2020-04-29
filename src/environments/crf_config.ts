@@ -11,7 +11,7 @@ export const siteConfig = {
     googleMapsApiKey: undefined,
     canRemoveAccessionset: true,
     useShoppingCart: true,
-    reCaptchaKey: '6LfAwecUAAAAAOhcNoiaI7fH_vVbcSe_YlC_ia71'
+    reCaptchaKey: '6LcM6-8UAAAAAJL08eD5PLyLRb3mUts7IbB5kMp1'
 };
 
 export default siteConfig;
