@@ -121,8 +121,16 @@
     </mat-card-content>
     <mat-card-actions *ngIf="editMode">
         <button mat-raised-button color='accent'
-            [disabled]='!allInputAreValid || (requestedAccessions|async)?.length === 0'
-            (click)=createRequest() i18n>Submit request</button>
-        <button mat-raised-button color='accent' (click)=resetForm() i18n>Reset form</button>
+            [disabled]='!allInputAreValid || (requestedAccessions|async)?.length === 0 || requestInProgress'
+            (click)=createRequest()>
+                <div fxLayout='row' fxLayoutGap='5px' fxLayoutAlign="space-around center" style="height:100%">
+                    <span i18n>Submit request</span>
+                    <mat-spinner *ngIf="requestInProgress" diameter="30"></mat-spinner>
+                </div>
+        </button>
+        <button
+            mat-raised-button color='accent'
+            [disabled]="requestInProgress"
+            (click)=resetForm() i18n>Reset form</button>
     </mat-card-actions>
 </mat-card>

@@ -712,7 +712,7 @@
         <source>Submit request</source><target state="final">Envíar solicitud</target>
 
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/shopping-cart-menu/shopping-cart-menu.component.html</context><context context-type="linenumber">29</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/seed-requests/seed-request/seed-request.component.html</context><context context-type="linenumber">125</context></context-group></trans-unit><trans-unit id="9199e3567946b5d4c46035cf56fcc397c0ddf39c" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/shopping-cart-menu/shopping-cart-menu.component.html</context><context context-type="linenumber">29</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/seed-requests/seed-request/seed-request.component.html</context><context context-type="linenumber">127</context></context-group></trans-unit><trans-unit id="9199e3567946b5d4c46035cf56fcc397c0ddf39c" datatype="html">
         <source>Empty cart</source><target state="final">Vaciar cesta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/base-layout-components/shopping-cart-menu/shopping-cart-menu.component.html</context>
@@ -1054,7 +1054,7 @@
       </trans-unit><trans-unit id="169f2780022394b9d611871fe34c2cb87f759ed2" datatype="html">
         <source>Reset form</source><target state="final">Vaciar formulario</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/pages/seed-requests/seed-request/seed-request.component.html</context><context context-type="linenumber">126</context></context-group></trans-unit><trans-unit id="c86fd8f4125b16e7d16462b1eaa6d4d211cd7ee4" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/seed-requests/seed-request/seed-request.component.html</context><context context-type="linenumber">134</context></context-group></trans-unit><trans-unit id="c86fd8f4125b16e7d16462b1eaa6d4d211cd7ee4" datatype="html">
         <source>Additional data</source><target state="final">Datos adicionales</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context><context context-type="linenumber">40</context></context-group></trans-unit><trans-unit id="3d9c72a7ceb9aa6bbc85170c7857ba6b19006a20" datatype="html">

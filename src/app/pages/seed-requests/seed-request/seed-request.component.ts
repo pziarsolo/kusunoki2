@@ -32,6 +32,7 @@ export class SeedRequestComponent implements OnInit  {
     userToken;
     requestedAccessions: Observable<object[]>;
     currentLanguage: string;
+    requestInProgress = false;
     @Input() request: SeedRequest;
     @Input() editMode = false;
     @Output() createdRequests = new EventEmitter<SeedRequest[]>();
@@ -141,16 +142,22 @@ export class SeedRequestComponent implements OnInit  {
         const request = this.getModelFromFormValidData();
         if (request) {
             const reCaptchaToken = this.reCatpchaDir.getValueIfFormValid();
+            this.requestInProgress = true;
             this.seedRequestService.create(request.getApiDocument(), reCaptchaToken)
                 .subscribe(
                     (createdRequests: SeedRequest[]) => {
+                        this.requestInProgress = false;
                         this.editMode = false;
                         this.createdRequests.emit(createdRequests);
                         this.request = undefined;
                         this.shoppingCartService.removeAllFromCart();
                         this.statusService.info('Request sucessfully created');
+
                     },
-                    (error) => console.log(error)
+                    (error) => {
+                        console.log(error);
+                        this.requestInProgress = false;
+                    }
                 );
         } else {
             this.statusService.error('Seed request data is not valid');
