@@ -7,6 +7,7 @@
                     <mat-label i18n>Institute</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.institute_code"
                             (ngModelChange) = "suggestedInstitutes = filterInstitute(searchParams.institute_code)"
+                            (focus) = "suggestedInstitutes = filterInstitute(searchParams.institute_code)"
                             [matAutocomplete]="instituteAuto"
                             #instituteInput
                             name="institute">
@@ -20,6 +21,7 @@
                     <mat-label i18n="@@accessionsearchform">Accession number, Collecting number or Accession name</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.number_contains"
                             (ngModelChange) = "suggestedAccessions = filterNumber(searchParams.number_contains)"
+                            (focus) = "suggestedAccessions = filterNumber(searchParams.number_contains)"
                             [matAutocomplete]="number" name="number_contains">
                     <mat-autocomplete #number="matAutocomplete" >
                         <mat-option *ngFor="let accession of suggestedAccessions|async " [value]="accession.data.germplasmNumber">
@@ -34,6 +36,7 @@
                     <mat-label i18n>Country</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.country"
                             (ngModelChange) = "suggestedCountries = filterCountry(searchParams.country)"
+                            (focus) = "suggestedCountries = filterCountry(searchParams.country)"
                             [matAutocomplete]="countryAuto"
                             #countryInput  name="country">
                     <mat-autocomplete #countryAuto="matAutocomplete">
@@ -53,6 +56,7 @@
                     <mat-label i18n>Scientific name</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.taxon_contains"
                             (ngModelChange) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
+                            (focus) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
                             [matAutocomplete]="taxaAuto" name='taxon_contains'
                             #taxaInput>
                     <mat-autocomplete #taxaAuto="matAutocomplete">
@@ -107,6 +111,7 @@
                         <mat-label i18n>Study</mat-label>
                         <input type="text" matInput [(ngModel)]="searchParams.study"
                                 (ngModelChange) = "suggestedStudies = filterStudies(searchParams.study)"
+                                (focus) = "suggestedStudies = filterStudies(searchParams.study)"
                                 [matAutocomplete]="studyAuto"
                                 #studyInput  name="study">
                         <mat-autocomplete #studyAuto="matAutocomplete">

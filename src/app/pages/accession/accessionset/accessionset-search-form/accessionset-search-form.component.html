@@ -7,6 +7,7 @@
                     <mat-label i18n="@@accessionsetsearchform">Accesion set number, Accession number or Collecting number</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.number_contains"
                             (ngModelChange) = "suggestedNumbers = filterNumber(searchParams.number_contains)"
+                            (focus) = "suggestedNumbers = filterNumber(searchParams.number_contains)"
                             [matAutocomplete]="number" name="number_contains">
                     <mat-autocomplete #number="matAutocomplete" >
                         <mat-option *ngFor="let number of suggestedNumbers|async " [value]="number">
@@ -20,6 +21,7 @@
                     <mat-label i18n>Country</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.country"
                             (ngModelChange) = "suggestedCountries = filterCountry(searchParams.country)"
+                            (focus) = "suggestedCountries = filterCountry(searchParams.country)"
                             [matAutocomplete]="countryAuto"
                             #countryInput
                             name="country">
@@ -40,6 +42,7 @@
                     <mat-label i18n>Scientific name</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.taxon_contains"
                             (ngModelChange) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
+                            (focus) = "suggestedTaxa = filterTaxa(searchParams.taxon_contains)"
                             [matAutocomplete]="taxaAuto"
                             name='taxon_contains'
                             #taxaInput>
