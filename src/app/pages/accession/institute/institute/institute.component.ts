@@ -6,6 +6,7 @@ import { InlineEditComponent } from 'src/app/shared/components/inline-edit/inlin
 import { StatusService } from 'src/app/shared/StatusModule/status.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/shared/components/delete-dialog/delete-dialog.component';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'kusunoki2-institute',
@@ -37,7 +38,8 @@ export class InstituteComponent implements OnChanges {
     type: { is_required: false, is_editable: true, name: 'type' },
     address: { is_required: false, is_editable: true, name: 'address' },
     zipcode: { is_required: false, is_editable: true, name: 'zipcode' },
-    email: { is_required: false, is_editable: true, name: 'email' },
+    email: { is_required: false, is_editable: true, name: 'email',
+             validators: [Validators.email] },
     phone: { is_required: false, is_editable: true, name: 'phone' },
     city: { is_required: false, is_editable: true, name: 'city' },
     url: { is_required: false, is_editable: true, name: 'url' },

@@ -40,6 +40,8 @@ import { GenericMultiMarkerComponent } from './components/maps/generic-multi-mar
 import { LeafletMultiMarkerComponent } from './components/leaflet/leaflet-multi-marker/leaflet-multi-marker.component';
 import { FlatpagesComponent } from './components/flatpages/flatpages.component';
 import { GoogleReCaptcha2Directive } from './directives/google-re-captcha2.directive';
+import { MinValidatorDirective } from './directives/min-validator.directive';
+import { MaxValidatorDirective } from './directives/max-validator.directive';
 
 
 @NgModule({
@@ -74,6 +76,8 @@ import { GoogleReCaptcha2Directive } from './directives/google-re-captcha2.direc
         GenericMultiMarkerComponent,
         FlatpagesComponent,
         GoogleReCaptcha2Directive,
+        MinValidatorDirective,
+        MaxValidatorDirective,
 
     ],
     imports: [
@@ -125,7 +129,9 @@ import { GoogleReCaptcha2Directive } from './directives/google-re-captcha2.direc
         GenericMapComponent,
         GenericMultiMarkerComponent,
         FlatpagesComponent,
-        GoogleReCaptcha2Directive
+        GoogleReCaptcha2Directive,
+        MinValidatorDirective,
+        MaxValidatorDirective
     ]
 })
 export class SharedModule { }

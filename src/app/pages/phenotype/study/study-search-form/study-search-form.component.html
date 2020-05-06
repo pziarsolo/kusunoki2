@@ -4,6 +4,29 @@
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
                 <mat-form-field fxFlex>
+                    <mat-label i18n>Scientific name</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchParams.taxon"
+                        (ngModelChange)="suggestedTaxa = filterTaxa(searchParams.taxon)" [matAutocomplete]="taxaAuto" name='taxon'
+                        #taxaInput>
+                    <mat-autocomplete #taxaAuto="matAutocomplete">
+                        <mat-option *ngFor="let taxon of suggestedTaxa |async " [value]="taxon.name">
+                            {{ taxon.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label i18n>Year</mat-label>
+                    <input type="text" matInput
+                        [(ngModel)]="searchParams.year"
+                        name="year" min="1900" max="2040"
+                        #year=ngModel>
+                    <mat-error *ngIf="year.errors?.min || year.errors?.max">
+                        Please enter a valid year: 1900-2040
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
+                <mat-form-field fxFlex>
                     <mat-label i18n>Name or description</mat-label>
                     <input type="text"
                         matInput
@@ -26,18 +49,6 @@
                         [(ngModel)]="searchParams.contact_contains"
                         name="contact">
                 </mat-form-field>
-                <mat-form-field fxFlex>
-                    <mat-label i18n>Scientific name</mat-label>
-                    <input type="text" matInput [(ngModel)]="searchParams.taxon"
-                        (ngModelChange)="suggestedTaxa = filterTaxa(searchParams.taxon)"
-                        [matAutocomplete]="taxaAuto"
-                        name='taxon' #taxaInput>
-                    <mat-autocomplete #taxaAuto="matAutocomplete">
-                        <mat-option *ngFor="let taxon of suggestedTaxa |async " [value]="taxon.name">
-                            {{ taxon.name }}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
             </div>
             <div fxLayout='row' fxLayoutGap='5px' *ngIf="(userToken|async)?.is_staff">
                 <mat-form-field fxFlex>
@@ -50,8 +61,8 @@
                 </mat-form-field>
 
             </div>
-
-            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>
+            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()"
+                [disabled]="!searchForm.valid" i18n>Search</button>
             <!-- <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="searchParams={}" i18n>Clear</button> -->
         </form>
     </mat-card-content>

@@ -1,4 +1,8 @@
-<mat-card>
+
+<mat-card *ngIf="!variableFound">
+    <h2 i18n><span class=key>{{name}}</span> not found in this server</h2>
+</mat-card>
+<mat-card *ngIf="variableFound">
     <mat-card-title>
         <ng-container i18n>Trait methodologies (ObservationVariable)</ng-container>  <span style='margin-left:3px' class="key">{{name}}</span>
         <span fxFlex></span>
@@ -14,7 +18,8 @@
             [editMode]="editMode"
             [createMode]="createMode"
             (variableCreated)="variableCreated($event)"
-            (variableDeleted)="variableDeleted()" >
+            (variableDeleted)="variableDeleted()"
+            (variableFound)="variableFound= $event" >
         </kusunoki2-observation-variable>
     </mat-card-content>
     <mat-card-actions *ngIf='editMode || createMode'>

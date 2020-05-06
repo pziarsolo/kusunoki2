@@ -43,4 +43,5 @@ export interface StudySearchParams {
     name_or_description?: string;
     is_public?: boolean;
     taxon?: string;
+    year?: number;
 }

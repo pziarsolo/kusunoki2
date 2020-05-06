@@ -26,6 +26,7 @@ export class ObservationVariableComponent implements OnChanges {
     @Input() createMode = false;
     @Output() variableCreated = new EventEmitter<ObservationVariable>();
     @Output() variableDeleted = new EventEmitter<any>();
+    @Output() variableFound = new EventEmitter<boolean>();
     observationVariable: ObservationVariable;
 
     userCanEdit: boolean;
@@ -72,10 +73,17 @@ export class ObservationVariableComponent implements OnChanges {
     }
     makeRetrieveQueries(variableName) {
         this.observationVariableService.retrieve(this.name)
-            .subscribe((variable: ObservationVariable) => {
-                this.observationVariable = new ObservationVariable(variable);
-                this.evalUserPermissions();
-            });
+            .subscribe(
+                (variable: ObservationVariable) => {
+                    this.observationVariable = new ObservationVariable(variable);
+                    this.evalUserPermissions();
+                    this.variableFound.emit(true);
+                },
+                (error) => {
+                    console.log(error);
+                    this.variableFound.emit(false);
+                }
+            );
     }
     ngOnChanges(changes: SimpleChanges): void {
         if ('name' in changes && this.name !== undefined) {

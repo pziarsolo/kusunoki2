@@ -150,5 +150,8 @@
     "Type petitioner (Company, Farmer, Research institute, Germplasm Bank, etc)": "Tipo de solicitante (Empresa, Agricultor, Centro de investigación, Banco de germoplasma, etc)",
     "Location of safety duplicates": "Localización de duplicados de seguridad",
     "City/municipality": "Ciudad/municipio",
-    "Province": "Provincia"
+    "Province": "Provincia",
+    "Numerical": "Numerico",
+    "Nominal": "Nóminal",
+    "Ordinal": "Órdinal"
 }
