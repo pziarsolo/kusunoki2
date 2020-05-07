@@ -65,7 +65,7 @@
                             "fileReplacements": [
                                 {
                                 "replace": "src/environments/environment.ts",
-                                "with": "src/environments/environment.crf.ts"
+                                "with": "src/site_assets/crf/config/environment.crf.ts"
                                 },
                                 {
                                 "replace": "src/styles.scss",
@@ -121,7 +121,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.crf.prod.ts"
+                                    "with": "src/site_assets/crf/config/environment.crf.prod.ts"
                                 },
                                 {
                                     "replace": "src/styles.scss",
@@ -176,7 +176,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.comav.es.prod.ts"
+                                    "with": "src/site_assets/comav/config/environment.comav.prod.ts"
                                 },
                                 {
                                     "replace": "src/styles.scss",
@@ -231,7 +231,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.comav.ts"
+                                    "with": "src/site_assets/crf/config/environment.comav.ts"
                                 },
                                 {
                                     "replace": "src/styles.scss",
@@ -281,7 +281,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.bagerim.prod.ts"
+                                    "with": "src/site_assets/crf/config/environment.bagerim.prod.ts"
                                 },
                                 {
                                     "replace": "src/styles.scss",
@@ -331,7 +331,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.bagerim.ts"
+                                    "with": "src/site_assets/bagerim/config/environment.bagerim.ts"
                                 },
                                 {
                                     "replace": "src/styles.scss",
@@ -381,7 +381,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.tomato.prod.ts"
+                                    "with": "src/site_assets/tomato/config/environment.tomato.prod.ts"
                                 },
                                 {
                                     "replace": "src/styles.scss",

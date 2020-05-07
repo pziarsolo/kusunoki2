@@ -1,5 +1,5 @@
-
-export const siteConfig = {
+const siteConfig = {
+    title: 'Inventario Navional',
     pathToStaticPages: '/crf',
     defaultDataSource: { 'code': 'CRF', kind: 'project' },
     defaultAccessionSetInstitute: 'ESP004',
@@ -14,4 +14,8 @@ export const siteConfig = {
     reCaptchaKey: '6LcM6-8UAAAAAJL08eD5PLyLRb3mUts7IbB5kMp1'
 };
 
-export default siteConfig;
+export const environment = {
+    production: true,
+    apiUrl: '/api/',
+    config: siteConfig
+};

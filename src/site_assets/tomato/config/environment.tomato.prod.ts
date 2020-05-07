@@ -1,9 +1,9 @@
 
 export const environment = {
-    language: 'en',
     production: true,
     apiUrl: 'https://tomato.upv.es/api/',
     config: {
+        title: 'Tomato passport database',
         pathToStaticPages: '/tomato',
         defaultDataSource: { 'code': 'ESP026', kind: 'genebank' },
         defaultAccessionSetInstitute: 'ESP026',

@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { APP_BASE_HREF } from '@angular/common';
+import { Component, OnInit} from '@angular/core';
 import { AppConfigService } from 'src/app/shared/services/app-config.service';
 import { AppConfig } from 'src/app/shared/entities/app-config.model';
 import { HttpClient } from '@angular/common/http';
@@ -15,12 +14,10 @@ export class FooterComponent implements OnInit{
     hasLogo = false;
 
     constructor(private configService: AppConfigService,
-                @Inject(APP_BASE_HREF) private baseHref: string,
                 private httpClient: HttpClient) {
         this.appConfig = this.configService.getConfig();
         this.centralColumnSize = this.appConfig.centralColumnSize;
-        baseHref = this.baseHref.substring(1);
-        this.footerUrl = `${baseHref}assets/images/footer_image.gif`;
+        this.footerUrl = `assets/images/footer_image.gif`;
     }
 
     ngOnInit(): void {

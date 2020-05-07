@@ -19,7 +19,7 @@ export class ObservationVariableDetailComponent implements OnInit, OnDestroy {
     variableFound = true;
 
     userCanEdit: boolean;
-    @ViewChild(ObservationVariableComponent) variableComponent;
+    @ViewChild(ObservationVariableComponent) variableComp;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -75,7 +75,7 @@ export class ObservationVariableDetailComponent implements OnInit, OnDestroy {
                 AppUrls.phenotype.observation_variables]);
         } else {
             this.editMode = false;
-            this.variableComponent.resetForm();
+            this.variableComp.resetForm();
 
         }
     }
