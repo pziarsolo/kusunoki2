@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../entities/app-config.model';
 import { AppConfigService } from './app-config.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +16,7 @@ export class FlatPageService {
     }
 
     get(path) {
-        const url = 'assets/pages/'  + this.appConfig.pathToStaticPages + `/${this.language}` + path + '.json';
+        const url = `assets/pages/${path}.${this.language}.json`;
         return this.http.get(url);
     }
 }

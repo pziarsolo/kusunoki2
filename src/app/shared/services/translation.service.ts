@@ -14,14 +14,7 @@ export class TranslationSet {
 export class TranslationService {
     private dictionary = {};
     private appConfig: AppConfig;
-    loadTranslation(language) {
-        const urlToLanguageFile = `assets/translations/${language}.json`;
 
-        this.http.get(urlToLanguageFile)
-            .subscribe(response => {
-                this.dictionary = response;
-            });
-    }
     constructor(
         private http: HttpClient,
         private appConfigService: AppConfigService) {
@@ -32,7 +25,16 @@ export class TranslationService {
         } else {
             this.loadTranslation(language);
         }
-     }
+    }
+
+    loadTranslation(language) {
+        const urlToLanguageFile = `assets/translations/${language}.json`;
+
+        this.http.get(urlToLanguageFile)
+            .subscribe(response => {
+                this.dictionary = response;
+            });
+    }
 
     translate(key: string): string {
         const translated = this.dictionary[key];

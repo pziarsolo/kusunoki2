@@ -35,15 +35,6 @@
                     "main": "src/main.ts",
                     "polyfills": "src/polyfills.ts",
                     "tsConfig": "src/tsconfig.app.json",
-                    "assets": [
-                        "src/favicon.ico",
-                        "src/assets",
-                        {
-                            "glob": "**/*",
-                            "input": "./node_modules/leaflet/dist/images/",
-                            "output": "./assets/"
-                        }
-                    ],
                     "styles": [
                         "src/styles.scss",
                         "./node_modules/font-awesome/css/font-awesome.css",
@@ -53,6 +44,24 @@
                     },
                     "configurations": {
                         "crf": {
+                            "assets": [
+                                "src/assets",
+                                {
+                                    "glob": "**/*",
+                                    "input": "./node_modules/leaflet/dist/images/",
+                                    "output": "./assets/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/crf/pages/",
+                                    "output": "./assets/pages/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/crf/images/",
+                                    "output": "./assets/images"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                 "replace": "src/environments/environment.ts",
@@ -60,12 +69,9 @@
                                 },
                                 {
                                 "replace": "src/styles.scss",
-                                "with": "src/assets/styles/style.crf.scss"
-                                },
-                                {
-                                "replace": "src/favicon.ico",
-                                "with": "src/assets/images/favicon_crf.ico"
+                                "with": "src/site_assets/crf/style/style.crf.scss"
                                 }
+
                             ],
                             "optimization": false,
                             "outputHashing": "all",
@@ -94,6 +100,24 @@
                             ]
                         },
                         "crfProd": {
+                            "assets": [
+                                "src/assets",
+                                {
+                                    "glob": "**/*",
+                                    "input": "./node_modules/leaflet/dist/images/",
+                                    "output": "./assets/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/crf/pages/",
+                                    "output": "./assets/pages/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/crf/images/",
+                                    "output": "./assets/images"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -101,11 +125,7 @@
                                 },
                                 {
                                     "replace": "src/styles.scss",
-                                    "with": "src/assets/styles/style.crf.scss"
-                                },
-                                {
-                                    "replace": "src/favicon.ico",
-                                    "with": "src/assets/images/favicon_crf.ico"
+                                    "with": "src/site_assets/crf/style/style.crf.scss"
                                 }
                             ],
                             "localize": [
@@ -135,6 +155,24 @@
                             "outputPath": "dist/crf"
                         },
                         "comavProd": {
+                            "assets": [
+                                "src/assets",
+                                {
+                                    "glob": "**/*",
+                                    "input": "./node_modules/leaflet/dist/images/",
+                                    "output": "./assets/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/comav/pages/",
+                                    "output": "./assets/pages/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/comav/images/",
+                                    "output": "./assets/images"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -142,11 +180,7 @@
                                 },
                                 {
                                     "replace": "src/styles.scss",
-                                    "with": "src/assets/styles/style.comav.scss"
-                                },
-                                {
-                                    "replace": "src/favicon.ico",
-                                    "with": "src/assets/images/favicon_comav.ico"
+                                    "with": "src/site_assets/comav/styles/style.comav.scss"
                                 }
                             ],
                             "localize": [
@@ -176,6 +210,24 @@
                             "outputPath": "dist/comav"
                         },
                         "comav": {
+                            "assets": [
+                                "src/assets",
+                                {
+                                    "glob": "**/*",
+                                    "input": "./node_modules/leaflet/dist/images/",
+                                    "output": "./assets/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/comav/pages/",
+                                    "output": "./assets/pages/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/comav/images/",
+                                    "output": "./assets/images"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -183,11 +235,7 @@
                                 },
                                 {
                                     "replace": "src/styles.scss",
-                                    "with": "src/assets/styles/style.comav.scss"
-                                },
-                                {
-                                    "replace": "src/favicon.ico",
-                                    "with": "src/assets/images/favicon_comav.ico"
+                                    "with": "src/site_assets/comav/styles/style.comav.scss"
                                 }
                             ],
                             "optimization": false,
@@ -212,6 +260,24 @@
                             ]
                         },
                         "bagerimProd": {
+                            "assets": [
+                                "src/assets",
+                                {
+                                    "glob": "**/*",
+                                    "input": "./node_modules/leaflet/dist/images/",
+                                    "output": "./assets/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/bagerim/pages/",
+                                    "output": "./assets/pages/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/bagerim/images/",
+                                    "output": "./assets/images"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -219,11 +285,7 @@
                                 },
                                 {
                                     "replace": "src/styles.scss",
-                                    "with": "src/assets/styles/style.bagerim.scss"
-                                },
-                                {
-                                    "replace": "src/favicon.ico",
-                                    "with": "src/assets/images/favicon_imida.ico"
+                                    "with": "src/site_assets/bagerim/styles/style.bagerim.scss"
                                 }
                             ],
                             "optimization": true,
@@ -248,6 +310,24 @@
                             ]
                         },
                         "bagerim": {
+                            "assets": [
+                                "src/assets",
+                                {
+                                    "glob": "**/*",
+                                    "input": "./node_modules/leaflet/dist/images/",
+                                    "output": "./assets/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/bagerim/pages/",
+                                    "output": "./assets/pages/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/bagerim/images/",
+                                    "output": "./assets/images"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -255,11 +335,7 @@
                                 },
                                 {
                                     "replace": "src/styles.scss",
-                                    "with": "src/assets/styles/style.bagerim.scss"
-                                },
-                                {
-                                    "replace": "src/favicon.ico",
-                                    "with": "src/assets/images/favicon_imida.ico"
+                                    "with": "src/site_assets/bagerim/styles/style.bagerim.scss"
                                 }
                             ],
                             "optimization": false,
@@ -284,6 +360,24 @@
                             ]
                         },
                         "tomatoProd": {
+                            "assets": [
+                                "src/assets",
+                                {
+                                    "glob": "**/*",
+                                    "input": "./node_modules/leaflet/dist/images/",
+                                    "output": "./assets/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/tomato/pages/",
+                                    "output": "./assets/pages/"
+                                },
+                                {
+                                    "glob": "**/*",
+                                    "input": "src/site_assets/tomato/images/",
+                                    "output": "./assets/images"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -291,7 +385,7 @@
                                 },
                                 {
                                     "replace": "src/styles.scss",
-                                    "with": "src/assets/styles/style.tomato.scss"
+                                    "with": "src/site_assets/tomato/styles/style.tomato.scss"
                                 }
                             ],
                             "optimization": true,

@@ -1,8 +1,10 @@
 <mat-toolbar role='footer' fxLayout='row' fxLayoutAlign="space-between center">
     <div fxLayout="row" fxLayoutAlign="center start" fxFlex fxFlex.md="1 1 0%">
         <div fxFlex></div>
+
         <div fxFlex="1 1 {{centralColumnSize}}" fxFlex.lt-lg="grow" fxLayout='row'>
             <div fxFlex></div>
+            <img [src]="footerUrl" alt='logo' *ngIf="hasLogo">
             <span class="WebFooter"></span> <!-- This is used to ad d a text througth css -->
             <div fxFlex></div>
         </div>
