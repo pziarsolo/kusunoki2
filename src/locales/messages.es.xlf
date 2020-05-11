@@ -179,7 +179,7 @@
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">164</context></context-group></trans-unit>
       <trans-unit id="b2ee405ef74f9a576d3489a3b68bbad5c88e0e2e" datatype="html">
-        <source>Traits</source><target state="final">Carácteres</target>
+        <source>Traits</source><target state="final">Caracteres</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context><context context-type="linenumber">168</context></context-group></trans-unit>
       <trans-unit id="f3e2bd60e66b70798f2c1501eaa5ed72e5afdb3e" datatype="html">

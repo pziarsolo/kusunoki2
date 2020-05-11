@@ -17,7 +17,7 @@ export class FooterComponent implements OnInit{
                 private httpClient: HttpClient) {
         this.appConfig = this.configService.getConfig();
         this.centralColumnSize = this.appConfig.centralColumnSize;
-        this.footerUrl = `assets/images/footer_image.gif`;
+        this.footerUrl = `assets/images/footer_image.jpg`;
     }
 
     ngOnInit(): void {
