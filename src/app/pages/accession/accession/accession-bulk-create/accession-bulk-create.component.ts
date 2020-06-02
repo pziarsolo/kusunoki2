@@ -31,7 +31,11 @@ export class AccessionBulkCreateComponent {
                 'and is assigned when a sample is entered into the genebank collection '], mandatory: true
         },
         { name: 'IS_SAVE_DUPLICATE', description: ['True/False if the accession is a safe duplicate'], mandatory: false },
-        { name: 'CONSTATUS', description: ['Conservation status: is_active/is_base/is_archive/is_historic'], mandatory: false },
+        { name: 'CONSTATUS', description: ['Conservation status: is_active/is_base/is_archive/is_historic/is_secundary/is_active_and_base'],
+          mandatory: false },
+        { name: 'IN_NUCLEAR_COLLECTION',
+            description: ['True/False : The accession is part of a core collection'],
+          mandatory: false},
         { name: 'IS_AVAILABLE', description: ['T/F: Is this accession available to give seeds?'], mandatory: false },
         {
             name: 'COLLNUMB', description: ['Original identifier assigned by the collector(s) of the sample,',
@@ -44,7 +48,7 @@ export class AccessionBulkCreateComponent {
                 'Follows INSTCODE standard. Multiple values are separated by a semicolon without space.'], mandatory: false
         },
         { name: 'GENUS', description: ['Genus name for taxon. Initial uppercase letter required.'], mandatory: true },
-        { name: 'SPECIES', description: ['Specific   epithet   portion   of   the   scientific   name   in   lowercase   letters'], mandatory: false },
+        { name: 'SPECIES', description: ['Specific epithet portion of the scientific name in lowercase letters'], mandatory: false },
         { name: 'SPAUTHOR', description: ['Provide the authority for the species name.'], mandatory: false },
         {
             name: 'SUBTAXA', description: ['Subtaxon can be used to store any additional taxonomic identifier.',
@@ -70,7 +74,8 @@ export class AccessionBulkCreateComponent {
             , mandatory: false
         },
         {
-            name: 'COLLSITE', description: ['Location information below the country level that describes where the accession was collected,',
+            name: 'COLLSITE',
+            description: ['Location information below the country level that describes where the accession was collected,',
                 'preferable  in  English.',
                 'The format of the fields is: A list of descriptor and value separated by ";"',
                 'Each of the descriptor: value are separated by ":"',

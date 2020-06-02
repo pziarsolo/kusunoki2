@@ -74,7 +74,7 @@ export class TraitDetailComponent implements OnInit, OnDestroy {
                 AppUrls.phenotype.scales]);
         } else {
             this.editMode = false;
-            this.trait.resetForm();
+            // this.trait.resetForm();
 
         }
     }

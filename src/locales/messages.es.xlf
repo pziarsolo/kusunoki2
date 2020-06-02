@@ -1115,7 +1115,7 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit><trans-unit id="24d3e718e69b5ba4ce965fc7955ecdaed01d7934" datatype="html">
-        <source>Accessions in this accession set</source><target state="final">Entradas en este cojunto de entradas</target>
+        <source>Accessions in this accession set</source><target state="final">Entradas en este conjunto de entradas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accessionset/accessionset/accessionset.component.html</context>
           <context context-type="linenumber">14</context>

@@ -16,7 +16,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <h4 style='margin-left: 10px; color: gray'>Fields in bold are mandatory</h4>
-                <p style='margin-left: 10px;'><a href='/assets/upload_examples/observations.xlsx'>Example file</a></p>
+                <p style='margin-left: 10px;'><a href='assets/upload_examples/observations.xlsx'>Example file</a></p>
                 <mat-list>
                     <mat-list-item *ngFor="let field of obsPerRowfieldConfiguration">
                         <h3 matLine *ngIf='field.mandatory' ><strong>{{field.name}}</strong></h3>
@@ -53,7 +53,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <h4 style='margin-left: 10px; color: gray'>Fields in bold are mandatory</h4>
-                <p style='margin-left: 10px;'><a href='/assets/upload_examples/observations_in_columns.xlsx'>Example file</a></p>
+                <p style='margin-left: 10px;'><a href='assets/upload_examples/observations_in_columns.xlsx'>Example file</a></p>
                 <p>Each of the observations will be independent. We will create an observation unit for each of the observations</p>
                 <mat-list >
                     <mat-list-item *ngFor="let field of accPerRowfieldConfiguration">
