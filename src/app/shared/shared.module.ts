@@ -42,6 +42,7 @@ import { FlatpagesComponent } from './components/flatpages/flatpages.component';
 import { GoogleReCaptcha2Directive } from './directives/google-re-captcha2.directive';
 import { MinValidatorDirective } from './directives/min-validator.directive';
 import { MaxValidatorDirective } from './directives/max-validator.directive';
+import { PublicationsIframeComponent } from './components/publications-iframe/publications-iframe.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { MaxValidatorDirective } from './directives/max-validator.directive';
         GoogleReCaptcha2Directive,
         MinValidatorDirective,
         MaxValidatorDirective,
+        PublicationsIframeComponent,
 
     ],
     imports: [

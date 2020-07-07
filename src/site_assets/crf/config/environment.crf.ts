@@ -11,14 +11,16 @@ const siteConfig = {
     googleMapsApiKey: undefined,
     canRemoveAccessionset: true,
     useShoppingCart: true,
-    reCaptchaKey: '6LcM6-8UAAAAAJL08eD5PLyLRb3mUts7IbB5kMp1'
+    reCaptchaKey: '6LcM6-8UAAAAAJL08eD5PLyLRb3mUts7IbB5kMp1',
+    pubDbUrl: 'http://localhost:8000/publications/'
 };
 
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:8000/api/',
     // apiUrl: 'https://vavilov.comav.upv.es/api/',
-    config: siteConfig
+    config: siteConfig,
+    hasPubDb: true
 };
 
 /*

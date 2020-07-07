@@ -9,6 +9,7 @@ export const AppUrls = {
     users: 'users',
     tasks: 'tasks',
     seed_requests: 'seed_requests',
+    publications: 'publications',
     phenotypeSubDir: 'characterization',
     phenotype: {
         studies: 'studies',

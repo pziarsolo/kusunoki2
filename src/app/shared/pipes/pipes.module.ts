@@ -11,6 +11,7 @@ import { ImproveTaskNamePipe } from './improveTaskName.pipe';
 import { ShowDescriptiveConStatus } from './showDesccriptiveConStatus.pipe';
 import { SafeHtmlPipe } from './safeHtml.pipe';
 import { TranslatePipe } from './translate.pipe';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { TranslatePipe } from './translate.pipe';
         ShowDescriptiveConStatus,
         SafeHtmlPipe,
         TranslatePipe,
+        SafePipe
     ],
     exports: [
         ContainsPipe,
@@ -39,6 +41,7 @@ import { TranslatePipe } from './translate.pipe';
         ShowDescriptiveConStatus,
         SafeHtmlPipe,
         TranslatePipe,
+        SafePipe
     ]
 })
 export class PipesModule { }

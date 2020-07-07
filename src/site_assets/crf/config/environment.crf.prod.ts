@@ -11,11 +11,13 @@ const siteConfig = {
     googleMapsApiKey: undefined,
     canRemoveAccessionset: true,
     useShoppingCart: true,
-    reCaptchaKey: '6LcM6-8UAAAAAJL08eD5PLyLRb3mUts7IbB5kMp1'
+    reCaptchaKey: '6LcM6-8UAAAAAJL08eD5PLyLRb3mUts7IbB5kMp1',
+    pubDbUrl: 'https://bancocrf.inia.es/api/publications'
 };
 
 export const environment = {
     production: true,
     apiUrl: '/api/',
-    config: siteConfig
+    config: siteConfig,
+    hasPubDb: true
 };

@@ -93,6 +93,9 @@
     <button mat-menu-item [matMenuTriggerFor]="phenotypingMenu">
         <ng-container i18n>Characterization</ng-container>
     </button>
+    <button *ngIf="appConfig.pubDbUrl" mat-menu-item [routerLink]="appUrls.publications">
+        <ng-container i18n>Publications</ng-container>
+    </button>
 </mat-menu>
 
 <mat-menu #statsmenu="matMenu" yPosition="above">

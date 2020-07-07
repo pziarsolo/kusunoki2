@@ -15,7 +15,7 @@ export class AppConfig {
     public currentLanguage: string;
     public useShoppingCart: boolean;
     public reCaptchaKey: string;
-
+    public pubDbUrl: string;
     constructor() { }
 
     loadConfig(config) {
@@ -49,5 +49,6 @@ export class AppConfig {
         } else {
             this.useShoppingCart = config.useShoppingCart;
         }
+        this.pubDbUrl = config.pubDbUrl;
     }
 }
