@@ -14,7 +14,7 @@ export class StudyTableComponent extends TableWithFilterComponent {
     entityType = 'study';
 
     defColumnsToDisplay = ['name', 'description', 'start_date',
-                           'end_date', 'active', 'contacts'];
+                           'end_date', 'contacts'];
     @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
     createDatasource() {
         this.dataSource = new StudyDataSource(
