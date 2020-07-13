@@ -1,26 +1,28 @@
 <mat-form-field fxFlex style='width: 100%'>
     <mat-chip-list #chipList aria-label="Studies">
-    <mat-chip *ngFor="let item of items" [selectable]="selectable"
-            [removable]="removable" (removed)="remove(item)">
-            {{item}}
-        <mat-icon matChipRemove *ngIf="removable" i18n>Cancel</mat-icon>
-    </mat-chip>
-    <input
-        [(ngModel)]='input'
-        name='asdas'
-        (ngModelChange) = "suggested = filter(input)"
-        #inputElement
-        [matAutocomplete]="auto"
-        placeholder="{{placeholder|translate}}"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        [matChipInputAddOnBlur]="addOnBlur"
-        (matChipInputTokenEnd)="add($event)">
+        <mat-chip *ngFor="let item of items" [selectable]="selectable"
+                [removable]="removable" (removed)="remove(item)">
+                {{item}}
+            <mat-icon matChipRemove *ngIf="removable" i18n>cancel</mat-icon>
+        </mat-chip>
+        <input
+            placeholder="Add trait methodology..."
+            [(ngModel)]='input'
+            name='asdas'
+            (ngModelChange) = "suggested = filter(input)"
+            #inputElement
+            [matAutocomplete]="auto"
+            placeholder="{{placeholder|translate}}"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
     <mat-autocomplete #auto="matAutocomplete"
         (optionSelected)="selected($event)">
         <mat-option *ngFor="let item of suggested | async"
-            [value]="getNameFromModel(item)">
+            [value]="getNameFromModel(item)"
+            (optionSelected)="selected($event)">
             {{getNameFromModel(item)}}
         </mat-option>
     </mat-autocomplete>

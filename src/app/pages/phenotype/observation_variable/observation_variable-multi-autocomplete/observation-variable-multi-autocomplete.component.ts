@@ -32,7 +32,7 @@ export class ObservationVariableMultiAutocompleteComponent {
     constructor(private service: ObservationVariableService) {}
 
     filter(name) {
-        return this.service.list({name_icontains: name, fields: 'name'})
+        return this.service.list({name__icontains: name, fields: 'name'})
             .pipe(map(response => response.body));
     }
 
@@ -40,13 +40,11 @@ export class ObservationVariableMultiAutocompleteComponent {
         const input = event.input;
         const value = event.value;
 
-        if ((value || '').trim()) {
-          this.items.push(value);
-        }
         // Reset the input value
         if (input) {
           input.value = '';
         }
+
     }
 
     remove(item: string): void {
@@ -57,7 +55,10 @@ export class ObservationVariableMultiAutocompleteComponent {
     }
 
     selected(event: MatAutocompleteSelectedEvent): void {
-        this.items.push(event.option.viewValue);
+        const viewValue = event.option.viewValue;
+        if (this.items.indexOf(viewValue) === -1) {
+            this.items.push(viewValue);
+        }
         this.inputElement.nativeElement.value = '';
         this.input = null;
     }

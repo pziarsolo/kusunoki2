@@ -4,6 +4,7 @@
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='column' fxLayoutGap="5px" fxLayoutAlign="start start"
             style='width: 100%'>
+
                 <kusunoki2-study-multi-autocomplete
                     #studiesForm
                     style='width: 100%'>
@@ -13,6 +14,18 @@
                     style='width: 100%'>
 
                 </kusunoki2-observation-variable-multi-autocomplete>
+                <mat-form-field style='width: 100%'>
+                    <mat-label i18n>Scientific name</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchParams.taxon"
+                        (focus)="suggestedTaxa = filterTaxa(searchParams.taxon)"
+                        (ngModelChange)="suggestedTaxa = filterTaxa(searchParams.taxon)" [matAutocomplete]="taxaAuto" name='taxon'
+                        #taxaInput>
+                    <mat-autocomplete #taxaAuto="matAutocomplete">
+                        <mat-option *ngFor="let taxon of suggestedTaxa |async " [value]="taxon.name">
+                            {{ taxon.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
             </div>
 
             <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>

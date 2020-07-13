@@ -31,6 +31,7 @@ export interface AccessionSetSearchParams extends AccessionSearchParams {
 export interface ObservationSearchParams {
     study?: string;
     studies?: string[];
+    taxon?: string;
 }
 
 export interface StudySearchParams {
