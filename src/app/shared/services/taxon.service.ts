@@ -28,7 +28,7 @@ export class TaxonService {
     list(searchParams?): Observable<HttpResponse<Taxon[]>> {
         const get_params = paramsToHttpParams(searchParams);
         return this.http.get<Taxon[]>(this.endPoint,
-            {params: searchParams, observe: 'response'});
+            { params: get_params, observe: 'response'});
     }
     statsByRank() {
         const statsUrl  = this.endPoint + 'stats_by_rank/';
