@@ -127,7 +127,7 @@
                             </mat-option>
                         </mat-autocomplete>
                     </mat-form-field>
-                    <h4 i18n>Filter by observation values</h4>
+                    <h4 i18n>Filter by observation values:  <a [routerLink]="['/', 'characterization', appUrls.phenotype.observation_variables]"><span><mat-icon>link</mat-icon>Link to description of observation values</span></a></h4>
                     <kusunoki2-accession-search-by-observations-form #observation_filters>
                     </kusunoki2-accession-search-by-observations-form>
                 </div>

@@ -21,6 +21,7 @@ import { NgForm } from '@angular/forms';
 import { Study } from 'src/app/shared/entities/study.model';
 import { StudyService } from 'src/app/shared/services/study.service';
 import { CurrentUserService } from 'src/app/shared/services/current-user.service';
+import { AppUrls } from 'src/app/pages/appUrls';
 
 
 const EXPRESSIONS = {
@@ -174,6 +175,7 @@ export class AccessionSearchFormComponent implements OnInit, AfterViewInit {
     biologicalStatus = biological_status;
     icon = false;
     userToken;
+    appUrls = AppUrls;
     @ViewChild('countryInput', { read: MatAutocompleteTrigger }) countryTrigger: MatAutocompleteTrigger;
     @ViewChild('instituteInput', { read: MatAutocompleteTrigger }) instituteTrigger: MatAutocompleteTrigger;
     @ViewChild('taxaInput', { read: MatAutocompleteTrigger }) taxaTrigger: MatAutocompleteTrigger;
