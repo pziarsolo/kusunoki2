@@ -78,6 +78,13 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+            <div fxLayout='row' fxLayoutGap='5px'>
+                <mat-form-field fxFlex>
+                    <mat-label i18n>Crop Name (in spanish)</mat-label>
+                    <mat-hint>Pimiento, tomate, maiz...</mat-hint>
+                    <input type="text" matInput [(ngModel)]='searchParams.crop_name' name='crop_name'>
+                </mat-form-field>
+            </div>
             <div style='margin-top:10px;margin-bottom:10px;'>
                 <mat-checkbox
                     style='margin-right: 10px;'

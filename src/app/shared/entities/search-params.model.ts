@@ -21,6 +21,7 @@ export interface AccessionSearchParams extends SearchParams {
     is_public?: boolean;
     seed_available?: number;
     in_nuclear_collection?: number;
+    crop_name?: string;
 }
 
 export interface AccessionSetSearchParams extends AccessionSearchParams {

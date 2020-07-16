@@ -57,7 +57,7 @@ import { CurrentUserService } from 'src/app/shared/services/current-user.service
                 .pipe(map(response => response.body));
         }
         filterTaxa(name) {
-            return this.taxaService.list({name_icontains: name, fields: 'name'})
+            return this.taxaService.list({name__icontains: name, fields: 'name'})
                 .pipe(map(response => response.body));
         }
 
