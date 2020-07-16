@@ -4,6 +4,7 @@
             <mat-label i18n="@@buscadorAccessions">Trait Methodology</mat-label>
             <input type="text" matInput [(ngModel)]="filterExpression.variable"
                 (ngModelChange) = "suggestedVariables = filterVariables(filterExpression.variable)"
+                (focus) = "suggestedVariables = filterVariables(filterExpression.variable)"
                 [matAutocomplete]="variableAuto"
                 #variableInput
                 required
