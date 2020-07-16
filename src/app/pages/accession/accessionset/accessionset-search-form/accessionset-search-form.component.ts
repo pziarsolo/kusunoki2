@@ -53,7 +53,7 @@ import { CurrentUserService } from 'src/app/shared/services/current-user.service
                 .pipe(map(response => response));
         }
         filterCountry(val) {
-            return this.countryService.list({code_or_name: val, fields: 'code,name'})
+            return this.countryService.list({ code_or_name: val, fields: 'code,name', ordering: 'name' })
                 .pipe(map(response => response.body));
         }
         filterTaxa(name) {

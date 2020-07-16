@@ -208,7 +208,7 @@ export class AccessionSearchFormComponent implements OnInit, AfterViewInit {
             .pipe(map(response => response.body));
     }
     filterCountry(val) {
-        return this.countryService.list({ name: val, fields: 'code,name' })
+        return this.countryService.list({ name: val, fields: 'code,name', ordering: 'name' })
             .pipe(map(response => response.body));
     }
     filterTaxa(name) {
