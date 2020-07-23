@@ -82,6 +82,10 @@
 </mat-toolbar>
 
 <mat-menu #searchmenu="matMenu" yPosition="above">
+    <a [routerLink]="['/', appUrls.institutes]" mat-menu-item>
+        <!-- <mat-icon>dialpad</mat-icon> -->
+        <ng-container i18n>Institutes</ng-container>
+    </a>
     <a [routerLink]="['/', appUrls.accessions]" mat-menu-item>
         <!-- <mat-icon>chevron_right</mat-icon> -->
         <ng-container i18n>Accession</ng-container>
@@ -99,7 +103,7 @@
 </mat-menu>
 
 <mat-menu #statsmenu="matMenu" yPosition="above">
-    <a [routerLink]="['/', appUrls.institutes]" mat-menu-item>
+    <a [href]="['/' + appUrls.institutes + '?name=']" mat-menu-item>
         <!-- <mat-icon>dialpad</mat-icon> -->
         <ng-container i18n>Institutes</ng-container>
     </a>

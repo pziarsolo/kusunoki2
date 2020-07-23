@@ -47,3 +47,8 @@ export interface StudySearchParams {
     taxon?: string;
     year?: number;
 }
+
+export interface InstituteSearchParams {
+    name?: string;
+    code?: string;
+}

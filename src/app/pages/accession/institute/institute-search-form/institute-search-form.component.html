@@ -1,0 +1,24 @@
+<mat-card style='margin:8px;'>
+    <mat-card-title color='accent' i18n>Institute Search</mat-card-title>
+    <mat-card-content>
+        <form #searchForm="ngForm" ngSubmit="doSumbit()">
+            <div fxLayout='row' fxLayoutGap="5px" fxLayoutAlign="start center">
+                <mat-form-field fxFlex>
+                    <mat-label i18n>Name</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchParams.code"
+                        (ngModelChange)="suggestedInstitutes = filterInstitute(searchParams.code)"
+                        (focus)="suggestedInstitutes = filterInstitute(searchParams.code)" [matAutocomplete]="instituteAuto"
+                        #instituteInput name="institute">
+                    <mat-autocomplete #instituteAuto="matAutocomplete">
+                        <mat-option *ngFor="let institute of suggestedInstitutes|async " [value]="institute.instituteCode">
+                            {{ institute.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>
+        <!-- <button style="margin-left: 10px" mat-raised-button color='accent' type="button" (click)="resetForm()" i18n>Clear</button> -->
+        </form>
+        <!-- <pre>{{searchParams | json}}</pre> -->
+    </mat-card-content>
+</mat-card>

@@ -37,6 +37,7 @@ import { InstituteTableComponent } from './institute/institute-table/institute-t
 import { AccessionMultiMarkerMapComponent } from './accession/accession-multi-marker-map/accession-multi-marker-map.component';
 import { AccessionsetMultiMarkerMapComponent } from './accessionset/accessionset-multi-marker-map/accessionset-multi-marker-map.component';
 import { TaxonStatsByEntityComponent } from './taxon/taxon-stats-by-entity/taxon-stats-by-entity.component';
+import { InstituteSearchFormComponent } from './institute/institute-search-form/institute-search-form.component';
 
 const routes: Routes = [
     {
@@ -140,7 +141,8 @@ const routes: Routes = [
         InstituteTableComponent,
         AccessionMultiMarkerMapComponent,
         AccessionsetMultiMarkerMapComponent,
-        TaxonStatsByEntityComponent
+        TaxonStatsByEntityComponent,
+        InstituteSearchFormComponent
     ],
     imports: [
         SharedModule,

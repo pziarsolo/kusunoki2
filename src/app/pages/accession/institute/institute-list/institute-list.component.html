@@ -1,8 +1,16 @@
-<mat-card style='margin:8px;' >
-    <mat-card-content>
-        <mat-card-title i18n>Institutes</mat-card-title>
-        <kusunoki2-institute-table
-            [searchParams]="{'only_with_accessions': 'true'}">
-        </kusunoki2-institute-table>
-    </mat-card-content>
-</mat-card>
+<kusunoki2-institute-search-form
+    (searchSubmitted)="receiveParams($event)"
+    [hidden]="searchDone">
+</kusunoki2-institute-search-form>
+
+<div [hidden]="!searchDone">
+    <mat-card style='margin:8px;' >
+        <mat-card-content>
+            <mat-card-title i18n>Institutes</mat-card-title>
+            <kusunoki2-institute-table
+                [searchParams]="{'only_with_accessions': 'true'}"
+                (searchParamsChanged)="searchParamsChanged($event)">
+            </kusunoki2-institute-table>
+        </mat-card-content>
+    </mat-card>
+</div>
