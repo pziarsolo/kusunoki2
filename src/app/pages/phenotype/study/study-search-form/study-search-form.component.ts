@@ -28,7 +28,7 @@ export class StudySearchFormComponent implements OnInit, AfterViewInit {
         this.userToken = this.currentUserService.userToken;
     }
     filterTaxa(name) {
-        return this.taxaService.list({name__icontains: name, fields: 'name', accession_in_study: true})
+        return this.taxaService.list({ name__icontains: name, fields: 'name', accession_in_study: true, ordering: 'name' })
             .pipe(map(response => response.body));
     }
     doSubmit() {

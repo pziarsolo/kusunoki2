@@ -103,7 +103,7 @@
 </mat-menu>
 
 <mat-menu #statsmenu="matMenu" yPosition="above">
-    <a [href]="['/' + appUrls.institutes + '?name=']" mat-menu-item>
+    <a [routerLink]="['/', appUrls.institutes]" [queryParams]="{name:''}" mat-menu-item>
         <!-- <mat-icon>dialpad</mat-icon> -->
         <ng-container i18n>Institutes</ng-container>
     </a>

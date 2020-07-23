@@ -45,7 +45,7 @@ export class ObservationSearchFormComponent implements AfterViewInit{
         this.studiesForm.formReset();
     }
     filterTaxa(name) {
-        return this.taxaService.list({ name_icontains: name, fields: 'name' })
+        return this.taxaService.list({ name__icontains: name, fields: 'name', ordering: 'name'  })
             .pipe(map(response => response.body));
     }
     ngAfterViewInit() {

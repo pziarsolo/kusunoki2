@@ -214,7 +214,7 @@ export class AccessionSearchFormComponent implements OnInit, AfterViewInit {
             .pipe(map(response => response.body));
     }
     filterTaxa(name) {
-        return this.taxaService.list({ name__icontains: name, fields: 'name' })
+        return this.taxaService.list({ name__icontains: name, fields: 'name', ordering: 'name' })
             .pipe(map(response => response.body));
     }
     filterStudies(name) {
