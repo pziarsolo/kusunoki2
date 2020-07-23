@@ -144,6 +144,8 @@
     <button *ngIf="(userToken|async)?.is_staff" mat-menu-item [matMenuTriggerFor]="addMenuInstitute"><ng-container i18n>Institute</ng-container></button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuAccession"><ng-container i18n>Accession</ng-container></button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuAccessionSet" *ngIf='appConfig.useAccessionset'><ng-container i18n>Accession set</ng-container></button>
+    <button mat-menu-item [matMenuTriggerFor]="addMenuPublications" *ngIf='appConfig.pubDbUrl !== undefined'><ng-container i18n>Publications</ng-container>
+    </button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuPhenotype"><ng-container i18n>Characterization</ng-container></button>
 </mat-menu>
 
@@ -159,6 +161,9 @@
 
 <mat-menu #addMenuAccessionSet="matMenu">
     <a mat-menu-item  [routerLink]="['/', appUrls.accessionsets, 'bulk_create']" *ngIf='appConfig.useAccessionset'><ng-container i18n>Bulk create...</ng-container></a>
+</mat-menu>
+<mat-menu #addMenuPublications="matMenu">
+    <a mat-menu-item [href]="apiUrl + 'admin/publications/publication'"><ng-container i18n>Add one</ng-container></a>
 </mat-menu>
 
 <mat-menu #addMenuPhenotype="matMenu">
