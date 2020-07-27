@@ -67,11 +67,14 @@ export class AccessionSetService {
     }
 
 
-    downloadCsv(searchParams?): Observable<Blob> {
+    downloadCsv(searchParams?, csvHeader?): Observable<Blob> {
         if (!searchParams) {
             searchParams = {};
         }
         searchParams['format'] = 'csv';
+        if (csvHeader !== undefined && csvHeader === false) {
+            searchParams['format'] = 'csv_no_header';
+        }
         const getParams = paramsToHttpParams(searchParams);
         return this.http.get(this.endPoint, {params: getParams,
                                              responseType: 'blob' });

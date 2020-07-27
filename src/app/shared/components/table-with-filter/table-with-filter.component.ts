@@ -4,8 +4,8 @@ import { HttpResponse } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 
-import { tap, catchError, finalize } from 'rxjs/operators';
-import { throwError, Subscription, of, Observable, BehaviorSubject } from 'rxjs';
+import { tap, catchError, finalize, concatMap } from 'rxjs/operators';
+import { throwError, Subscription, of, Observable, BehaviorSubject, concat } from 'rxjs';
 
 import { CurrentUserService } from '../../services/current-user.service';
 import { ServiceLocatorService } from '../../services/service-locator.service';
@@ -209,21 +209,44 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
 
     downloadCsv() {
         const params = Object.assign({}, this.searchParams);
-        params['offset'] = 0;
-        params['limit'] = this.dataSource.totalCount;
         delete params['fields'];
-        this.csvDownloading = true;
-        return this.service.downloadCsv(params)
-            .subscribe(
-                blob => {
-                    const downloadUrl = URL.createObjectURL(blob);
+
+        const total = this.dataSource.totalCount;
+        const step = this.appConfig.csvChunkSize;
+
+
+        const responses: Observable<Blob>[] = [];
+        let first = true;
+        let csvHeader;
+        for (const offset of _Array.range(0, total, step)) {
+            params['offset'] = offset;
+            params['limit'] = step;
+            if (first) {
+                csvHeader = true;
+                first = false;
+            } else {
+                csvHeader = false;
+            }
+            this.csvDownloading = true;
+            const response = this.service.downloadCsv(params, csvHeader);
+            responses.push(response);
+        }
+        const blobs = [];
+        concat(responses)
+            .pipe(
+                concatMap(r => r),
+                finalize(() => {
+                    const mergedBlob = blobs.reduce((_b_, b) => new Blob([_b_, b], { type: 'text/csv;charset=utf-8;' }));
+                    const downloadUrl = URL.createObjectURL(mergedBlob);
                     window.open(downloadUrl, '_parent');
                     this.csvDownloading = false;
-                },
-                error => {
-                    this.statusService.error(error);
-                    this.csvDownloading = false;
-                });
+                })
+            )
+            .subscribe((response: Blob) => {
+                blobs.push(response);
+
+            });
+
     }
     navigateTo(baseUrl, queryParams) {
         queryParams = {...this.searchParams, ...queryParams};
@@ -236,5 +259,18 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
             .subscribe(result => {
                 this.statusService.info(result.detail);
             });
+    }
+}
+
+interface _Iterable extends Iterable<{}> {
+    length: number;
+}
+
+class _Array<T> extends Array<T> {
+    static range(from: number, to: number, step: number): number[] {
+        return Array.from(
+            (<_Iterable>{ length: Math.floor((to - from) / step) + 1 }),
+            (v, k) => from + k * step
+        );
     }
 }

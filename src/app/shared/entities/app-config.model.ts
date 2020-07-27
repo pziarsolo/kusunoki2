@@ -16,6 +16,7 @@ export class AppConfig {
     public useShoppingCart: boolean;
     public reCaptchaKey: string;
     public pubDbUrl: string;
+    public csvChunkSize: number;
     constructor() { }
 
     loadConfig(config) {
@@ -50,5 +51,10 @@ export class AppConfig {
             this.useShoppingCart = config.useShoppingCart;
         }
         this.pubDbUrl = config.pubDbUrl;
+        if (config.csvChunkSize === undefined) {
+            this.csvChunkSize = 3000;
+        } else {
+            this.csvChunkSize = config.csvChunkSize;
+        }
     }
 }
