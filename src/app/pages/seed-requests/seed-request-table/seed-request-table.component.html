@@ -43,7 +43,10 @@
     <button mat-button (click)="downloadCsv()" i18n>Download in CSV</button>
     <mat-spinner style='margin-left: 3px;' diameter='30' *ngIf='csvDownloading'></mat-spinner>
     <span fxFlex></span>
-    <mat-paginator [length]="dataSource.totalCount" [pageIndex]="0" [pageSize]="paginatorPageSize"
+    <mat-paginator #paginator
+        [length]="dataSource.totalCount"
+        [pageIndex]="0"
+        [pageSize]="paginatorPageSize"
         [pageSizeOptions]="[10, 25, 50, 100]">
     </mat-paginator>
 </div>
