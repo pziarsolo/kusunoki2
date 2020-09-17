@@ -18,7 +18,7 @@
             </div>
             <div fxLayout='row' fxLayoutGap='5px'>
                 <mat-form-field fxFlex>
-                    <mat-label i18n>Country</mat-label>
+                    <mat-label i18n>Country (English name or ISO 3166-1 alfa-3 code)</mat-label>
                     <input type="text" matInput [(ngModel)]="searchParams.country"
                             (ngModelChange) = "suggestedCountries = filterCountry(searchParams.country)"
                             (focus) = "suggestedCountries = filterCountry(searchParams.country)"
