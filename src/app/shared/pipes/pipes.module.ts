@@ -12,6 +12,7 @@ import { ShowDescriptiveConStatus } from './showDesccriptiveConStatus.pipe';
 import { SafeHtmlPipe } from './safeHtml.pipe';
 import { TranslatePipe } from './translate.pipe';
 import { SafePipe } from './safe.pipe';
+import { Object2stringPipe } from './object2string.pipe';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { SafePipe } from './safe.pipe';
         ShowDescriptiveConStatus,
         SafeHtmlPipe,
         TranslatePipe,
-        SafePipe
+        SafePipe,
+        Object2stringPipe
     ],
     exports: [
         ContainsPipe,
@@ -41,7 +43,8 @@ import { SafePipe } from './safe.pipe';
         ShowDescriptiveConStatus,
         SafeHtmlPipe,
         TranslatePipe,
-        SafePipe
+        SafePipe,
+        Object2stringPipe
     ]
 })
 export class PipesModule { }
