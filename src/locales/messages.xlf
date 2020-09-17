@@ -95,10 +95,6 @@
           <context context-type="linenumber">16</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
@@ -1320,6 +1316,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
           <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="293cee9a0b2e12dac387baf311311f7a64c69275" datatype="html">
+        <source>Country (English name or ISO 3166-1 alfa-3 code)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="59da994d963dbc9963124cc1256a1b795bada8c1" datatype="html">
