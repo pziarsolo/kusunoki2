@@ -33,6 +33,7 @@ export interface ObservationSearchParams {
     study?: string;
     studies?: string[];
     taxon?: string;
+    accession_number_contains?: string;
 }
 
 export interface StudySearchParams {

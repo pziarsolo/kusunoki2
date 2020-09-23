@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { CurrentUserService } from '../../services/current-user.service';
 
 @Component({
   selector: 'kusunoki2-table-search-page',
@@ -17,7 +18,8 @@ export class TableSearchPageComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private location: Location) { }
+        private location: Location,
+        public currentUserService: CurrentUserService) { }
 
     ngOnInit(): void {
         this.routerSubscription = this.route.queryParams.subscribe(params => {

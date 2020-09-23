@@ -3,7 +3,21 @@
 <div [hidden]='dataSource.totalCount === 0'>
     <table mat-table [dataSource]='dataSource' matSort
          class='datatable mat-elevation-z2'  (matSortChange)="dataSource.sortData($event)">
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+            </td>
+        </ng-container>
 
+        <!-- Position Column -->
         <ng-container matColumnDef="observation_id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Observation id</th>
             <td mat-cell *matCellDef="let observation"> {{observation.observation_id}}</td>
@@ -54,8 +68,14 @@
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
 
     </table>
+
     <div fxLayout='row' fxLayoutAlign="start center" style='margin-top:3px;'>
         <button mat-button (click)="downloadCsv()" i18n>Download in CSV</button>
+        <button color="warn" mat-raised-button
+            *ngIf="(currentUserService.currentUserSubject|async).is_staff && editMode"
+            [disabled] = "selection.selected.length === 0"
+            (click)="deleteSelected()"
+            i18n>Delete selected observations</button>
         <mat-spinner style='margin-left: 3px;' diameter='30' *ngIf='csvDownloading'></mat-spinner>
         <span fxFlex></span>
         <mat-paginator #paginator

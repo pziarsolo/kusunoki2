@@ -5,11 +5,19 @@
 
 <div [hidden]='!searchDone'>
     <mat-card>
-        <mat-card-title i18n>Observations</mat-card-title>
+        <mat-card-title>
+            <span i18n>Observations</span>
+            <div fxFlex></div>
+             <div *ngIf='(currentUserService.currentUserSubject|async)?.is_staff'>
+                <button color="accent" *ngIf="!table.editMode" mat-raised-button (click)='table.editMode= true'><span i18n>Edit</span><mat-icon>edit</mat-icon></button>
+                <button color="accent" *ngIf="table.editMode" mat-raised-button (click)='table.editMode= false'><span i18n>Cancel</span><mat-icon>cancel</mat-icon></button>
+            </div>
+        </mat-card-title>
         <mat-card-subtitle *ngIf="table.dataSource" i18n>Total: {{table.dataSource.totalCount}} observations found</mat-card-subtitle>
         <mat-card-content>
             <kusunoki2-observation-table [searchParams]='searchParams' #table
-                (searchParamsChanged)="searchParamsChanged($event)">
+                (searchParamsChanged)="searchParamsChanged($event)"
+                [editMode]= false>
             </kusunoki2-observation-table>
         </mat-card-content>
     </mat-card>

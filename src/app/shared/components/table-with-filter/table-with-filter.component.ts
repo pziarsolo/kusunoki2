@@ -122,8 +122,8 @@ export class TableWithFilterComponent implements OnInit, AfterViewInit, OnDestro
         protected currentUserService: CurrentUserService,
         protected serviceLocator: ServiceLocatorService,
         protected statusService: StatusService,
-        private router: Router,
-        private appConfigService: AppConfigService) {
+        protected router: Router,
+        protected appConfigService: AppConfigService) {
             this.appConfig = this.appConfigService.getConfig();
     }
 

@@ -26,6 +26,18 @@
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
+                <mat-form-field  style='width: 100%'>
+                    <mat-label i18n="@@accessionsearchform">Accession number, Collecting number or Accession name</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchParams.accession_number_contains"
+                        (ngModelChange)="suggestedAccessions = filterNumber(searchParams.accession_number_contains)"
+                        (focus)="suggestedAccessions = filterNumber(searchParams.accession_number_contains)" [matAutocomplete]="number"
+                        name="number_contains">
+                    <mat-autocomplete #number="matAutocomplete">
+                        <mat-option *ngFor="let accession of suggestedAccessions|async " [value]="accession.data.germplasmNumber">
+                            {{ accession.data.germplasmNumber }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
             </div>
 
             <button mat-raised-button color='accent' type="submit" (click)="doSubmit()" i18n>Search</button>

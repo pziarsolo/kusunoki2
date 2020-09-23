@@ -98,10 +98,6 @@
           <context context-type="sourcefile">app/pages/accession/country/country-detail/country-detail.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
         <source>Password</source>
@@ -170,6 +166,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context>
           <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/phenotype/observation/observation-list/observation-list.component.html</context>
+          <context context-type="linenumber">13</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/trait/trait-create-dialog/trait-create-dialog.component.html</context>
@@ -287,21 +287,21 @@
         <source>Observation id</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="989cb15d9bde618919d8c4a80de4f3c4e6f98e83" datatype="html">
         <source>Observation Unit</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9b4e878fb854656ca1a762c1931ee78d7d1bcd12" datatype="html">
         <source>Accession</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/base-layout-components/header/header.component.html</context>
@@ -320,35 +320,35 @@
         <source>Observation variable</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5049e204c14c648691ac775a64fb504467aeb549" datatype="html">
         <source>Value</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b9f458d4606b913bb4b27e2aabd25bcc789a3a03" datatype="html">
         <source>study</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e7c2cc19a506438a7f4120b329bf055fb096800b" datatype="html">
         <source>Creation Time</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8f847e59914d4f9a4af1b6f36fbbb43bb5730c15" datatype="html">
         <source>Download in CSV</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">73</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/entity-tables/study-table/study-table.component.html</context>
@@ -365,6 +365,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/seed-requests/seed-request-table/seed-request-table.component.html</context>
           <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="55a832ddae03601b50ddbc7670295319af9c7a83" datatype="html">
+        <source>Delete selected observations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/entity-tables/observation-table/observation-table.component.html</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e3a2ec45e1d7270611f14099899681190ac29407" datatype="html">
@@ -787,7 +794,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/observation/observation-list/observation-list.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7b2cd0bd5c22b447efcf11210eed5eccb5d61d16" datatype="html">
@@ -1324,6 +1331,10 @@
           <context context-type="sourcefile">app/pages/accession/accession/accession-search-form/accession-search-form.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/accession/accessionset/accessionset-search-form/accessionset-search-form.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="59da994d963dbc9963124cc1256a1b795bada8c1" datatype="html">
         <source>Location of collecting site</source>
@@ -1604,6 +1615,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/study/study-detail/study-detail.component.html</context>
           <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/phenotype/observation/observation-list/observation-list.component.html</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/observation_variable/observation-variable-detail/observation-variable-detail.component.html</context>
@@ -2024,7 +2039,7 @@
         <source>Total: <x id="INTERPOLATION" equiv-text="{{table.dataSource.totalCount}}"/> observations found</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/phenotype/observation/observation-list/observation-list.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="85a8912a323956f26f6bd9af3f954d7459c577cc" datatype="html">

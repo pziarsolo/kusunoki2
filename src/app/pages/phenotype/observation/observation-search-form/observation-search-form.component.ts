@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { Taxon } from 'src/app/shared/entities/taxon.model';
 import { map } from 'rxjs/operators';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { Accession } from 'src/app/shared/entities/accession.model';
+import { AccessionService } from 'src/app/shared/services/accession.service';
 
 @Component({
   selector: 'kusunoki2-observation-search-form',
@@ -18,10 +20,12 @@ export class ObservationSearchFormComponent implements AfterViewInit{
     @Output() searchSubmitted = new EventEmitter<any>();
     searchParams: ObservationSearchParams =  {};
     suggestedTaxa: Observable<Taxon[]>;
+    suggestedAccessions: Observable<Accession[]>;
     @ViewChild('studiesForm') studiesForm: StudyMultiAutocompleteComponent;
     @ViewChild('observationVariableForm') observationVariableForm: ObservationVariableMultiAutocompleteComponent;
     @ViewChild('taxaInput', { read: MatAutocompleteTrigger }) taxaTrigger: MatAutocompleteTrigger;
-    constructor(private taxaService: TaxonService) {}
+    constructor(private taxaService: TaxonService,
+        private accessionService: AccessionService) {}
 
     doSubmit() {
         const studies = this.studiesForm.items;
@@ -46,6 +50,14 @@ export class ObservationSearchFormComponent implements AfterViewInit{
     }
     filterTaxa(name) {
         return this.taxaService.list({ name__icontains: name, fields: 'name', ordering: 'name'  })
+            .pipe(map(response => response.body));
+    }
+
+    filterNumber(val) {
+        return this.accessionService.list({
+            number_contains: val,
+            fields: 'germplasmNumber'
+        })
             .pipe(map(response => response.body));
     }
     ngAfterViewInit() {
