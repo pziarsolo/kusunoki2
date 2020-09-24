@@ -192,12 +192,12 @@ export class AccessionComponent implements OnChanges {
                     passport.germplasmNumber.germplasmNumber = value;
                 } else if (key === 'instituteCode') {
                     passport.germplasmNumber.instituteCode = value;
-                } else if (key === 'latitute') {
-                    passport.collectionSite.latitude = value;
+                } else if (key === 'latitude') {
+                    passport.collectionSite.latitude = Number(value);
                 } else if (key === 'longitude') {
-                    passport.collectionSite.longitude = value;
+                    passport.collectionSite.longitude = Number(value);
                 } else if (key === 'altitude') {
-                    passport.collectionSite.altitude = value;
+                    passport.collectionSite.altitude = Number(value);
                 } else if (key === 'country') {
                     passport.collectionSite.country = value;
                 } else if (key === 'state') {
