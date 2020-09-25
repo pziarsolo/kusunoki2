@@ -24,7 +24,11 @@
         "<p>En las secciones de este sitio se pueden consultar los datos de pasaporte de todos ",
         "los materiales que forman parte de la Red de Colecciones, así como los datos de caracterización ",
         "disponibles y la información de contacto de las instituciones responsables del ",
-        "suministro de germoplasma a los usuarios. Las indicaciones para realizar búsquedas se pueden ",
-        "consultar <a href='https://drive.google.com/file/d/1jxHLLHY3kzKULozzMMg4eA5oBs0hE46A/view?usp=sharing' target='_blank'>aquí</a>.</p>"
+        "suministro de germoplasma a los usuarios.</p>",
+        "<h3> Documentos de ayuda</h3>",
+        "<ul>",
+        "<li>Búsquedas:  <a href='https://drive.google.com/file/d/1jxHLLHY3kzKULozzMMg4eA5oBs0hE46A/view?usp=sharing' target='_blank'>Manual</a></li>",
+        "<li>Descriptores y sus traducciones:  <a href='https://drive.google.com/file/d/1jxHLLHY3kzKULozzMMg4eA5oBs0hE46A/view?usp=sharing' target='_blank'>Aquí</a></li>",
+        "</ul>"
     ]
 }

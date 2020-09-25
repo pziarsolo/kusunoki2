@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TableWithFilterComponent, SearchDataSourceNoRouter
 } from 'src/app/shared/components/table-with-filter/table-with-filter.component';
 import { Observation } from 'src/app/shared/entities/observation.model';
@@ -29,7 +29,7 @@ class ObservationDataSource extends SearchDataSourceNoRouter<Observation> {
   templateUrl: './observation-table.component.html',
   styleUrls: ['./observation-table.component.scss']
 })
-export class ObservationTableComponent extends TableWithFilterComponent implements OnChanges {
+export class ObservationTableComponent extends TableWithFilterComponent {
     entityType = 'observation';
     defColumnsToDisplay = ['study', 'observation_unit',
                            'accession', 'observation_variable', 'value_beauty'];
@@ -97,12 +97,6 @@ export class ObservationTableComponent extends TableWithFilterComponent implemen
             return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
         }
         return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.observation_id + 1}`;
-    }
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log(changes);
-        if ('editMode ' in changes) {
-            console.log('hhh');
-        }
     }
     deleteSelected() {
         const dialogRef = this.dialog.open(DeleteDialogComponent, {

@@ -9,7 +9,6 @@ export class Object2stringPipe implements PipeTransform {
   transform(value: object): String {
       const newValue = [];
       for (const entrie of Object.entries(value)) {
-          console.log(entrie);
           newValue.push(`${entrie[0]}:${entrie[1]}`);
       }
 

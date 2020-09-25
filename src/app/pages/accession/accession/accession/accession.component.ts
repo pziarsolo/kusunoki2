@@ -210,14 +210,12 @@ export class AccessionComponent implements OnChanges {
                     passport.collectionSite.island = value;
                 } else if (key === 'other') {
                     passport.collectionSite.other = value;
-                } else if (key === 'site') {
-                    passport.collectionSite.coordUncertainty = value;
                 } else if (key === 'coordUncertainty') {
-                    passport.collectionSite.georeferencingMethod = value;
+                    passport.collectionSite.coordUncertainty = value;
                 } else if (key === 'georeferencingMethod') {
-                    passport.collectionSite.coordenatesSpatialReference = value;
+                    passport.collectionSite.georeferencingMethod = value;
                 } else if (key === 'coordenatesSpatialReference') {
-                    passport.collectionSite.other = value;
+                    passport.collectionSite.coordenatesSpatialReference = value;
                 } else if (key === 'biologicalStatus') {
                     passport.biologicalStatus = String(value);
                 } else if (key === 'collectionSource') {
