@@ -89,7 +89,7 @@ export class AccessionComponent implements OnChanges {
         private readonly accessionService: AccessionService,
         private readonly statusService: StatusService,
         private readonly router: Router,
-        private readonly currentUserService: CurrentUserService,
+        public readonly currentUserService: CurrentUserService,
         private readonly accessionsetService: AccessionSetService,
         public readonly shoppingCartService: ShoppingCartService,
         public dialog: MatDialog,

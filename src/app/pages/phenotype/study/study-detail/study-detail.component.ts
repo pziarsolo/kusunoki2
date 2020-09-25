@@ -28,7 +28,7 @@ export class StudyDetailComponent implements OnInit, OnDestroy {
     @ViewChild(StudyComponent) studyComp;
 
     constructor(private route: ActivatedRoute,
-        private currentUserService: CurrentUserService,
+        public currentUserService: CurrentUserService,
         private router: Router,
         private titleService: Title) { }
 

@@ -29,7 +29,7 @@
 </mat-card>
 <mat-menu #studyActionMenu="matMenu">
         <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon><ng-container i18n>Edit</ng-container></button>
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
+        <button *ngIf='!editMode && (currentUserService.currentUserSubject|async).is_staff' mat-menu-item (click)="tooglePublic()">
             <mat-icon *ngIf='!study.metadata.is_public'>public</mat-icon>
             <mat-icon *ngIf='study.metadata.is_public' color='warn'>public</mat-icon>
             <ng-container i18n>Make</ng-container><span *ngIf='!study.metadata.is_public' i18n>Public</span><span *ngIf='study.metadata.is_public' i18n>Private</span>

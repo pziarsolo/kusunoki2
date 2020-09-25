@@ -154,7 +154,7 @@
             <mat-icon color='accent'>add_shopping_cart</mat-icon>Add to cart
         </button>
         <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="editMode=true"><mat-icon color='accent'> edit</mat-icon><ng-container i18n>Edit</ng-container></button>
-        <button *ngIf='!editMode && userCanEdit' mat-menu-item (click)="tooglePublic()">
+        <button *ngIf='!editMode && (currentUserService.currentUserSubject|async).is_staff' mat-menu-item (click)="tooglePublic()">
             <mat-icon *ngIf='!accession.metadata.is_public'>public</mat-icon>
             <mat-icon *ngIf='accession.metadata.is_public' color='warn'>public</mat-icon>
             <ng-container i18n>Make </ng-container><span *ngIf='!accession.metadata.is_public' i18n>Public</span><span *ngIf='accession.metadata.is_public' i18n>Private</span>
