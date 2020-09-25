@@ -1,8 +1,7 @@
 <mat-progress-bar mode="indeterminate" *ngIf='dataSource.loadingSubject.value'></mat-progress-bar>
-<table mat-table  [dataSource]='dataSource' matSort
-    class='datatable mat-elevation-z2' (matSortChange)="dataSource.sortData($event)">
+<table mat-table  [dataSource]='dataSource' class='datatable mat-elevation-z2'>
     <ng-container matColumnDef="instituteCode">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Code</th>
+        <th mat-header-cell *matHeaderCellDef i18n>Code</th>
         <td mat-cell *matCellDef="let institutes">
             <a style='margin-right: 5px' color='primary' [routerLink]="['/', appUrls['institutes'],
                                             institutes.instituteCode]">
@@ -12,14 +11,14 @@
     </ng-container>
 
     <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Name</th>
+        <th mat-header-cell *matHeaderCellDef i18n>Name</th>
         <td mat-cell *matCellDef="let institutes">
             {{institutes.name}}
         </td>
     </ng-container>
 
     <ng-container matColumnDef="num_accessions">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Num. Accessions</th>
+        <th mat-header-cell *matHeaderCellDef i18n>Num. Accessions</th>
         <td mat-cell *matCellDef="let institutes">
             <a mat-button (click)="navigateTo(appUrls.accessions, {institute_code: institutes.instituteCode})">
                 {{institutes.num_accessions}}
@@ -27,7 +26,7 @@
         </td>
     </ng-container>
     <ng-container matColumnDef="num_accessionsets">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Num. Accession sets</th>
+        <th mat-header-cell *matHeaderCellDef i18n>Num. Accession sets</th>
         <td mat-cell *matCellDef="let institutes">
             <a mat-button (click)="navigateTo(appUrls.accessionsets, {institute_code: institutes.instituteCode})">
                 {{institutes.num_accessionsets}}

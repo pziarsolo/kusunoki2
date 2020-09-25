@@ -8,7 +8,8 @@
         <mat-card-content>
             <mat-card-title i18n>Institutes</mat-card-title>
             <kusunoki2-institute-table
-                [searchParams]="{'only_with_accessions': 'true'}"
+                [searchParams]="searchParams"
+                [extraSearchParams]="{'only_with_accessions': 'true'}"
                 (searchParamsChanged)="searchParamsChanged($event)">
             </kusunoki2-institute-table>
         </mat-card-content>

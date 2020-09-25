@@ -22,7 +22,7 @@ export class InstituteTableComponent extends TableWithFilterComponent {
     entityType = 'institute';
     defColumnsToDisplay = ['instituteCode', 'name', 'num_accessions'];
     @Input() columnsToDisplay: string[] = this.defColumnsToDisplay;
-    extraSearchParams = {};
+    @Input() extraSearchParams = {};
     appUrls = AppUrls;
 
     createDatasource() {
