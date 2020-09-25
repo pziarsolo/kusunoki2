@@ -30,7 +30,7 @@ export class UserComponent extends BaseInlinesFormComponent {
     children_config = {
         username: {name: 'username', is_editable: false, is_required: true},
         email: {name: 'email', is_editable: true, is_required: true,
-                validators: [Validators.email]},
+            validators: [Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]},
         first_name: {name: 'first_name', is_editable: true, is_required: false},
         last_name: {name: 'last_name', is_editable: true, is_required: false},
     };
@@ -135,14 +135,17 @@ export class UserComponent extends BaseInlinesFormComponent {
         newUser.password = this.passwordForm.getFormDataIfValid();
         const groups = this.groupsComponent.groups;
         this.userService.create(newUser)
-            .subscribe(user => {
-                this.statusService.success('User succesfully created');
-                for (const g of groups) {
-                    this.userService.addToGroup(newUser.username, g)
-                        .subscribe();
-                }
-                this.router.navigate(['/', this.appUrls.users, newUser.username]);
-            });
+            .subscribe(
+                user => {
+                    this.statusService.success('User succesfully created');
+                    for (const g of groups) {
+                        this.userService.addToGroup(newUser.username, g)
+                            .subscribe();
+                    }
+                    this.router.navigate(['/', this.appUrls.users, newUser.username]);
+                },
+                error => console.log(error)
+            );
     }
     formReset() {
         if (this.create_mode) {
