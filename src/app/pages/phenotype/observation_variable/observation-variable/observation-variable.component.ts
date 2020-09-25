@@ -64,7 +64,7 @@ export class ObservationVariableComponent implements OnChanges {
 
             if (userToken.is_staff) {
                 this.userCanEdit = true;
-            } else if (userToken.groups && group in userToken.groups) {
+            } else if (userToken.groups && userToken.groups.indexOf(group) !== -1) {
                 this.userCanEdit = true;
             } else {
                 this.userCanEdit = false;

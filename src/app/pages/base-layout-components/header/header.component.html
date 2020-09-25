@@ -147,7 +147,7 @@
 <mat-menu #addmenu="matMenu" >
     <button *ngIf="(userToken|async)?.is_staff" mat-menu-item [matMenuTriggerFor]="addMenuInstitute"><ng-container i18n>Institute</ng-container></button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuAccession"><ng-container i18n>Accession</ng-container></button>
-    <button mat-menu-item [matMenuTriggerFor]="addMenuAccessionSet" *ngIf='appConfig.useAccessionset'><ng-container i18n>Accession set</ng-container></button>
+    <button mat-menu-item [matMenuTriggerFor]="addMenuAccessionSet" *ngIf='appConfig.useAccessionset && (userToken|async)?.is_staff'><ng-container i18n>Accession set</ng-container></button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuPublications" *ngIf='appConfig.pubDbUrl !== undefined'><ng-container i18n>Publications</ng-container>
     </button>
     <button mat-menu-item [matMenuTriggerFor]="addMenuPhenotype"><ng-container i18n>Characterization</ng-container></button>

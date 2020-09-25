@@ -124,11 +124,12 @@ export class AccessionComponent implements OnChanges {
     evalUserPermissions() {
         if (this.userCanEdit === undefined) {
             const userToken = this.currentUserService.currentUserSubject.value;
+            console.log(userToken);
             const group = this.accession.metadata.group;
             const is_public = this.accession.metadata.is_public;
             if (userToken.is_staff) {
                 this.userCanEdit = true;
-            } else if (userToken.groups && group in userToken.groups && !is_public) {
+            } else if (userToken.groups && userToken.groups.indexOf(group) !== -1 && !is_public) {
                 this.userCanEdit = true;
             } else {
                 this.userCanEdit = false;
