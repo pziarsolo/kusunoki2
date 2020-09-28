@@ -1,5 +1,14 @@
 <mat-card style='margin:8px;'>
-    <mat-card-title color='accent' i18n>Observation Search </mat-card-title>
+    <mat-card-title color='accent'>
+        <ng-container i18n>Observation Search</ng-container>
+        <span fxFlex></span>
+        <a mat-button color='accent' *ngIf='appConfig.useAccessionset'
+            href='https://docs.google.com/spreadsheets/d/1cpLoC2PJexHiAn_04tuW28RzezHHtx_mQkxwSgAfi98/edit?usp=sharing'
+            target='_blank'>
+            <ng-container i18n>Traits and their translations</ng-container>
+            <mat-icon>help</mat-icon>
+        </a>
+    </mat-card-title>
     <mat-card-content>
         <form #searchForm="ngForm" ngSubmit="doSumbit()">
             <div fxLayout='column' fxLayoutGap="5px" fxLayoutAlign="start start"

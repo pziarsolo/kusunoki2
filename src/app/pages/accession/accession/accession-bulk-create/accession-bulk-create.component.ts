@@ -231,8 +231,11 @@ export class AccessionBulkCreateComponent {
         },
         {
             name: 'REMARKS', description: ['The remarks field is used to add notes or to elaborate on descriptors with value 99 or 999 (= Other).',
-                'Prefix remarks with the field name they refer to and a colon (:) without space (e.g. COLLSRC:riverside).',
-                'Distinct remarks referring to different fields are separated by semicolons without space'],
+                'Prefix remarks with fixed key genebank_management:',
+                'Inside genebank_management value: free text but you can prefix remarks with the field name they refer to and a colon ',
+                '(:) without space (e.g. COLLSRC:riverside).',
+                'Distinct remarks referring to different fields are separated by semicolons without space',
+                'example: genebank_management:COLLSRC:riverside;LATITUDE:wrong'],
             mandatory: false
         },
     ];

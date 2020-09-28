@@ -23,7 +23,12 @@
         "<p>In the sections of this site, you can consult both the passport data of the materials ",
         "that are part of the Collections Network and the available characterization data, ",
         "as well as the contact information of the institutes that are responsible for providing ",
-        "germplasm to users. Searching instructions are available <a href='https://drive.google.com/file/d/1TiedpE_xv-qpg6aVVCC-zanPj0JqbFY9/view?usp=sharing' target='_blank'>here</a>.</p>"
+        "germplasm to users.</p>",
+        "<h3> Documentation</h3>",
+        "<ul>",
+        "<li><a href='https://docs.google.com/document/d/14I8KPagMyCU-in-RHbAqHIxZVWebL4NtU8q0amf6e4s/edit?usp=sharing' target='_blank'>Manual for searching</a></li>",
+        "<li><a href='https://docs.google.com/spreadsheets/d/1cpLoC2PJexHiAn_04tuW28RzezHHtx_mQkxwSgAfi98/edit?usp=sharing' target='_blank'>Traits and their translations</a></li>",
+        "</ul>"
 
     ]
 }

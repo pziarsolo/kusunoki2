@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { Accession } from 'src/app/shared/entities/accession.model';
 import { AccessionService } from 'src/app/shared/services/accession.service';
+import { AppConfigService } from 'src/app/shared/services/app-config.service';
+import { AppConfig } from 'src/app/shared/entities/app-config.model';
 
 @Component({
   selector: 'kusunoki2-observation-search-form',
@@ -21,11 +23,15 @@ export class ObservationSearchFormComponent implements AfterViewInit{
     searchParams: ObservationSearchParams =  {};
     suggestedTaxa: Observable<Taxon[]>;
     suggestedAccessions: Observable<Accession[]>;
+    appConfig: AppConfig;
     @ViewChild('studiesForm') studiesForm: StudyMultiAutocompleteComponent;
     @ViewChild('observationVariableForm') observationVariableForm: ObservationVariableMultiAutocompleteComponent;
     @ViewChild('taxaInput', { read: MatAutocompleteTrigger }) taxaTrigger: MatAutocompleteTrigger;
     constructor(private taxaService: TaxonService,
-        private accessionService: AccessionService) {}
+        private accessionService: AccessionService,
+        private appConfigService: AppConfigService) {
+            this.appConfig = this.appConfigService.getConfig()
+        }
 
     doSubmit() {
         const studies = this.studiesForm.items;

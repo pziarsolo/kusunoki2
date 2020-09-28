@@ -16,9 +16,9 @@ export class TableSearchPageComponent implements OnInit, OnDestroy {
     table: any;
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private location: Location,
+        protected route: ActivatedRoute,
+        protected router: Router,
+        protected location: Location,
         public currentUserService: CurrentUserService) { }
 
     ngOnInit(): void {
